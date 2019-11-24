@@ -31,11 +31,11 @@ bool DebugScene::init() {
 	addChild(_player);
 
 	//Crea al enemigo
-	auto enemy = BasicEnemy::create();
+	/*auto enemy = BasicEnemy::create();
 	enemy->setPosition(_visibleSize.width /2, _visibleSize.height /2 + 100);
 	enemy->setScale(2);
 	_enemyPool.pushBack(enemy);
-	addChild(enemy);
+	addChild(enemy);*/
 	
 	//Agrega el update al updater mas grande
 	this->schedule(schedule_selector(DebugScene::update));

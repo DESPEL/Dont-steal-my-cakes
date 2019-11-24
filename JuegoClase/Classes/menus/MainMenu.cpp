@@ -37,6 +37,7 @@ bool MainMenu::init() {
 	} // std::function <void (cocos2d::Ref *)>
 	else {
 		//startButton->addClickEventListener(functions.at(GameManager::getInstance()->getNextLevel()));
+		startButton->addClickEventListener(CC_CALLBACK_0(MainMenu::actionButton1, this));
 	}
 	addChild(startButton);
 
@@ -55,8 +56,6 @@ bool MainMenu::init() {
 	optionsButton->addClickEventListener(CC_CALLBACK_0(MainMenu::optionsButton, this));
 	optionsButton->setPosition(Point(startButton->getPositionX(), nextHeight));
 	addChild(optionsButton);
-	
-	actionButton1();
 
 	return true;
 }
@@ -85,7 +84,7 @@ void MainMenu::initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> fu
 	functions.push_back(CC_CALLBACK_0(MainMenu::actionButton9, this));
 }
 
-void MainMenu::actionButton1() { Director::getInstance()->replaceScene(TransitionSplitCols::create(1, DebugScene::createScene())); }
+void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, DebugScene::createScene())); }
 void MainMenu::actionButton2() {  /*TODO*/ }
 void MainMenu::actionButton3() {  /*TODO*/ }
 void MainMenu::actionButton4() {  /*TODO*/ }
