@@ -155,8 +155,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\JuegoClase\JuegoClase\Classes\Scenes\MotherScene.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Background.cpp" />
+    <ClCompile Include="..\Classes\BackGroundMenu.cpp" />
     <ClCompile Include="..\Classes\BasicBullet.cpp" />
     <ClCompile Include="..\Classes\BasicEnemy.cpp" />
     <ClCompile Include="..\Classes\Bullet.cpp" />
@@ -164,15 +166,19 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\GameWrapper.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\Keyboard.cpp" />
+    <ClCompile Include="..\Classes\menus\MainMenu.cpp" />
+    <ClCompile Include="..\Classes\menus\MotherMenu.cpp" />
     <ClCompile Include="..\Classes\Player.cpp" />
     <ClCompile Include="..\Classes\Player\Changuito.cpp" />
     <ClCompile Include="..\Classes\Scenes\DebugScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\JuegoClase\JuegoClase\Classes\Scenes\MotherScene.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\AttackPattern.h" />
     <ClInclude Include="..\Classes\Background.h" />
+    <ClInclude Include="..\Classes\BackGroundMenu.h" />
     <ClInclude Include="..\Classes\BasicBullet.h" />
     <ClInclude Include="..\Classes\BasicEnemy.h" />
     <ClInclude Include="..\Classes\Bullet.h" />
@@ -180,6 +186,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\GameWrapper.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Keyboard.h" />
+    <ClInclude Include="..\Classes\menus\MainMenu.h" />
+    <ClInclude Include="..\Classes\menus\MotherMenu.h" />
     <ClInclude Include="..\Classes\MovementPattern.h" />
     <ClInclude Include="..\Classes\Player.h" />
     <ClInclude Include="..\Classes\Player\Changuito.h" />

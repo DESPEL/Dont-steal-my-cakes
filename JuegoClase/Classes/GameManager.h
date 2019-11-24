@@ -1,10 +1,10 @@
 #pragma once
 
 #include "cocos2d.h"
-#define LEVELKEY "level"
-#define BGVOLUMEKEY "bgvolume"
-#define EFFECTSVOLUMEKEY "effectvolume"
-#define MAXSCOREKEY "maxscore"
+#define LEVEL "level"
+#define BGVOLUME "bgvolume"
+#define SFXVOLUME "effectvolume"
+#define MAXSCORE "maxscore"
 
 #include "Player.h"
 
@@ -13,8 +13,8 @@ class GameManager {
 private:
 	GameManager();
 	static GameManager* _instance;
-	GameManager(GameManager const&) = delete;// copy constructor is private
-	void operator=(GameManager const&) = delete;// assignment operator is private
+	GameManager(GameManager const&) = delete;
+	void operator=(GameManager const&) = delete;
 
 public:
 
@@ -29,8 +29,7 @@ public:
 	int getNextLevel();
 
 	~GameManager();
-
-
+	const static int NUM_LEVELS = 1;
 
 };
 
