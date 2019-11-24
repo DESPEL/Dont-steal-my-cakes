@@ -35,16 +35,16 @@ void BasicEnemy::run() {
 	);
 
 	AttackPattern<10> test2(
-		std::make_tuple(0.0f, BasicBullet::create(), test1.get(0.0f)),
-		std::make_tuple(0.2f, BasicBullet::create(), test1.get(-10.0f)),
-		std::make_tuple(0.2f, BasicBullet::create(), test1.get(10.0f)),
-		std::make_tuple(0.2f, BasicBullet::create(), test1.get(-20.0f)),
-		std::make_tuple(0.2f, BasicBullet::create(), test1.get(20.0f)),
-		std::make_tuple(0.2f, BasicBullet::create(), test1.get(0.0f)),
-		std::make_tuple(0.2f, BasicBullet::create(), test1.get(-10.0f)),
-		std::make_tuple(0.2f, BasicBullet::create(), test1.get(10.0f)),
-		std::make_tuple(0.2f, BasicBullet::create(), test1.get(-20.0f)),
-		std::make_tuple(0.2f, BasicBullet::create(), test1.get(20.0f))
+		std::make_tuple(0.0f, BasicBullet::createWithFile("redbullet.png"), test1.get(0.0f)),
+		std::make_tuple(0.2f, BasicBullet::createWithFile("redbullet.png"), test1.get(-10.0f)),
+		std::make_tuple(0.2f, BasicBullet::createWithFile("redbullet.png"), test1.get(10.0f)),
+		std::make_tuple(0.2f, BasicBullet::createWithFile("redbullet.png"), test1.get(-20.0f)),
+		std::make_tuple(0.2f, BasicBullet::createWithFile("redbullet.png"), test1.get(20.0f)),
+		std::make_tuple(0.2f, BasicBullet::createWithFile("redbullet.png"), test1.get(0.0f)),
+		std::make_tuple(0.2f, BasicBullet::createWithFile("redbullet.png"), test1.get(-10.0f)),
+		std::make_tuple(0.2f, BasicBullet::createWithFile("redbullet.png"), test1.get(10.0f)),
+		std::make_tuple(0.2f, BasicBullet::createWithFile("redbullet.png"), test1.get(-20.0f)),
+		std::make_tuple(0.2f, BasicBullet::createWithFile("redbullet.png"), test1.get(20.0f))
 	);
 
 	this->runAction(test.get(90));

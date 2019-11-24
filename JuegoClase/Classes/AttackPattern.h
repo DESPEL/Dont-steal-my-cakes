@@ -38,7 +38,7 @@ public:
 			bullet->seq->retain();
 			bullet->setAnchorPoint(cocos2d::Vec2(0.5, 0.5));
 			bullet->setPosition(parent->getPosition());
-			bullet->initWithFile("redbullet.png");
+			//bullet->initWithFile("redbullet.png");
 			bullet->setScale(2.0f,1.0f);
 			bullet->parent = parent;
 			bullet->setVisible(false);

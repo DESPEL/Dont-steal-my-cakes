@@ -17,3 +17,9 @@ void BasicBullet::update(float delta) {
 		this->runAction(cocos2d::RemoveSelf::create());
 	}
 }
+
+BasicBullet* BasicBullet::createWithFile(std::string name) {
+	BasicBullet* val = BasicBullet::create();
+	val->initWithFile(name);
+	return val;
+}

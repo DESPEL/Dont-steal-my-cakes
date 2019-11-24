@@ -18,6 +18,8 @@ public:
 
 	void update(float delta) override;
 
+	static BasicBullet* createWithFile(std::string);
+
 	CREATE_FUNC(BasicBullet);
 };
 
