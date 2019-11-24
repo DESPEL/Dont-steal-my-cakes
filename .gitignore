@@ -354,3 +354,6 @@ MigrationBackup/
 
 JuegoClase/proj.win32/Debug.win32/
 **/Debug.win32/
+**/.vs/
+*.vcxproj
+*.filters
