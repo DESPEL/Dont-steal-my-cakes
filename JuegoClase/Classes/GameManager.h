@@ -1,10 +1,13 @@
 #pragma once
-/*
+
 #include "cocos2d.h"
 #define LEVELKEY "level"
 #define BGVOLUMEKEY "bgvolume"
 #define EFFECTSVOLUMEKEY "effectvolume"
 #define MAXSCOREKEY "maxscore"
+
+#include "Player.h"
+
 
 class GameManager {
 private:
@@ -13,8 +16,8 @@ private:
 	GameManager(GameManager const&) = delete;// copy constructor is private
 	void operator=(GameManager const&) = delete;// assignment operator is private
 
-
 public:
+
 	CC_SYNTHESIZE(int, _bgVolume, BgVolume);
 	CC_SYNTHESIZE(int, _effectsVolume, EffectsVolume);
 	CC_SYNTHESIZE(int, _playerScore, PlayerScore);
@@ -24,7 +27,10 @@ public:
 	static GameManager* getInstance();
 	void saveGame(int tag);
 	int getNextLevel();
+
 	~GameManager();
 
+
+
 };
-*/
+

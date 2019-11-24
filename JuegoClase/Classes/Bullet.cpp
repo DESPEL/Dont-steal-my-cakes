@@ -34,7 +34,7 @@ Bullet* Bullet::createEnemyBullet() {
 	if (sprite && sprite->initWithFile("disparo_enemigo.png")) {
 		sprite->_type = ENEMY_BULLET;
 		sprite->autorelease();
-		sprite->direccion = Vec2(0, -1);
+		//sprite->direccion = Vec2(0, -1);
 		return sprite;
 	}
 

@@ -1,4 +1,4 @@
-/*#include "GameManager.h"
+#include "GameManager.h"
 
 USING_NS_CC;
 
@@ -41,4 +41,4 @@ void GameManager::saveMaxScore(int score) {
 
 int GameManager::getMaxScore() {
 	return UserDefault::getInstance()->getIntegerForKey(MAXSCOREKEY, 0);
-}*/
+}

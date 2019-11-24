@@ -1,5 +1,6 @@
 #include "HelloWorldScene.h"
 
+
 USING_NS_CC;
 
 Scene* HelloWorld::createScene() {
@@ -24,7 +25,10 @@ bool HelloWorld::init() {
 	_player = Player::create();
 	_player->setPosition(visibleSize.width / 2, visibleSize.height / 2 - 100);
 	_player->setScale(2);
+
 	addChild(_player);
+
+	this->schedule(schedule_selector(HelloWorld::update));
 
 	//for (int i = 0; i < _numEnemies; i++) {
 	auto enemy = BasicEnemy::create();
@@ -38,7 +42,6 @@ bool HelloWorld::init() {
 	//}
 
 
-	this->schedule(schedule_selector(HelloWorld::update));
 
 	return true;
 }

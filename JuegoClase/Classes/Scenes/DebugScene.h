@@ -2,6 +2,8 @@
 
 #include "HelloWorldScene.h"
 
+#include "GameWrapper.h"
+
 class DebugScene : public cocos2d::Layer {
 private:
 		//Enemys

@@ -11,22 +11,44 @@ bool BasicEnemy::init() {
 	createIdleAnimation();
 
 	createExplosionAnimation();
-	MovementPattern<2> test(
-		std::make_tuple(1.0f, Vec2(100, 0)),
-		std::make_tuple(1.0f, Vec2(0, 0))
-	);
-
-	runAction(test.get(90));
-
+	/*
 	//runAction(_idleAnimation);
 
 	for (int i = 0; i < _numbullets; i++) {
 		Balas.pushBack(Bullet::createEnemyBullet());
 	}
 	scheduleShoot();
-
+	*/
 
 	return true;
+}
+
+void BasicEnemy::run() {
+	MovementPattern<2> test(
+		std::make_tuple(1.0f, Vec2(0, 0)),
+		std::make_tuple(10.0f, Vec2(0, 0))
+	);
+
+	MovementPattern<2> test1(
+		std::make_tuple(1.0f, Vec2(0, -100)),
+		std::make_tuple(1.0f, Vec2(30, -100))
+	);
+
+	AttackPattern<10> test2(
+		std::make_tuple(0.0f, BasicBullet::create(), test1.get(0.0f)),
+		std::make_tuple(0.2f, BasicBullet::create(), test1.get(-10.0f)),
+		std::make_tuple(0.2f, BasicBullet::create(), test1.get(10.0f)),
+		std::make_tuple(0.2f, BasicBullet::create(), test1.get(-20.0f)),
+		std::make_tuple(0.2f, BasicBullet::create(), test1.get(20.0f)),
+		std::make_tuple(0.2f, BasicBullet::create(), test1.get(0.0f)),
+		std::make_tuple(0.2f, BasicBullet::create(), test1.get(-10.0f)),
+		std::make_tuple(0.2f, BasicBullet::create(), test1.get(10.0f)),
+		std::make_tuple(0.2f, BasicBullet::create(), test1.get(-20.0f)),
+		std::make_tuple(0.2f, BasicBullet::create(), test1.get(20.0f))
+	);
+
+	this->runAction(test.get(90));
+	test2.run(this);
 }
 
 void BasicEnemy::createIdleAnimation() {

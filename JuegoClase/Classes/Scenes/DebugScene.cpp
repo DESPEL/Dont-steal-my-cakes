@@ -30,6 +30,8 @@ bool DebugScene::init() {
 	_player->setScale(2);
 	addChild(_player);
 
+	GameWrapper::getInstance()->setPlayer(_player);
+
 	//Crea al enemigo
 	auto enemy = BasicEnemy::create();
 	enemy->setPosition(_visibleSize.width /2, _visibleSize.height /2 + 100);
@@ -37,6 +39,8 @@ bool DebugScene::init() {
 	_enemyPool.pushBack(enemy);
 	addChild(enemy);
 	
+	enemy->run();
+
 	//Agrega el update al updater mas grande
 	this->schedule(schedule_selector(DebugScene::update));
 
@@ -65,6 +69,7 @@ void DebugScene::createEnemy() {
 	enemy->setScale(2);
 	_enemyPool.pushBack(enemy);
 	addChild(enemy);
+	enemy->run();
 };
 
 void DebugScene::update(float delta) {
