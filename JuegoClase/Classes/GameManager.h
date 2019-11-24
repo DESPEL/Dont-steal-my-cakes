@@ -6,6 +6,9 @@
 #define SFXVOLUME "effectvolume"
 #define MAXSCORE "maxscore"
 
+#include "Player.h"
+
+
 class GameManager {
 private:
 	GameManager();
@@ -13,8 +16,8 @@ private:
 	GameManager(GameManager const&) = delete;
 	void operator=(GameManager const&) = delete;
 
-
 public:
+
 	CC_SYNTHESIZE(int, _bgVolume, BgVolume);
 	CC_SYNTHESIZE(int, _effectsVolume, EffectsVolume);
 	CC_SYNTHESIZE(int, _playerScore, PlayerScore);
@@ -24,8 +27,9 @@ public:
 	static GameManager* getInstance();
 	void saveGame(int tag);
 	int getNextLevel();
+
 	~GameManager();
-	
 	const static int NUM_LEVELS = 1;
+
 };
 
