@@ -1,5 +1,7 @@
 #include "BasicEnemy.h"
 
+#include "MovementPattern.h"
+
 USING_NS_CC;
 
 bool BasicEnemy::init() {
@@ -11,13 +13,19 @@ bool BasicEnemy::init() {
 	createIdleAnimation();
 
 	createExplosionAnimation();
+	Sequence* test = MovementPattern::create(
+		90,
+		std::make_tuple(1.0f, Vec2(100, 0)),
+		std::make_tuple(1.0f, Vec2(0, 0))
+	);
 
-	runAction(_idleAnimation);
+	runAction(test);
+
+	//runAction(_idleAnimation);
 
 	for (int i = 0; i < _numbullets; i++) {
 		Balas.pushBack(Bullet::createEnemyBullet());
 	}
-
 	scheduleShoot();
 
 

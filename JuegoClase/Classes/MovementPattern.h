@@ -19,7 +19,8 @@ namespace MovementPattern {
 	cocos2d::Sequence* create(float angle, std::tuple<float, cocos2d::Vec2> arg1, Ts... args) {
 		std::tuple<std::tuple<float, cocos2d::Vec2>&, Ts &...> tup = { arg1, args... };
 		std::function<void(std::tuple<float, cocos2d::Vec2>&)> angleModifier = [&angle](std::tuple<float, cocos2d::Vec2>& val) {
-			std::get<1>(val) = std::get<1>(val).rotateByAngle(cocos2d::Vec2(0, 0), angle);
+			//std::get<1>(val) = std::get<1>(val).rotateByAngle(cocos2d::Vec2(0, 0), angle); 
+			std::get<1>(val).rotate(cocos2d::Vec2(0, 0), angle * (M_PI/180));
 		};
 		tupleApply(angleModifier, tup);
 		return cocos2d::Sequence::create(tupToMoveBy(arg1), tupToMoveBy(args)..., NULL);

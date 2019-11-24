@@ -95,7 +95,7 @@
     <ClInclude Include="..\Classes\GameManager.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="MovementPattern.h">
+    <ClInclude Include="..\Classes\MovementPattern.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
