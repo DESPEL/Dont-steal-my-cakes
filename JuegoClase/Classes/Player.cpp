@@ -1,4 +1,7 @@
 #include "Player.h"
+#include "SimpleAudioEngine.h"
+
+using namespace CocosDenshion;
 
 USING_NS_CC;
 
@@ -74,6 +77,7 @@ void Player::shoot(Vec2 dir) {
 	auto bullet = Balas.at(bulletsact);
 	bullet->activa = true;
 	bullet->direccion = dir;
+	SimpleAudioEngine::getInstance()->playEffect("music/laser_shoot.wav");
 	if(!vuelta)
 		this->getParent()->addChild(bullet, -1);
 	bullet->setAnchorPoint(Point(0.5, 0));
@@ -141,6 +145,8 @@ void Player::update(float delta) {
 				this->shoot(Vec2(-1, 1));
 				this->shoot(Vec2(0.5, 1.5));
 				this->shoot(Vec2(-0.5, 1.5));
+				this->shoot(Vec2(0.3, 1.8));
+				this->shoot(Vec2(-0.3, 1.8));
 				this->delay = this->delayvalue;
 			}
 			break;	

@@ -5,17 +5,15 @@ USING_NS_CC;
 GameManager* GameManager::_instance = nullptr;
 
 GameManager::GameManager() :_playerScore(0) {
-
-	_bgVolume = UserDefault::getInstance()->getIntegerForKey(BGVOLUMEKEY, 30);
-	_effectsVolume = UserDefault::getInstance()->getIntegerForKey(EFFECTSVOLUMEKEY, 40);
+	_bgVolume = UserDefault::getInstance()->getIntegerForKey(BGVOLUME, 30);
+	_effectsVolume = UserDefault::getInstance()->getIntegerForKey(SFXVOLUME, 40);
 }
-
 
 GameManager::~GameManager() {}
 
 void GameManager::saveSetting() {
-	UserDefault::getInstance()->setIntegerForKey(BGVOLUMEKEY, _bgVolume);
-	UserDefault::getInstance()->setIntegerForKey(EFFECTSVOLUMEKEY, _effectsVolume);
+	UserDefault::getInstance()->setIntegerForKey(BGVOLUME, _bgVolume);
+	UserDefault::getInstance()->setIntegerForKey(SFXVOLUME, _effectsVolume);
 }
 
 GameManager* GameManager::getInstance() {
@@ -27,18 +25,18 @@ GameManager* GameManager::getInstance() {
 
 void GameManager::saveGame(int tag) {
 	if (tag > getNextLevel()) {
-		UserDefault::getInstance()->setIntegerForKey(LEVELKEY, tag);
+		UserDefault::getInstance()->setIntegerForKey(LEVEL, tag);
 	}
 }
 
 int GameManager::getNextLevel() {
-	return UserDefault::getInstance()->getIntegerForKey(LEVELKEY, 0);
+	return UserDefault::getInstance()->getIntegerForKey(LEVEL, 0);
 }
 
 void GameManager::saveMaxScore(int score) {
-	UserDefault::getInstance()->setIntegerForKey(MAXSCOREKEY, score);
+	UserDefault::getInstance()->setIntegerForKey(MAXSCORE, score);
 }
 
 int GameManager::getMaxScore() {
-	return UserDefault::getInstance()->getIntegerForKey(MAXSCOREKEY, 0);
+	return UserDefault::getInstance()->getIntegerForKey(MAXSCORE, 0);
 }

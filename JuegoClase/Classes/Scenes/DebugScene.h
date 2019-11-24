@@ -12,6 +12,7 @@ private:
 		float delay = 0;
 
 		Background* _bg;
+
 		Player* _player;
 		cocos2d::Vector<BasicEnemy*> _enemyPool;
 
