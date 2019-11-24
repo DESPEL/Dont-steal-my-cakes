@@ -40,9 +40,10 @@ public:
 			bullet->setPosition(parent->getPosition());
 			bullet->initWithFile("redbullet.png");
 			bullet->setScale(2.0f,1.0f);
+			bullet->parent = parent;
+			bullet->setVisible(false);
 			parent->getParent()->addChild(bullet, -1);
 			bullet->scheduleOnce(schedule_selector(BasicBullet::run), acc);
-			
 		}
 	}
 };

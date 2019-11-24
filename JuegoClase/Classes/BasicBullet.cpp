@@ -1,6 +1,11 @@
 #include "BasicBullet.h"
 
 void BasicBullet::run(float) {
+	if (parent->get_currentAnimation() == BasicEnemy::EXPLOSION) {
+		runAction(cocos2d::RemoveSelf::create());
+		return;
+	}
+	setVisible(true);
 	runAction(seq);
 	seq->release();
 	schedule(schedule_selector(BasicBullet::update));
