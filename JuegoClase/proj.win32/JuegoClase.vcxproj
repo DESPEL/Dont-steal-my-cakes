@@ -170,12 +170,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\GameManager.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Keyboard.h" />
+    <ClInclude Include="..\Classes\MovementPattern.h" />
     <ClInclude Include="..\Classes\Player.h" />
     <ClInclude Include="..\Classes\Player\Changuito.h" />
     <ClInclude Include="..\Classes\Scenes\DebugScene.h" />
     <ClInclude Include="..\Classes\Tipos.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="MovementPattern.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cocos2d\cocos\2d\libcocos2d.vcxproj">

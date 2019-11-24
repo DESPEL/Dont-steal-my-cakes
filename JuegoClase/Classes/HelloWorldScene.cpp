@@ -37,6 +37,7 @@ bool HelloWorld::init() {
 	addChild(enemy);
 	//}
 
+
 	this->schedule(schedule_selector(HelloWorld::update));
 
 	return true;
