@@ -137,6 +137,8 @@ void Player::update(float delta) {
 		case EventKeyboard::KeyCode::KEY_SPACE:
 			if (this->delay <= 0) {
 				this->shoot(Vec2(0,1));
+				this->shoot(Vec2(1, 1));
+				this->shoot(Vec2(-1, 1));
 				this->delay = this->delayvalue;
 			}
 			break;	
