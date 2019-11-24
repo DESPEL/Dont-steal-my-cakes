@@ -13,14 +13,20 @@
     <Filter Include="src\Enemy">
       <UniqueIdentifier>{4cd7adeb-adde-4caf-b59d-8cffc5db58fd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Scenes">
-      <UniqueIdentifier>{3c527c7e-4a25-4442-95fc-620deaacbcfc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Player">
       <UniqueIdentifier>{f45dc8a4-e4e0-4543-ab4b-7d1205ba3190}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Bullets">
       <UniqueIdentifier>{76ea2cf5-3ef6-4d9c-98eb-f364f7470d65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scenes">
+      <UniqueIdentifier>{3c527c7e-4a25-4442-95fc-620deaacbcfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Menus">
+      <UniqueIdentifier>{bccfe8e7-396c-486e-96d3-e49964201e9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Backgrounds">
+      <UniqueIdentifier>{4504533c-ee7f-40c4-8612-d0ef6aa6d2b5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -30,22 +36,7 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Player.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Keyboard.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Background.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BasicEnemy.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Bullet.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Player\Changuito.cpp">
@@ -57,6 +48,33 @@
     <ClCompile Include="..\Classes\GameManager.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Bullet.cpp">
+      <Filter>src\Bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>src\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Player.cpp">
+      <Filter>src\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BasicEnemy.cpp">
+      <Filter>src\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\JuegoClase\JuegoClase\Classes\Scenes\MotherScene.cpp">
+      <Filter>src\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Background.cpp">
+      <Filter>src\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BackGroundMenu.cpp">
+      <Filter>src\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\menus\MotherMenu.cpp">
+      <Filter>src\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\menus\MainMenu.cpp">
+      <Filter>src\Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -65,22 +83,7 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Player.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Keyboard.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Background.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BasicEnemy.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Bullet.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Player\Changuito.h">
@@ -97,6 +100,33 @@
     </ClInclude>
     <ClInclude Include="..\Classes\MovementPattern.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Bullet.h">
+      <Filter>src\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>src\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player.h">
+      <Filter>src\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BasicEnemy.h">
+      <Filter>src\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\JuegoClase\JuegoClase\Classes\Scenes\MotherScene.h">
+      <Filter>src\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Background.h">
+      <Filter>src\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BackGroundMenu.h">
+      <Filter>src\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\menus\MotherMenu.h">
+      <Filter>src\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\menus\MainMenu.h">
+      <Filter>src\Menus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

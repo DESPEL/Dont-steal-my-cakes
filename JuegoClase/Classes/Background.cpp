@@ -11,7 +11,7 @@ Background::Background() :_speed(150) {
 	_bgPart1->setPosition(_screen.width / 2, _screen.height / 2);
 	_bgPart2->setPosition(_screen.width / 2, _screen.height / 2 + _screen.height);
 	addChild(_bgPart1);
-	addChild(_bgPart2);
+	addChild(_bgPart2,-1);
 }
 
 void Background::update(float delta) {
