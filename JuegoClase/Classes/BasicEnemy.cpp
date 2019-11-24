@@ -13,13 +13,12 @@ bool BasicEnemy::init() {
 	createIdleAnimation();
 
 	createExplosionAnimation();
-	Sequence* test = MovementPattern::create(
-		90,
+	MovementPattern<2> test(
 		std::make_tuple(1.0f, Vec2(100, 0)),
 		std::make_tuple(1.0f, Vec2(0, 0))
 	);
 
-	runAction(test);
+	runAction(test.get(90));
 
 	//runAction(_idleAnimation);
 
