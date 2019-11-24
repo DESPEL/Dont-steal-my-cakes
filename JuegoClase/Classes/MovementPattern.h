@@ -38,11 +38,12 @@ public:
 		arr = { args... };
 	}
 
-	cocos2d::Sequence* get(float angle) {
+	cocos2d::Sequence* get(float angle, float speed = 1.0f) {
 		if (memory.find(angle) != end(memory))
 			return memory[angle]->clone();
 		for (std::tuple<float, cocos2d::Vec2> &mov : arr) {
 			std::get<1>(mov).rotate(cocos2d::Vec2(0, 0), angle * (M_PI / 180));
+			std::get<0>(mov) = std::get<0>(mov) / speed;
 		}
 		memory[angle] = getInside(detail::gen_seq<sz>());
 		return memory[angle]->clone();
