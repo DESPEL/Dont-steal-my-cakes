@@ -1,7 +1,5 @@
 #include "BasicEnemy.h"
 
-#include "MovementPattern.h"
-
 USING_NS_CC;
 
 bool BasicEnemy::init() {

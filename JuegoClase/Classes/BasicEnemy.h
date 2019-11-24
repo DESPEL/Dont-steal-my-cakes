@@ -2,6 +2,7 @@
 
 #include "cocos2d.h"
 #include "Bullet.h"
+#include "MovementPattern.h"
 
 class Bullet;
 
