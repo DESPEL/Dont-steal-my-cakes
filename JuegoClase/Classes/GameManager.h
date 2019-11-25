@@ -5,7 +5,6 @@
 #define BGVOLUME "bgvolume"
 #define SFXVOLUME "effectvolume"
 #define MAXSCORE "maxscore"
-
 #include "Player.h"
 
 

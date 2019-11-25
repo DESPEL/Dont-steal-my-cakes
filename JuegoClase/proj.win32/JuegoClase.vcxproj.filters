@@ -27,6 +27,8 @@
     </Filter>
     <Filter Include="src\Backgrounds">
       <UniqueIdentifier>{4504533c-ee7f-40c4-8612-d0ef6aa6d2b5}</UniqueIdentifier>
+    <Filter Include="src\Wrappers">
+      <UniqueIdentifier>{2fbf88ae-679c-470c-891f-ff3a0061940d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
