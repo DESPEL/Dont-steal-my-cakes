@@ -6,6 +6,7 @@
 
 class Bullet : public cocos2d::Sprite {
 public:
+
 	CC_SYNTHESIZE(float, _speed, Speed);
 	virtual void update(float);
 

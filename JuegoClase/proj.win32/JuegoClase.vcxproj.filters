@@ -75,6 +75,12 @@
     <ClCompile Include="..\Classes\menus\MainMenu.cpp">
       <Filter>src\Menus</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\BasicBullet.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameWrapper.cpp">
+      <Filter>src\Wrappers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -127,6 +133,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\menus\MainMenu.h">
       <Filter>src\Menus</Filter>
+    <ClInclude Include="..\Classes\AttackPattern.h" />
+    <ClInclude Include="..\Classes\BasicBullet.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameWrapper.h">
+      <Filter>src\Wrappers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

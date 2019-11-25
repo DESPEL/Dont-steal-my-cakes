@@ -2,6 +2,8 @@
 
 #include "cocos2d.h"
 #include "Bullet.h"
+#include "MovementPattern.h"
+#include "AttackPattern.h"
 
 class Bullet;
 
@@ -16,9 +18,9 @@ private:
 	void createExplosionAnimation();
 
 	float DyingTime = 0.90;
-	int _numbullets = 100;
 
 public:
+	int _numbullets = 100;
 	enum Animations {
 		IDLE = 0, EXPLOSION = 1
 	};
@@ -27,6 +29,8 @@ public:
 	void explode();
 	void scheduleShoot();
 	void shoot();
+
+	void run();
 
 	CC_SYNTHESIZE(Animations, _currentAnimation, _currentAnimation);
 	CC_SYNTHESIZE(float, _speed, Speed);
