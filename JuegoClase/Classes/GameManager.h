@@ -5,7 +5,6 @@
 #define BGVOLUME "bgvolume"
 #define SFXVOLUME "effectvolume"
 #define MAXSCORE "maxscore"
-
 #include "Player.h"
 
 
@@ -30,6 +29,5 @@ public:
 
 	~GameManager();
 	const static int NUM_LEVELS = 1;
-
 };
 
