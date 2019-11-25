@@ -11,7 +11,7 @@ bool Player::init() {
 	if (!Sprite::init())
 		return false;
 
-	_speed = 150;
+	_speed = 100;
 	_currentAnimation = IDLE;
 
 	createIdleAnimation();
@@ -21,6 +21,7 @@ bool Player::init() {
 	runAction(_idleAnimation);
 
 	_control = KeyBoard::create();
+	_control->keys.clear();
 	addChild(_control);
 
 	for (int i = 0; i < _numbullets; i++) {

@@ -2,6 +2,7 @@
 
 #include "cocos2d.h"
 #include "BackGroundMenu.h"
+#include "SimpleAudioEngine.h"
 
 class MotherMenu : public cocos2d::Layer {
 protected:

@@ -1,15 +1,15 @@
 #include "MainMenu.h"
 #include "Scenes/DebugScene.h"
-//#include "SelectMenuLayer.h"
+#include "LevelSelectMenu.h"
 //#include "OptionsLayer.h"
 #include "ui/CocosGUI.h"
 #include "GameManager.h"
 
 USING_NS_CC;
 using namespace ui;
+using namespace CocosDenshion;
 
-Scene* MainMenu::createScene()
-{
+Scene* MainMenu::createScene() {
 	auto scene = Scene::create();
 	auto layer = MainMenu::create();
 	scene->addChild(layer);
@@ -45,6 +45,7 @@ bool MainMenu::init() {
 	auto nextHeight = startButton->getPositionY() - startButton->getBoundingBox().size.height - (30 * getScaleY());
 	auto selectButton = Button::create("menus/Botones/level0.png", "menus/Botones/level1.png", "menus/Botones/level0.png", Widget::TextureResType::LOCAL);
 	selectButton->setAnchorPoint(Point(0.5, 1));
+	selectButton->setScale(3, 1.5);
 	selectButton->addClickEventListener(CC_CALLBACK_0(MainMenu::selectMenuButton, this));
 	selectButton->setPosition(Point(startButton->getPositionX(), nextHeight));
 	addChild(selectButton);
@@ -53,9 +54,14 @@ bool MainMenu::init() {
 	nextHeight = selectButton->getPositionY() - selectButton->getBoundingBox().size.height - (30 * getScaleY());
 	auto optionsButton = Button::create("menus/Botones/options0.png", "menus/Botones/options1.png", "menus/Botones/options0.png", Widget::TextureResType::LOCAL);
 	optionsButton->setAnchorPoint(Point(0.5, 1));
+	optionsButton->setScale(3, 1.5);
 	optionsButton->addClickEventListener(CC_CALLBACK_0(MainMenu::optionsButton, this));
 	optionsButton->setPosition(Point(startButton->getPositionX(), nextHeight));
 	addChild(optionsButton);
+
+	if (!SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()) {
+		SimpleAudioEngine::getInstance()->playBackgroundMusic("music/gusty_garden.mp3", true);
+	}
 
 	return true;
 }
@@ -63,7 +69,7 @@ bool MainMenu::init() {
 
 
 void MainMenu::selectMenuButton() {
-	//Director::getInstance()->replaceScene(TransitionFadeBL::create(1, SelectMenuLayer::createScene()));
+	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, LevelSelectMenu::createScene()));
 }
 
 void MainMenu::optionsButton() {

@@ -37,9 +37,9 @@ bool DebugScene::init() {
 	enemy->setPosition(_visibleSize.width /2, _visibleSize.height /2 + 100);
 	enemy->setScale(2);
 	_enemyPool.pushBack(enemy);
-	addChild(enemy);*/
+	addChild(enemy);
 	
-	enemy->run();
+	enemy->run();*/
 
 	//Agrega el update al updater mas grande
 	this->schedule(schedule_selector(DebugScene::update));
@@ -49,7 +49,6 @@ bool DebugScene::init() {
 	CallFunc* callSelectorAction = CallFunc::create(CC_CALLBACK_0(DebugScene::createEnemy, this));
 	auto shootSequence = Sequence::create(delayAction, callSelectorAction, NULL);
 	runAction(RepeatForever::create(shootSequence));
-
 
 	// Musica
 	SimpleAudioEngine::getInstance()->playBackgroundMusic("Music\\get_lucky.mp3", true);

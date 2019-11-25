@@ -28,6 +28,6 @@ public:
 	int getNextLevel();
 
 	~GameManager();
-	const static int NUM_LEVELS = 1;
+	const static int NUM_LEVELS = 9;
 };
 
