@@ -20,6 +20,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="..\Classes\menus\LevelSelectMenu.cpp" />
     <ClCompile Include="..\Classes\menus\OptionsMenu.cpp" />
+    <ClCompile Include="..\Classes\menus\DeathMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\Scenes\MotherScene.h" />
@@ -44,6 +45,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="..\Classes\menus\LevelSelectMenu.h" />
     <ClInclude Include="..\Classes\menus\OptionsMenu.h" />
+    <ClInclude Include="..\Classes\menus\DeathMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />

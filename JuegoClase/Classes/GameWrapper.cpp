@@ -1,6 +1,8 @@
 #include "GameWrapper.h"
 
+
 GameWrapper* GameWrapper::instance = nullptr;
+
 
 
 GameWrapper* GameWrapper::getInstance() {

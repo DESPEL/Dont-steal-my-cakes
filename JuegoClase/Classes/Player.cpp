@@ -1,5 +1,10 @@
 #include "Player.h"
 #include "SimpleAudioEngine.h"
+#include "ui/CocosGUI.h"
+#include "Scenes/DebugScene.h"
+
+#include "menus/MainMenu.h"
+#include "menus/DeathMenu.h"
 
 using namespace CocosDenshion;
 
@@ -112,6 +117,10 @@ void Player::update(float delta) {
 	if (_currentAnimation == EXPLOSION) {
 		if (_explosionAnimation->isDone())
 			setVisible(0);
+		SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+		_control->keys.clear();
+		
+		Director::getInstance()->replaceScene(TransitionCrossFade::create(1, DeathMenu::createScene()));
 		return;
 	}
 
@@ -123,7 +132,7 @@ void Player::update(float delta) {
 	for (auto K : KeyBoard::keys) {
 		Vec2 loc = this->getPosition();
 		switch (K.first) {
-		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
+		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:     
 		case EventKeyboard::KeyCode::KEY_A:
 			this->setPosition(loc.x - deltax * change, loc.y);
 			break;
