@@ -41,7 +41,13 @@ bool DebugScene::init() {
 	button2->setVisible(false);
 	addChild(button2, 0);
 	
-	
+	button3 = ui::Button::create("menus/save.png", "menus/save.png", "menus/save.png");
+	button3->setAnchorPoint(Point(.5, .5));
+	button3->setPosition(Point(_visibleSize.width/2, _visibleSize.height/2));
+	button3->addClickEventListener(CC_CALLBACK_0(DebugScene::playButtonAction, this));
+	button3->setScale(.4);
+	button3->setVisible(false);
+	addChild(button3, 0);
 	
 
 	//Crea al jugador
@@ -143,6 +149,7 @@ void DebugScene::pauseButtonAction()
 	cocos2d::Director::getInstance()->stopAnimation();
 	button->setVisible(false);
 	button2->setVisible(true);
+	button3->setVisible(true);
 }
 
 void DebugScene::playButtonAction()
@@ -152,4 +159,9 @@ void DebugScene::playButtonAction()
 	cocos2d::Director::getInstance()->startAnimation();
 	button->setVisible(true);
 	button2->setVisible(false);
+	button3->setVisible(false);
+}
+
+void DebugScene::saveButtonAction() {
+
 }

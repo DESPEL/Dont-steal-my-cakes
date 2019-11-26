@@ -13,6 +13,7 @@ private:
 		float delay = 0;
 		cocos2d::ui::Button* button;
 		cocos2d::ui::Button* button2;
+		cocos2d::ui::Button* button3;
 		Background* _bg;
 		
 		Player* _player;
@@ -23,6 +24,7 @@ private:
 protected:
 	virtual void pauseButtonAction();
 	virtual void playButtonAction();
+	virtual void saveButtonAction();
 
 public:
 		static cocos2d::Scene* createScene();
