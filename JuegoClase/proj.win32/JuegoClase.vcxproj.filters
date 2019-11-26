@@ -1,151 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="win32">
-      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="resource">
-      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src">
-      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Enemy">
-      <UniqueIdentifier>{4cd7adeb-adde-4caf-b59d-8cffc5db58fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Player">
-      <UniqueIdentifier>{f45dc8a4-e4e0-4543-ab4b-7d1205ba3190}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Bullets">
-      <UniqueIdentifier>{76ea2cf5-3ef6-4d9c-98eb-f364f7470d65}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Scenes">
-      <UniqueIdentifier>{3c527c7e-4a25-4442-95fc-620deaacbcfc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Menus">
-      <UniqueIdentifier>{bccfe8e7-396c-486e-96d3-e49964201e9a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Backgrounds">
-      <UniqueIdentifier>{4504533c-ee7f-40c4-8612-d0ef6aa6d2b5}</UniqueIdentifier>
-    <Filter Include="src\Wrappers">
-      <UniqueIdentifier>{2fbf88ae-679c-470c-891f-ff3a0061940d}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="..\Classes\Scenes\MotherScene.cpp" />
+    <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\Background.cpp" />
+    <ClCompile Include="..\Classes\BackGroundMenu.cpp" />
+    <ClCompile Include="..\Classes\BasicBullet.cpp" />
+    <ClCompile Include="..\Classes\BasicEnemy.cpp" />
+    <ClCompile Include="..\Classes\Bullet.cpp" />
+    <ClCompile Include="..\Classes\GameManager.cpp" />
+    <ClCompile Include="..\Classes\GameWrapper.cpp" />
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\Keyboard.cpp" />
+    <ClCompile Include="..\Classes\menus\MainMenu.cpp" />
+    <ClCompile Include="..\Classes\menus\MotherMenu.cpp" />
+    <ClCompile Include="..\Classes\Player.cpp" />
+    <ClCompile Include="..\Classes\Player\Changuito.cpp" />
+    <ClCompile Include="..\Classes\Scenes\DebugScene.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Keyboard.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Player\Changuito.cpp">
-      <Filter>src\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Scenes\DebugScene.cpp">
-      <Filter>src\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameManager.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Bullet.cpp">
-      <Filter>src\Bullets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>src\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Player.cpp">
-      <Filter>src\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BasicEnemy.cpp">
-      <Filter>src\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\JuegoClase\JuegoClase\Classes\Scenes\MotherScene.cpp">
-      <Filter>src\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Background.cpp">
-      <Filter>src\Backgrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BackGroundMenu.cpp">
-      <Filter>src\Backgrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\menus\MotherMenu.cpp">
-      <Filter>src\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\menus\MainMenu.cpp">
-      <Filter>src\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BasicBullet.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameWrapper.cpp">
-      <Filter>src\Wrappers</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Keyboard.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Player\Changuito.h">
-      <Filter>src\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Tipos.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Scenes\DebugScene.h">
-      <Filter>src\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameManager.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\MovementPattern.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Bullet.h">
-      <Filter>src\Bullets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>src\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Player.h">
-      <Filter>src\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BasicEnemy.h">
-      <Filter>src\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\JuegoClase\JuegoClase\Classes\Scenes\MotherScene.h">
-      <Filter>src\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Background.h">
-      <Filter>src\Backgrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BackGroundMenu.h">
-      <Filter>src\Backgrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\menus\MotherMenu.h">
-      <Filter>src\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\menus\MainMenu.h">
-      <Filter>src\Menus</Filter>
+    <ClInclude Include="..\Classes\Scenes\MotherScene.h" />
+    <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\AttackPattern.h" />
-    <ClInclude Include="..\Classes\BasicBullet.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameWrapper.h">
-      <Filter>src\Wrappers</Filter>
-    </ClInclude>
+    <ClInclude Include="..\Classes\Background.h" />
+    <ClInclude Include="..\Classes\BackGroundMenu.h" />
+    <ClInclude Include="..\Classes\BasicBullet.h" />
+    <ClInclude Include="..\Classes\BasicEnemy.h" />
+    <ClInclude Include="..\Classes\Bullet.h" />
+    <ClInclude Include="..\Classes\GameManager.h" />
+    <ClInclude Include="..\Classes\GameWrapper.h" />
+    <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\Keyboard.h" />
+    <ClInclude Include="..\Classes\menus\MainMenu.h" />
+    <ClInclude Include="..\Classes\menus\MotherMenu.h" />
+    <ClInclude Include="..\Classes\MovementPattern.h" />
+    <ClInclude Include="..\Classes\Player.h" />
+    <ClInclude Include="..\Classes\Player\Changuito.h" />
+    <ClInclude Include="..\Classes\Scenes\DebugScene.h" />
+    <ClInclude Include="..\Classes\Tipos.h" />
+    <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="game.rc">
-      <Filter>resource</Filter>
-    </ResourceCompile>
+    <ResourceCompile Include="game.rc" />
   </ItemGroup>
 </Project>

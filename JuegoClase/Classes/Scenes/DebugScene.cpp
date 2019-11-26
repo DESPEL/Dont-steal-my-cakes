@@ -39,7 +39,7 @@ bool DebugScene::init() {
 	_enemyPool.pushBack(enemy);
 	addChild(enemy);*/
 	
-	enemy->run();
+	//enemy->run();
 
 	//Agrega el update al updater mas grande
 	this->schedule(schedule_selector(DebugScene::update));

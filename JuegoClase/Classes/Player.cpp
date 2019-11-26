@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "SimpleAudioEngine.h"
+#include "ui/CocosGUI.h"
 
 using namespace CocosDenshion;
 
