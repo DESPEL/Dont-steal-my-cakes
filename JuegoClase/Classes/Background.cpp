@@ -1,5 +1,5 @@
 #include "background.h"
-
+#include "ui/CocosGUI.h"
 USING_NS_CC;
 
 Background::Background() :_speed(150) {

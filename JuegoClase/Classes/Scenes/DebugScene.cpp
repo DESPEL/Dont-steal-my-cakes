@@ -1,5 +1,7 @@
 #include "DebugScene.h"
 #include "SimpleAudioEngine.h"
+#include "ui/CocosGUI.h"
+#include "GameWrapper.h"
 using namespace CocosDenshion;
 
 USING_NS_CC;
@@ -22,7 +24,25 @@ bool DebugScene::init() {
 
 	//Crea el background
 	_bg = Background::create();
+	 button = ui::Button::create("menus/Pausa.png", "menus/Pausa.png", "menus/Pausa.png");
+		
+	button->setAnchorPoint(Point(1, 0.5));
+	button->setPosition(Point(_visibleSize.width - 20 * getScaleX(), 280));
+	button->addClickEventListener(CC_CALLBACK_0(DebugScene::pauseButtonAction, this));
+	button->setScale(.2);
+	addChild(button, 0);
 	addChild(_bg, -1);
+	
+	button2 = ui::Button::create("menus/Play.png", "menus/Play.png", "menus/Play.png");
+	button2->setAnchorPoint(Point(1, 0.5));
+	button2->setPosition(Point(_visibleSize.width - 20 * getScaleX(), 280));
+	button2->addClickEventListener(CC_CALLBACK_0(DebugScene::playButtonAction, this));
+	button2->setScale(.2);
+	button2->setVisible(false);
+	addChild(button2, 0);
+	
+	
+	
 
 	//Crea al jugador
 	_player = Player::create();
@@ -115,4 +135,21 @@ void DebugScene::update(float delta) {
 			e->stopActionByTag(20);
 		}
 	}
+}
+void DebugScene::pauseButtonAction()
+{
+	pause();
+	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+	cocos2d::Director::getInstance()->stopAnimation();
+	button->setVisible(false);
+	button2->setVisible(true);
+}
+
+void DebugScene::playButtonAction()
+{
+	resume();
+	SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+	cocos2d::Director::getInstance()->startAnimation();
+	button->setVisible(true);
+	button2->setVisible(false);
 }

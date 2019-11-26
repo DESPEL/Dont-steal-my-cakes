@@ -13,14 +13,15 @@ class Player;
 class GameWrapper
 {
 	static GameWrapper *instance;
-	
-	Player* _player;
 
+	Player* _player;
+	
 	GameWrapper(){}
 
 public:
+	
 	static GameWrapper* getInstance();
-
+	
 	void setPlayer(Player* pl) noexcept;
 	Player* getPlayer();
 

@@ -119,9 +119,10 @@ void Player::update(float delta) {
 		SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 		_control->keys.clear();
 		
-		Director::getInstance()->replaceScene(TransitionCrossFade::create(1, DeathMenu::createScene()));
+		Director::getInstance()->replaceScene( DeathMenu::createScene());
 		return;
 	}
+	
 
 	auto director = Director::getInstance();
 	auto visiblesize = director->getVisibleSize();
