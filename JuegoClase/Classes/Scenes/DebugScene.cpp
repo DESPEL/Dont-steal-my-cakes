@@ -144,22 +144,26 @@ void DebugScene::update(float delta) {
 }
 void DebugScene::pauseButtonAction()
 {
-	pause();
-	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
-	cocos2d::Director::getInstance()->stopAnimation();
 	button->setVisible(false);
 	button2->setVisible(true);
 	button3->setVisible(true);
+	pause();
+	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+	
+	cocos2d::Director::getInstance()->stopAnimation();
+	
 }
 
 void DebugScene::playButtonAction()
 {
-	resume();
-	SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
-	cocos2d::Director::getInstance()->startAnimation();
 	button->setVisible(true);
 	button2->setVisible(false);
 	button3->setVisible(false);
+	resume();
+	SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+	
+	cocos2d::Director::getInstance()->startAnimation();
+
 }
 
 void DebugScene::saveButtonAction() {

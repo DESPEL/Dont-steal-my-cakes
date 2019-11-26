@@ -40,11 +40,11 @@ bool Player::init() {
 
 void Player::createIdleAnimation() {
 	Vector<SpriteFrame*> animFrames;
-	auto pinfo = AutoPolygon::generatePolygon("nave1.png");
+	auto pinfo = AutoPolygon::generatePolygon("nave2.png");
 	auto sprite1 = Sprite::create(pinfo);
 	auto size = sprite1->getContentSize();
 	for (int i = 0; i < 4; i++) {
-		auto frame = SpriteFrame::create("animacion_nave.png", Rect(Vec2(size.width * i, 0), size));
+		auto frame = SpriteFrame::create("animacion_nave2.png", Rect(Vec2(size.width * i, 0), size));
 		animFrames.pushBack(frame);
 	}
 
