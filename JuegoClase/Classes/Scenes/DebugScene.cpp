@@ -27,6 +27,7 @@ bool DebugScene::init() {
 	//Crea el background
 	_bg = Background::create();
 	addChild(_bg, -1);
+	_bg->scheduleUpdate();
 
 	//Crea al jugador
 	_player = Player::create();
@@ -38,6 +39,7 @@ bool DebugScene::init() {
 	this->retain();
 
 	// ejecutar nivel
+	//Levels::create("level-1").get(this).run();
 	Levels::create("test").get(this).run();
 
 	// Testing translation engine

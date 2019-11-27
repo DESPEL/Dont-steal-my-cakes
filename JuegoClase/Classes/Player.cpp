@@ -7,7 +7,7 @@ USING_NS_CC;
 
 
 bool Player::init() {
-
+	SimpleAudioEngine::getInstance()->preloadEffect("music/laser_shoot.wav");
 	if (!Sprite::init())
 		return false;
 
@@ -76,7 +76,8 @@ void Player::shoot(Vec2 dir) {
 	auto bullet = Balas.at(bulletsact);
 	bullet->activa = true;
 	bullet->direccion = dir;
-	SimpleAudioEngine::getInstance()->playEffect("music/laser_shoot.wav");
+	//SimpleAudioEngine::getInstance()->playEffect();
+	//SimpleAudioEngine::getInstance()->playEffect("music/laser_shoot.wav");
 	if(!vuelta)
 		this->getParent()->addChild(bullet, -1);
 	bullet->setAnchorPoint(Point(0.5, 0));
