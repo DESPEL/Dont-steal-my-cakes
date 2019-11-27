@@ -33,6 +33,41 @@ bool SelectPlayersMenu::init() {
 }
 
 void SelectPlayersMenu::initButtons() {
+/*
+	auto level1 = Button::create("menus/Botones/buttonlevel1.png", "menus/Botones/buttonlevel1.png", "menus/Botones/buttonlevel1.png", Widget::TextureResType::LOCAL);
+	level1->setAnchorPoint(Point(0.5, 0.5));
+	level1->setScale(0.4);
+	level1->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::actionButton1, this));
+	level1->setPosition(Vec2(_visibleSize.width / 2, _visibleSize.height / 2 + 100 * getScaleY()));
+	addChild(level1);
+
+	auto level1 = Button::create("menus/Botones/buttonlevel1.png", "menus/Botones/buttonlevel1.png", "menus/Botones/buttonlevel1.png", Widget::TextureResType::LOCAL);
+	level1->setAnchorPoint(Point(0.5, 0.5));
+	level1->setScale(0.4);
+	level1->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::actionButton1, this));
+	level1->setPosition(Vec2(_visibleSize.width / 2, _visibleSize.height / 2 + 100 * getScaleY()));
+	addChild(level1);
+
+	auto level1 = Button::create("menus/Botones/buttonlevel1.png", "menus/Botones/buttonlevel1.png", "menus/Botones/buttonlevel1.png", Widget::TextureResType::LOCAL);
+	level1->setAnchorPoint(Point(0.5, 0.5));
+	level1->setScale(0.4);
+	level1->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::actionButton1, this));
+	level1->setPosition(Vec2(_visibleSize.width / 2, _visibleSize.height / 2 + 100 * getScaleY()));
+	addChild(level1);
+
+	auto level1 = Button::create("menus/Botones/buttonlevel1.png", "menus/Botones/buttonlevel1.png", "menus/Botones/buttonlevel1.png", Widget::TextureResType::LOCAL);
+	level1->setAnchorPoint(Point(0.5, 0.5));
+	level1->setScale(0.4);
+	level1->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::actionButton1, this));
+	level1->setPosition(Vec2(_visibleSize.width / 2, _visibleSize.height / 2 + 100 * getScaleY()));
+	addChild(level1);
+
+	auto level1 = Button::create("menus/Botones/buttonlevel1.png", "menus/Botones/buttonlevel1.png", "menus/Botones/buttonlevel1.png", Widget::TextureResType::LOCAL);
+	level1->setAnchorPoint(Point(0.5, 0.5));
+	level1->setScale(0.4);
+	level1->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::actionButton1, this));
+	level1->setPosition(Vec2(_visibleSize.width / 2, _visibleSize.height / 2 + 100 * getScaleY()));
+	addChild(level1);
 
 	auto level1 = Button::create("menus/Botones/buttonlevel1.png", "menus/Botones/buttonlevel1.png", "menus/Botones/buttonlevel1.png", Widget::TextureResType::LOCAL);
 	level1->setAnchorPoint(Point(0.5, 0.5));
@@ -41,6 +76,13 @@ void SelectPlayersMenu::initButtons() {
 	level1->setPosition(Vec2(_visibleSize.width / 2, _visibleSize.height / 2 + 100 * getScaleY()));
 	addChild(level1);
 	
+	auto level1 = Button::create("menus/Botones/buttonlevel1.png", "menus/Botones/buttonlevel1.png", "menus/Botones/buttonlevel1.png", Widget::TextureResType::LOCAL);
+	level1->setAnchorPoint(Point(0.5, 0.5));
+	level1->setScale(0.4);
+	level1->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::actionButton1, this));
+	level1->setPosition(Vec2(_visibleSize.width / 2, _visibleSize.height / 2 + 100 * getScaleY()));
+	addChild(level1);
+	*/
 }
 
 void SelectPlayersMenu::actionButtonBack() {

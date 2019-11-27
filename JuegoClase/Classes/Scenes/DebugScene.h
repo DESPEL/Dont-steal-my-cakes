@@ -29,14 +29,16 @@ private:
 		void createEnemy();
 
 protected:
-	virtual void pauseButtonAction();
-	virtual void playButtonAction();
 	virtual void saveButtonAction();
 	virtual void salirButtonAction();
 
 public:
+		
+		virtual void pauseButtonAction();
+		virtual void playButtonAction();
+		bool pausado = 0;
+	
 		static cocos2d::Scene* createScene(bool = 0);
-
 		DebugScene(bool);
 		~DebugScene() {};
 

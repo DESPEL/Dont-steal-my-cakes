@@ -1,12 +1,49 @@
 #include "Player.h"
+
+#include "Scenes/DebugScene.h"
+
 #include "SimpleAudioEngine.h"
 
 using namespace CocosDenshion;
 
 USING_NS_CC;
 
-Sprite* Player::create(int tipo) {
-	Sprite* sprite = new (std::nothrow) Sprite();
+
+Player::Player(int tipo) {
+	switch (tipo) {
+	case 0:
+		_speed = 5;
+		personaje_path = "nave0.png";
+		animacion_path = "animacion_nave.png";
+		break;
+	case 1:
+		_speed = 2.5;
+		personaje_path = "nave1.png";
+		animacion_path = "animacion_nave1.png";
+		break;
+	case 2:
+		_speed = 2.1;
+		personaje_path = "nave2.png";
+		animacion_path = "animacion_nave2.png";
+		break;
+	case 3:
+		_speed = 1.6;
+		personaje_path = "nave3.png";
+		animacion_path = "animacion_nave3.png";
+		break;
+	case 4:
+		_speed = 1.2;
+		personaje_path = "nave4.png";
+		animacion_path = "animacion_nave4.png";
+		break;
+	}
+	
+
+	Player::init();
+};
+
+Player* Player::create(int tipo) {
+	Player* sprite = new (std::nothrow) Player(tipo);
 	if (sprite && sprite->init())
 	{
 		sprite->autorelease();
@@ -21,7 +58,7 @@ bool Player::init() {
 	if (!Sprite::init())
 		return false;
 
-	_speed = 2;
+	//_speed = 2;
 	_currentAnimation = IDLE;
 
 	createIdleAnimation();
@@ -47,11 +84,11 @@ bool Player::init() {
 void Player::createIdleAnimation() {
 	Vector<SpriteFrame*> animFrames;
 	///auto pinfo = AutoPolygon::generatePolygon("nave5.png");
-	std::string pinfo = "nave5.png";
+	std::string pinfo = personaje_path;
 	auto sprite1 = Sprite::create(pinfo);
 	auto size = sprite1->getContentSize();
 	for (int i = 0; i < 4; i++) {
-		auto frame = SpriteFrame::create("animacion_nave5.png", Rect(Vec2(size.width * i, 0), size));
+		auto frame = SpriteFrame::create(animacion_path, Rect(Vec2(size.width * i, 0), size));
 		animFrames.pushBack(frame);
 	}
 
@@ -167,7 +204,10 @@ void Player::update(float delta) {
 				this->shoot(Vec2(-0.3, 1.8));
 				this->delay = this->delayvalue;
 			}
-			break;	
+			break;
+		case EventKeyboard::KeyCode::KEY_ENTER:
+			//this->getParent()->DebugScene::pauseButtonAction();
+			break;
 		/*case EventKeyboard::KeyCode::KEY_Q:
 			if (this->delay <= 0) {
 				this->shoot(Vec2(-1, 1));

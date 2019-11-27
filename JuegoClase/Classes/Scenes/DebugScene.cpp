@@ -66,7 +66,7 @@ bool DebugScene::init() {
 	
 
 	//Crea al jugador
-	_player = Player::create();
+	_player = Player::create(Player::Tipos::ELQUESIGA);
 	if(!this->two)
 		_player->setPosition(_visibleSize.width / 2, _visibleSize.height / 2 - 100);
 	else
@@ -217,8 +217,8 @@ void DebugScene::pauseButtonAction()
 	button3->setVisible(true);
 	button4->setVisible(true);
 	pause();
+	this->pausado = 1;
 	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
-	
 	cocos2d::Director::getInstance()->stopAnimation();
 	
 }
