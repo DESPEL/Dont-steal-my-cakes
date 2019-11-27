@@ -43,6 +43,20 @@ public:
 			return patterns[name];
 		}
 
+		if (name == "circular") {
+			auto linear = MovementPatterns::create("linear");
+
+			patterns[name] = AttackPattern(
+				std::make_tuple(0.0f, BasicBullet::create("redbullet.png"), linear.get(0.0f - 180.0f)),
+				std::make_tuple(0.0f, BasicBullet::create("redbullet.png"), linear.get(-10.0f - 180.0f)),
+				std::make_tuple(0.0f, BasicBullet::create("redbullet.png"), linear.get(10.0f - 180.0f)),
+				std::make_tuple(0.0f, BasicBullet::create("redbullet.png"), linear.get(-20.0f - 180.0f)),
+				std::make_tuple(0.0f, BasicBullet::create("redbullet.png"), linear.get(20.0f - 180.0f))
+			);
+
+			return patterns[name];
+		}
+
 		throw "pattern not found";
 	}
 };

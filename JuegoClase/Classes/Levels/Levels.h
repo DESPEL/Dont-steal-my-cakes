@@ -18,13 +18,47 @@ public:
 			return levels.at(name);
 
 		if (name == "test") {
-			auto test = MovementPatterns::create("test");
+			auto test = MovementPatterns::create("linear");
 			auto test2 = AttackPatterns::create("test");
+			auto circular = AttackPatterns::create("circular");
+			auto staticm = MovementPatterns::create("static");
 
 			Enemy* testenemy = Enemy::create("enemigo1.png", test.get(-90), test2.get(test.get(-90)), cocos2d::Vec2(400, 300));
 
+			Enemy* enemyt = EnemyPlus::create(
+				"enemigo1.png",
+				{
+					test.get(-180, 1, false),
+					staticm.get(-180, 0.5)
+				},
+				{
+					{ 0.0f, circular.get()},
+					{ 0.5f, circular.get()},
+					{ 0.5f, circular.get()},
+					{ 0.0f, circular.get()},
+					{ 0.5f, circular.get()},
+					{ 0.5f, circular.get()},
+					{ 0.0f, circular.get()},
+					{ 0.5f, circular.get()},
+					{ 0.5f, circular.get()},
+					{ 0.0f, circular.get()},
+					{ 0.5f, circular.get()},
+					{ 0.5f, circular.get()},
+					{ 0.0f, circular.get()},
+					{ 0.5f, circular.get()},
+					{ 0.5f, circular.get()},
+					{ 0.0f, circular.get()},
+					{ 0.5f, circular.get()},
+					{ 0.5f, circular.get()},
+					{ 0.0f, circular.get()},
+					{ 0.5f, circular.get()},
+					{ 0.5f, circular.get()}
+				}
+				);
+
 			cocos2d::log("test created");
 			levels[name] = Level(
+				std::make_tuple(1.0f, enemyt->get({300, 300})),
 				std::make_tuple(1.0f, testenemy->get(testenemy->getPosition(), test.get(-45))),
 				std::make_tuple(1.0f, Enemy::create(testenemy, cocos2d::Vec2(300, 400))),
 				std::make_tuple(1.0f, Enemy::create(testenemy, cocos2d::Vec2(400, 400))),
