@@ -54,10 +54,10 @@ void BasicEnemy::run() {
 
 void BasicEnemy::createIdleAnimation() {
 	Vector<SpriteFrame*> animFrames;
-	auto sprite1 = Sprite::create("enemigo1.png");
+	auto sprite1 = Sprite::create("enemigo4.png");
 	auto size = sprite1->getContentSize();
 	for (int i = 0; i < 4; i++) {
-		auto frame = SpriteFrame::create("animacion_enemigo.png", Rect(Vec2(size.width * i, 0), size));
+		auto frame = SpriteFrame::create("animacion_enemigo4.png", Rect(Vec2(size.width * i, 0), size));
 		animFrames.pushBack(frame);
 	}
 
@@ -76,10 +76,10 @@ void BasicEnemy::createIdleAnimation() {
 
 void BasicEnemy::createExplosionAnimation() {
 	Vector<SpriteFrame*> animFrames;
-	auto sprite1 = Sprite::create("enemigo1.png");
+	auto sprite1 = Sprite::create("enemigo4.png");
 	auto size = sprite1->getContentSize();
 	for (int i = 0; i < 6; i++) {
-		auto frame = SpriteFrame::create("animacion_enemigo_explotar.png", Rect(Vec2(size.width * i, 0), size));
+		auto frame = SpriteFrame::create("animacion_enemigo_explotar4.png", Rect(Vec2(size.width * i, 0), size));
 		animFrames.pushBack(frame);
 	}
 

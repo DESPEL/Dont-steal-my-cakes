@@ -1,7 +1,16 @@
+#include "cocos2d.h"
 #include "GameWrapper.h"
 #include "Player.h"
 #include "Player/Player2.h"
 #include "menus/DeathMenu.h"
+#include "SimpleAudioEngine.h"
+#include "ui/CocosGUI.h"
+#include "Scenes/DebugScene.h"
+#include "menus/MainMenu.h"
+#include "menus/DeathMenu.h"
+
+USING_NS_CC;
+
 
 GameWrapper* GameWrapper::instance = nullptr;
 

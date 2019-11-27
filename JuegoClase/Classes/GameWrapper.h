@@ -13,6 +13,7 @@ class GameWrapper {
 	GameWrapper(){}
 
 public:
+	
 	static GameWrapper* getInstance();
 
 	void death();

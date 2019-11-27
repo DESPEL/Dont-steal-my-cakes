@@ -4,6 +4,7 @@
 #include "OptionsMenu.h"
 #include "ui/CocosGUI.h"
 #include "GameManager.h"
+#include "MenuInstrucciones.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -90,7 +91,7 @@ void MainMenu::initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> fu
 	functions.push_back(CC_CALLBACK_0(MainMenu::actionButton9, this));
 }
 
-void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, DebugScene::createScene())); }
+void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MenuIns::createScene())); }
 void MainMenu::actionButton2() {  /*TODO*/ }
 void MainMenu::actionButton3() {  /*TODO*/ }
 void MainMenu::actionButton4() {  /*TODO*/ }

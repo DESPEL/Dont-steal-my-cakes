@@ -46,10 +46,12 @@ bool Player::init() {
 
 void Player::createIdleAnimation() {
 	Vector<SpriteFrame*> animFrames;
-	auto sprite1 = Sprite::create("nave1.png");
+	///auto pinfo = AutoPolygon::generatePolygon("nave5.png");
+	std::string pinfo = "nave5.png";
+	auto sprite1 = Sprite::create(pinfo);
 	auto size = sprite1->getContentSize();
 	for (int i = 0; i < 4; i++) {
-		auto frame = SpriteFrame::create("animacion_nave.png", Rect(Vec2(size.width * i, 0), size));
+		auto frame = SpriteFrame::create("animacion_nave5.png", Rect(Vec2(size.width * i, 0), size));
 		animFrames.pushBack(frame);
 	}
 
@@ -128,6 +130,7 @@ void Player::update(float delta) {
 		//Director::getInstance()->replaceScene(TransitionCrossFade::create(1, DeathMenu::createScene()));
 		return;
 	}
+	
 
 	auto director = Director::getInstance();
 	auto visiblesize = director->getVisibleSize();
