@@ -61,7 +61,7 @@ bool MainMenu::init() {
 	addChild(optionsButton);
 
 	if (!SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()) {
-		SimpleAudioEngine::getInstance()->playBackgroundMusic("music/gusty_garden.mp3", true);
+		SimpleAudioEngine::getInstance()->playBackgroundMusic("music/Hollow.mp3", true);
 	}
 
 	return true;
