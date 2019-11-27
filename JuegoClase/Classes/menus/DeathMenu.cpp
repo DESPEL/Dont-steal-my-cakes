@@ -9,8 +9,7 @@
 USING_NS_CC;
 using namespace ui;
 
-Scene* DeathMenu::createScene()
-{
+Scene* DeathMenu::createScene() {
 	auto scene = Scene::create();
 	auto layer = DeathMenu::create();
 	scene->addChild(layer);
@@ -46,6 +45,7 @@ bool DeathMenu::init() {
 	auto nextHeight = startButton->getPositionY() - startButton->getBoundingBox().size.height - (30 * getScaleY());
 	auto selectButton = Button::create("menus/Botones/Reiniciar0.png", "menus/Botones/Reiniciar1.png", "menus/Botones/Reiniciar0.png", Widget::TextureResType::LOCAL);
 	selectButton->setAnchorPoint(Point(0.5, 1));
+	selectButton->setScale(3, 1.5);
 	selectButton->addClickEventListener(CC_CALLBACK_0(DeathMenu::selectMenuButton, this));
 	selectButton->setPosition(Point(startButton->getPositionX(), nextHeight));
 	addChild(selectButton);
@@ -59,7 +59,7 @@ bool DeathMenu::init() {
 
 
 void DeathMenu::selectMenuButton() {
-	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene()));
+	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->coop)));
 }
 
 void DeathMenu::optionsButton() {

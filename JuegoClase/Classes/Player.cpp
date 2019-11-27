@@ -1,22 +1,27 @@
 #include "Player.h"
 #include "SimpleAudioEngine.h"
-#include "ui/CocosGUI.h"
-#include "Scenes/DebugScene.h"
-
-#include "menus/MainMenu.h"
-#include "menus/DeathMenu.h"
 
 using namespace CocosDenshion;
 
 USING_NS_CC;
 
+Sprite* Player::create(int tipo) {
+	Sprite* sprite = new (std::nothrow) Sprite();
+	if (sprite && sprite->init())
+	{
+		sprite->autorelease();
+		return sprite;
+	}
+	CC_SAFE_DELETE(sprite);
+	return nullptr;
+}
 
 bool Player::init() {
 
 	if (!Sprite::init())
 		return false;
 
-	_speed = 150;
+	_speed = 2;
 	_currentAnimation = IDLE;
 
 	createIdleAnimation();
@@ -26,6 +31,7 @@ bool Player::init() {
 	runAction(_idleAnimation);
 
 	_control = KeyBoard::create();
+	_control->keys.clear();
 	addChild(_control);
 
 	for (int i = 0; i < _numbullets; i++) {
@@ -118,11 +124,10 @@ void Player::update(float delta) {
 	if (_currentAnimation == EXPLOSION) {
 		if (_explosionAnimation->isDone())
 			setVisible(0);
-		SimpleAudioEngine::getInstance()->stopBackgroundMusic();
-		_control->keys.clear();
+		//SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+		//_control->keys.clear();
 		
-		
-		Director::getInstance()->replaceScene( DeathMenu::createScene());
+		//Director::getInstance()->replaceScene(TransitionCrossFade::create(1, DeathMenu::createScene()));
 		return;
 	}
 	
@@ -136,20 +141,20 @@ void Player::update(float delta) {
 		Vec2 loc = this->getPosition();
 		switch (K.first) {
 		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:     
-		case EventKeyboard::KeyCode::KEY_A:
-			this->setPosition(loc.x - deltax * change, loc.y);
+		//case EventKeyboard::KeyCode::KEY_J:
+			this->setPosition(loc.x - deltax * change * _speed, loc.y);
 			break;
 		case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
-		case EventKeyboard::KeyCode::KEY_D:
-			this->setPosition(loc.x + deltax * change, loc.y);
+		//case EventKeyboard::KeyCode::KEY_L:
+			this->setPosition(loc.x + deltax  * _speed, loc.y);
 			break;
 		case EventKeyboard::KeyCode::KEY_UP_ARROW:
-		case EventKeyboard::KeyCode::KEY_W:
-			this->setPosition(loc.x, loc.y + deltay * change);
+		//case EventKeyboard::KeyCode::KEY_I:
+			this->setPosition(loc.x, loc.y + deltay * _speed);
 			break;
 		case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
-		case EventKeyboard::KeyCode::KEY_S:
-			this->setPosition(loc.x, loc.y - deltay * change);
+		//case EventKeyboard::KeyCode::KEY_K:
+			this->setPosition(loc.x, loc.y - deltay * _speed);
 			break;
 		case EventKeyboard::KeyCode::KEY_SPACE:
 			if (this->delay <= 0) {
@@ -163,7 +168,7 @@ void Player::update(float delta) {
 				this->delay = this->delayvalue;
 			}
 			break;	
-		case EventKeyboard::KeyCode::KEY_Q:
+		/*case EventKeyboard::KeyCode::KEY_Q:
 			if (this->delay <= 0) {
 				this->shoot(Vec2(-1, 1));
 				this->delay = this->delayvalue;
@@ -174,7 +179,7 @@ void Player::update(float delta) {
 				this->shoot(Vec2(1, 1));
 				this->delay = this->delayvalue;
 			}
-			break;
+			break;*/
 		}
 	}
 

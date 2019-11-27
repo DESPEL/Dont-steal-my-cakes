@@ -18,7 +18,11 @@
     <ClCompile Include="..\Classes\Player\Changuito.cpp" />
     <ClCompile Include="..\Classes\Scenes\DebugScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\Classes\menus\LevelSelectMenu.cpp" />
+    <ClCompile Include="..\Classes\menus\OptionsMenu.cpp" />
     <ClCompile Include="..\Classes\menus\DeathMenu.cpp" />
+    <ClCompile Include="..\Classes\Player\Player2.cpp" />
+    <ClCompile Include="..\Classes\menus\SelectPlayersMenu.cpp" />
     <ClCompile Include="..\Classes\menus\MenuInstrucciones.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -42,7 +46,11 @@
     <ClInclude Include="..\Classes\Scenes\DebugScene.h" />
     <ClInclude Include="..\Classes\Tipos.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="..\Classes\menus\LevelSelectMenu.h" />
+    <ClInclude Include="..\Classes\menus\OptionsMenu.h" />
     <ClInclude Include="..\Classes\menus\DeathMenu.h" />
+    <ClInclude Include="..\Classes\Player\Player2.h" />
+    <ClInclude Include="..\Classes\menus\SelectPlayersMenu.h" />
     <ClInclude Include="..\Classes\menus\MenuInstrucciones.h" />
   </ItemGroup>
   <ItemGroup>

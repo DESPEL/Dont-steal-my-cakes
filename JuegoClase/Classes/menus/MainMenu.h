@@ -4,7 +4,15 @@
 #include <vector>
 
 class MainMenu : public MotherMenu {
-private:
+protected:
+	void initFunctions(std::vector<std::function <void (cocos2d::Ref *)>> functions);
+
+public:
+	virtual bool init();
+	static cocos2d::Scene* createScene();
+
+	CREATE_FUNC(MainMenu);
+
 	void selectMenuButton();
 	void optionsButton();
 	void actionButton1();
@@ -16,15 +24,6 @@ private:
 	void actionButton7();
 	void actionButton8();
 	void actionButton9();
-
-protected:
-	void initFunctions(std::vector<std::function <void (cocos2d::Ref *)>> functions);
-
-public:
-	virtual bool init();
-	static cocos2d::Scene* createScene();
-
-	CREATE_FUNC(MainMenu);
 
 };
 

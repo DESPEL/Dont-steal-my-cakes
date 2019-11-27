@@ -2,28 +2,26 @@
 
 #include "cocos2d.h"
 
-#include "Player.h"
-
-#include "ui/CocosGUI.h"
-
-#include "Background.h"
-
 class Player;
+class Player2;
+class DeathMenu;
 
-class GameWrapper
-{
+class GameWrapper {
 	static GameWrapper *instance;
-
 	Player* _player;
-	
+	//Player2* _player2;
 	GameWrapper(){}
 
 public:
 	
 	static GameWrapper* getInstance();
+
+	void death();
 	
 	void setPlayer(Player* pl) noexcept;
+	//void setPlayer2(Player2* p2);
 	Player* getPlayer();
-
+	
+	bool coop = 0;
 };
 

@@ -23,7 +23,7 @@ protected:
 	void shoot(cocos2d::Vec2);
 	float delay = 0;
 	float delayvalue = 0.25;
-	int change = 4;
+	int change = 1;
 
 
 	void createIdleAnimation();
@@ -34,6 +34,10 @@ public:
 		IDLE = 0, EXPLOSION = 1
 	};
 
+	enum Tipos {
+		DEFAULT = 0, BASIC = 1, ELQUESIGA = 2, SEMEAGOTA = 3, ELOP = 4
+	};
+
 	CC_SYNTHESIZE(Animations, _currentAnimation, _currentAnimation);
 	CC_SYNTHESIZE(float, _speed, Speed);
 	CREATE_FUNC(Player);
@@ -42,6 +46,7 @@ public:
 	// Colision
 	void setCurrentAnimation(Animations anim);
 
+	static cocos2d::Sprite* create(int tipo);
 	virtual bool init();
 	void update(float);
 
