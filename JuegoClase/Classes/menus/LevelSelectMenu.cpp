@@ -1,5 +1,6 @@
 #include "LevelSelectMenu.h"
 #include "GameManager.h"
+#include "ui/CocosGUI.h"
 
 USING_NS_CC;
 using namespace ui;

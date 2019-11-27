@@ -2,7 +2,7 @@
 
 #include "MainMenu.h"
 
-class LevelSelectMenu : public MainMenu {
+class SelectPlayersMenu : public MainMenu {
 private:
 	std::ostringstream _ostr;
 	void actionButtonBack();
@@ -11,6 +11,6 @@ private:
 public:
 	virtual bool init();
 	static cocos2d::Scene* createScene();
-	CREATE_FUNC(LevelSelectMenu);
+	CREATE_FUNC(SelectPlayersMenu);
 };
 
