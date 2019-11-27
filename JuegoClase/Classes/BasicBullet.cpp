@@ -9,6 +9,7 @@ void BasicBullet::run(float) {
 		runAction(cocos2d::RemoveSelf::create());
 		return;
 	}
+	setPosition(parent->getPosition());
 	setVisible(true);
 	runAction(seq->clone());
 	schedule(schedule_selector(BasicBullet::update));
