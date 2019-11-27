@@ -5,6 +5,10 @@
 #include "BasicEnemy.h"
 #include "AttackPattern.h"
 
+#include "GameWrapper.h"
+
+#include "Bullet.h"
+
 class AttackPattern;
 
 class Enemy : public BasicEnemy
@@ -62,27 +66,37 @@ public:
 		return ret;
 	}
 
-	void run(cocos2d::Node* parent) {
-		runAction(sequence->clone());
-		parent->getParent()->addChild(this);
-		attack.get(sequence).run(this);
-	}
-
 	void run(float) {
 		cocos2d::log("enemy running");
 		runAction(sequence->clone());
 		setVisible(true);
 		attack.get(sequence).run(this);
+		scheduleUpdate();
 		//p->getParent()->addChild(this);
 	}
 
 	void explode() {
-		this->setCurrentAnimation(BasicEnemy::EXPLOSION);
+		//this->setCurrentAnimation(BasicEnemy::EXPLOSION);
+		this->SetAnimation(BasicEnemy::EXPLOSION);
 		auto removeSelf = cocos2d::RemoveSelf::create();
 		auto wait = cocos2d::DelayTime::create(0.90f);
 		auto move = cocos2d::MoveTo::create(0, cocos2d::Vec2(this->getPosition().x, -500));
-		this->runAction(cocos2d::Sequence::create(wait, move, removeSelf, NULL));
+		//setVisible(false);
+		this->runAction(cocos2d::Sequence::create(wait, move, cocos2d::Hide::create(), NULL));
 		exploded = true;
+	}
+
+	void update(float) {
+		for (Bullet* bullet : GameWrapper::getInstance()->getPlayer()->Balas) {
+			if (bullet->getBoundingBox().intersectsRect(getBoundingBox())) {
+				explode();
+			}
+		}
+		if (GameWrapper::getInstance()->getPlayer()->getBoundingBox().intersectsRect(getBoundingBox())) {
+			GameWrapper::getInstance()->getPlayer()->setCurrentAnimation(Player::EXPLOSION);
+			explode();
+			//this->runAction(cocos2d::RemoveSelf::create());
+		}
 	}
 
 	CREATE_FUNC(Enemy)

@@ -4,6 +4,7 @@
 #include <map>
 #include "keyboard.h"
 #include "Bullet.h"
+#include "GameWrapper.h"
 //#include "Player\Changuito.h"
 
 class Bullet;

@@ -29,7 +29,6 @@ bool Player::init() {
 
 	this->scheduleUpdate();
 
-
 	return true;
 }
 

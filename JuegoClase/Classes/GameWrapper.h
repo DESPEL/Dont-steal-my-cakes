@@ -4,6 +4,8 @@
 
 #include "Player.h"
 
+#include "Bullet.h"
+
 class Player;
 
 class GameWrapper

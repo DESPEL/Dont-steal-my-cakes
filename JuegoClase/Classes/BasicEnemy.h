@@ -52,6 +52,19 @@ protected:
 		explosionAnimation->retain();
 	}
 
+	void SetAnimation(Animations anim) {
+		if (CurrentAnimation == anim) return;
+		CurrentAnimation = anim;
+		if (CurrentAnimation == IDLE) {
+			stopActionByTag(EXPLOSION);
+			runAction(idleAnimation);
+		}
+		if (CurrentAnimation == EXPLOSION) {
+			stopActionByTag(IDLE);
+			runAction(explosionAnimation);
+		}
+	}
+
 
 	CC_SYNTHESIZE(Animations, CurrentAnimation, CurrentAnimation);
 	CC_SYNTHESIZE(float, speed, Speed);
