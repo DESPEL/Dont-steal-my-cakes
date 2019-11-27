@@ -14,6 +14,8 @@ private:
 		cocos2d::ui::Button* button;
 		cocos2d::ui::Button* button2;
 		cocos2d::ui::Button* button3;
+		cocos2d::ui::Button* button4;
+
 		Background* _bg;
 		
 		Player* _player;
@@ -25,6 +27,7 @@ protected:
 	virtual void pauseButtonAction();
 	virtual void playButtonAction();
 	virtual void saveButtonAction();
+	virtual void salirButtonAction();
 
 public:
 		static cocos2d::Scene* createScene();

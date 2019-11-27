@@ -2,6 +2,7 @@
 #include "SimpleAudioEngine.h"
 #include "ui/CocosGUI.h"
 #include "GameWrapper.h"
+#include "menus/MainMenu.h"
 using namespace CocosDenshion;
 
 USING_NS_CC;
@@ -30,7 +31,7 @@ bool DebugScene::init() {
 	button->setPosition(Point(_visibleSize.width - 20 * getScaleX(), 280));
 	button->addClickEventListener(CC_CALLBACK_0(DebugScene::pauseButtonAction, this));
 	button->setScale(.2);
-	addChild(button, 0);
+	addChild(button, 3);
 	addChild(_bg, -1);
 	
 	button2 = ui::Button::create("menus/Play.png", "menus/Play.png", "menus/Play.png");
@@ -39,7 +40,7 @@ bool DebugScene::init() {
 	button2->addClickEventListener(CC_CALLBACK_0(DebugScene::playButtonAction, this));
 	button2->setScale(.2);
 	button2->setVisible(false);
-	addChild(button2, 0);
+	addChild(button2, 3);
 	
 	button3 = ui::Button::create("menus/save.png", "menus/save.png", "menus/save.png");
 	button3->setAnchorPoint(Point(.5, .5));
@@ -47,7 +48,17 @@ bool DebugScene::init() {
 	button3->addClickEventListener(CC_CALLBACK_0(DebugScene::playButtonAction, this));
 	button3->setScale(.4);
 	button3->setVisible(false);
-	addChild(button3, 0);
+	addChild(button3, 3);
+
+
+	
+	button4 = ui::Button::create("menus/Botones/SalirMenu0.png", "menus/Botones/SalirMenu1.png", "menus/Botones/SalirMenu0.png");
+	button4->setAnchorPoint(Point(.5, .5));
+	button4->setPosition(Point(_visibleSize.width / 2, 70));
+	button4->addClickEventListener(CC_CALLBACK_0(DebugScene::salirButtonAction, this));
+	button4->setScale(1);
+	button4->setVisible(false);
+	addChild(button4, 3);
 	
 
 	//Crea al jugador
@@ -78,7 +89,8 @@ bool DebugScene::init() {
 
 
 	// Musica
-	SimpleAudioEngine::getInstance()->playBackgroundMusic("Music\\get_lucky.mp3", true);
+	SimpleAudioEngine::getInstance()->playBackgroundMusic("Music\\Mantis.mp3", true);
+	SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.02);
 
 	return true;
 }
@@ -147,6 +159,7 @@ void DebugScene::pauseButtonAction()
 	button->setVisible(false);
 	button2->setVisible(true);
 	button3->setVisible(true);
+	button4->setVisible(true);
 	pause();
 	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 	
@@ -159,6 +172,7 @@ void DebugScene::playButtonAction()
 	button->setVisible(true);
 	button2->setVisible(false);
 	button3->setVisible(false);
+	button4->setVisible(false);
 	resume();
 	SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 	
@@ -168,4 +182,10 @@ void DebugScene::playButtonAction()
 
 void DebugScene::saveButtonAction() {
 
+}
+
+void DebugScene::salirButtonAction() {
+	
+	cocos2d::Director::getInstance()->startAnimation();
+	Director::getInstance()->pushScene(TransitionFadeBL::create(1, MainMenu::createScene()));
 }
