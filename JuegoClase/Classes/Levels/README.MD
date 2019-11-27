@@ -20,6 +20,10 @@ Para crear un nivel se agrega a Levels.h
         levels[name] = Level(
                 // primer argumento: tiempo de aparición en comparacion al anterior
                 // enemigo (se pueden reutilziar los ya creados)
+				// Enemy::Create() argumentos
+				// Argumento 1: enemigo base para crear uno nuevo
+				// Argumento 2: posicion del nuevo enemigo
+				std::make_tuple(1.0f, Enemy::create(testenemy, cocos2d::Vec2(200,200))),
 				std::make_tuple(1.0f, testenemy),
 				std::make_tuple(1.0f, testenemy)
 		);
