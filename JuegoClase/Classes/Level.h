@@ -43,7 +43,7 @@ public:
 			base->addChild(enemies.at(i));
 			enemies.at(i)->setVisible(false);
 			enemies.at(i)->scheduleOnce(schedule_selector(Enemy::run), time);
-			cocos2d::log("enemy added to the scene");
+			//cocos2d::log("enemy added to the scene");
 		}
 	}
 

@@ -4,6 +4,8 @@ using namespace CocosDenshion;
 
 #include "Levels/Levels.h"
 
+#include "TranslationEngine.h"
+
 USING_NS_CC;
 
 Scene* DebugScene::createScene() {
@@ -38,6 +40,17 @@ bool DebugScene::init() {
 	// ejecutar nivel
 	Levels::create("test").get(this).run();
 
+	// Testing translation engine
+	/*
+	auto lang = TranslationEngine::getInstance();
+
+	cocos2d::log(lang->get("test").c_str());
+	cocos2d::log(lang->get("test2").c_str());
+	lang->setLanguage("EN_US");
+	cocos2d::log(lang->get("test").c_str());
+	cocos2d::log(lang->get("test2").c_str());*/
+
+	
 
 	//this->schedule(schedule_selector(DebugScene::update));
 
