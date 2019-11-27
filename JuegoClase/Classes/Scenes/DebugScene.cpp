@@ -39,7 +39,7 @@ bool DebugScene::init() {
 	Levels::create("test").get(this).run();
 
 
-	this->schedule(schedule_selector(DebugScene::update));
+	//this->schedule(schedule_selector(DebugScene::update));
 
 	// Musica
 	SimpleAudioEngine::getInstance()->playBackgroundMusic("Music\\get_lucky.mp3", true);
