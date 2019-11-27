@@ -9,6 +9,8 @@
 #include "MovementPatterns/MovementPatterns.h"
 #include "AttackPatterns/AttackPatterns.h"
 
+USING_NS_CC;
+
 class Levels {
 public:
 	static std::map<std::string, Level> levels;
@@ -16,6 +18,8 @@ public:
 	static Level create(std::string name) {
 		if (levels.find(name) != levels.end())
 			return levels.at(name);
+
+		Size sz = cocos2d::Director::getInstance()->getVisibleSize();
 
 		if (name == "test") {
 			auto test = MovementPatterns::create("test");
@@ -35,7 +39,16 @@ public:
 		}
 
 		if (name == "level-1") {
+			auto up100 = MovementPatterns::create("up-100");
+			// 0.5f
 
+			Enemy* down1 = Enemy::create("nave2.png");
+
+			levels[name] = Level(
+			//	std::make_tuple(0.5f, )
+			);
+
+			return levels.at(name);
 		}
 
 		throw "level not found";

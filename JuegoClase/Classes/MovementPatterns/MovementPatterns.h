@@ -25,6 +25,13 @@ public:
 			return patterns[name];
 		}
 
+		if (name == "up-100") {
+			patterns[name] = MovementPattern(
+				std::make_tuple(1.0f, cocos2d::Vec2{0, 100})
+			);
+			return patterns[name];
+		}
+
 		throw "pattern not found";
 	}
 };

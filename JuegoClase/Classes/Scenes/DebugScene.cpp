@@ -1,6 +1,7 @@
 #include "DebugScene.h"
-#include "SimpleAudioEngine.h"
-using namespace CocosDenshion;
+//#include "SimpleAudioEngine.h"
+//using namespace CocosDenshion;
+#include "AudioEngine.h"
 
 #include "Levels/Levels.h"
 
@@ -32,7 +33,7 @@ bool DebugScene::init() {
 	//Crea al jugador
 	_player = Player::create();
 	_player->setPosition(_visibleSize.width / 2, _visibleSize.height / 2 - 100);
-	_player->setScale(2);
+	//_player->setScale(2);
 	addChild(_player);
 
 	GameWrapper::getInstance()->setPlayer(_player);
@@ -40,7 +41,7 @@ bool DebugScene::init() {
 
 	// ejecutar nivel
 	//Levels::create("level-1").get(this).run();
-	Levels::create("test").get(this).run();
+	Levels::create("level-1").get(this).run();
 
 	// Testing translation engine
 	/*
@@ -52,13 +53,9 @@ bool DebugScene::init() {
 	cocos2d::log(lang->get("test").c_str());
 	cocos2d::log(lang->get("test2").c_str());*/
 
-	
-
-	//this->schedule(schedule_selector(DebugScene::update));
-
 	// Musica
-	SimpleAudioEngine::getInstance()->playBackgroundMusic("Music\\get_lucky.mp3", true);
 
+	cocos2d::experimental::AudioEngine::play2d("Music\\Mantis.mp3", true);
 	return true;
 }
 
