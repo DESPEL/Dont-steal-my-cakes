@@ -12,11 +12,11 @@ class BasicEnemy;
 
 class AttackPattern
 {
+public:
 	cocos2d::Vector<cocos2d::Sequence*> seqs;
 	cocos2d::Vector<BasicBullet*> bullets;
 	std::vector<float> times;
 
-public:
 	template <typename ...Ts>
 	AttackPattern(Ts... args) {
 		std::array<std::tuple<float, BasicBullet*, cocos2d::Sequence*>, sizeof...(Ts)> temp = { args... };
@@ -27,7 +27,7 @@ public:
 		}
 	}
 
-	AttackPattern(cocos2d::Sequence* pseq ,cocos2d::Vector <cocos2d::Sequence*> ss, cocos2d::Vector<BasicBullet*> buls, std::vector<float> ts) {
+	AttackPattern(cocos2d::Vector <cocos2d::Sequence*> ss, cocos2d::Vector<BasicBullet*> buls, std::vector<float> ts) {
 		seqs = ss;
 		for (BasicBullet* bul : buls) {
 			bullets.pushBack(BasicBullet::create(bul));
@@ -38,8 +38,8 @@ public:
 		times = ts;
 	}
 
-	AttackPattern get(cocos2d::Sequence* parentSeq) {
-		return AttackPattern(parentSeq, seqs, bullets, times);
+	AttackPattern get(cocos2d::Sequence* parentSeq = nullptr) {
+		return AttackPattern(seqs, bullets, times);
 	}
 
 	void run(BasicEnemy* parent) {
