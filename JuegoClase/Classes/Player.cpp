@@ -40,7 +40,8 @@ bool Player::init() {
 
 void Player::createIdleAnimation() {
 	Vector<SpriteFrame*> animFrames;
-	auto pinfo = AutoPolygon::generatePolygon("nave5.png");
+	///auto pinfo = AutoPolygon::generatePolygon("nave5.png");
+	std::string pinfo = "nave5.png";
 	auto sprite1 = Sprite::create(pinfo);
 	auto size = sprite1->getContentSize();
 	for (int i = 0; i < 4; i++) {
@@ -119,6 +120,7 @@ void Player::update(float delta) {
 			setVisible(0);
 		SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 		_control->keys.clear();
+		
 		
 		Director::getInstance()->replaceScene( DeathMenu::createScene());
 		return;

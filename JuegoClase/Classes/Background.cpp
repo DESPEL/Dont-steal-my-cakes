@@ -4,9 +4,9 @@ USING_NS_CC;
 
 Background::Background() :_speed(150) {
 	_screen = Director::getInstance()->getOpenGLView()->getFrameSize();
-	_bgPart1 = Sprite::create("fondo.png");
+	_bgPart1 = Sprite::create("fondo3.png");
 	_bgPart1->setContentSize(_screen);
-	_bgPart2 = Sprite::create("fondo.png");
+	_bgPart2 = Sprite::create("fondo3.png");
 	_bgPart2->setContentSize(_screen);
 	_bgPart1->setPosition(_screen.width / 2, _screen.height / 2);
 	_bgPart2->setPosition(_screen.width / 2, _screen.height / 2 + _screen.height);
