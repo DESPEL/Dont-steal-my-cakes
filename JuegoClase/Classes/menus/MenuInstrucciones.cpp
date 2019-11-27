@@ -112,6 +112,9 @@ void MenuIns::initButtons() {
 	label7->setVisible(true);
 	addChild(label7, 3);
 
+	auto texto = Sprite::create("transparente.png");
+	texto -> setPosition(0, 0);
+	addChild(texto, 5);
 
 
 
