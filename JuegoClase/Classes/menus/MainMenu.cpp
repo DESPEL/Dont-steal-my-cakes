@@ -1,7 +1,7 @@
 #include "MainMenu.h"
 #include "Scenes/DebugScene.h"
 #include "LevelSelectMenu.h"
-//#include "OptionsLayer.h"
+#include "OptionsMenu.h"
 #include "ui/CocosGUI.h"
 #include "GameManager.h"
 
@@ -73,7 +73,7 @@ void MainMenu::selectMenuButton() {
 }
 
 void MainMenu::optionsButton() {
-	//Director::getInstance()->replaceScene(TransitionFlipX::create(1, OptionsLayer::createScene()));
+	Director::getInstance()->replaceScene(TransitionFlipX::create(1, DebugScene::createScene(true)));
 }
 
 

@@ -8,7 +8,7 @@
 
 class Bullet;
 
-class Player : public cocos2d::Sprite {
+class Player2 : public cocos2d::Sprite {
 protected:
 
 	cocos2d::Action* _idleAnimation;
@@ -18,7 +18,7 @@ protected:
 	KeyBoard* _control;
 
 	// Balas
-	
+
 	int _numbullets = 1000;
 	void shoot(cocos2d::Vec2);
 	float delay = 0;
@@ -34,19 +34,14 @@ public:
 		IDLE = 0, EXPLOSION = 1
 	};
 
-	enum Tipos {
-		DEFAULT = 0, BASIC = 1, ELQUESIGA = 2, SEMEAGOTA = 3, ELOP = 4
-	};
-
 	CC_SYNTHESIZE(Animations, _currentAnimation, _currentAnimation);
 	CC_SYNTHESIZE(float, _speed, Speed);
-	CREATE_FUNC(Player);
+	CREATE_FUNC(Player2);
 	//Player();
 
 	// Colision
 	void setCurrentAnimation(Animations anim);
 
-	static cocos2d::Sprite* create(int tipo);
 	virtual bool init();
 	void update(float);
 

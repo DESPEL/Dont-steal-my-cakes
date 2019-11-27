@@ -4,11 +4,15 @@ using namespace CocosDenshion;
 
 USING_NS_CC;
 
-Scene* DebugScene::createScene() {
-	auto scene = Scene::create();
-	auto layer = DebugScene::create();
-	scene->addChild(layer);
+DebugScene::DebugScene(bool jug) {
+	this->two = jug;
+	DebugScene::init();
+}
 
+Scene* DebugScene::createScene(bool jug) {
+	auto scene = Scene::create();
+	auto layer = new DebugScene(jug); //DebugScene::create(jug);
+	scene->addChild(layer);
 
 	return scene;
 }
@@ -26,12 +30,23 @@ bool DebugScene::init() {
 
 	//Crea al jugador
 	_player = Player::create();
-	_player->setPosition(_visibleSize.width / 2, _visibleSize.height / 2 - 100);
+	if(!this->two)
+		_player->setPosition(_visibleSize.width / 2, _visibleSize.height / 2 - 100);
+	else
+		_player->setPosition(_visibleSize.width / 2 + 100, _visibleSize.height / 2 - 100);
+	
 	_player->setScale(2);
 	addChild(_player);
 
-	GameWrapper::getInstance()->setPlayer(_player);
+	if (this->two) {
+		_player2 = Player2::create();
+		_player2->setPosition(_visibleSize.width / 2 - 100, _visibleSize.height / 2 - 100);
+		_player2->setScale(2);
+		addChild(_player2);
+	}
 
+	GameWrapper::getInstance()->setPlayer(_player);
+	GameWrapper::getInstance()->coop = this->two;
 	//Crea al enemigo
 	/*auto enemy = BasicEnemy::create();
 	enemy->setPosition(_visibleSize.width /2, _visibleSize.height /2 + 100);
@@ -72,8 +87,9 @@ void DebugScene::createEnemy() {
 };
 
 void DebugScene::update(float delta) {
-	if (_player->isVisible())
-		_bg->update(delta);
+		if (_player->isVisible() || two && (_player2->isVisible() )) {// (wrapper->coop) ? (_player2->isVisible()) : ())
+			_bg->update(delta);
+		}
 
 	_player->update(delta);
 
@@ -90,11 +106,32 @@ void DebugScene::update(float delta) {
 			}
 		}
 
+		if (this->two) {
+			for (auto b : _player2->Balas) {
+				if (b->activa) {
+					if (b->getBoundingBox().intersectsRect(e->getBoundingBox())) {
+						e->explode();
+						b->colision();
+						_player->kills++;
+					}
+				}
+			}
+		}
+
 		// Colision Enemigo - Jugador
 		if (!e->exploded) {
 			if (e->getBoundingBox().intersectsRect(_player->getBoundingBox())) {
 				_player->setCurrentAnimation(Player::EXPLOSION);
 				e->explode();
+			}
+		}
+
+		if (this->two) {
+			if (!e->exploded) {
+				if (e->getBoundingBox().intersectsRect(_player2->getBoundingBox())) {
+					_player2->setCurrentAnimation(Player2::EXPLOSION);
+					e->explode();
+				}
 			}
 		}
 		
@@ -107,11 +144,31 @@ void DebugScene::update(float delta) {
 				}
 			}
 		}
+
+		/*if (two) {
+			for (auto bala : e->Balas) {
+				if (bala->getBoundingBox().intersectsRect(_player2->getBoundingBox())) {
+					_player2->setCurrentAnimation(Player2::EXPLOSION);
+				}
+			}
+		}*/
+
+		//if (two != false) {
+			/*for (auto b : e->Balas) {
+				if (b->activa) {
+					if (b->getBoundingBox().intersectsRect(_player2->getBoundingBox())) {
+						_player2->setCurrentAnimation(Player2::EXPLOSION);
+					}
+				}
+			}*/
+		//}
 	}
 
-	if (_player->get_currentAnimation() == Player::EXPLOSION) {
+	if ((_player->get_currentAnimation() == Player::EXPLOSION && !two) || (_player->get_currentAnimation() == Player::EXPLOSION && two && (_player2->get_currentAnimation() == Player2::EXPLOSION))) {
 		for (auto e : _enemyPool) {
 			e->stopActionByTag(20);
 		}
+
+		this->wrapper->death();
 	}
 }

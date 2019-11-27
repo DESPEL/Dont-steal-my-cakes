@@ -1,27 +1,17 @@
-#include "Player.h"
+#include "Player2.h"
 #include "SimpleAudioEngine.h"
 
 using namespace CocosDenshion;
 
 USING_NS_CC;
 
-Sprite* Player::create(int tipo) {
-	Sprite* sprite = new (std::nothrow) Sprite();
-	if (sprite && sprite->init())
-	{
-		sprite->autorelease();
-		return sprite;
-	}
-	CC_SAFE_DELETE(sprite);
-	return nullptr;
-}
 
-bool Player::init() {
+bool Player2::init() {
 
 	if (!Sprite::init())
 		return false;
 
-	_speed = 2;
+	_speed = 4;
 	_currentAnimation = IDLE;
 
 	createIdleAnimation();
@@ -44,7 +34,7 @@ bool Player::init() {
 	return true;
 }
 
-void Player::createIdleAnimation() {
+void Player2::createIdleAnimation() {
 	Vector<SpriteFrame*> animFrames;
 	auto sprite1 = Sprite::create("nave1.png");
 	auto size = sprite1->getContentSize();
@@ -61,12 +51,12 @@ void Player::createIdleAnimation() {
 
 	_idleAnimation = RepeatForever::create(animate);
 
-	_idleAnimation->setTag(Player::Animations::IDLE);
+	_idleAnimation->setTag(Player2::Animations::IDLE);
 
 	_idleAnimation->retain();
 }
 
-void Player::createExplosionAnimation() {
+void Player2::createExplosionAnimation() {
 	Vector<SpriteFrame*> animFrames;
 	auto sprite1 = Sprite::create("explode1.png");
 	auto size = sprite1->getContentSize();
@@ -79,21 +69,21 @@ void Player::createExplosionAnimation() {
 
 	_explosionAnimation = Animate::create(animation);
 
-	_explosionAnimation->setTag(Player::Animations::EXPLOSION);
+	_explosionAnimation->setTag(Player2::Animations::EXPLOSION);
 
 	_explosionAnimation->retain();
 }
 
-void Player::shoot(Vec2 dir) {
+void Player2::shoot(Vec2 dir) {
 	auto bullet = Balas.at(bulletsact);
 	bullet->activa = true;
 	bullet->direccion = dir;
 	SimpleAudioEngine::getInstance()->playEffect("music/laser_shoot.wav");
-	if(!vuelta)
+	if (!vuelta)
 		this->getParent()->addChild(bullet, -1);
 	bullet->setAnchorPoint(Point(0.5, 0));
 	if (!bullet->isVisible()) {
-		bullet->setPosition(getPositionX(), getPositionY() + this->_contentSize.height/2);
+		bullet->setPosition(getPositionX(), getPositionY() + this->_contentSize.height / 2);
 		bullet->setVisible(true);
 	}
 	if (bulletsact == _numbullets - 1) {
@@ -104,7 +94,7 @@ void Player::shoot(Vec2 dir) {
 		bulletsact++;
 }
 
-void Player::setCurrentAnimation(Animations anim) {
+void Player2::setCurrentAnimation(Animations anim) {
 	if (_currentAnimation == anim) return;
 	_currentAnimation = anim;
 	if (_currentAnimation == IDLE) {
@@ -117,14 +107,14 @@ void Player::setCurrentAnimation(Animations anim) {
 	}
 }
 
-void Player::update(float delta) {
+void Player2::update(float delta) {
 
 	if (_currentAnimation == EXPLOSION) {
 		if (_explosionAnimation->isDone())
 			setVisible(0);
 		//SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 		//_control->keys.clear();
-		
+
 		//Director::getInstance()->replaceScene(TransitionCrossFade::create(1, DeathMenu::createScene()));
 		return;
 	}
@@ -137,25 +127,25 @@ void Player::update(float delta) {
 	for (auto K : KeyBoard::keys) {
 		Vec2 loc = this->getPosition();
 		switch (K.first) {
-		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:     
-		//case EventKeyboard::KeyCode::KEY_J:
-			this->setPosition(loc.x - deltax * change * _speed, loc.y);
+		//case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
+		case EventKeyboard::KeyCode::KEY_A:
+			this->setPosition(loc.x - deltax * _speed, loc.y);
 			break;
-		case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
-		//case EventKeyboard::KeyCode::KEY_L:
+		//case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
+		case EventKeyboard::KeyCode::KEY_D:
 			this->setPosition(loc.x + deltax  * _speed, loc.y);
 			break;
-		case EventKeyboard::KeyCode::KEY_UP_ARROW:
-		//case EventKeyboard::KeyCode::KEY_I:
-			this->setPosition(loc.x, loc.y + deltay * _speed);
+		//case EventKeyboard::KeyCode::KEY_UP_ARROW:
+		case EventKeyboard::KeyCode::KEY_W:
+			this->setPosition(loc.x, loc.y + deltay  * _speed);
 			break;
-		case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
-		//case EventKeyboard::KeyCode::KEY_K:
+		//case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
+		case EventKeyboard::KeyCode::KEY_S:
 			this->setPosition(loc.x, loc.y - deltay * _speed);
 			break;
-		case EventKeyboard::KeyCode::KEY_SPACE:
+		case EventKeyboard::KeyCode::KEY_F:
 			if (this->delay <= 0) {
-				this->shoot(Vec2(0,2));
+				this->shoot(Vec2(0, 2));
 				this->shoot(Vec2(1, 1));
 				this->shoot(Vec2(-1, 1));
 				this->shoot(Vec2(0.5, 1.5));
@@ -164,19 +154,19 @@ void Player::update(float delta) {
 				this->shoot(Vec2(-0.3, 1.8));
 				this->delay = this->delayvalue;
 			}
-			break;	
-		/*case EventKeyboard::KeyCode::KEY_Q:
-			if (this->delay <= 0) {
-				this->shoot(Vec2(-1, 1));
-				this->delay = this->delayvalue;
-			}
 			break;
-		case EventKeyboard::KeyCode::KEY_E:
-			if (this->delay <= 0) {
-				this->shoot(Vec2(1, 1));
-				this->delay = this->delayvalue;
-			}
-			break;*/
+			/*case EventKeyboard::KeyCode::KEY_Q:
+				if (this->delay <= 0) {
+					this->shoot(Vec2(-1, 1));
+					this->delay = this->delayvalue;
+				}
+				break;
+			case EventKeyboard::KeyCode::KEY_E:
+				if (this->delay <= 0) {
+					this->shoot(Vec2(1, 1));
+					this->delay = this->delayvalue;
+				}
+				break;*/
 		}
 	}
 
@@ -192,6 +182,6 @@ void Player::update(float delta) {
 	if (this->getPosition().y - this->getContentSize().height / 2 <= 0)
 		this->setPosition(Vec2((this->getPosition().x), (this->getPosition().y + this->getContentSize().height / 2 - 10)));
 
-	if(delay > 0)
+	if (delay > 0)
 		delay -= delta;
 }
