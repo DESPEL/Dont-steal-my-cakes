@@ -25,10 +25,10 @@ public:
 
 			cocos2d::log("test created");
 			levels[name] = Level(
-				std::make_tuple(1.0f, testenemy),
-				std::make_tuple(1.0f, testenemy),
-				std::make_tuple(1.0f, testenemy),
-				std::make_tuple(1.0f, testenemy),
+				std::make_tuple(1.0f, testenemy->get(testenemy->getPosition(), test.get(-45))),
+				std::make_tuple(1.0f, Enemy::create(testenemy, cocos2d::Vec2(300, 400))),
+				std::make_tuple(1.0f, Enemy::create(testenemy, cocos2d::Vec2(400, 400))),
+				std::make_tuple(1.0f, Enemy::create(testenemy, cocos2d::Vec2(300, 400))),
 				std::make_tuple(1.0f, testenemy)
 			);
 			return levels.at(name);
