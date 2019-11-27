@@ -44,10 +44,10 @@ public:
 
 	void run(BasicEnemy* parent) {
 
-		cocos2d::log("putting bullets init");
+		//cocos2d::log("putting bullets init");
 		float acc = 0;
 		for (int i = 0; i < seqs.size(); i++) {
-			cocos2d::log("putting bullets");
+			//cocos2d::log("putting bullets");
 			BasicBullet* bullet = bullets.at(i);
 			acc += times.at(i);
 

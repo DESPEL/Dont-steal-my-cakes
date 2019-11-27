@@ -101,7 +101,7 @@ public:
 	}
 
 	void run(float) {
-		cocos2d::log("enemy running");
+		//cocos2d::log("enemy running");
 		runAction(sequence->clone());
 		setVisible(true);
 		attack.get(sequence).run(this);
