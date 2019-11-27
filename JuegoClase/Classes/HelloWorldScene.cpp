@@ -31,14 +31,14 @@ bool HelloWorld::init() {
 	this->schedule(schedule_selector(HelloWorld::update));
 
 	//for (int i = 0; i < _numEnemies; i++) {
-	auto enemy = BasicEnemy::create();
+	//auto enemy = BasicEnemy::create();
 		//damos informacion a los enemigos acerca del jugador
 		//enemy->setTarget(_player);
 		//enemy->setVisible(false);
-	enemy->setPosition(visibleSize.width / 2, visibleSize.height / 2 + 100);
-	enemy->setScale(2);
+	//enemy->setPosition(visibleSize.width / 2, visibleSize.height / 2 + 100);
+	//enemy->setScale(2);
 		//_enemyPool.pushBack(enemy);
-	addChild(enemy);
+	//addChild(enemy);
 	//}
 
 

@@ -2,32 +2,35 @@
 
 #include "HelloWorldScene.h"
 
+#include "Player.h"
+#include "BasicEnemy.h"
 #include "GameWrapper.h"
+#include "MovementPattern.h"
+#include "AttackPattern.h"
 
 class DebugScene : public cocos2d::Layer {
 private:
-		//Enemys
-		int _numEnemies = 10;
-		int _enemyIndex = 0;
-		float delay = 0;
+	//Enemys
+	int _numEnemies = 10;
+	int _enemyIndex = 0;
+	float delay = 0;
 
-		Background* _bg;
+	Background* _bg;
+	Player* _player;
+	cocos2d::Vector<BasicEnemy*> _enemyPool;
 
-		Player* _player;
-		cocos2d::Vector<BasicEnemy*> _enemyPool;
-
-		void createEnemy();
+	void createEnemy();
 
 public:
-		static cocos2d::Scene* createScene();
+	static cocos2d::Scene* createScene();
 
-		virtual bool init();
+	virtual bool init();
 
-		void update(float);
+	void update(float);
 
-		// implement the "static create()" method manually
-		//HelloWorld();
-		CREATE_FUNC(DebugScene);
+	// implement the "static create()" method manually
+	//HelloWorld();
+	CREATE_FUNC(DebugScene);
 
 };
 

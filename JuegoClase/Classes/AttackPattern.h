@@ -1,54 +1,65 @@
 #pragma once
 
-#include "cocos2d.h"
-#include "BasicBullet.h"
+#include <array>
 
-#include "MovementPattern.h"
-#include "Bullet.h"
+#include "cocos2d.h"
+
+#include "BasicBullet.h"
 #include "BasicEnemy.h"
 
 class BasicBullet;
 class BasicEnemy;
 
-template <size_t sz>
 class AttackPattern
 {
-	std::array<std::tuple<float, BasicBullet*, cocos2d::Sequence*>, sz> arr;
-
-	template <size_t i = 0, typename T, typename... Tp>
-	void tupleApply(std::function<T>& modifier, std::tuple<Tp &...>& tup) {
-		auto& val = std::get<i>(tup);
-		modifier(val);
-		if constexpr (i + 1 != sizeof...(Tp))
-			tupleApply<i + 1>(modifier, tup);
-	}
+	cocos2d::Vector<cocos2d::Sequence*> seqs;
+	cocos2d::Vector<BasicBullet*> bullets;
+	std::vector<float> times;
 
 public:
 	template <typename ...Ts>
-	AttackPattern(Ts... args) noexcept {
-		arr = { args... };
+	AttackPattern(Ts... args) {
+		std::array<std::tuple<float, BasicBullet*, cocos2d::Sequence*>, sizeof...(Ts)> temp = { args... };
+		for (std::tuple<float, BasicBullet*, cocos2d::Sequence*>& v : temp) {
+			times.push_back(std::get<0>(v));
+			bullets.pushBack(std::get<1>(v));
+			seqs.pushBack(std::get<2>(v));
+		}
+	}
+
+	AttackPattern(cocos2d::Sequence* pseq ,cocos2d::Vector <cocos2d::Sequence*> ss, cocos2d::Vector<BasicBullet*> buls, std::vector<float> ts) {
+		seqs = ss;
+		for (BasicBullet* bul : buls) {
+			bullets.pushBack(BasicBullet::create(bul));
+		}
+		for (BasicBullet* bul : bullets) {
+			bul->runAction(pseq->clone());
+		}
+		times = ts;
+	}
+
+	AttackPattern get(cocos2d::Sequence* parentSeq) {
+		return AttackPattern(parentSeq, seqs, bullets, times);
 	}
 
 	void run(BasicEnemy* parent) {
+
+		cocos2d::log("putting bullets init");
 		float acc = 0;
-		for (std::tuple<float, BasicBullet*, cocos2d::Sequence*>& v : arr) {
-			acc += std::get<0>(v);
-			BasicBullet* bullet = std::get<1>(v);
-			bullet->seq = std::get<2>(v)->clone();
-			bullet->seq->retain();
+		for (int i = 0; i < seqs.size(); i++) {
+			cocos2d::log("putting bullets");
+			BasicBullet* bullet = bullets.at(i);
+			acc += times.at(i);
+
+			bullet->seq = seqs.at(i);
 			bullet->setAnchorPoint(cocos2d::Vec2(0.5, 0.5));
 			bullet->setPosition(parent->getPosition());
-			//bullet->initWithFile("redbullet.png");
-			bullet->setScale(2.0f,1.0f);
+			bullet->setScale(2.0f, 1.0f);
 			bullet->parent = parent;
 			bullet->setVisible(false);
-			parent->getParent()->addChild(bullet, -1);
+			parent->getParent()->addChild(bullet);
 			bullet->scheduleOnce(schedule_selector(BasicBullet::run), acc);
 		}
 	}
-};
-
-class AttackPatternPlus {
-
 };
 

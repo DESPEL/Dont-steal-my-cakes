@@ -14,11 +14,16 @@ class BasicBullet : public cocos2d::Sprite
 public:
 	BasicEnemy* parent;
 	cocos2d::Sequence* seq;
+
+	bool init() noexcept;
+
 	void run(float);
 
 	void update(float delta) override;
 
-	static BasicBullet* createWithFile(std::string);
+	static BasicBullet* create(std::string filename);
+
+	static BasicBullet* create(BasicBullet* bull);
 
 	CREATE_FUNC(BasicBullet);
 };
