@@ -33,7 +33,7 @@ public:
 			bullets.pushBack(BasicBullet::create(bul));
 		}
 		for (BasicBullet* bul : bullets) {
-			bul->runAction(pseq->clone());
+			//bul->runAction(pseq->clone());
 		}
 		times = ts;
 	}
@@ -53,7 +53,7 @@ public:
 
 			bullet->seq = seqs.at(i);
 			bullet->setAnchorPoint(cocos2d::Vec2(0.5, 0.5));
-			bullet->setPosition(parent->getPosition());
+			//bullet->setPosition(parent->getPosition());
 			bullet->setScale(2.0f, 1.0f);
 			bullet->parent = parent;
 			bullet->setVisible(false);
