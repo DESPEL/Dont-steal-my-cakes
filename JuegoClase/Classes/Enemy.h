@@ -56,6 +56,24 @@ public:
 		return ret;
 	}
 
+	static Enemy* create(Enemy* base, cocos2d::Vec2 pos) {
+		Enemy* ret = Enemy::create();
+		ret->initWithTexture(base->getTexture());
+		ret->sequence = base->sequence;
+		ret->attack = base->attack;
+		ret->setPosition(pos);
+		return ret;
+	}
+
+	static Enemy* create(Enemy* base, cocos2d::Sequence* seq) {
+		Enemy* ret = Enemy::create();
+		ret->initWithTexture(base->getTexture());
+		ret->sequence = seq;
+		ret->attack = base->attack;
+		ret->setPosition(base->getPosition());
+		return ret;
+	}
+
 	static Enemy* create(Enemy* base, cocos2d::Node* parent) {
 		Enemy* ret = Enemy::create();
 		ret->initWithTexture(base->getTexture());
@@ -63,6 +81,22 @@ public:
 		ret->attack = base->attack;
 		ret->setPosition(base->getPosition());
 		ret->p = parent;
+		return ret;
+	}
+
+	Enemy* get(cocos2d::Vec2 pos = cocos2d::Vec2(-100000, -100000), cocos2d::Sequence* seq = nullptr, std::string img = "") {
+		Enemy* ret = Enemy::create();
+		if (pos == cocos2d::Vec2(-100000, -100000))
+			pos = getPosition();
+		if (seq == nullptr)
+			seq = sequence;
+		if (img == "")
+			ret->initWithTexture(getTexture());
+		else
+			ret->initWithFile(img);
+		ret->setPosition(pos);
+		ret->sequence = seq;
+		ret->attack = attack;
 		return ret;
 	}
 
