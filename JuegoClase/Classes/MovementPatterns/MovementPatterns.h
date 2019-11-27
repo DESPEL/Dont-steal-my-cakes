@@ -32,6 +32,15 @@ public:
 			return patterns[name];
 		}
 
+		if (name == "static") {
+			patterns[name] = MovementPattern(
+				std::make_tuple(10.0f, cocos2d::Vec2(0, 0))
+			);
+		}
+
+		if (patterns.find(name) != patterns.end())
+			return patterns[name];
+
 		throw "pattern not found";
 	}
 };

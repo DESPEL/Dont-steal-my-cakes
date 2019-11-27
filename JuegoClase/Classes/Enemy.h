@@ -32,7 +32,7 @@ public:
 
 	bool init() {
 		currentAnimation = IDLE;
-		createIdleAnimation();
+		//createIdleAnimation();
 		createExplosionAnimation();
 		return true;
 	}
@@ -123,6 +123,7 @@ public:
 	void update(float) {
 		for (Bullet* bullet : GameWrapper::getInstance()->getPlayer()->Balas) {
 			if (bullet->getBoundingBox().intersectsRect(getBoundingBox())) {
+				bullet->colision();
 				explode();
 			}
 		}
@@ -136,3 +137,27 @@ public:
 	CREATE_FUNC(Enemy)
 };
 
+class EnemyPlus
+{
+public:
+	static Enemy* create(std::string name, cocos2d::Vector<cocos2d::Sequence*> seqs, std::vector<std::tuple<float, AttackPattern>> atts, cocos2d::Vec2 pos = { 0, 0 }) {
+		
+		cocos2d::Vector<cocos2d::FiniteTimeAction*> act;
+		for (cocos2d::Sequence* seq : seqs)
+			act.pushBack(seq);
+		auto seq = cocos2d::Sequence::create(act);
+		seq->retain();
+		AttackPattern attack = AttackPattern();
+		for (std::tuple<float, AttackPattern>& at : atts) {
+			std::get<1>(at).times[0] += std::get<0>(at);
+			for (int i = 0; i < std::get<1>(at).times.size(); i++) {
+				attack.times.push_back(std::get<1>(at).times.at(i));
+				attack.seqs.pushBack(std::get<1>(at).seqs.at(i));
+				attack.bullets.pushBack(BasicBullet::create(std::get<1>(at).bullets.at(i)));
+			}
+		}
+		Enemy* ret = Enemy::create(name,  seq, attack, pos);
+		return ret;
+	}
+
+};
