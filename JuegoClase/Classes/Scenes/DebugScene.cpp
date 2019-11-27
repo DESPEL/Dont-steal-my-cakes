@@ -26,7 +26,7 @@ bool DebugScene::init() {
 	//Crea el background
 	_bg = Background::create();
 	 button = ui::Button::create("menus/Pausa.png", "menus/Pausa.png", "menus/Pausa.png");
-		
+
 	button->setAnchorPoint(Point(1, 0.5));
 	button->setPosition(Point(_visibleSize.width - 20 * getScaleX(), 280));
 	button->addClickEventListener(CC_CALLBACK_0(DebugScene::pauseButtonAction, this));
@@ -57,6 +57,7 @@ bool DebugScene::init() {
 	button4->setPosition(Point(_visibleSize.width / 2, 70));
 	button4->addClickEventListener(CC_CALLBACK_0(DebugScene::salirButtonAction, this));
 	button4->setScale(1);
+	button4->setScaleX(1.5);
 	button4->setVisible(false);
 	addChild(button4, 3);
 	
