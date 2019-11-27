@@ -42,8 +42,28 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="..\Classes\Enemy.h" />
     <ClInclude Include="..\Classes\Level.h" />
+    <ClInclude Include="..\Classes\MovementPatterns\MovementPatterns.h">
+      <Filter>MovementPatterns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AttackPatterns\AttackPatterns.h">
+      <Filter>AttackPatterns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Levels\Levels.h">
+      <Filter>Levels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Levels">
+      <UniqueIdentifier>{8bd73765-3e03-45fa-b03b-04c1ef23ed36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AttackPatterns">
+      <UniqueIdentifier>{cf1c10d9-e144-4f77-ad07-8e3dffd512a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MovementPatterns">
+      <UniqueIdentifier>{26cedf01-3107-44fa-b0aa-f7726fa2cf79}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
