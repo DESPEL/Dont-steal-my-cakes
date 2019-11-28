@@ -1,4 +1,7 @@
 #include "Player2.h"
+
+#include "Scenes/DebugScene.h"
+
 #include "SimpleAudioEngine.h"
 
 using namespace CocosDenshion;
@@ -6,12 +9,55 @@ using namespace CocosDenshion;
 USING_NS_CC;
 
 
+Player2::Player2(int tipo) {
+	switch (tipo) {
+	case 0:
+		_speed = 5*2;
+		personaje_path = "nave0.png";
+		animacion_path = "animacion_nave.png";
+		break;
+	case 1:
+		_speed = 2.5*2;
+		personaje_path = "nave1.png";
+		animacion_path = "animacion_nave1.png";
+		break;
+	case 2:
+		_speed = 2.1*2;
+		personaje_path = "nave2.png";
+		animacion_path = "animacion_nave2.png";
+		break;
+	case 3:
+		_speed = 1.6*2;
+		personaje_path = "nave3.png";
+		animacion_path = "animacion_nave3.png";
+		break;
+	case 4:
+		_speed = 1.2*2;
+		personaje_path = "nave4.png";
+		animacion_path = "animacion_nave4.png";
+		break;
+	}
+
+
+	Player2::init();
+};
+
+Player2* Player2::create(int tipo) {
+	Player2* sprite = new (std::nothrow) Player2(tipo);
+	if (sprite && sprite->init())
+	{
+		sprite->autorelease();
+		return sprite;
+	}
+	CC_SAFE_DELETE(sprite);
+	return nullptr;
+}
+
 bool Player2::init() {
 
 	if (!Sprite::init())
 		return false;
 
-	_speed = 4;
 	_currentAnimation = IDLE;
 
 	createIdleAnimation();
@@ -36,10 +82,12 @@ bool Player2::init() {
 
 void Player2::createIdleAnimation() {
 	Vector<SpriteFrame*> animFrames;
-	auto sprite1 = Sprite::create("nave1.png");
+	///auto pinfo = AutoPolygon::generatePolygon("nave5.png");
+	std::string pinfo = personaje_path;
+	auto sprite1 = Sprite::create(pinfo);
 	auto size = sprite1->getContentSize();
 	for (int i = 0; i < 4; i++) {
-		auto frame = SpriteFrame::create("animacion_nave.png", Rect(Vec2(size.width * i, 0), size));
+		auto frame = SpriteFrame::create(animacion_path, Rect(Vec2(size.width * i, 0), size));
 		animFrames.pushBack(frame);
 	}
 
@@ -119,6 +167,7 @@ void Player2::update(float delta) {
 		return;
 	}
 
+
 	auto director = Director::getInstance();
 	auto visiblesize = director->getVisibleSize();
 	float deltay = visiblesize.height / visiblesize.width;
@@ -127,21 +176,23 @@ void Player2::update(float delta) {
 	for (auto K : KeyBoard::keys) {
 		Vec2 loc = this->getPosition();
 		switch (K.first) {
-		//case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
 		case EventKeyboard::KeyCode::KEY_A:
-			this->setPosition(loc.x - deltax * _speed, loc.y);
+			//case EventKeyboard::KeyCode::KEY_J:
+			this->setPosition(loc.x - deltax * change * _speed, loc.y);
 			break;
-		//case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
 		case EventKeyboard::KeyCode::KEY_D:
-			this->setPosition(loc.x + deltax  * _speed, loc.y);
+			//case EventKeyboard::KeyCode::KEY_L:
+			this->setPosition(loc.x + deltax * _speed, loc.y);
 			break;
-		//case EventKeyboard::KeyCode::KEY_UP_ARROW:
 		case EventKeyboard::KeyCode::KEY_W:
-			this->setPosition(loc.x, loc.y + deltay  * _speed);
+			//case EventKeyboard::KeyCode::KEY_I:
+			if(loc.y + deltay * _speed < visiblesize.height + 5)
+				this->setPosition(loc.x, loc.y + deltay * _speed);
 			break;
-		//case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
 		case EventKeyboard::KeyCode::KEY_S:
-			this->setPosition(loc.x, loc.y - deltay * _speed);
+			//case EventKeyboard::KeyCode::KEY_K:
+			if (loc.y - deltay * _speed > 5)
+				this->setPosition(loc.x, loc.y - deltay * _speed);
 			break;
 		case EventKeyboard::KeyCode::KEY_F:
 			if (this->delay <= 0) {
@@ -154,6 +205,9 @@ void Player2::update(float delta) {
 				this->shoot(Vec2(-0.3, 1.8));
 				this->delay = this->delayvalue;
 			}
+			break;
+		case EventKeyboard::KeyCode::KEY_ENTER:
+			//this->getParent()->DebugScene::pauseButtonAction();
 			break;
 			/*case EventKeyboard::KeyCode::KEY_Q:
 				if (this->delay <= 0) {

@@ -15,6 +15,7 @@ public:
 
 	void selectMenuButton();
 	void optionsButton();
+	void selectPlayer();
 	void actionButton1();
 	void actionButton2();
 	void actionButton3();

@@ -2,6 +2,7 @@
 #include "Scenes/DebugScene.h"
 #include "LevelSelectMenu.h"
 #include "OptionsMenu.h"
+#include "SelectPlayersMenu.h"
 #include "ui/CocosGUI.h"
 #include "GameManager.h"
 #include "MenuInstrucciones.h"
@@ -48,7 +49,7 @@ bool MainMenu::init() {
 	auto selectButton = Button::create("menus/Botones/level0.png", "menus/Botones/level1.png", "menus/Botones/level0.png", Widget::TextureResType::LOCAL);
 	selectButton->setAnchorPoint(Point(0.5, 1));
 	selectButton->setScale(3, 1.5);
-	selectButton->addClickEventListener(CC_CALLBACK_0(MainMenu::selectMenuButton, this));
+	selectButton->addClickEventListener(CC_CALLBACK_0(MainMenu::selectPlayer, this));
 	selectButton->setPosition(Point(startButton->getPositionX(), nextHeight));
 	addChild(selectButton);
 
@@ -93,8 +94,17 @@ void MainMenu::selectMenuButton() {
 }
 
 void MainMenu::optionsButton() {
+<<<<<<< HEAD
 	Director::getInstance()->replaceScene(TransitionFlipX::create(1, DebugScene::createScene(true)));
 }	
+=======
+	Director::getInstance()->replaceScene(TransitionFlipX::create(1, DebugScene::createScene(Player::Tipos::NORMAL, true, Player2::Tipos::RAPIDIN)));
+}
+
+void MainMenu::selectPlayer() {
+	Director::getInstance()->replaceScene(TransitionFlipX::create(1, SelectPlayersMenu::createScene()));
+}
+>>>>>>> Menu2
 
 
 
