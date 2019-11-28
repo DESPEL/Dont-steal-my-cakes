@@ -4,6 +4,9 @@
 #include "GameWrapper.h"
 #include "menus/MainMenu.h"
 using namespace CocosDenshion;
+//#include "SimpleAudioEngine.h"
+//using namespace CocosDenshion;
+#include "AudioEngine.h"
 
 #include "Levels/Levels.h"
 
@@ -80,13 +83,20 @@ bool DebugScene::init() {
 		_player->setPosition(_visibleSize.width / 2 + 100, _visibleSize.height / 2 - 100);
 	
 	_player->setScale(2);
+	_bg->scheduleUpdate();
+
+	//Crea al jugador
+	_player = Player::create();
+	_player->setPosition(_visibleSize.width / 2, _visibleSize.height / 2 - 100);
+	//_player->setScale(2);
 	addChild(_player);
 
 	GameWrapper::getInstance()->setPlayer(_player);
 	this->retain();
 
 	// ejecutar nivel
-	Levels::create("test").get(this).run();
+	//Levels::create("level-1").get(this).run();
+	Levels::create("level-1").get(this).run();
 
 	/* 
 	******************************************************************
@@ -128,14 +138,9 @@ bool DebugScene::init() {
 	cocos2d::log(lang->get("test").c_str());
 	cocos2d::log(lang->get("test2").c_str());*/
 
-	
-
-	//this->schedule(schedule_selector(DebugScene::update));
-
 	// Musica
-	SimpleAudioEngine::getInstance()->playBackgroundMusic("Music\\Mantis.mp3", true);
-	SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.02);
 
+	cocos2d::experimental::AudioEngine::play2d("Music\\Mantis.mp3", true);
 	return true;
 }
 

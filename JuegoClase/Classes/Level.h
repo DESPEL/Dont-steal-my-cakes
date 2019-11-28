@@ -50,5 +50,6 @@ public:
 	void update(float delta) {
 		elapsed += delta;
 	}
+
 };
 

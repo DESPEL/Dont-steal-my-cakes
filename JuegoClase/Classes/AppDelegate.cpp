@@ -27,8 +27,8 @@
 #include "Scenes/DebugScene.h"
 #include "menus/MainMenu.h"
 
-// #define USE_AUDIO_ENGINE 1
-#define USE_SIMPLE_AUDIO_ENGINE 1
+#define USE_AUDIO_ENGINE 1
+//#define USE_SIMPLE_AUDIO_ENGINE 1
 
 #if USE_AUDIO_ENGINE && USE_SIMPLE_AUDIO_ENGINE
 #error "Don't use AudioEngine and SimpleAudioEngine at the same time. Please just select one in your game!"
@@ -99,7 +99,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	director->setProjection(Director::Projection::_2D);
 
     // set FPS. the default value is 1.0/60 if you don't call this
-    director->setAnimationInterval(1.0f / 60);
+    director->setAnimationInterval(1.0f / 6000);
 
     // Set the design resolution
 	glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::EXACT_FIT); //ResolutionPolicy::EXACT_FIT, SHOW_ALL);
@@ -125,7 +125,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
     //auto scene = DebugScene::createScene();
 
-	auto scene = MainMenu::createScene();
+	//auto scene = MainMenu::createScene();
+	auto scene = DebugScene::createScene();
 
     // run
     director->runWithScene(scene);

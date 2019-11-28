@@ -3,13 +3,19 @@
 #include "cocos2d.h"
 //#include "Bullet.h"
 
+#include "BasicBullet.h"
+
+class BasicBullet;
 
 class BasicEnemy : public cocos2d::Sprite {
 public:
+	//cocos2d::Vector<BasicBullet*> bullets;
+
 	enum Animations {
 		IDLE = 0,
 		EXPLOSION = 1
 	};
+	bool exploded = false;
 
 protected:
 
@@ -21,10 +27,10 @@ protected:
 		cocos2d::Vector<cocos2d::SpriteFrame*> animFrames;
 		auto sprite1 = Sprite::create("enemigo1.png");
 		auto size = sprite1->getContentSize();
-		for (int i = 0; i < 4; i++) {
-			auto frame = cocos2d::SpriteFrame::create("animacion_enemigo.png", cocos2d::Rect(cocos2d::Vec2(size.width * i, 0), size));
+		//for (int i = 0; i < 4; i++) {
+			auto frame = cocos2d::SpriteFrame::create("animacion_enemigo.png", cocos2d::Rect(cocos2d::Vec2(0, 0), size));
 			animFrames.pushBack(frame);
-		}
+		//}
 
 		this->setSpriteFrame(animFrames.at(0));
 
@@ -63,6 +69,10 @@ protected:
 			stopActionByTag(IDLE);
 			runAction(explosionAnimation);
 		}
+	}
+
+	~BasicEnemy() {
+		explosionAnimation->release();
 	}
 
 

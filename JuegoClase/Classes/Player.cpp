@@ -1,10 +1,5 @@
 #include "Player.h"
-
-#include "Scenes/DebugScene.h"
-
-#include "SimpleAudioEngine.h"
-
-using namespace CocosDenshion;
+#include "AudioEngine.h"
 
 USING_NS_CC;
 
@@ -54,7 +49,6 @@ Player* Player::create(int tipo) {
 }
 
 bool Player::init() {
-
 	if (!Sprite::init())
 		return false;
 
@@ -125,7 +119,7 @@ void Player::shoot(Vec2 dir) {
 	auto bullet = Balas.at(bulletsact);
 	bullet->activa = true;
 	bullet->direccion = dir;
-	SimpleAudioEngine::getInstance()->playEffect("music/laser_shoot.wav");
+	cocos2d::experimental::AudioEngine::play2d("Music\\laser_shoot.mp3", false, 0.1f);
 	if(!vuelta)
 		this->getParent()->addChild(bullet, -1);
 	bullet->setAnchorPoint(Point(0.5, 0));
@@ -194,12 +188,12 @@ void Player::update(float delta) {
 		case EventKeyboard::KeyCode::KEY_SPACE:
 			if (this->delay <= 0) {
 				this->shoot(Vec2(0,2));
-				this->shoot(Vec2(1, 1));
-				this->shoot(Vec2(-1, 1));
-				this->shoot(Vec2(0.5, 1.5));
-				this->shoot(Vec2(-0.5, 1.5));
-				this->shoot(Vec2(0.3, 1.8));
-				this->shoot(Vec2(-0.3, 1.8));
+				//this->shoot(Vec2(1, 1));
+				//this->shoot(Vec2(-1, 1));
+				//this->shoot(Vec2(0.5, 1.5));
+				//this->shoot(Vec2(-0.5, 1.5));
+				//this->shoot(Vec2(0.3, 1.8));
+				//this->shoot(Vec2(-0.3, 1.8));
 				this->delay = this->delayvalue;
 			}
 			break;

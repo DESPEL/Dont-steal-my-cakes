@@ -32,13 +32,10 @@ public:
 		for (BasicBullet* bul : buls) {
 			bullets.pushBack(BasicBullet::create(bul));
 		}
-		for (BasicBullet* bul : bullets) {
-			//bul->runAction(pseq->clone());
-		}
 		times = ts;
 	}
 
-	AttackPattern get(cocos2d::Sequence* parentSeq = nullptr) {
+	AttackPattern get() {
 		return AttackPattern(seqs, bullets, times);
 	}
 
@@ -53,13 +50,18 @@ public:
 
 			bullet->seq = seqs.at(i);
 			bullet->setAnchorPoint(cocos2d::Vec2(0.5, 0.5));
-			//bullet->setPosition(parent->getPosition());
 			bullet->setScale(2.0f, 1.0f);
 			bullet->parent = parent;
 			bullet->setVisible(false);
 			parent->getParent()->addChild(bullet);
 			bullet->scheduleOnce(schedule_selector(BasicBullet::run), acc);
+			//parent->bullets.pushBack(bullet);
 		}
 	}
+
+	~AttackPattern() {
+		cocos2d::log("removing attack pattern");
+	}
+
 };
 

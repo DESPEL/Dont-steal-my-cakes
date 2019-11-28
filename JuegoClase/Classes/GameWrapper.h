@@ -13,7 +13,8 @@ class GameWrapper {
 	GameWrapper(){}
 
 public:
-	
+
+	int val = 0;
 	static GameWrapper* getInstance();
 
 	void death();
