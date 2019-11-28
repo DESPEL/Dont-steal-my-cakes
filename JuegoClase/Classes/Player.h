@@ -12,6 +12,12 @@ class Bullet;
 class Player : public cocos2d::Sprite {
 protected:
 
+	// Customización
+	std::string personaje_path;
+	std::string animacion_path;
+
+
+
 	cocos2d::Action* _idleAnimation;
 	cocos2d::Action* _explosionAnimation;
 
@@ -24,7 +30,7 @@ protected:
 	void shoot(cocos2d::Vec2);
 	float delay = 0;
 	float delayvalue = 0.25;
-	int change = 4;
+	int change = 1;
 
 
 	void createIdleAnimation();
@@ -35,14 +41,23 @@ public:
 		IDLE = 0, EXPLOSION = 1
 	};
 
+	enum Tipos {
+		DEFAULT = 0, RAPIDIN = 1, NORMAL = 2, TANQUE = 3, MCDONALDS = 4
+	};
+
 	CC_SYNTHESIZE(Animations, _currentAnimation, _currentAnimation);
 	CC_SYNTHESIZE(float, _speed, Speed);
-	CREATE_FUNC(Player);
+//	CREATE_FUNC(Player);
 	//Player();
 
 	// Colision
 	void setCurrentAnimation(Animations anim);
 
+	static Player* create(int tipo = 0);
+	Player(int tipo);
+	~Player() {};
+	
+	
 	virtual bool init();
 	void update(float);
 

@@ -155,6 +155,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Classes\menus\LevelSelectMenu.cpp" />
+    <ClCompile Include="..\Classes\menus\OptionsMenu.cpp" />
+    <ClCompile Include="..\Classes\menus\DeathMenu.cpp" />
+    <ClCompile Include="..\Classes\menus\SelectPlayersMenu.cpp" />
+    <ClCompile Include="..\Classes\Player\Player2.cpp" />
+    <ClCompile Include="..\Classes\menus\MenuInstrucciones.cpp" />
     <ClCompile Include="..\Classes\Scenes\MotherScene.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Background.cpp" />

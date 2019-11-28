@@ -2,6 +2,9 @@
 
 #include "cocos2d.h"
 #include "BackGroundMenu.h"
+#include "SimpleAudioEngine.h"
+
+class GameWrapper;
 
 class MotherMenu : public cocos2d::Layer {
 protected:
@@ -16,6 +19,8 @@ public:
 	virtual bool init();
 
 	static cocos2d::Scene* createScene();
+
+	GameWrapper* wrapper;
 
 	CREATE_FUNC(MotherMenu);
 };

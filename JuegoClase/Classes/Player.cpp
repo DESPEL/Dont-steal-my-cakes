@@ -4,11 +4,54 @@
 USING_NS_CC;
 
 
+Player::Player(int tipo) {
+	switch (tipo) {
+	case 0:
+		_speed = 5;
+		personaje_path = "nave0.png";
+		animacion_path = "animacion_nave.png";
+		break;
+	case 1:
+		_speed = 2.5;
+		personaje_path = "nave1.png";
+		animacion_path = "animacion_nave1.png";
+		break;
+	case 2:
+		_speed = 2.1;
+		personaje_path = "nave2.png";
+		animacion_path = "animacion_nave2.png";
+		break;
+	case 3:
+		_speed = 1.6;
+		personaje_path = "nave3.png";
+		animacion_path = "animacion_nave3.png";
+		break;
+	case 4:
+		_speed = 1.2;
+		personaje_path = "nave4.png";
+		animacion_path = "animacion_nave4.png";
+		break;
+	}
+	
+
+	Player::init();
+};
+
+Player* Player::create(int tipo) {
+	Player* sprite = new (std::nothrow) Player(tipo);
+	if (sprite && sprite->init())
+	{
+		sprite->autorelease();
+		return sprite;
+	}
+	CC_SAFE_DELETE(sprite);
+	return nullptr;
+}
+
 bool Player::init() {
 	if (!Sprite::init())
 		return false;
 
-	_speed = 150;
 	_currentAnimation = IDLE;
 
 	createIdleAnimation();
@@ -18,6 +61,7 @@ bool Player::init() {
 	runAction(_idleAnimation);
 
 	_control = KeyBoard::create();
+	_control->keys.clear();
 	addChild(_control);
 
 	for (int i = 0; i < _numbullets; i++) {
@@ -31,10 +75,12 @@ bool Player::init() {
 
 void Player::createIdleAnimation() {
 	Vector<SpriteFrame*> animFrames;
-	auto sprite1 = Sprite::create("nave1.png");
+	///auto pinfo = AutoPolygon::generatePolygon("nave5.png");
+	std::string pinfo = personaje_path;
+	auto sprite1 = Sprite::create(pinfo);
 	auto size = sprite1->getContentSize();
 	for (int i = 0; i < 4; i++) {
-		auto frame = SpriteFrame::create("animacion_nave.png", Rect(Vec2(size.width * i, 0), size));
+		auto frame = SpriteFrame::create(animacion_path, Rect(Vec2(size.width * i, 0), size));
 		animFrames.pushBack(frame);
 	}
 
@@ -107,8 +153,13 @@ void Player::update(float delta) {
 	if (_currentAnimation == EXPLOSION) {
 		if (_explosionAnimation->isDone())
 			setVisible(0);
+		//SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+		//_control->keys.clear();
+		
+		//Director::getInstance()->replaceScene(TransitionCrossFade::create(1, DeathMenu::createScene()));
 		return;
 	}
+	
 
 	auto director = Director::getInstance();
 	auto visiblesize = director->getVisibleSize();
@@ -118,21 +169,21 @@ void Player::update(float delta) {
 	for (auto K : KeyBoard::keys) {
 		Vec2 loc = this->getPosition();
 		switch (K.first) {
-		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
-		case EventKeyboard::KeyCode::KEY_A:
-			this->setPosition(loc.x - deltax * change, loc.y);
+		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:     
+		//case EventKeyboard::KeyCode::KEY_J:
+			this->setPosition(loc.x - deltax * change * _speed, loc.y);
 			break;
 		case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
-		case EventKeyboard::KeyCode::KEY_D:
-			this->setPosition(loc.x + deltax * change, loc.y);
+		//case EventKeyboard::KeyCode::KEY_L:
+			this->setPosition(loc.x + deltax  * _speed, loc.y);
 			break;
 		case EventKeyboard::KeyCode::KEY_UP_ARROW:
-		case EventKeyboard::KeyCode::KEY_W:
-			this->setPosition(loc.x, loc.y + deltay * change);
+		//case EventKeyboard::KeyCode::KEY_I:
+			this->setPosition(loc.x, loc.y + deltay * _speed);
 			break;
 		case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
-		case EventKeyboard::KeyCode::KEY_S:
-			this->setPosition(loc.x, loc.y - deltay * change);
+		//case EventKeyboard::KeyCode::KEY_K:
+			this->setPosition(loc.x, loc.y - deltay * _speed);
 			break;
 		case EventKeyboard::KeyCode::KEY_SPACE:
 			if (this->delay <= 0) {
@@ -145,8 +196,11 @@ void Player::update(float delta) {
 				//this->shoot(Vec2(-0.3, 1.8));
 				this->delay = this->delayvalue;
 			}
-			break;	
-		case EventKeyboard::KeyCode::KEY_Q:
+			break;
+		case EventKeyboard::KeyCode::KEY_ENTER:
+			//this->getParent()->DebugScene::pauseButtonAction();
+			break;
+		/*case EventKeyboard::KeyCode::KEY_Q:
 			if (this->delay <= 0) {
 				this->shoot(Vec2(-1, 1));
 				this->delay = this->delayvalue;
@@ -157,7 +211,7 @@ void Player::update(float delta) {
 				this->shoot(Vec2(1, 1));
 				this->delay = this->delayvalue;
 			}
-			break;
+			break;*/
 		}
 	}
 
