@@ -60,8 +60,18 @@ bool MainMenu::init() {
 	optionsButton->setPosition(Point(startButton->getPositionX(), nextHeight));
 	addChild(optionsButton);
 
+
+
+
+	auto cerrar = Button::create("menus/Botones/close.png", "menus/Botones/close.png", "menus/Botones/close.png", Widget::TextureResType::LOCAL);
+	cerrar->setAnchorPoint(Point(0.5, 1));
+	cerrar->setScale(0.5,0.3);
+	cerrar->addClickEventListener(CC_CALLBACK_0(MainMenu::actionButton2, this));
+	cerrar->setPosition(Point(400,80));
+	addChild(cerrar);
+
 	if (!SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()) {
-		SimpleAudioEngine::getInstance()->playBackgroundMusic("music/Hollow.mp3", true);
+		SimpleAudioEngine::getInstance()->playBackgroundMusic("music/.mp3", true);
 	}
 
 	return true;
@@ -75,7 +85,7 @@ void MainMenu::selectMenuButton() {
 
 void MainMenu::optionsButton() {
 	Director::getInstance()->replaceScene(TransitionFlipX::create(1, DebugScene::createScene(true)));
-}
+}	
 
 
 
@@ -92,7 +102,7 @@ void MainMenu::initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> fu
 }
 
 void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MenuIns::createScene())); }
-void MainMenu::actionButton2() {  /*TODO*/ }
+void MainMenu::actionButton2() { Director::getInstance()->end(); }
 void MainMenu::actionButton3() {  /*TODO*/ }
 void MainMenu::actionButton4() {  /*TODO*/ }
 void MainMenu::actionButton5() {  /*TODO*/ }
