@@ -74,6 +74,7 @@ public:
 		//	return levels.at(name);*/
 		//}
 
+		// Cancion: Mantis
 		if (name == "level-1") {
 			auto up100 = MovementPatterns::create("up-100");
 			auto stmov = MovementPatterns::create("static");
@@ -279,6 +280,8 @@ public:
 			return levels.at(name);
 		}
 
+
+		// Cancion : Tower of heaven
 		if (name == "level-2") {
 			auto up100 = MovementPatterns::create("up-100");
 			auto stmov = MovementPatterns::create("static");
@@ -377,11 +380,11 @@ public:
 				);
 
 			levels[name] = Level( // Delta: 1s
-				mktp(9.2f, slowdcir->get({sz.width / 2, sz.height})), // s: 8.2, e: 10.2
-				mktp(2.0f, downslow->get({sz.width / 2 - 100, sz.height})), // s: 10.2 e: 12.7
+				mktp(9.2f, slowdcir->get({ sz.width / 2, sz.height })), // s: 8.2, e: 10.2
+				mktp(2.0f, downslow->get({ sz.width / 2 - 100, sz.height })), // s: 10.2 e: 12.7
 				mktp(0.0f, downslow->get({ 100 / 2, sz.height })),
 				mktp(0.0f, downslow->get({ sz.width - 100 / 2, sz.height })),
-				mktp(0.0f, downslow->get({ sz.width / 2 + 100, sz.height })), 
+				mktp(0.0f, downslow->get({ sz.width / 2 + 100, sz.height })),
 				mktp(2.5f, downfast->get({ 1 * sz.width / 4, sz.height })),// s: 12.7 e: 14.8
 				mktp(0.0f, downfast->get({ 2 * sz.width / 4, sz.height })),
 				mktp(0.0f, downfast->get({ 3 * sz.width / 4, sz.height })),
@@ -397,11 +400,30 @@ public:
 				mktp(2.0f, downfasttrip->get({ sz.width / 2, sz.height + 25 })), // s: 26.7
 				mktp(2.0f, downfast->get({ 1 * sz.width / 4, sz.height + 25 })), // s: 28.7
 				mktp(2.0f, downfast->get({ 3 * sz.width / 4, sz.height + 25 })), // s: 30.7 e: 32.5
-				mktp(3.0f, spray1->get({ 1 * sz.width / 6, sz.height})), // s: 33.7 f: 40.0
+				mktp(3.0f, spray1->get({ 1 * sz.width / 6, sz.height })), // s: 33.7 f: 40.0
 				mktp(0.0f, spray1->get({ 5 * sz.width / 6, sz.height })),
-				mktp(6.3f, downfast->get({ 1 * sz.width / 4, sz.height })), // s: 40.0 e: 42.1
+				mktp(3.0f, downfast->get({ 1 * sz.width / 6, sz.height + 25 })),
+				mktp(0.0f, downfast->get({ 3 * sz.width / 6, sz.height + 25 })),
+				mktp(0.0f, downfast->get({ 5 * sz.width / 6, sz.height + 25 })),
+				mktp(3.3f, downfast->get({ 1 * sz.width / 4, sz.height })), // s: 40.0 e: 42.1
 				mktp(0.0f, downfast->get({ 2 * sz.width / 4, sz.height })),
-				mktp(0.0f, downfast->get({ 3 * sz.width / 4, sz.height }))
+				mktp(0.0f, downfast->get({ 3 * sz.width / 4, sz.height })),
+				mktp(4.6f, downfastcirc->get({ 3 * sz.width / 6, sz.height + 25 })), // s: 44.6 e: 46.8
+				mktp(0.0f, downfast->get({ 1 * sz.width / 6, sz.height + 25 })),
+				mktp(0.0f, downfast->get({ 5 * sz.width / 6, sz.height + 25 })),
+				mktp(2.6f, downfastcirc->get({ 3 * sz.width / 6, sz.height})), // s: 47.2 e: 49.2
+				mktp(3.0f, spray1->get({ 1 * sz.width / 6, sz.height })), // s: 51 e: 53
+				mktp(0.0f, spray1->get({ 5 * sz.width / 6, sz.height })),
+				mktp(2.0f, downfast->get({ 1 * sz.width / 4, sz.height })),
+				mktp(0.1f, downfast->get({ 2 * sz.width / 4, sz.height })),
+				mktp(0.2f, downfast->get({ 3 * sz.width / 4, sz.height })),
+				mktp(0.1f, downfast->get({ 3 * sz.width / 8, sz.height })),
+				mktp(0.3f, downfast->get({ 5 * sz.width / 8, sz.height })),
+				mktp(0.0f, downfast->get({ 4 * sz.width / 8, sz.height })),
+				mktp(0.1f, downfast->get({ 7 * sz.width / 8, sz.height })),
+				mktp(0.3f, downfast->get({ 1 * sz.width / 8, sz.height })),
+				mktp(0.1f, downfast->get({ 3 * sz.width / 8, sz.height })) // s: 52 e: final
+				/// JEFE FINAL
 			);
 
 			return levels[name];
