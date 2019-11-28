@@ -186,6 +186,8 @@
     <ClCompile Include="..\Classes\Player\Player2.cpp" />
     <ClCompile Include="..\Classes\menus\SelectPlayersMenu.cpp" />
     <ClCompile Include="..\Classes\menus\MenuInstrucciones.cpp" />
+    <ClCompile Include="..\Classes\BasicPoint.cpp" />
+    <ClCompile Include="..\Classes\Scenes\MiniGameScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\Scenes\MotherScene.h" />
@@ -214,6 +216,8 @@
     <ClInclude Include="..\Classes\Player\Player2.h" />
     <ClInclude Include="..\Classes\menus\SelectPlayersMenu.h" />
     <ClInclude Include="..\Classes\menus\MenuInstrucciones.h" />
+    <ClInclude Include="..\Classes\BasicPoint.h" />
+    <ClInclude Include="..\Classes\Scenes\MiniGameScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
