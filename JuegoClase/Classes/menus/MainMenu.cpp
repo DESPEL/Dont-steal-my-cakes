@@ -33,7 +33,7 @@ bool MainMenu::init() {
 	auto startButton = Button::create("menus/Botones/start0.png", "menus/Botones/start1.png", "menus/Botones/start0.png", Widget::TextureResType::LOCAL);
 	startButton->setAnchorPoint(Point(0.5, 1));
 	startButton->setScale(3, 1.5);
-	startButton->setPosition(Vec2(_visibleSize.width * 0.5, _visibleSize.height - (90 * getScaleY())));
+	startButton->setPosition(Vec2(_visibleSize.width * 0.5, _visibleSize.height - (70 * getScaleY())));
 	if (GameManager::getInstance()->getNextLevel() == GameManager::NUM_LEVELS) {
 		//startButton->addClickEventListener(functions.at(GameManager::NUM_LEVELS - 1));
 		startButton->addClickEventListener(CC_CALLBACK_0(MainMenu::actionButton1, this));
@@ -45,7 +45,7 @@ bool MainMenu::init() {
 	addChild(startButton);
 
 	//lanza el menu de seleccion de nivel
-	auto nextHeight = startButton->getPositionY() - startButton->getBoundingBox().size.height - (10 * getScaleY());
+	auto nextHeight = startButton->getPositionY() - startButton->getBoundingBox().size.height - (5 * getScaleY());
 	auto selectButton = Button::create("menus/Botones/level0.png", "menus/Botones/level1.png", "menus/Botones/level0.png", Widget::TextureResType::LOCAL);
 	selectButton->setAnchorPoint(Point(0.5, 1));
 	selectButton->setScale(3, 1.5);
@@ -54,7 +54,7 @@ bool MainMenu::init() {
 	addChild(selectButton);
 
 	//lanza las opciones para ajustar volumen y otras configuraciones
-	nextHeight = selectButton->getPositionY() - selectButton->getBoundingBox().size.height - (10 * getScaleY());
+	nextHeight = selectButton->getPositionY() - selectButton->getBoundingBox().size.height - (5 * getScaleY());
 	auto optionsButton = Button::create("menus/Botones/options0.png", "menus/Botones/options1.png", "menus/Botones/options0.png", Widget::TextureResType::LOCAL);
 	optionsButton->setAnchorPoint(Point(0.5, 1));
 	optionsButton->setScale(3, 1.5);
@@ -62,7 +62,7 @@ bool MainMenu::init() {
 	optionsButton->setPosition(Point(startButton->getPositionX(), nextHeight));
 	addChild(optionsButton);
 
-	nextHeight = optionsButton->getPositionY() - optionsButton->getBoundingBox().size.height - (10 * getScaleY());
+	nextHeight = optionsButton->getPositionY() - optionsButton->getBoundingBox().size.height - (5 * getScaleY());
 	auto Minigame = Button::create("menus/Botones/extra.png", "menus/Botones/extra.png", "menus/Botones/extra.png", Widget::TextureResType::LOCAL);
 	Minigame->setAnchorPoint(Point(0.5, 1));
 	Minigame->setScale(3, 1.5);
@@ -72,13 +72,21 @@ bool MainMenu::init() {
 
 
 
-	nextHeight = optionsButton->getPositionY() - optionsButton->getBoundingBox().size.height - (10 * getScaleY());
+	nextHeight = optionsButton->getPositionY() - optionsButton->getBoundingBox().size.height - (5 * getScaleY());
 	auto cerrar = Button::create("menus/Botones/close.png", "menus/Botones/close.png", "menus/Botones/close.png", Widget::TextureResType::LOCAL);
 	cerrar->setAnchorPoint(Point(0.5, 1));
 	cerrar->setScale(0.5, 0.3);
-	cerrar->addClickEventListener(CC_CALLBACK_0(MainMenu::actionButton2, this));
+	cerrar->addClickEventListener(CC_CALLBACK_0(MainMenu::actionButton4, this));
 	cerrar->setPosition(Point(400, 80));
 	addChild(cerrar);
+
+	nextHeight = Minigame->getPositionY() - Minigame->getBoundingBox().size.height - (5 * getScaleY());
+	auto TOP = Button::create("menus/Botones/TOP.png", "menus/Botones/TOP1.png", "menus/Botones/TOP2.png", Widget::TextureResType::LOCAL);
+	TOP->setAnchorPoint(Point(0.5, 1));
+	TOP->setScale(3, 1.5);
+	TOP->addClickEventListener(CC_CALLBACK_0(MainMenu::actionButton4, this));
+	TOP->setPosition(Point(Minigame->getPositionX(), nextHeight));
+	addChild(TOP);
 
 	if (!SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()) {
 		SimpleAudioEngine::getInstance()->playBackgroundMusic("music/Hollow.mp3", true);
