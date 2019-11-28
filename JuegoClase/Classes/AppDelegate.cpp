@@ -99,7 +99,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	director->setProjection(Director::Projection::_2D);
 
     // set FPS. the default value is 1.0/60 if you don't call this
-    director->setAnimationInterval(1.0f / 6000);
+    director->setAnimationInterval(1.0f / 60);
 
     // Set the design resolution
 	glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::EXACT_FIT); //ResolutionPolicy::EXACT_FIT, SHOW_ALL);
