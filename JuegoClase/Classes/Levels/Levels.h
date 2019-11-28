@@ -349,6 +349,33 @@ public:
 				}
 			);
 
+			Enemy* downfasttrip = EnemyPlus::create(
+				"enemigo2.png",
+				{
+					up100.get(180, 1 / 2.0f, false),
+					up100.get(0, 1 / 2.0f)
+				},
+				{ // 0.5, 0.5, 0.5, 0.5, 0.5
+					{0.4f, triple.get()},
+					{0.4f, triple.get()},
+					{0.4f, triple.get()},
+					{0.4f, triple.get()},
+					{0.4f, triple.get()},
+					{0.4f, triple.get()}
+				}
+				);
+
+			Enemy* spray1 = EnemyPlus::create(
+				"enemigo4.png",
+				{
+					up100.get(-180, 1, false),
+					up100.get()
+				},
+				{
+					{ 0.0f, spray.get()}
+				}
+				);
+
 			levels[name] = Level( // Delta: 1s
 				mktp(9.2f, slowdcir->get({sz.width / 2, sz.height})), // s: 8.2, e: 10.2
 				mktp(2.0f, downslow->get({sz.width / 2 - 100, sz.height})), // s: 10.2 e: 12.7
@@ -359,8 +386,22 @@ public:
 				mktp(0.0f, downfast->get({ 2 * sz.width / 4, sz.height })),
 				mktp(0.0f, downfast->get({ 3 * sz.width / 4, sz.height })),
 				mktp(2.1f, downfastcirc->get({ 1 * sz.width / 6, sz.height + 25 })), // s: 14.8 e: 17.8
-				mktp(0.0f, downfastcirc->get({ 3 * sz.width / 6, sz.height + 25 })),
-				mktp(0.0f, downfastcirc->get({ 5 * sz.width / 6, sz.height + 25 }))
+				//mktp(0.0f, downfastcirc->get({ 3 * sz.width / 6, sz.height + 25 })),
+				mktp(0.0f, downfastcirc->get({ 5 * sz.width / 6, sz.height + 25 })),
+				mktp(3.0f, downslow->get({ 1 * sz.width / 4, sz.height })),// s: 17.8 e: 20.3
+				mktp(0.0f, downslow->get({ 2 * sz.width / 4, sz.height })),
+				mktp(0.0f, downslow->get({ 3 * sz.width / 4, sz.height })),
+				mktp(4.5f, downfasttrip->get({ 1 * sz.width / 6, sz.height + 25 })), // s: 22.3 e: 24.7
+				mktp(0.0f, downfasttrip->get({ 3 * sz.width / 6, sz.height + 25 })),
+				mktp(0.0f, downfasttrip->get({ 5 * sz.width / 6, sz.height + 25 })),
+				mktp(2.0f, downfasttrip->get({ sz.width / 2, sz.height + 25 })), // s: 26.7
+				mktp(2.0f, downfast->get({ 1 * sz.width / 4, sz.height + 25 })), // s: 28.7
+				mktp(2.0f, downfast->get({ 3 * sz.width / 4, sz.height + 25 })), // s: 30.7 e: 32.5
+				mktp(3.0f, spray1->get({ 1 * sz.width / 6, sz.height})), // s: 33.7 f: 40.0
+				mktp(0.0f, spray1->get({ 5 * sz.width / 6, sz.height })),
+				mktp(6.3f, downfast->get({ 1 * sz.width / 4, sz.height })), // s: 40.0 e: 42.1
+				mktp(0.0f, downfast->get({ 2 * sz.width / 4, sz.height })),
+				mktp(0.0f, downfast->get({ 3 * sz.width / 4, sz.height }))
 			);
 
 			return levels[name];
