@@ -149,6 +149,7 @@
     <ClInclude Include="..\Classes\Scenes\MiniGameScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\menus\OptionsMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Levels">

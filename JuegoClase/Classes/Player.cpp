@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "GameManager.h"
 #include "AudioEngine.h"
 
 USING_NS_CC;
@@ -119,7 +120,7 @@ void Player::shoot(Vec2 dir) {
 	auto bullet = Balas.at(bulletsact);
 	bullet->activa = true;
 	bullet->direccion = dir;
-	cocos2d::experimental::AudioEngine::play2d("Music\\laser_shoot.mp3", false, 0.1f);
+	cocos2d::experimental::AudioEngine::play2d("Music\\laser_shoot.mp3", false, GameManager::getInstance()->getEffectsVolume()/100);
 	if(!vuelta)
 		this->getParent()->addChild(bullet, -1);
 	bullet->setAnchorPoint(Point(0.5, 0));

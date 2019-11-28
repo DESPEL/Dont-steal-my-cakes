@@ -134,7 +134,18 @@ void SelectPlayersMenu::actionButtonBack() {
 	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, MainMenu::createScene()));
 }
 
-void SelectPlayersMenu::selecP1() { GameWrapper::getInstance()->coop = false; this->P1->setBright(true); this->P2->setBright(false); };
+void SelectPlayersMenu::selecP1() { 
+	
+	GameWrapper::getInstance()->coop = false; 
+	this->P1->setBright(true); 
+	this->P2->setBright(false); 
+
+	this->P2nave1->setBright(true);
+	this->P2nave2->setBright(true);
+	this->P2nave3->setBright(true);
+	this->P2nave4->setBright(true);
+};
+
 void SelectPlayersMenu::selecP2() { GameWrapper::getInstance()->coop = true; this->P1->setBright(false); this->P2->setBright(true);  };
 
 void SelectPlayersMenu::selecN1() {
@@ -184,6 +195,7 @@ void SelectPlayersMenu::selecN4() {
 void SelectPlayersMenu::P2selecN1() {
 
 	GameWrapper::getInstance()->p2TipoNave = 1;
+	this->selecP2();
 
 	this->P2nave1->setBright(false);
 	this->P2nave2->setBright(true);
@@ -195,6 +207,7 @@ void SelectPlayersMenu::P2selecN1() {
 void SelectPlayersMenu::P2selecN2() {
 
 	GameWrapper::getInstance()->p2TipoNave = 2;
+	this->selecP2();
 
 	this->P2nave1->setBright(true);
 	this->P2nave2->setBright(false);
@@ -206,6 +219,7 @@ void SelectPlayersMenu::P2selecN2() {
 void SelectPlayersMenu::P2selecN3() {
 
 	GameWrapper::getInstance()->p2TipoNave = 3;
+	this->selecP2();
 
 	this->P2nave1->setBright(true);
 	this->P2nave2->setBright(true);
@@ -217,6 +231,7 @@ void SelectPlayersMenu::P2selecN3() {
 void SelectPlayersMenu::P2selecN4() {
 
 	GameWrapper::getInstance()->p2TipoNave = 4;
+	this->selecP2();
 
 	this->P2nave1->setBright(true);
 	this->P2nave2->setBright(true);

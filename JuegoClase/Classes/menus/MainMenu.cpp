@@ -7,10 +7,11 @@
 #include "GameManager.h"
 #include "MenuInstrucciones.h"
 #include "Scenes/MiniGameScene.h"
+#include "AudioEngine.h"
 
 USING_NS_CC;
 using namespace ui;
-using namespace CocosDenshion;
+
 
 Scene* MainMenu::createScene() {
 	auto scene = Scene::create();
@@ -80,9 +81,11 @@ bool MainMenu::init() {
 	cerrar->setPosition(Point(400, 80));
 	addChild(cerrar);
 
-	if (!SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()) {
-		SimpleAudioEngine::getInstance()->playBackgroundMusic("music/Hollow.mp3", true);
-	}
+	//if (!SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying() && ) {
+	//	SimpleAudioEngine::getInstance()->playBackgroundMusic("music/Hollow.mp3", true);
+		cocos2d::experimental::AudioEngine::play2d("Music\\Hollow.mp3", true, GameManager::getInstance()->getBgVolume()/100);
+		//cocos2d::experimental::AudioEngine::stop(cocos2d::experimental::AudioEngine::)
+	//}
 
 	return true;
 }
@@ -94,7 +97,7 @@ void MainMenu::selectMenuButton() {
 }
 
 void MainMenu::optionsButton() {
-	Director::getInstance()->replaceScene(TransitionFlipX::create(1, DebugScene::createScene(Player::Tipos::NORMAL, true, Player2::Tipos::RAPIDIN)));
+	Director::getInstance()->replaceScene(TransitionFlipX::create(1, OptionsMenu::createScene()));
 }
 
 void MainMenu::selectPlayer() {

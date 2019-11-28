@@ -4,12 +4,11 @@
 #include "AudioEngine.h"
 
 #include "Levels/Levels.h"
-
+#include "GameManager.h"
 #include "TranslationEngine.h"
 #include "ui/CocosGUI.h"
 #include "GameWrapper.h"
 #include "menus/MainMenu.h"
-using namespace CocosDenshion;
 
 USING_NS_CC;
 
@@ -99,7 +98,7 @@ bool DebugScene::init() {
 	Levels::create("level-1").get(this).run();
 
 	// Musica
-	this->soundID = cocos2d::experimental::AudioEngine::play2d("Music\\Mantis.mp3", true);
+	this->soundID = cocos2d::experimental::AudioEngine::play2d("Music\\Mantis.mp3", true, GameManager::getInstance()->getBgVolume()/100);
 	return true;
 }
 
