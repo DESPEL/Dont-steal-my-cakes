@@ -10,6 +10,7 @@ public:
 		IDLE = 0,
 		EXPLOSION = 1
 	};
+	bool exploded = false;
 
 protected:
 

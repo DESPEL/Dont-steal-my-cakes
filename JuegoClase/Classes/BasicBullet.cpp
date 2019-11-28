@@ -5,7 +5,7 @@ bool BasicBullet::init() noexcept {
 }
 
 void BasicBullet::run(float) {
-	if (parent->getCurrentAnimation() == BasicEnemy::EXPLOSION) {
+	if (parent->exploded) {
 		runAction(cocos2d::RemoveSelf::create());
 		return;
 	}

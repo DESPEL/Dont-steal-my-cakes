@@ -125,7 +125,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
     //auto scene = DebugScene::createScene();
 
-	auto scene = MainMenu::createScene();
+	//auto scene = MainMenu::createScene();
+	auto scene = DebugScene::createScene();
 
     // run
     director->runWithScene(scene);

@@ -14,7 +14,6 @@ class AttackPattern;
 class Enemy : public BasicEnemy
 {
 public:
-	bool exploded = false;
 
 	enum Animations {
 		IDLE = 0, EXPLOSION = 1
@@ -34,11 +33,11 @@ public:
 		currentAnimation = IDLE;
 		//createIdleAnimation();
 		createExplosionAnimation();
+		//this->retain();
 		return true;
 	}
 
 	static Enemy* create(std::string name, cocos2d::Sequence* seq, AttackPattern att, cocos2d::Vec2 pos) {
-		
 		Enemy* ret = Enemy::create();
 		ret->initWithFile(name);
 		ret->sequence = seq;
@@ -104,7 +103,7 @@ public:
 		//cocos2d::log("enemy running");
 		runAction(sequence->clone());
 		setVisible(true);
-		attack.get(sequence).run(this);
+		attack.get().run(this);
 		scheduleUpdate();
 		//p->getParent()->addChild(this);
 	}

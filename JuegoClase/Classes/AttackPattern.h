@@ -38,7 +38,7 @@ public:
 		times = ts;
 	}
 
-	AttackPattern get(cocos2d::Sequence* parentSeq = nullptr) {
+	AttackPattern get() {
 		return AttackPattern(seqs, bullets, times);
 	}
 
@@ -53,7 +53,6 @@ public:
 
 			bullet->seq = seqs.at(i);
 			bullet->setAnchorPoint(cocos2d::Vec2(0.5, 0.5));
-			//bullet->setPosition(parent->getPosition());
 			bullet->setScale(2.0f, 1.0f);
 			bullet->parent = parent;
 			bullet->setVisible(false);
