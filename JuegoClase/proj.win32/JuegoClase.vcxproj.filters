@@ -41,10 +41,10 @@
       <Filter>Menus</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>Default</Filter>
+      <Filter>Menus\Default</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Default</Filter>
+      <Filter>Menus\Default</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Background.cpp">
       <Filter>Resources</Filter>
@@ -118,10 +118,10 @@
       <Filter>Menus</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>Default</Filter>
+      <Filter>Menus\Default</Filter>
     </ClInclude>
     <ClInclude Include="main.h">
-      <Filter>Default</Filter>
+      <Filter>Menus\Default</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Background.h">
       <Filter>Resources</Filter>
@@ -150,19 +150,19 @@
     <Filter Include="Menus">
       <UniqueIdentifier>{567cd04f-0d5f-4676-a0d2-5ae724672550}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Default">
-      <UniqueIdentifier>{7cef0bcc-c48f-457f-8a40-3400a569cc58}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{4bce5206-a788-4246-a887-969524b6db0a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Translation">
       <UniqueIdentifier>{52fdd819-fbd1-45cf-a0c0-d31457b03c37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Menus\Default">
+      <UniqueIdentifier>{7cef0bcc-c48f-457f-8a40-3400a569cc58}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
-      <Filter>Default</Filter>
+      <Filter>Menus\Default</Filter>
     </ResourceCompile>
   </ItemGroup>
 </Project>

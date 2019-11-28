@@ -9,6 +9,8 @@
 #include "MovementPatterns/MovementPatterns.h"
 #include "AttackPatterns/AttackPatterns.h"
 
+#define mktp std::make_tuple
+
 USING_NS_CC;
 
 class Levels {
@@ -242,11 +244,126 @@ public:
 				std::make_tuple(1.8f, lat4->get({ sz.width, sz.height - 50 })), // 28.8
 				std::make_tuple(2.4f, lat3->get({ 0, sz.height - 50 })), // 30.8
 				std::make_tuple(2.8f, spray1->get({ sz.width / 2, sz.height + 25 })), // 33.5
-				std::make_tuple(3.5f, triple1->get({ 100, sz.height })), // 37
-				std::make_tuple(0.0f, triple1->get({ sz.width - 100, sz.height }))
+				std::make_tuple(1.0f, spray1->get({ sz.width / 2 + 100, sz.height + 25 })),
+				std::make_tuple(0.0f, spray1->get({ sz.width / 2 - 100, sz.height + 25 })),
+				std::make_tuple(2.5f, triple1->get({ 100, sz.height })), // 37
+				std::make_tuple(0.0f, triple1->get({ sz.width - 100, sz.height })), 
+				std::make_tuple(2.0f, down3l->get({ 100, sz.height })),
+				std::make_tuple(0.0f, down3l->get({ sz.width - 100, sz.height })),
+				std::make_tuple(0.1f, down3l->get({ 200, sz.height })),
+				std::make_tuple(0.0f, down3l->get({ sz.width - 200, sz.height })), // 39
+				std::make_tuple(1.0f, lat1->get({ 0, sz.height - 50 })),
+				std::make_tuple(0.0f, lat2->get({ sz.width , sz.height - 50 })), // 40
+				std::make_tuple(4.5f, lat4->get({ sz.width, sz.height - 50 })), // 44.5
+				std::make_tuple(3.0f, lat3->get({ 0, sz.height - 50 })), // 47.5
+				std::make_tuple(1.0f, down3l->get({ 100, sz.height })),
+				std::make_tuple(0.0f, down3l->get({ sz.width - 100, sz.height })),
+				std::make_tuple(0.0f, down3l->get({ 200, sz.height })),
+				std::make_tuple(0.0f, down3l->get({ sz.width - 200, sz.height })), // 48.5
+				std::make_tuple(2.5f, down1->get({ 100, sz.height })),
+				std::make_tuple(0.0f, down1->get({ sz.width - 100, sz.height })), // 51
+				std::make_tuple(3.5f, down3l->get({ 100, sz.height + 50})), // 54.5
+				std::make_tuple(0.0f, down3l->get({ sz.width - 100, sz.height + 50 })),
+				std::make_tuple(1.0f, down3l->get({ 200, sz.height + 50 })), // 55.5
+				std::make_tuple(0.0f, down3l->get({ sz.width - 200, sz.height + 50})),
+				std::make_tuple(2.5f, lat4->get({ sz.width, sz.height - 50 })), // 56.5
+				std::make_tuple(3.0f, lat3->get({ 0, sz.height - 50 })), // 59.5
+				std::make_tuple(1.0f, lat4->get({ sz.width, sz.height - 50 })), // 60.5
+				std::make_tuple(1.5f, lat3->get({ 0, sz.height - 50 })), // 62
+				std::make_tuple(2.0f, spray1->get({ sz.width / 2, sz.height + 25 })), // 64
+				std::make_tuple(3.0f, spray1->get({ sz.width / 2 + 100, sz.height + 25 })), // 68
+				std::make_tuple(0.0f, spray1->get({ sz.width / 2 - 100, sz.height + 25 }))
+				// AQUI APARECE EL BOSS
 			);
 
 			return levels.at(name);
+		}
+
+		if (name == "level-2") {
+			auto up100 = MovementPatterns::create("up-100");
+			auto stmov = MovementPatterns::create("static");
+			// 0.5f
+
+			auto circular = AttackPatterns::create("circular");
+			auto triple = AttackPatterns::create("triple");
+			auto linear = AttackPatterns::create("linear");
+			auto spray = AttackPatterns::create("test");
+
+			Enemy* slowdcir = EnemyPlus::create(
+				"enemigo2.png",
+				{
+					up100.get(180, 1/2.0f, false),
+					up100.get(0, 1/2.0f)
+				},
+				{
+					{2.0f, circular.get()},
+					{0.1f, circular.get()}
+				}
+			);
+
+			Enemy* downslow = EnemyPlus::create(
+				"enemigo2.png",
+				{
+					up100.get(180, 1 / 2.0f, false),
+					stmov.get(0, 2.0f, false),
+					up100.get(0, 1 / 1.5f)
+				},
+				{ // 0.5, 0.5, 0.5, 0.5, 0.5
+					{0.5f, linear.get()},
+					{0.5f, linear.get()},
+					{0.5f, linear.get()},
+					{0.5f, linear.get()},
+					{0.5f, linear.get()}
+				}
+			);
+
+			Enemy* downfast = EnemyPlus::create(
+				"enemigo2.png",
+				{
+					up100.get(180, 1 / 2.0f, false),
+					up100.get(0, 1 / 2.0f)
+				},
+				{ // 0.5, 0.5, 0.5, 0.5, 0.5
+					{0.3f, linear.get()},
+					{0.3f, linear.get()},
+					{0.3f, linear.get()},
+					{0.3f, linear.get()},
+					{0.3f, linear.get()},
+					{0.3f, linear.get()}
+				}
+			);
+
+			Enemy* downfastcirc = EnemyPlus::create(
+				"enemigo2.png",
+				{
+					up100.get(180, 1 / 2.0f, false),
+					up100.get(0, 1 / 2.0f)
+				},
+				{ // 0.5, 0.5, 0.5, 0.5, 0.5
+					{0.5f, circular.get()},
+					{0.5f, circular.get()},
+					{0.5f, circular.get()},
+					{0.5f, circular.get()},
+					{0.5f, circular.get()},
+					{0.5f, circular.get()}
+				}
+			);
+
+			levels[name] = Level( // Delta: 1s
+				mktp(9.2f, slowdcir->get({sz.width / 2, sz.height})), // s: 8.2, e: 10.2
+				mktp(2.0f, downslow->get({sz.width / 2 - 100, sz.height})), // s: 10.2 e: 12.7
+				mktp(0.0f, downslow->get({ 100 / 2, sz.height })),
+				mktp(0.0f, downslow->get({ sz.width - 100 / 2, sz.height })),
+				mktp(0.0f, downslow->get({ sz.width / 2 + 100, sz.height })), 
+				mktp(2.5f, downfast->get({ 1 * sz.width / 4, sz.height })),// s: 12.7 e: 14.8
+				mktp(0.0f, downfast->get({ 2 * sz.width / 4, sz.height })),
+				mktp(0.0f, downfast->get({ 3 * sz.width / 4, sz.height })),
+				mktp(2.1f, downfastcirc->get({ 1 * sz.width / 6, sz.height + 25 })), // s: 14.8 e: 17.8
+				mktp(0.0f, downfastcirc->get({ 3 * sz.width / 6, sz.height + 25 })),
+				mktp(0.0f, downfastcirc->get({ 5 * sz.width / 6, sz.height + 25 }))
+			);
+
+			return levels[name];
 		}
 
 		throw "level not found";

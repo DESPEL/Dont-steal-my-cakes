@@ -41,7 +41,7 @@ bool DebugScene::init() {
 
 	// ejecutar nivel
 	//Levels::create("level-1").get(this).run();
-	Levels::create("level-1").get(this).run();
+	Levels::create("level-2").get(this).run();
 
 	// Testing translation engine
 	/*
@@ -55,7 +55,7 @@ bool DebugScene::init() {
 
 	// Musica
 
-	cocos2d::experimental::AudioEngine::play2d("Music\\Mantis.mp3", true);
+	cocos2d::experimental::AudioEngine::play2d("Music\\TowerOfHeaven.mp3", true);
 	return true;
 }
 
