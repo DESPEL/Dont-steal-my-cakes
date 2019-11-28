@@ -7,6 +7,7 @@
 #include "GameManager.h"
 #include "MenuInstrucciones.h"
 #include "Scenes/MiniGameScene.h"
+#include "Scenes/TopScene.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -76,7 +77,7 @@ bool MainMenu::init() {
 	auto cerrar = Button::create("menus/Botones/close.png", "menus/Botones/close.png", "menus/Botones/close.png", Widget::TextureResType::LOCAL);
 	cerrar->setAnchorPoint(Point(0.5, 1));
 	cerrar->setScale(0.5, 0.3);
-	cerrar->addClickEventListener(CC_CALLBACK_0(MainMenu::actionButton4, this));
+	cerrar->addClickEventListener(CC_CALLBACK_0(MainMenu::actionButton2, this));
 	cerrar->setPosition(Point(400, 80));
 	addChild(cerrar);
 
@@ -126,7 +127,7 @@ void MainMenu::initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> fu
 void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MenuIns::createScene())); }
 void MainMenu::actionButton2() { Director::getInstance()->end(); }
 void MainMenu::actionButton3() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MiniGameScene::createScene())); }
-void MainMenu::actionButton4() {  /*TODO*/ }
+void MainMenu::actionButton4() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, TopMenu::createScene())); }
 void MainMenu::actionButton5() {  /*TODO*/ }
 void MainMenu::actionButton6() {  /*TODO*/ }
 void MainMenu::actionButton7() {  /*TODO*/ }

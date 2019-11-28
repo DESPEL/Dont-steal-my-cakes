@@ -12,7 +12,7 @@ public:
 	static cocos2d::Scene* createScene();
 
 	CREATE_FUNC(MainMenu);
-
+	void selectPlayer();
 	void selectMenuButton();
 	void optionsButton();
 	void actionButton1();

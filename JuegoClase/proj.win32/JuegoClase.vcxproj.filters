@@ -64,6 +64,9 @@
     <ClCompile Include="..\Classes\Scenes\MiniGameScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scenes\TopScene.cpp">
+      <Filter>Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\MovementPatterns\MovementPatterns.h">
@@ -148,6 +151,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Scenes\MiniGameScene.h">
       <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scenes\TopScene.h">
+      <Filter>Menus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

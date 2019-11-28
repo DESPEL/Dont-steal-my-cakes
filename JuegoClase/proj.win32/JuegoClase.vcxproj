@@ -178,6 +178,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Player.cpp" />
     <ClCompile Include="..\Classes\Player\Changuito.cpp" />
     <ClCompile Include="..\Classes\Scenes\DebugScene.cpp" />
+    <ClCompile Include="..\Classes\Scenes\TopScene.cpp" />
     <ClCompile Include="..\Classes\TranslationEngine.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -209,6 +210,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Player.h" />
     <ClInclude Include="..\Classes\Player\Changuito.h" />
     <ClInclude Include="..\Classes\Scenes\DebugScene.h" />
+    <ClInclude Include="..\Classes\Scenes\TopScene.h" />
     <ClInclude Include="..\Classes\TranslationEngine.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
