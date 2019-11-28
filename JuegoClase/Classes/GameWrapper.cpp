@@ -33,6 +33,6 @@ Player* GameWrapper::getPlayer() {
 }
 
 void GameWrapper::death() {
-	cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionCrossFade::create(1, DeathMenu::createScene())); 
+	cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionCrossFade::create(0.1f, DeathMenu::createScene())); 
 }
 

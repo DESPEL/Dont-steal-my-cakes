@@ -110,32 +110,35 @@ void DebugScene::update(float delta) {
 
 	_player->update(delta);
 
+
 	if ((_player->get_currentAnimation() == Player::EXPLOSION && !two) || (_player->get_currentAnimation() == Player::EXPLOSION && two && (_player2->get_currentAnimation() == Player2::EXPLOSION))) {
-		experimental::AudioEngine::stop(soundID);
-		this->wrapper->death();
+		if (_player->getActionByTag(Player::Animations::EXPLOSION) == nullptr && (!two || (_player2->getActionByTag(Player::Animations::EXPLOSION) == nullptr))) {
+			experimental::AudioEngine::stop(soundID);
+			this->wrapper->death();
+		}
 	}
 }
 void DebugScene::pauseButtonAction()
 {
+	experimental::AudioEngine::pause(soundID);
 	button->setVisible(false);
 	button2->setVisible(true);
 	button3->setVisible(true);
 	button4->setVisible(true);
 	pause();
 	this->pausado = 1;
-	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 	cocos2d::Director::getInstance()->stopAnimation();
 	
 }
 
 void DebugScene::playButtonAction()
 {
+	experimental::AudioEngine::resume(soundID);
 	button->setVisible(true);
 	button2->setVisible(false);
 	button3->setVisible(false);
 	button4->setVisible(false);
 	resume();
-	SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 	
 	cocos2d::Director::getInstance()->startAnimation();
 
@@ -146,7 +149,8 @@ void DebugScene::saveButtonAction() {
 }
 
 void DebugScene::salirButtonAction() {
+	experimental::AudioEngine::stop(soundID);
 	cocos2d::Director::getInstance()->startAnimation();
-	Director::getInstance()->pushScene(TransitionFadeBL::create(1, MainMenu::createScene()));
+	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, MainMenu::createScene()));
 }
 
