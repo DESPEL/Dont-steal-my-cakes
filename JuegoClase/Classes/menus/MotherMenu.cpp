@@ -1,4 +1,5 @@
 #include "MotherMenu.h"
+#include "GameWrapper.h"
 
 USING_NS_CC;
 
@@ -25,6 +26,8 @@ bool MotherMenu::init() {
 	_bg->setSpeed(30.0f);
 	this->addChild(_bg);
 	
+	wrapper = GameWrapper::getInstance();
+
 	scheduleUpdate();
 	return true;
 }
