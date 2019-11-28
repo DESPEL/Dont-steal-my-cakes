@@ -71,8 +71,6 @@ bool MainMenu::init() {
 	addChild(Minigame);
 
 
-
-
 	auto cerrar = Button::create("menus/Botones/close.png", "menus/Botones/close.png", "menus/Botones/close.png", Widget::TextureResType::LOCAL);
 	cerrar->setAnchorPoint(Point(0.5, 1));
 	cerrar->setScale(0.5,0.3);
@@ -94,18 +92,12 @@ void MainMenu::selectMenuButton() {
 }
 
 void MainMenu::optionsButton() {
-<<<<<<< HEAD
-	Director::getInstance()->replaceScene(TransitionFlipX::create(1, DebugScene::createScene(true)));
-}	
-=======
 	Director::getInstance()->replaceScene(TransitionFlipX::create(1, DebugScene::createScene(Player::Tipos::NORMAL, true, Player2::Tipos::RAPIDIN)));
 }
 
 void MainMenu::selectPlayer() {
 	Director::getInstance()->replaceScene(TransitionFlipX::create(1, SelectPlayersMenu::createScene()));
 }
->>>>>>> Menu2
-
 
 
 void MainMenu::initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> functions) {

@@ -7,7 +7,7 @@
 #include "BasicBullet.h"
 #include "BasicEnemy.h"
 
-class BasicBullet;
+//class BasicBullet;
 class BasicEnemy;
 
 class AttackPattern

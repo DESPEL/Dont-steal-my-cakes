@@ -1,11 +1,10 @@
 #pragma once
 
 #include "cocos2d.h"
-#include "Bullet.h"
 #include "MovementPattern.h"
 #include "AttackPattern.h"
 
-
+class Bullet;
 
 class BasicPoint : public cocos2d::Sprite {
 private:
@@ -28,10 +27,10 @@ public:
 
 	void setCurrentAnimation(Animations anim);
 	void explode();
-	void scheduleShoot();
-	void shoot();
+	//void scheduleShoot();
+	//void shoot();
 	void erase();
-	void run();
+	//void run();
 
 	CC_SYNTHESIZE(Animations, _currentAnimation, _currentAnimation);
 	CC_SYNTHESIZE(float, _speed, Speed);
@@ -40,8 +39,8 @@ public:
 	virtual bool init();
 	void update(float);
 
-	int bulletsact = 0;
-	bool vuelta = 0;
-	cocos2d::Vector<Bullet*> Balas;
+	//int bulletsact = 0;
+	//bool vuelta = 0;
+	//cocos2d::Vector<Bullet*> Balas;
 	bool exploded = false;
 };

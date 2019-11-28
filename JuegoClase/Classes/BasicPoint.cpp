@@ -1,5 +1,6 @@
 #include "BasicPoint.h"
 #include "MovementPattern.h"
+#include "Bullet.h"
 
 USING_NS_CC;
 
@@ -32,7 +33,7 @@ void BasicPoint::erase() {
 	
 }
 
-void BasicPoint::run() {
+/*void BasicPoint::run() {
 	MovementPattern<2> test(
 		std::make_tuple(1.0f, Vec2(0, 0)),
 		std::make_tuple(10.0f, Vec2(0, 0))
@@ -43,7 +44,7 @@ void BasicPoint::run() {
 
 	this->runAction(test.get(90));
 
-}
+}*/
 
 void BasicPoint::createIdleAnimation() {
 	Vector<SpriteFrame*> animFrames;
@@ -108,7 +109,7 @@ void BasicPoint::explode() {
 	exploded = true;
 }
 
-void BasicPoint::scheduleShoot() {
+/*void BasicPoint::scheduleShoot() {
 
 	//establecemos que la nave disparara cada medio segundo
 	DelayTime* delayAction = DelayTime::create(2.0f);
@@ -121,10 +122,10 @@ void BasicPoint::scheduleShoot() {
 	_shoot->setTag(20);
 	// envolvemos la secuencia un una accion RepeatForever
 	runAction(_shoot);
-}
+}*/
 
 
-
+/*
 void BasicPoint::shoot() {
 	auto bullet = Balas.at(bulletsact);
 	bullet->activa = true;
@@ -141,7 +142,7 @@ void BasicPoint::shoot() {
 	}
 	else
 		bulletsact++;
-}
+}*/
 
 
 
