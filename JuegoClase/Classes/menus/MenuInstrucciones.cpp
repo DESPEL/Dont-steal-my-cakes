@@ -1,6 +1,5 @@
 #include "Menuinstrucciones.h"
 #include "GameManager.h"
-#include "GameWrapper.h"
 #include "Scenes/DebugScene.h"
 
 
@@ -158,5 +157,5 @@ void MenuIns::initButtons() {
 }
 
 void MenuIns::actionButtonBack() {
-	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, DebugScene::createScene(GameWrapper::getInstance()->p1TipoNave, GameWrapper::getInstance()->coop, GameWrapper::getInstance()->p2TipoNave)));
+	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, DebugScene::createScene()));
 }
