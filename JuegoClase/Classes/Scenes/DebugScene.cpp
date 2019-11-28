@@ -146,7 +146,7 @@ void DebugScene::update(float delta) {
 				}
 			}
 		}
-
+		
 		if (this->two) {
 			for (auto b : _player2->Balas) {
 				if (b->activa) {
@@ -209,7 +209,7 @@ void DebugScene::update(float delta) {
 		for (auto e : _enemyPool) {
 			e->stopActionByTag(20);
 		}
-
+		
 		this->wrapper->death();
 	}
 }
