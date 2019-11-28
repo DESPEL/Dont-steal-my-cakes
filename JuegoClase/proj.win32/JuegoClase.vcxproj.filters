@@ -52,6 +52,12 @@
     <ClCompile Include="..\Classes\TranslationEngine.cpp">
       <Filter>Translation</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\menus\LevelSelectMenu.cpp" />
+    <ClCompile Include="..\Classes\menus\OptionsMenu.cpp" />
+    <ClCompile Include="..\Classes\menus\DeathMenu.cpp" />
+    <ClCompile Include="..\Classes\menus\SelectPlayersMenu.cpp" />
+    <ClCompile Include="..\Classes\Player\Player2.cpp" />
+    <ClCompile Include="..\Classes\menus\MenuInstrucciones.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\MovementPatterns\MovementPatterns.h">
@@ -130,6 +136,7 @@
       <Filter>Translation</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Macros.h" />
+    <ClInclude Include="..\Classes\menus\SelectPlayersMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Levels">
