@@ -2,7 +2,7 @@
 #include "GameManager.h"
 #include "GameWrapper.h"
 #include "ui/CocosGUI.h"
-#include "SimpleAudioEngine.h"
+#include "AudioEngine.h"
 
 USING_NS_CC;
 using namespace ui;
