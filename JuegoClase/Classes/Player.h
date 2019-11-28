@@ -4,7 +4,7 @@
 #include <map>
 #include "keyboard.h"
 #include "Bullet.h"
-//#include "Player\Changuito.h"
+
 
 class Bullet;
 
@@ -14,6 +14,7 @@ protected:
 	// Customización
 	std::string personaje_path;
 	std::string animacion_path;
+
 
 
 	cocos2d::Action* _idleAnimation;
@@ -40,7 +41,7 @@ public:
 	};
 
 	enum Tipos {
-		DEFAULT = 0, BASIC = 1, ELQUESIGA = 2, SEMEAGOTA = 3, ELOP = 4
+		DEFAULT = 0, RAPIDIN = 1, NORMAL = 2, TANQUE = 3, MCDONALDS = 4
 	};
 
 	CC_SYNTHESIZE(Animations, _currentAnimation, _currentAnimation);

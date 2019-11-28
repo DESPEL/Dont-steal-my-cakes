@@ -58,7 +58,6 @@ bool Player::init() {
 	if (!Sprite::init())
 		return false;
 
-	//_speed = 2;
 	_currentAnimation = IDLE;
 
 	createIdleAnimation();
