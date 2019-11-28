@@ -51,5 +51,9 @@ public:
 		elapsed += delta;
 	}
 
+	~Level() {
+		cocos2d::log("level deleted");
+	}
+
 };
 

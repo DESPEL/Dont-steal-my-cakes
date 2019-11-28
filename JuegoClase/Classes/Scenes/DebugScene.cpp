@@ -151,6 +151,6 @@ void DebugScene::saveButtonAction() {
 void DebugScene::salirButtonAction() {
 	experimental::AudioEngine::stop(soundID);
 	cocos2d::Director::getInstance()->startAnimation();
-	Director::getInstance()->pushScene(TransitionFadeBL::create(1, MainMenu::createScene()));
+	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, MainMenu::createScene()));
 }
 
