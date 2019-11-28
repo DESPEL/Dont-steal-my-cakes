@@ -155,12 +155,14 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Classes\BasicPoint.cpp" />
     <ClCompile Include="..\Classes\menus\LevelSelectMenu.cpp" />
     <ClCompile Include="..\Classes\menus\OptionsMenu.cpp" />
     <ClCompile Include="..\Classes\menus\DeathMenu.cpp" />
     <ClCompile Include="..\Classes\menus\SelectPlayersMenu.cpp" />
     <ClCompile Include="..\Classes\Player\Player2.cpp" />
     <ClCompile Include="..\Classes\menus\MenuInstrucciones.cpp" />
+    <ClCompile Include="..\Classes\Scenes\MiniGameScene.cpp" />
     <ClCompile Include="..\Classes\Scenes\MotherScene.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Background.cpp" />
@@ -180,12 +182,14 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Classes\BasicPoint.h" />
     <ClInclude Include="..\Classes\menus\LevelSelectMenu.h" />
     <ClInclude Include="..\Classes\menus\OptionsMenu.h" />
     <ClInclude Include="..\Classes\menus\DeathMenu.h" />
     <ClInclude Include="..\Classes\menus\SelectPlayersMenu.h" />
     <ClInclude Include="..\Classes\Player\Player2.h" />
     <ClInclude Include="..\Classes\menus\MenuInstrucciones.h" />
+    <ClInclude Include="..\Classes\Scenes\MiniGameScene.h" />
     <ClInclude Include="..\Classes\Scenes\MotherScene.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\AttackPattern.h" />
