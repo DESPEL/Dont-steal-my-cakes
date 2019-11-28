@@ -7,16 +7,14 @@ using namespace CocosDenshion;
 
 USING_NS_CC;
 
-DebugScene::DebugScene(int tipoP1, bool two, int tipoP2) {
-	this->two = two;
-	this->naveP1 = tipoP1;
-	this->naveP2 = tipoP2;
+DebugScene::DebugScene(bool jug) {
+	this->two = jug;
 	DebugScene::init();
 }
 
-Scene* DebugScene::createScene(int tipoP1, bool two, int tipoP2) {
+Scene* DebugScene::createScene(bool jug) {
 	auto scene = Scene::create();
-	auto layer = new DebugScene(tipoP1, two, tipoP2); //DebugScene::create(jug);
+	auto layer = new DebugScene(jug); //DebugScene::create(jug);
 	scene->addChild(layer);
 
 	return scene;
@@ -69,7 +67,7 @@ bool DebugScene::init() {
 	
 
 	//Crea al jugador
-	_player = Player::create(naveP1);
+	_player = Player::create();
 	if(!this->two)
 		_player->setPosition(_visibleSize.width / 2, _visibleSize.height / 2 - 100);
 	else
@@ -79,7 +77,7 @@ bool DebugScene::init() {
 	addChild(_player);
 
 	if (this->two) {
-		_player2 = Player2::create(naveP2);
+		_player2 = Player2::create();
 		_player2->setPosition(_visibleSize.width / 2 - 100, _visibleSize.height / 2 - 100);
 		_player2->setScale(2);
 		addChild(_player2);
@@ -220,8 +218,8 @@ void DebugScene::pauseButtonAction()
 	button3->setVisible(true);
 	button4->setVisible(true);
 	pause();
-	this->pausado = 1;
 	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+	
 	cocos2d::Director::getInstance()->stopAnimation();
 	
 }
@@ -244,7 +242,7 @@ void DebugScene::saveButtonAction() {
 }
 
 void DebugScene::salirButtonAction() {
+	
 	cocos2d::Director::getInstance()->startAnimation();
 	Director::getInstance()->pushScene(TransitionFadeBL::create(1, MainMenu::createScene()));
 }
-

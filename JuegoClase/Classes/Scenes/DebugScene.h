@@ -10,9 +10,7 @@ class DebugScene : public cocos2d::Layer {
 private:
 
 		bool two = 0;
-		int naveP1;
-		int naveP2;
-
+		
 		//Enemys
 		int _numEnemies = 10;
 		int _enemyIndex = 0;
@@ -31,17 +29,15 @@ private:
 		void createEnemy();
 
 protected:
+	virtual void pauseButtonAction();
+	virtual void playButtonAction();
 	virtual void saveButtonAction();
 	virtual void salirButtonAction();
 
 public:
-		
-		virtual void pauseButtonAction();
-		virtual void playButtonAction();
-		bool pausado = 0;
-	
-		static cocos2d::Scene* createScene(int tipoP1 = 1, bool two = 0, int tipoP2 = 0);
-		DebugScene(int tipoP1, bool two, int tipoP2);
+		static cocos2d::Scene* createScene(bool = 0);
+
+		DebugScene(bool);
 		~DebugScene() {};
 
 		virtual bool init();

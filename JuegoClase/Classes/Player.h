@@ -4,18 +4,12 @@
 #include <map>
 #include "keyboard.h"
 #include "Bullet.h"
-
+//#include "Player\Changuito.h"
 
 class Bullet;
 
 class Player : public cocos2d::Sprite {
 protected:
-
-	// Customización
-	std::string personaje_path;
-	std::string animacion_path;
-
-
 
 	cocos2d::Action* _idleAnimation;
 	cocos2d::Action* _explosionAnimation;
@@ -41,22 +35,18 @@ public:
 	};
 
 	enum Tipos {
-		DEFAULT = 0, RAPIDIN = 1, NORMAL = 2, TANQUE = 3, MCDONALDS = 4
+		DEFAULT = 0, BASIC = 1, ELQUESIGA = 2, SEMEAGOTA = 3, ELOP = 4
 	};
 
 	CC_SYNTHESIZE(Animations, _currentAnimation, _currentAnimation);
 	CC_SYNTHESIZE(float, _speed, Speed);
-//	CREATE_FUNC(Player);
+	CREATE_FUNC(Player);
 	//Player();
 
 	// Colision
 	void setCurrentAnimation(Animations anim);
 
-	static Player* create(int tipo = 0);
-	Player(int tipo);
-	~Player() {};
-	
-	
+	static cocos2d::Sprite* create(int tipo);
 	virtual bool init();
 	void update(float);
 
