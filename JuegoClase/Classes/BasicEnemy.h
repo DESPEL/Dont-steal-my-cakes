@@ -16,6 +16,8 @@ public:
 		EXPLOSION = 1
 	};
 	bool exploded = false;
+	bool boss = false;
+	int hp = 100;
 
 protected:
 

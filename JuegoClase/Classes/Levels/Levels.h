@@ -249,6 +249,27 @@ public:
 			return levels.at(name);
 		}
 
+		if (name == "boss") {
+			auto circular = AttackPatterns::create("circular");
+			auto stmov = MovementPatterns::create("static");
+
+			Enemy* boss = EnemyPlus::createBoss(
+				"boss1.png",
+				{
+					stmov.get(0,1,false)
+				},
+				{
+					{3.0f, circular.get()}
+				}
+			);
+
+			levels[name] = Level(
+				std::make_tuple(0.5f, boss->get({ sz.width / 2, sz.height - 100 }))
+			);
+
+			return levels[name];
+		}
+
 		throw "level not found";
 	}
 };
