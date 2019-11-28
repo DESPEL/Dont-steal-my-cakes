@@ -78,12 +78,15 @@ public:
 			// 0.5f
 
 			auto circular = AttackPatterns::create("circular");
+			auto triple = AttackPatterns::create("triple");
 			auto linear = AttackPatterns::create("linear");
+			auto spray = AttackPatterns::create("test");
 
 
 			Enemy* down1 = EnemyPlus::create(
 				"enemigo4.png",
 				{
+					// angulo, velocidad, borrado al final
 					up100.get(-180, 1, false),
 					stmov.get(0, 1/5.0f, false),
 					up100.get()
@@ -123,13 +126,89 @@ public:
 					up100.get(-90, 2, false),
 					up100.get(-90, 2, false),
 					up100.get(-90, 2, false),
-					up100.get(-90, 2, false),
+					up100.get(-90, 2)
 				}, {
 					{ 0.0f, linear.get()},
 					{ 0.2f, linear.get()},
 					{ 0.2f, linear.get()},
 					{ 0.2f, linear.get()},
 					{ 0.2f, linear.get()}
+				}
+			);
+
+			Enemy* lat2 = EnemyPlus::create(
+				"enemigo4.png",
+				{
+					up100.get(90, 2, false),
+					up100.get(90, 2, false),
+					up100.get(90, 2, false),
+					up100.get(90, 2, false),
+					up100.get(90, 2)
+				}, {
+					{ 0.0f, linear.get()},
+					{ 0.2f, linear.get()},
+					{ 0.2f, linear.get()},
+					{ 0.2f, linear.get()},
+					{ 0.2f, linear.get()}
+				}
+			);
+
+			Enemy* lat3 = EnemyPlus::create(
+				"enemigo4.png",
+				{
+					up100.get(-90, 2, false),
+					up100.get(-90, 2, false),
+					up100.get(-90, 2, false),
+					up100.get(-90, 2, false),
+					up100.get(-90, 2)
+				}, {
+					{ 0.0f, linear.get()},
+					{ 0.3f, linear.get()},
+					{ 0.3f, linear.get()},
+					{ 0.3f, linear.get()},
+					{ 0.3f, linear.get()},
+					{ 0.3f, linear.get()}
+				}
+			);
+
+			Enemy* lat4 = EnemyPlus::create(
+				"enemigo4.png",
+				{
+					up100.get(90, 2, false),
+					up100.get(90, 2, false),
+					up100.get(90, 2, false),
+					up100.get(90, 2, false),
+					up100.get(90, 2)
+				}, {
+					{ 0.0f, linear.get()},
+					{ 0.3f, linear.get()},
+					{ 0.3f, linear.get()},
+					{ 0.3f, linear.get()},
+					{ 0.3f, linear.get()},
+					{ 0.3f, linear.get()}
+				}
+				);
+
+			Enemy* spray1 = EnemyPlus::create(
+				"enemigo4.png",
+				{
+					up100.get(-180, 1, false),
+					up100.get() 
+				},
+				{
+					{ 0.0f, spray.get()}
+				}
+			);
+
+			Enemy* triple1 = EnemyPlus::create(
+				"enemigo4.png",
+				{
+					up100.get(-180, 1, false),
+					up100.get()
+				},
+				{
+					{ 1.0f, triple.get()},
+					{ 0.5f, triple.get()}
 				}
 			);
 
@@ -143,9 +222,28 @@ public:
 				std::make_tuple(0.0f, down3l->get({ sz.width - 100, sz.height })),
 				std::make_tuple(0.1f, down3l->get({ 200, sz.height })),
 				std::make_tuple(0.0f, down3l->get({ sz.width - 200, sz.height })),
-				std::make_tuple(1.5, down1->get({ 200, sz.height + 50 })),
+				std::make_tuple(1.5f, down1->get({ 200, sz.height + 50 })),
 				std::make_tuple(0, down1->get({ sz.width - 200, sz.height + 50 })),
-				std::make_tuple(2.0, lat1->get({0, sz.height - 50 }))
+				std::make_tuple(2.0f, lat1->get({0, sz.height - 50 })), 
+				std::make_tuple(3.0f, lat2->get({ sz.width , sz.height - 50 })),
+				std::make_tuple(0.0f, lat1->get({ 25 , sz.height - 50 })),
+				std::make_tuple(2.0f, lat2->get({ sz.width - 25 , sz.height - 50 })),
+				std::make_tuple(0.0f, lat1->get({ 25 , sz.height - 50 })), 
+				std::make_tuple(1.0f, lat2->get({ sz.width - 25 , sz.height - 50 })),
+				std::make_tuple(0.0f, lat1->get({ 25 , sz.height - 50 })), // 19.8
+				std::make_tuple(2.0f, down1->get({ 100, sz.height + 50 })),// 21.8
+				std::make_tuple(0, down1->get({ sz.width - 100, sz.height + 50 })),
+				std::make_tuple(0, down1->get({ sz.width  / 2, sz.height + 50 })),
+				std::make_tuple(1.0f, down3l->get({ 100, sz.height })), // 22.8
+				std::make_tuple(0.0f, down3l->get({ sz.width - 100, sz.height })),
+				std::make_tuple(0.1f, down3l->get({ 200, sz.height })),
+				std::make_tuple(0.0f, down3l->get({ sz.width - 200, sz.height })),
+				std::make_tuple(4.0f, lat3->get({ 0, sz.height - 50 })), // 26.8
+				std::make_tuple(1.8f, lat4->get({ sz.width, sz.height - 50 })), // 28.8
+				std::make_tuple(2.4f, lat3->get({ 0, sz.height - 50 })), // 30.8
+				std::make_tuple(2.8f, spray1->get({ sz.width / 2, sz.height + 25 })), // 33.5
+				std::make_tuple(3.5f, triple1->get({ 100, sz.height })), // 37
+				std::make_tuple(0.0f, triple1->get({ sz.width - 100, sz.height }))
 			);
 
 			return levels.at(name);

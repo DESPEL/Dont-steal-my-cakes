@@ -44,6 +44,7 @@ Bullet* Bullet::createEnemyBullet() {
 
 void Bullet::colision() {
 	activa = false;
+	setPosition(-10000, -10000);
 	setVisible(false);
 }
 

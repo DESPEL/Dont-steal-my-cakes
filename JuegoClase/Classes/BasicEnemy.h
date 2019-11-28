@@ -3,9 +3,14 @@
 #include "cocos2d.h"
 //#include "Bullet.h"
 
+#include "BasicBullet.h"
+
+class BasicBullet;
 
 class BasicEnemy : public cocos2d::Sprite {
 public:
+	//cocos2d::Vector<BasicBullet*> bullets;
+
 	enum Animations {
 		IDLE = 0,
 		EXPLOSION = 1
@@ -64,6 +69,10 @@ protected:
 			stopActionByTag(IDLE);
 			runAction(explosionAnimation);
 		}
+	}
+
+	~BasicEnemy() {
+		explosionAnimation->release();
 	}
 
 

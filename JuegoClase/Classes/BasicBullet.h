@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 #include "cocos2d.h"
 
 #include "Player.h"
@@ -8,6 +10,7 @@
 
 class BasicEnemy;
 class Player;
+class GameWrapper;
 
 class BasicBullet : public cocos2d::Sprite
 {
@@ -24,6 +27,8 @@ public:
 	static BasicBullet* create(std::string filename);
 
 	static BasicBullet* create(BasicBullet* bull);
+
+	~BasicBullet();
 
 	CREATE_FUNC(BasicBullet);
 };

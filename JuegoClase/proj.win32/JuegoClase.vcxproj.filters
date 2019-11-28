@@ -129,6 +129,7 @@
     <ClInclude Include="..\Classes\TranslationEngine.h">
       <Filter>Translation</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Macros.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Levels">

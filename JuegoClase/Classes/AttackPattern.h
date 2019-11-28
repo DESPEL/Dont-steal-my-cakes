@@ -32,9 +32,6 @@ public:
 		for (BasicBullet* bul : buls) {
 			bullets.pushBack(BasicBullet::create(bul));
 		}
-		for (BasicBullet* bul : bullets) {
-			//bul->runAction(pseq->clone());
-		}
 		times = ts;
 	}
 
@@ -58,7 +55,13 @@ public:
 			bullet->setVisible(false);
 			parent->getParent()->addChild(bullet);
 			bullet->scheduleOnce(schedule_selector(BasicBullet::run), acc);
+			//parent->bullets.pushBack(bullet);
 		}
 	}
+
+	~AttackPattern() {
+		cocos2d::log("removing attack pattern");
+	}
+
 };
 

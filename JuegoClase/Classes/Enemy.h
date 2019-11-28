@@ -9,6 +9,10 @@
 
 #include "Bullet.h"
 
+#include "Macros.h"
+
+#include "BasicBullet.h"
+
 class AttackPattern;
 
 class Enemy : public BasicEnemy
@@ -24,7 +28,7 @@ public:
 	void explode();
 	void scheduleShoot();
 	void shoot();*/
-
+	bool fake = false;
 	cocos2d::Sequence* sequence;
 	AttackPattern attack;
 	cocos2d::Node* p;
@@ -37,7 +41,7 @@ public:
 		return true;
 	}
 
-	static Enemy* create(std::string name, cocos2d::Sequence* seq, AttackPattern att, cocos2d::Vec2 pos) {
+	static Enemy* create(std::string name, cocos2d::Sequence* seq, AttackPattern att, cocos2d::Vec2 pos, bool fake = false) {
 		Enemy* ret = Enemy::create();
 		ret->initWithFile(name);
 		ret->sequence = seq;
@@ -100,26 +104,37 @@ public:
 	}
 
 	void run(float) {
-		//cocos2d::log("enemy running");
-		runAction(sequence->clone());
+		cocos2d::log("enemy running");
+		cocos2d::Sequence* tseq = sequence->clone();
+		tseq->setTag(ENEMY_MOVEMENT);
+		runAction(tseq);
 		setVisible(true);
 		attack.get().run(this);
 		scheduleUpdate();
-		//p->getParent()->addChild(this);
 	}
 
 	void explode() {
-		//this->setCurrentAnimation(BasicEnemy::EXPLOSION);
+		exploded = true;
 		this->SetAnimation(BasicEnemy::EXPLOSION);
 		auto removeSelf = cocos2d::RemoveSelf::create();
 		auto wait = cocos2d::DelayTime::create(0.90f);
-		auto move = cocos2d::MoveTo::create(0, cocos2d::Vec2(this->getPosition().x, -500));
-		//setVisible(false);
-		this->runAction(cocos2d::Sequence::create(wait, move, cocos2d::Hide::create(), NULL));
-		exploded = true;
+		auto move = cocos2d::MoveTo::create(0, cocos2d::Vec2(-1000, -1000));
+		this->stopActionByTag(ENEMY_MOVEMENT);        
+		this->runAction(cocos2d::Sequence::create(wait, move, cocos2d::Hide::create(), cocos2d::RemoveSelf::create(), NULL));
+		unscheduleUpdate();
 	}
 
 	void update(float) {
+		std::stringstream s;
+		s << "updating enemy running actions: " << getNumberOfRunningActions();
+		cocos2d::log(s.str().c_str());
+
+		if (!isVisible() || getNumberOfRunningActions() == 0) {
+			this->stopActionByTag(ENEMY_MOVEMENT);
+			runAction(cocos2d::RemoveSelf::create());
+			return;
+		}
+		
 		for (Bullet* bullet : GameWrapper::getInstance()->getPlayer()->Balas) {
 			if (bullet->getBoundingBox().intersectsRect(getBoundingBox())) {
 				bullet->colision();
@@ -129,7 +144,13 @@ public:
 		if (GameWrapper::getInstance()->getPlayer()->getBoundingBox().intersectsRect(getBoundingBox())) {
 			GameWrapper::getInstance()->getPlayer()->setCurrentAnimation(Player::EXPLOSION);
 			explode();
-			//this->runAction(cocos2d::RemoveSelf::create());
+		}
+	}
+
+	~Enemy() {
+		cocos2d::log("enemy deleted");
+		if (fake) {
+			sequence->release();
 		}
 	}
 
@@ -155,8 +176,11 @@ public:
 				attack.bullets.pushBack(BasicBullet::create(std::get<1>(at).bullets.at(i)));
 			}
 		}
-		Enemy* ret = Enemy::create(name,  seq, attack, pos);
+		Enemy* ret = Enemy::create(name,  seq, attack, pos, true);
 		return ret;
 	}
 
+	~EnemyPlus() {
+		cocos2d::log("enemyplus deleted");
+	}
 };
