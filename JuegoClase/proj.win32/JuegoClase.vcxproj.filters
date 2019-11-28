@@ -142,6 +142,7 @@
       <Filter>Translation</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Macros.h" />
+    <ClInclude Include="..\Classes\menus\SelectPlayersMenu.h" />
     <ClInclude Include="..\Classes\BasicPoint.h">
       <Filter>AttackPatterns</Filter>
     </ClInclude>

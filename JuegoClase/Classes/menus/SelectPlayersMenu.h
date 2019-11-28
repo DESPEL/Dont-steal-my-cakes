@@ -18,12 +18,24 @@ private:
 	cocos2d::ui::Button* nave3;
 	cocos2d::ui::Button* nave4;
 
+	// Nave Segundo Jugador
+	
+	cocos2d::ui::Button* P2nave1;
+	cocos2d::ui::Button* P2nave2;
+	cocos2d::ui::Button* P2nave3;
+	cocos2d::ui::Button* P2nave4;
+
 	void selecP1();
 	void selecP2();
 	void selecN1();
 	void selecN2();
 	void selecN3();
 	void selecN4();
+
+	void P2selecN1();
+	void P2selecN2();
+	void P2selecN3();
+	void P2selecN4();
 
 
 public:
