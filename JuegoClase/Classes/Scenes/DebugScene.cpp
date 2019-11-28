@@ -47,18 +47,7 @@ bool DebugScene::init() {
 	addChild(_bg, -1);
 	_bg->scheduleUpdate();
 
-	//Crea al jugador
-	_player = Player::create();
-	_player->setPosition(_visibleSize.width / 2, _visibleSize.height / 2 - 100);
-	//_player->setScale(2);
-	addChild(_player);
-
-	GameWrapper::getInstance()->setPlayer(_player);
 	this->retain();
-
-	// ejecutar nivel
-	//Levels::create("level-1").get(this).run();
-	Levels::create("level-1").get(this).run();
 	
 	button2 = ui::Button::create("menus/Play.png", "menus/Play.png", "menus/Play.png");
 	button2->setAnchorPoint(Point(1, 0.5));
@@ -93,50 +82,26 @@ bool DebugScene::init() {
 		_player->setPosition(_visibleSize.width / 2, _visibleSize.height / 2 - 100);
 	else
 		_player->setPosition(_visibleSize.width / 2 + 100, _visibleSize.height / 2 - 100);
-	
-	_player->setScale(2);
 	addChild(_player);
 
 	if (this->two) {
 		_player2 = Player2::create(naveP2);
 		_player2->setPosition(_visibleSize.width / 2 - 100, _visibleSize.height / 2 - 100);
-		_player2->setScale(2);
 		addChild(_player2);
 	}
 
 	GameWrapper::getInstance()->setPlayer(_player);
 	GameWrapper::getInstance()->coop = this->two;
-	//Crea al enemigo
-	/*auto enemy = BasicEnemy::create();
-	enemy->setPosition(_visibleSize.width /2, _visibleSize.height /2 + 100);
-	enemy->setScale(2);
-	_enemyPool.pushBack(enemy);
-	addChild(enemy);
-	
-	enemy->run();*/
 
 	//Agrega el update al updater mas grande
 	this->schedule(schedule_selector(DebugScene::update));
 
-	// Testing translation engine
-	/*
-	auto lang = TranslationEngine::getInstance();
-
-	cocos2d::log(lang->get("test").c_str());
-	cocos2d::log(lang->get("test2").c_str());
-	lang->setLanguage("EN_US");
-	cocos2d::log(lang->get("test").c_str());
-	cocos2d::log(lang->get("test2").c_str());*/
+	Levels::create("level-1").get(this).run();
 
 	// Musica
-
-	cocos2d::experimental::AudioEngine::play2d("Music\\Mantis.mp3", true);
+	this->soundID = cocos2d::experimental::AudioEngine::play2d("Music\\Mantis.mp3", true);
 	return true;
 }
-
-void DebugScene::createEnemy() {
-
-};
 
 void DebugScene::update(float delta) {
 	if (_player->isVisible() || two && (_player2->isVisible() )) {// (wrapper->coop) ? (_player2->isVisible()) : ())
@@ -146,10 +111,7 @@ void DebugScene::update(float delta) {
 	_player->update(delta);
 
 	if ((_player->get_currentAnimation() == Player::EXPLOSION && !two) || (_player->get_currentAnimation() == Player::EXPLOSION && two && (_player2->get_currentAnimation() == Player2::EXPLOSION))) {
-		for (auto e : _enemyPool) {
-			e->stopActionByTag(20);
-		}
-
+		experimental::AudioEngine::stop(soundID);
 		this->wrapper->death();
 	}
 }

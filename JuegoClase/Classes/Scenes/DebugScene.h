@@ -33,14 +33,13 @@ private:
 	Player2* _player2;
 	cocos2d::Vector<BasicEnemy*> _enemyPool;
 
-	void createEnemy();
-
 protected:
 	virtual void saveButtonAction();
 	virtual void salirButtonAction();
 
 public:
-		
+	int soundID;
+
 	virtual void pauseButtonAction();
 	virtual void playButtonAction();
 	bool pausado = 0;

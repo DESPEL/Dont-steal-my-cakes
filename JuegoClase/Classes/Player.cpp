@@ -169,49 +169,35 @@ void Player::update(float delta) {
 	for (auto K : KeyBoard::keys) {
 		Vec2 loc = this->getPosition();
 		switch (K.first) {
+		case EventKeyboard::KeyCode::KEY_A:
+			if (GameWrapper::getInstance()->coop) break;
 		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:     
-		//case EventKeyboard::KeyCode::KEY_J:
 			this->setPosition(loc.x - deltax * change * _speed, loc.y);
 			break;
+		case EventKeyboard::KeyCode::KEY_D:
+			if (GameWrapper::getInstance()->coop) break;
 		case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
-		//case EventKeyboard::KeyCode::KEY_L:
 			this->setPosition(loc.x + deltax  * _speed, loc.y);
 			break;
+		case EventKeyboard::KeyCode::KEY_W:
+			if (GameWrapper::getInstance()->coop) break;
 		case EventKeyboard::KeyCode::KEY_UP_ARROW:
-		//case EventKeyboard::KeyCode::KEY_I:
 			this->setPosition(loc.x, loc.y + deltay * _speed);
 			break;
+		case EventKeyboard::KeyCode::KEY_S:
+			if (GameWrapper::getInstance()->coop) break;
 		case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
-		//case EventKeyboard::KeyCode::KEY_K:
 			this->setPosition(loc.x, loc.y - deltay * _speed);
 			break;
 		case EventKeyboard::KeyCode::KEY_SPACE:
 			if (this->delay <= 0) {
 				this->shoot(Vec2(0,2));
-				//this->shoot(Vec2(1, 1));
-				//this->shoot(Vec2(-1, 1));
-				//this->shoot(Vec2(0.5, 1.5));
-				//this->shoot(Vec2(-0.5, 1.5));
-				//this->shoot(Vec2(0.3, 1.8));
-				//this->shoot(Vec2(-0.3, 1.8));
 				this->delay = this->delayvalue;
 			}
 			break;
 		case EventKeyboard::KeyCode::KEY_ENTER:
 			//this->getParent()->DebugScene::pauseButtonAction();
 			break;
-		/*case EventKeyboard::KeyCode::KEY_Q:
-			if (this->delay <= 0) {
-				this->shoot(Vec2(-1, 1));
-				this->delay = this->delayvalue;
-			}
-			break;
-		case EventKeyboard::KeyCode::KEY_E:
-			if (this->delay <= 0) {
-				this->shoot(Vec2(1, 1));
-				this->delay = this->delayvalue;
-			}
-			break;*/
 		}
 	}
 
