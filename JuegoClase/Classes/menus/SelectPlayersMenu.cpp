@@ -28,14 +28,15 @@ bool SelectPlayersMenu::init() {
 	backBt->setAnchorPoint(Point(0, 0.5));
 	backBt->setScale(2);
 	backBt->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::actionButtonBack, this));
-	backBt->setPosition(Point(30 * getScaleX(), 30 * getScaleY()));
+	backBt->setPosition(Point(20, 50));
 	addChild(backBt);
 
 	auto startBt = Button::create("menus/Botones/back0.png", "menus/Botones/back1.png", "menus/Botones/back1.png", Widget::TextureResType::LOCAL);
 	startBt->setAnchorPoint(Point(0, 0.5));
 	startBt->setScale(2);
+	startBt->setRotation(180);
 	startBt->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::actionButton1, this));
-	startBt->setPosition(Point((_visibleSize.width - 30) * getScaleX(), 30 * getScaleY()));
+	startBt->setPosition(Point(390, 50));
 	addChild(startBt);
 
 	return true;
@@ -90,7 +91,7 @@ void SelectPlayersMenu::initButtons() {
 }
 
 void SelectPlayersMenu::actionButtonBack() {
-	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, SelectPlayersMenu::createScene()));
+	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, MainMenu::createScene()));
 }
 
 void SelectPlayersMenu::selecP1() { GameWrapper::getInstance()->coop = false; this->P1->setBright(true); this->P2->setBright(false); };
