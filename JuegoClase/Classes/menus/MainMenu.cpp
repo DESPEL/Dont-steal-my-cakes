@@ -8,6 +8,7 @@
 #include "MenuInstrucciones.h"
 #include "Scenes/MiniGameScene.h"
 #include "Scenes/TopScene.h"
+#include "menus/LogorsMenu.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -89,6 +90,13 @@ bool MainMenu::init() {
 	TOP->setPosition(Point(Minigame->getPositionX(), nextHeight));
 	addChild(TOP);
 
+	auto TP = Button::create("menus/Botones/Trofeo.png", "menus/Botones/Trofeo1.png", "menus/Botones/Trofeo.png", Widget::TextureResType::LOCAL);
+	TP->setAnchorPoint(Point(0.0, 0));
+	TP->setScale(.5, .25);
+	TP->addClickEventListener(CC_CALLBACK_0(MainMenu::actionButton5, this));
+	TP->setPosition(Point(0,0));
+	addChild(TP);
+
 	if (!SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()) {
 		SimpleAudioEngine::getInstance()->playBackgroundMusic("music/Hollow.mp3", true);
 	}
@@ -128,7 +136,7 @@ void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCr
 void MainMenu::actionButton2() { Director::getInstance()->end(); }
 void MainMenu::actionButton3() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MiniGameScene::createScene())); }
 void MainMenu::actionButton4() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, TopMenu::createScene())); }
-void MainMenu::actionButton5() {  /*TODO*/ }
+void MainMenu::actionButton5() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, LogMenu::createScene())); }
 void MainMenu::actionButton6() {  /*TODO*/ }
 void MainMenu::actionButton7() {  /*TODO*/ }
 void MainMenu::actionButton8() {  /*TODO*/ }
