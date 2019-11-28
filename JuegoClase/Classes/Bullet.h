@@ -2,7 +2,6 @@
 
 #include "cocos2d.h"
 #include "BasicEnemy.h"
-#include "BasicPoint.h"
 #include "Player.h"
 
 class Bullet : public cocos2d::Sprite {
