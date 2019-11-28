@@ -41,12 +41,13 @@ public:
 		return true;
 	}
 
-	static Enemy* create(std::string name, cocos2d::Sequence* seq, AttackPattern att, cocos2d::Vec2 pos, bool fake = false) {
+	static Enemy* create(std::string name, cocos2d::Sequence* seq, AttackPattern att, cocos2d::Vec2 pos, bool fake = false, bool boss = false) {
 		Enemy* ret = Enemy::create();
 		ret->initWithFile(name);
 		ret->sequence = seq;
 		ret->attack = att;
 		ret->setPosition(pos);
+		ret->boss = boss;
 		return ret;
 	}
 
@@ -56,10 +57,11 @@ public:
 		ret->sequence = base->sequence;
 		ret->attack = base->attack;
 		ret->setPosition(base->getPosition());
+		ret->boss = base->boss;
 		return ret;
 	}
 
-	static Enemy* create(Enemy* base, cocos2d::Vec2 pos) {
+	/*static Enemy* create(Enemy* base, cocos2d::Vec2 pos) {
 		Enemy* ret = Enemy::create();
 		ret->initWithTexture(base->getTexture());
 		ret->sequence = base->sequence;
@@ -85,7 +87,7 @@ public:
 		ret->setPosition(base->getPosition());
 		ret->p = parent;
 		return ret;
-	}
+	}*/
 
 	Enemy* get(cocos2d::Vec2 pos = cocos2d::Vec2(-100000, -100000), cocos2d::Sequence* seq = nullptr, std::string img = "") {
 		Enemy* ret = Enemy::create();
@@ -100,6 +102,14 @@ public:
 		ret->setPosition(pos);
 		ret->sequence = seq;
 		ret->attack = attack;
+		ret->boss = boss;
+		if (ret->boss) {
+			cocos2d::log("enemy created is boss:");
+		}
+		else {
+
+			cocos2d::log("enemy created is not boss:");
+		}
 		return ret;
 	}
 
@@ -111,17 +121,28 @@ public:
 		setVisible(true);
 		attack.get().run(this);
 		scheduleUpdate();
+		if (boss)
+			schedule(schedule_selector(Enemy::reAttack), attack.getDuration());
 	}
 
 	void explode() {
-		exploded = true;
-		this->SetAnimation(BasicEnemy::EXPLOSION);
-		auto removeSelf = cocos2d::RemoveSelf::create();
-		auto wait = cocos2d::DelayTime::create(0.90f);
-		auto move = cocos2d::MoveTo::create(0, cocos2d::Vec2(-1000, -1000));
-		this->stopActionByTag(ENEMY_MOVEMENT);        
-		this->runAction(cocos2d::Sequence::create(wait, move, cocos2d::Hide::create(), cocos2d::RemoveSelf::create(), NULL));
-		unscheduleUpdate();
+		if (!boss || (boss && hp <= 0)) {
+			exploded = true;
+			this->SetAnimation(BasicEnemy::EXPLOSION);
+			auto removeSelf = cocos2d::RemoveSelf::create();
+			auto wait = cocos2d::DelayTime::create(0.90f);
+			auto move = cocos2d::MoveTo::create(0, cocos2d::Vec2(-1000, -1000));
+			this->stopActionByTag(ENEMY_MOVEMENT);
+			this->runAction(cocos2d::Sequence::create(wait, move, cocos2d::Hide::create(), cocos2d::RemoveSelf::create(), NULL));
+			unscheduleUpdate();
+		}
+		else {
+			hp--;
+		}
+	}
+
+	void reAttack(float) {
+		attack.get().run(this);
 	}
 
 	void update(float) {
@@ -129,7 +150,8 @@ public:
 		s << "updating enemy running actions: " << getNumberOfRunningActions();
 		cocos2d::log(s.str().c_str());
 
-		if (!isVisible() || getNumberOfRunningActions() == 0) {
+		if ((!isVisible() || getNumberOfRunningActions() == 0) && !boss) {
+			cocos2d::log("no boss");
 			this->stopActionByTag(ENEMY_MOVEMENT);
 			runAction(cocos2d::RemoveSelf::create());
 			return;
@@ -160,7 +182,7 @@ public:
 class EnemyPlus
 {
 public:
-	static Enemy* create(std::string name, cocos2d::Vector<cocos2d::Sequence*> seqs, std::vector<std::tuple<float, AttackPattern>> atts, cocos2d::Vec2 pos = { 0, 0 }) {
+	static Enemy* create(std::string name, cocos2d::Vector<cocos2d::Sequence*> seqs, std::vector<std::tuple<float, AttackPattern>> atts, cocos2d::Vec2 pos = { 0, 0 }, bool boss = false) {
 		
 		cocos2d::Vector<cocos2d::FiniteTimeAction*> act;
 		for (cocos2d::Sequence* seq : seqs)
@@ -176,7 +198,19 @@ public:
 				attack.bullets.pushBack(BasicBullet::create(std::get<1>(at).bullets.at(i)));
 			}
 		}
-		Enemy* ret = Enemy::create(name,  seq, attack, pos, true);
+		Enemy* ret = Enemy::create(name,  seq, attack, pos, true, boss);
+		return ret;
+	}
+
+	static Enemy* createBoss(std::string name, cocos2d::Vector<cocos2d::Sequence*> seqs, std::vector<std::tuple<float, AttackPattern>> atts, cocos2d::Vec2 pos = { 0, 0 }) {
+		Enemy* ret = EnemyPlus::create(name, seqs, atts, { 0,0 }, true);
+		if (ret->boss) {
+			cocos2d::log("enemy created is boss:");
+		}
+		else {
+
+			cocos2d::log("enemy created is not boss:");
+		}
 		return ret;
 	}
 

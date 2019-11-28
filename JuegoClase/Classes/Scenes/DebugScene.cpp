@@ -96,8 +96,8 @@ bool DebugScene::init() {
 	//Agrega el update al updater mas grande
 	this->schedule(schedule_selector(DebugScene::update));
 
-	Levels::create("level-1").get(this).run();
-
+	//Levels::create("level-1").get(this).run();
+	Levels::create("boss").get(this).run();
 	// Musica
 	this->soundID = cocos2d::experimental::AudioEngine::play2d("Music\\Mantis.mp3", true);
 	return true;
