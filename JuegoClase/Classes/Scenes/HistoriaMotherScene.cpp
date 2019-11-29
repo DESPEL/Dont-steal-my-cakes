@@ -11,7 +11,7 @@
 #include "GameWrapper.h"
 #include "menus/MainMenu.h"
 #include "MiniGameScene.h"
-using namespace CocosDenshion;
+
 
 USING_NS_CC;
 
@@ -157,13 +157,17 @@ void HistoriaMotherScene::update(float delta) {
 }
 void HistoriaMotherScene::PrevButtonAction()
 {
-	estado -= 1;
+	if (estado > 0) {
+		estado -= 1;
+	}
 
 }
 
 void HistoriaMotherScene::NextButtonAction()
 {
-	estado += 1;
+	if (estado < 3) {
+		estado += 1;
+	}
 
 }
 
