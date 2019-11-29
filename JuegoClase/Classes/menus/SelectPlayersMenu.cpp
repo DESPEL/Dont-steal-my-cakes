@@ -131,7 +131,7 @@ void SelectPlayersMenu::initButtons() {
 }
 
 void SelectPlayersMenu::actionButtonBack() {
-	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, MainMenu::createScene()));
+	Director::getInstance()->pushScene(TransitionFadeBL::create(1, MainMenu::createScene()));
 }
 
 void SelectPlayersMenu::selecP1() { GameWrapper::getInstance()->coop = false; this->P1->setBright(true); this->P2->setBright(false); };
