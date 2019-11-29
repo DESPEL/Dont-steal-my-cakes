@@ -43,13 +43,16 @@ Bullet* Bullet::createEnemyBullet() {
 }
 
 void Bullet::colision() {
-	activa = false;
 	setPosition(-10000, -10000);
+	activa = false;
 	setVisible(false);
 }
 
 void Bullet::update(float dt) {
-	if (!this->isVisible()) return;
+	if (!this->isVisible()) { 
+		setPosition(-10000, -10000);
+		return;
+	}
 	auto scene = Director::getInstance()->getRunningScene();
 	if (_type == PLAYER_BULLET) {
 		//para arriba

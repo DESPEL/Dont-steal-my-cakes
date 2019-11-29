@@ -8,10 +8,10 @@ USING_NS_CC;
 Player::Player(int tipo) {
 	switch (tipo) {
 	case 0:
-		_speed = 5;
-		personaje_path = "nave0.png";
-		animacion_path = "animacion_nave.png";
-		break;
+		//_speed = 5;
+		//personaje_path = "nave0.png";
+		//animacion_path = "animacion_nave.png";
+		//break;
 	case 1:
 		_speed = 2.5;
 		personaje_path = "nave1.png";
@@ -164,8 +164,8 @@ void Player::update(float delta) {
 
 	auto director = Director::getInstance();
 	auto visiblesize = director->getVisibleSize();
-	float deltay = visiblesize.height / visiblesize.width;
-	float deltax = visiblesize.width / visiblesize.height;
+	float deltay = visiblesize.height / visiblesize.width * delta * 50;
+	float deltax = visiblesize.width / visiblesize.height * delta * 50;
 
 	for (auto K : KeyBoard::keys) {
 		Vec2 loc = this->getPosition();

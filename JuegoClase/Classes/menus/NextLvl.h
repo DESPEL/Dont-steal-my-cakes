@@ -1,18 +1,12 @@
 #pragma once
 
 #include "MotherMenu.h"
+#include "GameWrapper.h"
+#include "Macros.h"
 #include <vector>
 
-class MainMenu : public MotherMenu {
-protected:
-	void initFunctions(std::vector<std::function <void (cocos2d::Ref *)>> functions);
-
-public:
-	virtual bool init();
-	static cocos2d::Scene* createScene();
-
-	CREATE_FUNC(MainMenu);
-	void selectPlayer();
+class NextMenu : public MotherMenu {
+private:
 	void selectMenuButton();
 	void optionsButton();
 	void actionButton1();
@@ -25,5 +19,13 @@ public:
 	void actionButton8();
 	void actionButton9();
 
-};
+protected:
+	void initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> functions);
 
+public:
+	virtual bool init();
+	static cocos2d::Scene* createScene();
+
+	CREATE_FUNC(NextMenu);
+
+};

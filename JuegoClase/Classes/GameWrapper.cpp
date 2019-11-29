@@ -3,11 +3,12 @@
 #include "Player.h"
 #include "Player/Player2.h"
 #include "menus/DeathMenu.h"
-#include "SimpleAudioEngine.h"
+#include "AudioEngine.h"
 #include "ui/CocosGUI.h"
 #include "Scenes/DebugScene.h"
 #include "menus/MainMenu.h"
 #include "menus/DeathMenu.h"
+#include "menus/NextLvl.h"
 
 USING_NS_CC;
 
@@ -34,5 +35,10 @@ Player* GameWrapper::getPlayer() {
 
 void GameWrapper::death() {
 	cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionCrossFade::create(0.1f, DeathMenu::createScene())); 
+}
+
+void GameWrapper::next() {
+	cocos2d::experimental::AudioEngine::stopAll();
+	cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionCrossFade::create(0.1f, NextMenu::createScene()));
 }
 

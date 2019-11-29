@@ -12,16 +12,22 @@
 
 USING_NS_CC;
 
-DebugScene::DebugScene(int tipoP1, bool two, int tipoP2) {
+DebugScene::DebugScene(int tipoP1, bool two, int tipoP2, int level) {
 	this->two = two;
 	this->naveP1 = tipoP1;
 	this->naveP2 = tipoP2;
+	this->level = level;
+	wrapper->p1TipoNave = tipoP1;
+	wrapper->p2TipoNave = naveP2;
+	wrapper->coop = two;
+	wrapper->actualLevel = level;
 	DebugScene::init();
 }
 
-Scene* DebugScene::createScene(int tipoP1, bool two, int tipoP2) {
+Scene* DebugScene::createScene(int tipoP1, bool two, int tipoP2, int level) {
 	auto scene = Scene::create();
-	auto layer = new DebugScene(tipoP1, two, tipoP2); //DebugScene::create(jug);
+	
+	auto layer = new DebugScene(tipoP1, two, tipoP2, level); //DebugScene::create(jug);
 	scene->addChild(layer);
 
 	return scene;
@@ -94,15 +100,21 @@ bool DebugScene::init() {
 
 	//Agrega el update al updater mas grande
 	this->schedule(schedule_selector(DebugScene::update));
-
-	Levels::create("level-1").get(this).run();
-
+	std::stringstream s;
+	s << "actual level is" << level;
+	cocos2d::log(s.str().c_str());
+	Level actual = Levels::create("level-" + std::to_string(level)).get(this);
 	// Musica
-	this->soundID = cocos2d::experimental::AudioEngine::play2d("Music\\Mantis.mp3", true, GameManager::getInstance()->getBgVolume()/100);
+	this->soundID = cocos2d::experimental::AudioEngine::play2d("Music\\" + actual.song, true, GameManager::getInstance()->getBgVolume()/100);
+	actual.run();
 	return true;
 }
 
 void DebugScene::update(float delta) {
+	std::stringstream s;
+	s << "PUNTOS DEL JUEGO: " << this->wrapper->getInstance()->getPlayer()->points;
+	cocos2d::log(s.str().c_str());
+
 	if (_player->isVisible() || two && (_player2->isVisible() )) {// (wrapper->coop) ? (_player2->isVisible()) : ())
 		_bg->update(delta);
 	}

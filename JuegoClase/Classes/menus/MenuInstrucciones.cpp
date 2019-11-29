@@ -1,8 +1,8 @@
 #include "Menuinstrucciones.h"
 #include "GameManager.h"
-#include "GameWrapper.h"
 #include "Scenes/DebugScene.h"
-
+#include "AudioEngine.h"
+#include "GameWrapper.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -39,11 +39,20 @@ bool MenuIns::init() {
 	//boton de ir hacia atras
 	auto backBt = Button::create("menus/Botones/back0.png", "menus/Botones/back1.png", "menus/Botones/back1.png", Widget::TextureResType::LOCAL);
 	backBt->setAnchorPoint(Point(0, 0.5));
-	backBt->setScale(2);
+	backBt->setScale(2.5);
 	backBt->setRotation(180);
-	backBt->addClickEventListener(CC_CALLBACK_0(MenuIns::actionButtonBack, this));
-	backBt->setPosition(Point(390, 50));
+	backBt->addClickEventListener(CC_CALLBACK_0(MenuIns::actionButtonNext, this));
+	backBt->setPosition(Point(430, 40));
 	addChild(backBt);
+
+	auto cbackBt = Button::create("menus/Botones/back0.png", "menus/Botones/back1.png", "menus/Botones/back1.png", Widget::TextureResType::LOCAL);
+	cbackBt->setAnchorPoint(Point(0, 0.5));
+	cbackBt->setScale(2.5);
+
+	cbackBt->addClickEventListener(CC_CALLBACK_0(MenuIns::actionButtonBack, this));
+	cbackBt->setPosition(Point(40, 40));
+	addChild(cbackBt);
+
 
 	return true;
 }
@@ -56,12 +65,12 @@ void MenuIns::initButtons() {
 	level1->setPosition(Vec2(100, _visibleSize.height / 2 + 100 * getScaleY()));
 	addChild(level1);
 
-	
+
 
 	auto level2 = Button::create("espacio.png", "espacio.png", "espacio.png", Widget::TextureResType::LOCAL);
 	level2->setAnchorPoint(Point(0.5, 0.5));
 	level2->setScale(0.7);
-	level2->setPosition(Vec2(100, 180));
+	level2->setPosition(Vec2(100, 195));
 	addChild(level2);
 
 	auto level3 = Button::create("flechas.png", "flechas.png", "flechas.png", Widget::TextureResType::LOCAL);
@@ -77,11 +86,52 @@ void MenuIns::initButtons() {
 	addChild(level4);
 
 
+	auto label = Sprite::create("Movimiento.png");
+	label->setPosition(300, 120);
+	label->setScaleX(1.3);
+	label->setVisible(true);
+	addChild(label, 3);
+
+	auto label2 = Sprite::create("Movimiento.png");
+	label2->setPosition(300, 250);
+	label2->setScaleX(1.3);
+	label2->setVisible(true);
+	addChild(label2, 3);
+
+	auto label4 = Sprite::create("Disparar.png");
+	label4->setPosition(300, 195);
+	label4->setScaleX(1.3);
+	label4->setVisible(true);
+	addChild(label4, 3);
+
+	auto label5 = Sprite::create("Disparar.png");
+	label5->setPosition(300, 70);
+	label5->setScaleX(1.3);
+	label5->setVisible(true);
+	addChild(label5, 3);
+
+	auto label6 = Sprite::create("J1.png");
+	label6->setPosition(300, 290);
+	label6->setScaleX(1.2);
+	label6->setVisible(true);
+	addChild(label6, 3);
+
+	auto label7 = Sprite::create("J2.png");
+	label7->setPosition(300, 150);
+	label7->setScaleX(1.2);
+	label7->setVisible(true);
+	addChild(label7, 3);
+
+	//auto texto = Sprite::create("transparente.png");
+	//texto->setPosition(0, 0);
+	//addChild(texto, 5);
+
+
 
 
 	//level1->addClickEventListener(CC_CALLBACK_0(MainMenu::actionButton1, this));
-	
-	
+
+
 
 
 	/*int tag = 1;
@@ -117,5 +167,10 @@ void MenuIns::initButtons() {
 }
 
 void MenuIns::actionButtonBack() {
-	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, DebugScene::createScene(GameWrapper::getInstance()->p1TipoNave, GameWrapper::getInstance()->coop, GameWrapper::getInstance()->p2TipoNave)));
+	experimental::AudioEngine::stopAll();
+	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, MainMenu::createScene()));
+}
+void MenuIns::actionButtonNext() {
+	auto wrapper = GameWrapper::getInstance();
+	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel)));
 }

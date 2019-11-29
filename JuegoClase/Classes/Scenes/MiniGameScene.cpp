@@ -89,7 +89,7 @@ bool MiniGameScene::init() {
 	addChild(high_score, 5);
 
 	//Crea al jugador
-	_player = Player::create();
+	_player = Player::create(random(1,4));
 	if (!this->two)
 		_player->setPosition(_visibleSize.width / 2, _visibleSize.height / 2 - 100);
 	else
@@ -107,21 +107,12 @@ bool MiniGameScene::init() {
 
 	GameWrapper::getInstance()->setPlayer(_player);
 	GameWrapper::getInstance()->coop = this->two;
-	//Crea al enemigo
-	/*auto enemy = BasicEnemy::create();
-	enemy->setPosition(_visibleSize.width /2, _visibleSize.height /2 + 100);
-	enemy->setScale(2);
-	_enemyPool.pushBack(enemy);
-	addChild(enemy);
 
-	enemy->run();*/
-
-	//Agrega el update al updater mas grande
 	this->schedule(schedule_selector(MiniGameScene::update));
 
 	//Aparece enemigos de manera aleatoria y automatica
 	variar = random(1,2);
-	num = random(1, 2);
+	num = random(1, 3);
 	DelayTime* delayAction = DelayTime::create(variar);
 
 	for (int i = 0; i < num; i++) {
@@ -148,7 +139,7 @@ void MiniGameScene::createEnemy() {
 		float maxX = _visibleSize.width - 40;
 		float minX = 40;
 		float maxY = _visibleSize.height - 20;
-		float minY = _visibleSize.height / 2;
+		float minY = 20;
 		enemy->setPosition(random(minX, maxX), random(minY, maxY));
 		enemy->setScale(2, 2);
 		

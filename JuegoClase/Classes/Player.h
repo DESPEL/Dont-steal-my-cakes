@@ -37,6 +37,8 @@ protected:
 	void createExplosionAnimation();
 
 public:
+
+	int hp = 2;
 	enum Animations {
 		IDLE = 0, EXPLOSION = 1
 	};
@@ -67,5 +69,6 @@ public:
 	cocos2d::Vector<Bullet*> Balas;
 
 	int kills = 0;
+	int points = 0;
 };
 

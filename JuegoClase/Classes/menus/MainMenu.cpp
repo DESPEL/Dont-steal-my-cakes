@@ -7,6 +7,9 @@
 #include "GameManager.h"
 #include "MenuInstrucciones.h"
 #include "Scenes/MiniGameScene.h"
+#include "Scenes/TopScene.h"
+#include "menus/LogorsMenu.h"
+#include "menus/NextLvl.h"
 #include "AudioEngine.h"
 
 USING_NS_CC;
@@ -36,7 +39,7 @@ bool MainMenu::init() {
 	auto startButton = Button::create("menus/Botones/start0.png", "menus/Botones/start1.png", "menus/Botones/start0.png", Widget::TextureResType::LOCAL);
 	startButton->setAnchorPoint(Point(0.5, 1));
 	startButton->setScale(3, 1.5);
-	startButton->setPosition(Vec2(_visibleSize.width * 0.5, _visibleSize.height - (90 * getScaleY())));
+	startButton->setPosition(Vec2(_visibleSize.width * 0.5, _visibleSize.height - (70 * getScaleY())));
 	if (GameManager::getInstance()->getNextLevel() == GameManager::NUM_LEVELS) {
 		//startButton->addClickEventListener(functions.at(GameManager::NUM_LEVELS - 1));
 		startButton->addClickEventListener(CC_CALLBACK_0(MainMenu::actionButton1, this));
@@ -48,7 +51,7 @@ bool MainMenu::init() {
 	addChild(startButton);
 
 	//lanza el menu de seleccion de nivel
-	auto nextHeight = startButton->getPositionY() - startButton->getBoundingBox().size.height - (10 * getScaleY());
+	auto nextHeight = startButton->getPositionY() - startButton->getBoundingBox().size.height - (5 * getScaleY());
 	auto selectButton = Button::create("menus/Botones/level0.png", "menus/Botones/level1.png", "menus/Botones/level0.png", Widget::TextureResType::LOCAL);
 	selectButton->setAnchorPoint(Point(0.5, 1));
 	selectButton->setScale(3, 1.5);
@@ -57,7 +60,7 @@ bool MainMenu::init() {
 	addChild(selectButton);
 
 	//lanza las opciones para ajustar volumen y otras configuraciones
-	nextHeight = selectButton->getPositionY() - selectButton->getBoundingBox().size.height - (10 * getScaleY());
+	nextHeight = selectButton->getPositionY() - selectButton->getBoundingBox().size.height - (5 * getScaleY());
 	auto optionsButton = Button::create("menus/Botones/options0.png", "menus/Botones/options1.png", "menus/Botones/options0.png", Widget::TextureResType::LOCAL);
 	optionsButton->setAnchorPoint(Point(0.5, 1));
 	optionsButton->setScale(3, 1.5);
@@ -65,7 +68,7 @@ bool MainMenu::init() {
 	optionsButton->setPosition(Point(startButton->getPositionX(), nextHeight));
 	addChild(optionsButton);
 
-	nextHeight = optionsButton->getPositionY() - optionsButton->getBoundingBox().size.height - (10 * getScaleY());
+	nextHeight = optionsButton->getPositionY() - optionsButton->getBoundingBox().size.height - (5 * getScaleY());
 	auto Minigame = Button::create("menus/Botones/extra.png", "menus/Botones/extra.png", "menus/Botones/extra.png", Widget::TextureResType::LOCAL);
 	Minigame->setAnchorPoint(Point(0.5, 1));
 	Minigame->setScale(3, 1.5);
@@ -75,7 +78,7 @@ bool MainMenu::init() {
 
 
 
-	nextHeight = optionsButton->getPositionY() - optionsButton->getBoundingBox().size.height - (10 * getScaleY());
+	nextHeight = optionsButton->getPositionY() - optionsButton->getBoundingBox().size.height - (5 * getScaleY());
 	auto cerrar = Button::create("menus/Botones/close.png", "menus/Botones/close.png", "menus/Botones/close.png", Widget::TextureResType::LOCAL);
 	cerrar->setAnchorPoint(Point(0.5, 1));
 	cerrar->setScale(0.5, 0.3);
@@ -83,12 +86,24 @@ bool MainMenu::init() {
 	cerrar->setPosition(Point(400, 80));
 	addChild(cerrar);
 
-	//if (!SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying() && ) {
-	//	SimpleAudioEngine::getInstance()->playBackgroundMusic("music/Hollow.mp3", true);
-		cocos2d::experimental::AudioEngine::play2d("Music\\Hollow.mp3", true, GameManager::getInstance()->getBgVolume()/100);
-		//cocos2d::experimental::AudioEngine::stop(cocos2d::experimental::AudioEngine::)
-	//}
+	nextHeight = Minigame->getPositionY() - Minigame->getBoundingBox().size.height - (5 * getScaleY());
+	auto TOP = Button::create("menus/Botones/TOP.png", "menus/Botones/TOP1.png", "menus/Botones/TOP2.png", Widget::TextureResType::LOCAL);
+	TOP->setAnchorPoint(Point(0.5, 1));
+	TOP->setScale(3, 1.5);
+	TOP->addClickEventListener(CC_CALLBACK_0(MainMenu::actionButton4, this));
+	TOP->setPosition(Point(Minigame->getPositionX(), nextHeight));
+	addChild(TOP);
 
+	auto TP = Button::create("menus/Botones/Trofeo.png", "menus/Botones/Trofeo1.png", "menus/Botones/Trofeo.png", Widget::TextureResType::LOCAL);
+	TP->setAnchorPoint(Point(0.0, 0));
+	TP->setScale(.5, .25);
+	TP->addClickEventListener(CC_CALLBACK_0(MainMenu::actionButton5, this));
+	TP->setPosition(Point(0,0));
+	addChild(TP);
+
+	if (!experimental::AudioEngine::getPlayingAudioCount() >= 1) {
+		experimental::AudioEngine::play2d("music/Hollow.mp3", true, GameManager::getInstance()->getBgVolume()/100);
+	}
 	return true;
 }
 
@@ -123,8 +138,8 @@ void MainMenu::initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> fu
 void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MenuIns::createScene())); }
 void MainMenu::actionButton2() { Director::getInstance()->end(); }
 void MainMenu::actionButton3() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MiniGameScene::createScene())); }
-void MainMenu::actionButton4() {  /*TODO*/ }
-void MainMenu::actionButton5() {  /*TODO*/ }
+void MainMenu::actionButton4() { Director::getInstance()->pushScene(TransitionFadeBL::create(1, TopMenu::createScene()));  }
+void MainMenu::actionButton5() { Director::getInstance()->pushScene(TransitionFadeBL::create(1, LogMenu::createScene())); }
 void MainMenu::actionButton6() {  /*TODO*/ }
 void MainMenu::actionButton7() {  /*TODO*/ }
 void MainMenu::actionButton8() {  /*TODO*/ }

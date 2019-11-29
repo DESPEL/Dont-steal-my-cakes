@@ -3,7 +3,6 @@
 #include "cocos2d.h"
 
 #include "Player.h"
-
 #include "Bullet.h"
 
 class Player;
@@ -17,7 +16,7 @@ class GameWrapper {
 	GameWrapper(){}
 
 public:
-
+	int actualLevel = 1;
 	int val = 0;
 	static GameWrapper* getInstance();
 
@@ -28,6 +27,7 @@ public:
 	int p2TipoNave = 1;
 	bool coop = 0;
 
+	void next();
 
 	void setPlayer(Player* pl) noexcept;
 	//void setPlayer2(Player2* p2);

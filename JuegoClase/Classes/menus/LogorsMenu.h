@@ -1,18 +1,17 @@
-
+#pragma once
 #pragma once
 
-#include "MainMenu.h"
-#include "ui/CocosGUI.h"
+#include "menus/MainMenu.h"
 
-class MenuIns : public MainMenu {
+class LogMenu : public MainMenu {
 private:
 	std::ostringstream _ostr;
 	void actionButtonBack();
-	void actionButtonNext();
 	void initButtons();
 
 public:
 	virtual bool init();
 	static cocos2d::Scene* createScene();
-	CREATE_FUNC(MenuIns);
+	CREATE_FUNC(LogMenu);
 };
+

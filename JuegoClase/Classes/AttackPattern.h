@@ -59,6 +59,13 @@ public:
 		}
 	}
 
+	float getDuration() {
+		float total = 0;
+		for (const float& v : times)
+			total += v;
+		return total;
+	}
+
 	~AttackPattern() {
 		cocos2d::log("removing attack pattern");
 	}
