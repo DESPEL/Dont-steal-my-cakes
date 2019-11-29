@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <string>
 #include <vector>
+#include "GameManager.h"
 
 USING_NS_CC;
 
@@ -63,6 +64,7 @@ void GameWrapper::death() {
 		cocos2d::Director::getInstance()->pushScene(cocos2d::TransitionCrossFade::create(0.3f, DeathMenu::createScene(playing)));
 	}
 	if (playing == GAME_TYPE::MINIJUEGO) {
+		GameManager::getInstance()->unlockMcDonalds();
 		cocos2d::Director::getInstance()->pushScene(cocos2d::TransitionCrossFade::create(0.3f, DeathMenu::createScene(playing)));
 	}
 	playing = GAME_TYPE::NONE;

@@ -53,6 +53,9 @@ bool NextMenu::init() {
 		addChild(selectButton);
 	}
 	else {
+		if (GameManager::getInstance()->getDifficulty() >= 2) {
+			GameManager::getInstance()->unlockRapidin();
+		}
 		/// aqui significa que termino el modo historia, por lo tanto hay que desbloquear la nave esa
 	}
 
