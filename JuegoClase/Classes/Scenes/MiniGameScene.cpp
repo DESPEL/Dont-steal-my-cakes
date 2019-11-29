@@ -3,6 +3,7 @@
 #include "ui/CocosGUI.h"
 #include "GameWrapper.h"
 #include "menus/MainMenu.h"
+#include "Macros.h"
 
 USING_NS_CC;
 
@@ -109,7 +110,8 @@ bool MiniGameScene::init() {
 	}
 
 
-
+	// Guardar juego en wrapper
+	GameWrapper::getInstance()->playing = GAME_TYPE::MINIJUEGO;
 	// Musica
 	experimental::AudioEngine::stopAll();
 	musicID = experimental::AudioEngine::play2d("Music\\Mantis.mp3", true, 0.05);

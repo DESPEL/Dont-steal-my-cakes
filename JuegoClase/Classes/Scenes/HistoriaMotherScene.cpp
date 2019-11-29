@@ -130,7 +130,7 @@ bool HistoriaMotherScene::init() {
 }
 
 void HistoriaMotherScene::update(float delta) {
-
+	GameWrapper::getInstance()->playing = GAME_TYPE::HISTORIA;
 
 	if (estado <= 0) {
 		estado = 0;

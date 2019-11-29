@@ -1,18 +1,21 @@
 #include "DeathMenu.h"
 #include "Scenes/DebugScene.h"
+#include "Scenes/MiniGameScene.h"
 #include "MainMenu.h"
 //#include "SelectMenuLayer.h"
 //#include "OptionsLayer.h"
 #include "ui/CocosGUI.h"
 #include "GameManager.h"
 #include "GameWrapper.h"
+#include "Macros.h"
 
 USING_NS_CC;
 using namespace ui;
 
-Scene* DeathMenu::createScene() {
+Scene* DeathMenu::createScene(GAME_TYPE from) {
 	auto scene = Scene::create();
 	auto layer = DeathMenu::create();
+	layer->caller = from;
 	scene->addChild(layer);
 	return scene;
 }
@@ -60,7 +63,12 @@ bool DeathMenu::init() {
 
 
 void DeathMenu::selectMenuButton() {
-	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel)));
+	if (caller == GAME_TYPE::HISTORIA || caller == GAME_TYPE::LIBRE) {
+		Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel)));
+	}
+	if (caller == GAME_TYPE::MINIJUEGO) {
+		Director::getInstance()->pushScene(TransitionCrossFade::create(1, MiniGameScene::createScene()));
+	}
 }
 
 void DeathMenu::optionsButton() {

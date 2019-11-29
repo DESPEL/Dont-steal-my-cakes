@@ -8,6 +8,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 #include "GameWrapper.h"
+#include "Macros.h"
 
 
 class HistoriaMotherScene : public cocos2d::Layer {

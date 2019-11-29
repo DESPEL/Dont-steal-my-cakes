@@ -4,6 +4,7 @@
 
 #include "Player.h"
 #include "Bullet.h"
+#include "Macros.h"
 
 class Player;
 class Player2;
@@ -16,6 +17,7 @@ class GameWrapper {
 	GameWrapper(){}
 
 public:
+	GAME_TYPE playing = GAME_TYPE::NONE;
 	int actualLevel = 1;
 	int val = 0;
 	static GameWrapper* getInstance();

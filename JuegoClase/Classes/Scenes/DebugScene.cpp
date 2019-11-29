@@ -105,6 +105,11 @@ bool DebugScene::init() {
 	s << "actual level is" << level;
 	cocos2d::log(s.str().c_str());
 	Level actual = Levels::create("level-" + std::to_string(level)).get(this);
+
+
+	if (GameWrapper::getInstance()->playing == GAME_TYPE::NONE)
+		GameWrapper::getInstance()->playing = GAME_TYPE::LIBRE;
+
 	// Musica
 	cocos2d::experimental::AudioEngine::stopAll();
 	this->soundID = cocos2d::experimental::AudioEngine::play2d("Music\\" + actual.song, true);
