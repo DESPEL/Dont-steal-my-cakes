@@ -7,8 +7,8 @@ GameManager* GameManager::_instance = nullptr;
 GameManager::GameManager() :_playerScore(0) {
 	_bgVolume = UserDefault::getInstance()->getIntegerForKey(BGVOLUME, 30);
 	_effectsVolume = UserDefault::getInstance()->getIntegerForKey(SFXVOLUME, 40);
-	_effectsVolume = UserDefault::getInstance()->getIntegerForKey(DIFFICULTY, 50);
-	_effectsVolume = UserDefault::getInstance()->getIntegerForKey(DIFMODE, 2);
+	_difCategory = UserDefault::getInstance()->getIntegerForKey(DIFFICULTY, 50);
+	_difMode = UserDefault::getInstance()->getIntegerForKey(DIFMODE, 2);
 }
 
 GameManager::~GameManager() {}
