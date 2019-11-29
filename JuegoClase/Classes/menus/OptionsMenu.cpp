@@ -111,7 +111,6 @@ bool OptionsMenu::init() {
 	us = Button::create("menus/ustrue.png", "menus/usfalse.png", "menus/usFalse.png", Widget::TextureResType::LOCAL);
 	us->setAnchorPoint(Point(0.5, 0.5));
 	us->setScale(0.2);
-	us->setBright(false);
 	us->addClickEventListener(CC_CALLBACK_0(OptionsMenu::langus, this));
 	us->setPosition(Vec2(3 * _visibleSize.width / 4 - 25, _visibleSize.height / 2 + 100 * getScaleY()));
 	addChild(us);
