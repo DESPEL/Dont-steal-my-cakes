@@ -10,6 +10,7 @@
 #include "GameWrapper.h"
 #include "menus/MainMenu.h"
 
+
 USING_NS_CC;
 
 DebugScene::DebugScene(int tipoP1, bool two, int tipoP2, int level) {
@@ -164,7 +165,15 @@ void DebugScene::playButtonAction()
 }
 
 void DebugScene::saveButtonAction() {
-
+	
+	using namespace std;
+	int num;
+	ofstream archivo;
+	archivo.open("LevelSave.txt");
+	num = wrapper->getlvl();
+	archivo << num;
+	archivo.close();
+	
 }
 
 void DebugScene::salirButtonAction() {
