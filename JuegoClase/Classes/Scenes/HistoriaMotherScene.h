@@ -19,6 +19,7 @@ private:
 	int naveP1;
 	int naveP2;
 	int estado=0;
+	bool inited = false;
 	//Enemys
 	int _numEnemies = 10;
 	int _enemyIndex = 0;

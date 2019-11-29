@@ -63,7 +63,11 @@ bool NextMenu::init() {
 
 void NextMenu::selectMenuButton() {
 	experimental::AudioEngine::stopAll();
-	Director::getInstance()->pushScene(TransitionFadeBL::create(1, HistoriaMotherScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel + 1)));
+	if (wrapper->actualLevel >= 3) {
+		cocos2d::Director::getInstance()->pushScene(cocos2d::TransitionCrossFade::create(0.1f, DebugScene::createScene(1, false, 3, 4)));
+	}
+	else
+		Director::getInstance()->pushScene(TransitionFadeBL::create(1, HistoriaMotherScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel + 1)));
 }
 
 void NextMenu::optionsButton() {
@@ -87,7 +91,12 @@ void NextMenu::initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> fu
 void NextMenu::actionButton1() { Director::getInstance()->pushScene(TransitionFadeBL::create(1, MainMenu::createScene())); }
 void NextMenu::actionButton2() { 
 	auto wrapper = GameWrapper::getInstance();
-	Director::getInstance()->pushScene(TransitionFadeBL::create(1, HistoriaMotherScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel + 1))); 
+
+	if (wrapper->actualLevel >= 3) {
+		cocos2d::Director::getInstance()->pushScene(cocos2d::TransitionCrossFade::create(0.1f, DebugScene::createScene(1, false, 3, 4)));
+	}
+	else
+		Director::getInstance()->pushScene(TransitionFadeBL::create(1, HistoriaMotherScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel + 1))); 
 }
 void NextMenu::actionButton3() {  /*TODO*/ }
 void NextMenu::actionButton4() {  /*TODO*/ }

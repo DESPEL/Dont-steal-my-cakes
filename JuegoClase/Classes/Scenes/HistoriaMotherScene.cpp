@@ -118,9 +118,6 @@ bool HistoriaMotherScene::init() {
 	button2->addClickEventListener(CC_CALLBACK_0(HistoriaMotherScene::PrevButtonAction, this));
 	addChild(button2, 3);
 	addChild(button, 3);
-	
-
-	
 
 
 
@@ -137,6 +134,9 @@ bool HistoriaMotherScene::init() {
 void HistoriaMotherScene::update(float delta) {
 	GameWrapper::getInstance()->playing = GAME_TYPE::HISTORIA;
 
+	//if (historia >= 4 && !inited)
+	//	inited = true;
+	//	Director::getInstance()->replaceScene(DebugScene::createScene(2, false, 3, 4));
 	if (estado <= 0) {
 		estado = 0;
 		button2->setVisible(false);
