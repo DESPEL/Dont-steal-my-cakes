@@ -23,57 +23,6 @@ public:
 
 		Size sz = cocos2d::Director::getInstance()->getVisibleSize();
 
-		//if (name == "test") {
-		//	/*auto test = MovementPatterns::create("linear");
-		//	auto test2 = AttackPatterns::create("test");
-		//	auto circular = AttackPatterns::create("circular");
-		//	auto staticm = MovementPatterns::create("static");
-
-		//	Enemy* testenemy = Enemy::create("enemigo1.png", test.get(-90), test2.get(), cocos2d::Vec2(400, 300));
-
-		//	Enemy* enemyt = EnemyPlus::create(
-		//		"enemigo1.png",
-		//		{
-		//			test.get(-180, 1, false),
-		//			staticm.get(-180, 0.5)
-		//		},
-		//		{
-		//			{ 0.0f, circular.get()},
-		//			{ 0.5f, circular.get()},
-		//			{ 0.5f, circular.get()},
-		//			{ 0.0f, circular.get()},
-		//			{ 0.5f, circular.get()},
-		//			{ 0.5f, circular.get()},
-		//			{ 0.0f, circular.get()},
-		//			{ 0.5f, circular.get()},
-		//			{ 0.5f, circular.get()},
-		//			{ 0.0f, circular.get()},
-		//			{ 0.5f, circular.get()},
-		//			{ 0.5f, circular.get()},
-		//			{ 0.0f, circular.get()},
-		//			{ 0.5f, circular.get()},
-		//			{ 0.5f, circular.get()},
-		//			{ 0.0f, circular.get()},
-		//			{ 0.5f, circular.get()},
-		//			{ 0.5f, circular.get()},
-		//			{ 0.0f, circular.get()},
-		//			{ 0.5f, circular.get()},
-		//			{ 0.5f, circular.get()}
-		//		}
-		//		);
-
-		//	cocos2d::log("test created");
-		//	levels[name] = Level(
-		//		std::make_tuple(1.0f, enemyt->get({300, 300})),
-		//		std::make_tuple(1.0f, testenemy->get(testenemy->getPosition(), test.get(-45))),
-		//		std::make_tuple(1.0f, Enemy::create(testenemy, cocos2d::Vec2(300, 400))),
-		//		std::make_tuple(1.0f, Enemy::create(testenemy, cocos2d::Vec2(400, 400))),
-		//		std::make_tuple(1.0f, Enemy::create(testenemy, cocos2d::Vec2(300, 400))),
-		//		std::make_tuple(1.0f, testenemy)
-		//	);
-		//	return levels.at(name);*/
-		//}
-
 		// Cancion: Mantis
 		if (name == "level-1") {
 			auto up100 = MovementPatterns::create("up-100");
@@ -393,7 +342,7 @@ public:
 				);
 
 			Enemy* boss = EnemyPlus::createBoss(
-				"boss1.png",
+				"boss3.png",
 				{
 					up100.get(-180, 1, false),
 					stmov.get(0,1,false)
@@ -450,6 +399,120 @@ public:
 				mktp(0.5f, boss->get({ sz.width / 2, sz.height }))
 			);
 			levels.at(name).setSong("TowerOfHeaven.mp3");
+			return levels[name];
+		}
+
+		if (name == "level-3") {
+			auto up100 = MovementPatterns::create("up-100");
+			auto stmov = MovementPatterns::create("static");
+
+			auto circular = AttackPatterns::create("circular");
+			auto triple = AttackPatterns::create("triple");
+			auto linear = AttackPatterns::create("linear");
+			auto spray = AttackPatterns::create("test");
+
+			Enemy* downraro = EnemyPlus::create(
+				"enemigo3.png",
+				{
+					up100.get(180, 2.0f, false),
+					up100.get(180, 2.0f, false),
+					up100.get(0, 1, false),
+					up100.get(0, 1)
+				},
+				{
+					{0.0f, linear.get()},
+					{0.2f, linear.get()},
+					{0.2f, linear.get()},
+					{0.3f, linear.get()},
+					{0.3f, linear.get()}
+				}
+				);
+
+			Enemy* downtrip = EnemyPlus::create(
+				"enemigo3.png",
+				{
+					up100.get(180, 2.0f, false),
+					up100.get(0, 1)
+				},
+				{
+					{0.5f, triple.get()},
+					{0.2f, triple.get()},
+					{0.2f, triple.get()},
+					{0.3f, triple.get()},
+					{0.3f, triple.get()}
+				}
+				);
+
+			Enemy* downcirc = EnemyPlus::create(
+				"enemigo3.png",
+				{
+					up100.get(180, 2.0f, false),
+					stmov.get(0, 1 / 5.0f, false),
+					up100.get(0, 1)
+				},
+				{
+					{0.5f, circular.get()},
+					{1.0f, circular.get()},
+					{1.0f, circular.get()},
+					{1.0f, circular.get()},
+					{1.0f, circular.get()}
+				}
+				);
+
+			Enemy* boss = EnemyPlus::createBoss(
+				"boss2.png",
+				{
+					up100.get(-180, 1, false),
+					stmov.get(0,1,false)
+				},
+				{
+					{4.0f, triple.get()},
+					{3.0f, spray.get()}
+				}
+				);
+
+			levels[name] = Level(
+				mktp(1.0f, downraro->get({ sz.width / 4, sz.height })),
+				mktp(1.0f, downraro->get({ 2 * sz.width / 4, sz.height })),
+				mktp(1.0f, downraro->get({ 3 * sz.width / 4, sz.height })),
+				mktp(1.0f, downtrip->get({ 3 * sz.width / 4, sz.height })),
+				mktp(1.0f, downtrip->get({ 2 * sz.width / 4, sz.height })),
+				mktp(1.0f, downtrip->get({ sz.width / 4, sz.height })),
+				mktp(1.0f, downcirc->get({ sz.width / 4, sz.height })),
+				mktp(1.0f, downcirc->get({ 2 * sz.width / 4, sz.height + 75 })),
+				mktp(1.0f, downcirc->get({ 3 * sz.width / 4, sz.height })),
+				mktp(5.0f, downraro->get({ sz.width / 6, sz.height })),
+				mktp(1.0f, downraro->get({ 2 * sz.width / 6, sz.height })),
+				mktp(1.0f, downraro->get({ 3 * sz.width / 6, sz.height })),
+				mktp(1.0f, downraro->get({ 4 * sz.width / 6, sz.height })),
+				mktp(1.0f, downraro->get({ 5 * sz.width / 6, sz.height })),
+				mktp(4.0f, downcirc->get({ sz.width / 6, sz.height })),
+				mktp(1.0f, downcirc->get({ 5 * sz.width / 6, sz.height + 75 })),
+				mktp(5.0f, downtrip->get({ 3 * sz.width / 4, sz.height })),
+				mktp(1.0f, downtrip->get({ 2 * sz.width / 4, sz.height })),
+				mktp(1.0f, downtrip->get({ sz.width / 4, sz.height })),
+				mktp(3.0f, downtrip->get({ 1 * sz.width / 6, sz.height })),
+				mktp(1.0f, downtrip->get({ 3 * sz.width / 6, sz.height })),
+				mktp(1.0f, downtrip->get({ 5 * sz.width / 6, sz.height })),
+				mktp(3.0f, downcirc->get({ sz.width / 6, sz.height + 50 })),
+				mktp(1.0f, downcirc->get({ 5 * sz.width / 6, sz.height })),
+				mktp(5.0f, downraro->get({ sz.width / 6, sz.height })),
+				mktp(1.0f, downraro->get({ 2 * sz.width / 6, sz.height })),
+				mktp(1.0f, downraro->get({ 3 * sz.width / 6, sz.height })),
+				mktp(1.0f, downraro->get({ 4 * sz.width / 6, sz.height })),
+				mktp(1.0f, downraro->get({ 5 * sz.width / 6, sz.height })),
+				mktp(4.0f, downcirc->get({ sz.width / 6, sz.height + 50 })),
+				mktp(1.0f, downcirc->get({ 5 * sz.width / 6, sz.height })),
+				mktp(4.0f, downcirc->get({ 2 * sz.width / 6, sz.height })),
+				mktp(1.0f, downcirc->get({ 4 * sz.width / 6, sz.height })),
+				mktp(5.0f, downraro->get({ 3 * sz.width / 6, sz.height })),
+				mktp(2.0f, downraro->get({ 2 * sz.width / 6, sz.height })),
+				mktp(0.0f, downraro->get({ 4 * sz.width / 6, sz.height })),
+				mktp(2.0f, downraro->get({ 1 * sz.width / 6, sz.height })),
+				mktp(0.0f, downraro->get({ 5 * sz.width / 6, sz.height })),
+				mktp(5.0f, downraro->get({ sz.width / 2, sz.height + 30 }))
+			);
+			levels.at(name).setSong("NoMoney.mp3");
 			return levels[name];
 		}
 

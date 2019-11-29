@@ -12,7 +12,6 @@
 #include "menus/MainMenu.h"
 #include "MiniGameScene.h"
 
-
 USING_NS_CC;
 
 HistoriaMotherScene::HistoriaMotherScene(int tipoP1, bool two, int tipoP2) {
