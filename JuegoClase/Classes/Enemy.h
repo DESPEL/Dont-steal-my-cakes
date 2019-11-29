@@ -1,17 +1,17 @@
 #pragma once
 
+#include <charconv>
+
 #include "cocos2d.h"
 
 #include "BasicEnemy.h"
 #include "AttackPattern.h"
 
 #include "GameWrapper.h"
-
 #include "Bullet.h"
-
 #include "Macros.h"
-
 #include "BasicBullet.h"
+#include "DataEngine.h"
 
 class AttackPattern;
 
@@ -61,34 +61,6 @@ public:
 		return ret;
 	}
 
-	/*static Enemy* create(Enemy* base, cocos2d::Vec2 pos) {
-		Enemy* ret = Enemy::create();
-		ret->initWithTexture(base->getTexture());
-		ret->sequence = base->sequence;
-		ret->attack = base->attack;
-		ret->setPosition(pos);
-		return ret;
-	}
-
-	static Enemy* create(Enemy* base, cocos2d::Sequence* seq) {
-		Enemy* ret = Enemy::create();
-		ret->initWithTexture(base->getTexture());
-		ret->sequence = seq;
-		ret->attack = base->attack;
-		ret->setPosition(base->getPosition());
-		return ret;
-	}
-
-	static Enemy* create(Enemy* base, cocos2d::Node* parent) {
-		Enemy* ret = Enemy::create();
-		ret->initWithTexture(base->getTexture());
-		ret->sequence = base->sequence;
-		ret->attack = base->attack;
-		ret->setPosition(base->getPosition());
-		ret->p = parent;
-		return ret;
-	}*/
-
 	Enemy* get(cocos2d::Vec2 pos = cocos2d::Vec2(-100000, -100000), cocos2d::Sequence* seq = nullptr, std::string img = "") {
 		Enemy* ret = Enemy::create();
 		if (pos == cocos2d::Vec2(-100000, -100000))
@@ -130,9 +102,13 @@ public:
 		if (!boss || (boss && hp <= 0)) {
 			if (boss) {
 				GameWrapper::getInstance()->getPlayer()->points += POINTS_PER_BOSS;
+				DataEngine::getInstance()->add("puntos", POINTS_PER_BOSS);
+
 				GameWrapper::getInstance()->next();
 			}
 			else
+
+				DataEngine::getInstance()->add("puntos", POINTS_PER_KILL);
 				GameWrapper::getInstance()->getPlayer()->points += POINTS_PER_KILL;
 			exploded = true;
 			this->SetAnimation(BasicEnemy::EXPLOSION);
@@ -144,6 +120,8 @@ public:
 			unscheduleUpdate();
 		}
 		else {
+
+			DataEngine::getInstance()->add("puntos", POINTS_PER_HIT);
 			GameWrapper::getInstance()->getPlayer()->points += POINTS_PER_HIT;
 			hp--;
 		}
