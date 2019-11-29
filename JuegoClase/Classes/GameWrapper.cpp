@@ -70,7 +70,9 @@ void GameWrapper::death() {
 	}
 	playing = GAME_TYPE::NONE;
 }
-
+void GameWrapper::actual1() {
+	actualLevel += 1;
+}
 void GameWrapper::next() {
 	cocos2d::experimental::AudioEngine::stopAll();
 	cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionCrossFade::create(0.3f, NextMenu::createScene()));
