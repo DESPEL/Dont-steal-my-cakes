@@ -11,7 +11,6 @@
 #include "GameWrapper.h"
 #include "menus/MainMenu.h"
 #include "MiniGameScene.h"
-using namespace CocosDenshion;
 
 USING_NS_CC;
 
