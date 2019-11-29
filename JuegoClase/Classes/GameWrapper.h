@@ -12,7 +12,7 @@ class DeathMenu;
 class GameWrapper {
 	static GameWrapper *instance;
 	Player* _player;
-	//Player2* _player2;
+	Player2* _player2;
 	GameWrapper(){}
 
 public:
@@ -30,9 +30,9 @@ public:
 	void next();
 
 	void setPlayer(Player* pl) noexcept;
-	//void setPlayer2(Player2* p2);
+	void setPlayer2(Player2* p2) noexcept;
 	Player* getPlayer();
-	
+	Player2* getPlayer2();
 
 };
 

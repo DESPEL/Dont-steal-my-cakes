@@ -3,6 +3,7 @@
 //using namespace CocosDenshion;
 #include "AudioEngine.h"
 
+#include "DebugScene.h"
 
 
 
@@ -14,16 +15,17 @@
 
 USING_NS_CC;
 
-HistoriaMotherScene::HistoriaMotherScene(int tipoP1, bool two, int tipoP2) {
+HistoriaMotherScene::HistoriaMotherScene(int tipoP1, bool two, int tipoP2, int est) {
 	this->two = two;
 	this->naveP1 = tipoP1;
 	this->naveP2 = tipoP2;
+	this->historia = est;
 	HistoriaMotherScene::init();
 }
 
-Scene* HistoriaMotherScene::createScene(int tipoP1, bool two, int tipoP2) {
+Scene* HistoriaMotherScene::createScene(int tipoP1, bool two, int tipoP2, int est) {
 	auto scene = Scene::create();
-	auto layer = new HistoriaMotherScene(tipoP1, two, tipoP2); //DebugScene::create(jug);
+	auto layer = new HistoriaMotherScene(tipoP1, two, tipoP2, est); //DebugScene::create(jug);
 	scene->addChild(layer);
 
 	return scene;
@@ -136,13 +138,13 @@ void HistoriaMotherScene::update(float delta) {
 	}
 	else if (estado>=3) {
 		if (historia == 1) {
-			Director::getInstance()->replaceScene (MiniGameScene::createScene());
+			Director::getInstance()->replaceScene(DebugScene::createScene(1, false, 0, 1));
 		}
 		else if (historia == 2) {
-			Director::getInstance()->replaceScene( MiniGameScene::createScene());
+			Director::getInstance()->replaceScene(DebugScene::createScene(1, false, 0, 2));
 		}
 		else if (historia == 3) {
-			Director::getInstance()->replaceScene (MiniGameScene::createScene());
+			Director::getInstance()->replaceScene (DebugScene::createScene(1, false, 0, 3));
 		}
 	}
 	else {
@@ -156,17 +158,13 @@ void HistoriaMotherScene::update(float delta) {
 }
 void HistoriaMotherScene::PrevButtonAction()
 {
-	if (estado > 0) {
-		estado -= 1;
-	}
+	estado -= 1;
 
 }
 
 void HistoriaMotherScene::NextButtonAction()
 {
-	if (estado < 3) {
-		estado += 1;
-	}
+	estado += 1;
 
 }
 
