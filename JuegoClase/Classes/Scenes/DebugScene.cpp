@@ -173,7 +173,7 @@ void DebugScene::saveButtonAction() {
 	num = wrapper->getlvl();
 	archivo << num;
 	archivo.close();
-	playButtonAction();
+	playButtonAction();	
 	
 }
 
