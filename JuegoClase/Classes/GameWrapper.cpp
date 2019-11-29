@@ -50,6 +50,6 @@ void GameWrapper::death() {
 
 void GameWrapper::next() {
 	cocos2d::experimental::AudioEngine::stopAll();
-	cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionCrossFade::create(0.1f, NextMenu::createScene()));
+	cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionCrossFade::create(0.3f, NextMenu::createScene()));
 }
 
