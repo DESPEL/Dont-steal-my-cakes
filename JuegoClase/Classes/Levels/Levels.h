@@ -228,64 +228,64 @@ public:
 				);
 
 			levels[name] = Level(
-				//std::make_tuple(0.5f, down1->get({ 100, sz.height })),
-				//std::make_tuple(0.0f, down1->get({ sz.width - 100, sz.height })),
-				//std::make_tuple(2.2f, down2->get({ sz.width / 2, sz.height + 50 })),
-				//std::make_tuple(0.5f, down2->get({ sz.width / 2, sz.height + 50 }, up100.get(135))),
-				//std::make_tuple(0.0f, down2->get({ sz.width / 2, sz.height + 50 }, up100.get(-135))),
-				//std::make_tuple(7.0f, down3l->get({ 100, sz.height })),
-				//std::make_tuple(0.0f, down3l->get({ sz.width - 100, sz.height })),
-				//std::make_tuple(0.1f, down3l->get({ 200, sz.height })),
-				//std::make_tuple(0.0f, down3l->get({ sz.width - 200, sz.height })),
-				//std::make_tuple(1.5f, down1->get({ 200, sz.height + 50 })),
-				//std::make_tuple(0, down1->get({ sz.width - 200, sz.height + 50 })),
-				//std::make_tuple(2.0f, lat1->get({ 0, sz.height - 50 })),
-				//std::make_tuple(3.0f, lat2->get({ sz.width , sz.height - 50 })),
-				//std::make_tuple(0.0f, lat1->get({ 25 , sz.height - 50 })),
-				//std::make_tuple(2.0f, lat2->get({ sz.width - 25 , sz.height - 50 })),
-				//std::make_tuple(0.0f, lat1->get({ 25 , sz.height - 50 })),
-				//std::make_tuple(1.0f, lat2->get({ sz.width - 25 , sz.height - 50 })),
-				//std::make_tuple(0.0f, lat1->get({ 25 , sz.height - 50 })), // 19.8
-				//std::make_tuple(2.0f, down1->get({ 100, sz.height + 50 })),// 21.8
-				//std::make_tuple(0, down1->get({ sz.width - 100, sz.height + 50 })),
-				//std::make_tuple(0, down1->get({ sz.width / 2, sz.height + 50 })),
-				//std::make_tuple(1.0f, down3l->get({ 100, sz.height })), // 22.8
-				//std::make_tuple(0.0f, down3l->get({ sz.width - 100, sz.height })),
-				//std::make_tuple(0.1f, down3l->get({ 200, sz.height })),
-				//std::make_tuple(0.0f, down3l->get({ sz.width - 200, sz.height })),
-				//std::make_tuple(4.0f, lat3->get({ 0, sz.height - 50 })), // 26.8
-				//std::make_tuple(1.8f, lat4->get({ sz.width, sz.height - 50 })), // 28.8
-				//std::make_tuple(2.4f, lat3->get({ 0, sz.height - 50 })), // 30.8
-				//std::make_tuple(2.8f, spray1->get({ sz.width / 2, sz.height + 25 })), // 33.5
-				//std::make_tuple(1.0f, spray1->get({ sz.width / 2 + 100, sz.height + 25 })),
-				//std::make_tuple(0.0f, spray1->get({ sz.width / 2 - 100, sz.height + 25 })),
-				//std::make_tuple(2.5f, triple1->get({ 100, sz.height })), // 37
-				//std::make_tuple(0.0f, triple1->get({ sz.width - 100, sz.height })),
-				//std::make_tuple(2.0f, down3l->get({ 100, sz.height })),
-				//std::make_tuple(0.0f, down3l->get({ sz.width - 100, sz.height })),
-				//std::make_tuple(0.1f, down3l->get({ 200, sz.height })),
-				//std::make_tuple(0.0f, down3l->get({ sz.width - 200, sz.height })), // 39
-				//std::make_tuple(1.0f, lat1->get({ 0, sz.height - 50 })),
-				//std::make_tuple(0.0f, lat2->get({ sz.width , sz.height - 50 })), // 40
-				//std::make_tuple(4.5f, lat4->get({ sz.width, sz.height - 50 })), // 44.5
-				//std::make_tuple(3.0f, lat3->get({ 0, sz.height - 50 })), // 47.5
-				//std::make_tuple(1.0f, down3l->get({ 100, sz.height })),
-				//std::make_tuple(0.0f, down3l->get({ sz.width - 100, sz.height })),
-				//std::make_tuple(0.0f, down3l->get({ 200, sz.height })),
-				//std::make_tuple(0.0f, down3l->get({ sz.width - 200, sz.height })), // 48.5
-				//std::make_tuple(2.5f, down1->get({ 100, sz.height })),
-				//std::make_tuple(0.0f, down1->get({ sz.width - 100, sz.height })), // 51
-				//std::make_tuple(3.5f, down3l->get({ 100, sz.height + 50 })), // 54.5
-				//std::make_tuple(0.0f, down3l->get({ sz.width - 100, sz.height + 50 })),
-				//std::make_tuple(1.0f, down3l->get({ 200, sz.height + 50 })), // 55.5
-				//std::make_tuple(0.0f, down3l->get({ sz.width - 200, sz.height + 50 })),
-				//std::make_tuple(2.5f, lat4->get({ sz.width, sz.height - 50 })), // 56.5
-				//std::make_tuple(3.0f, lat3->get({ 0, sz.height - 50 })), // 59.5
-				//std::make_tuple(3.0f, lat4->get({ sz.width, sz.height - 50 })), // 60.5
-				//std::make_tuple(2.5f, lat3->get({ 0, sz.height - 50 })), // 62
-				//std::make_tuple(2.0f, spray1->get({ sz.width / 2, sz.height + 25 })), // 64
-				//std::make_tuple(3.0f, spray1->get({ sz.width / 2 + 100, sz.height + 25 })), // 68
-				//std::make_tuple(0.0f, spray1->get({ sz.width / 2 - 100, sz.height + 25 })),
+				mktp(0.5f, down1->get({ 100, sz.height })),
+				mktp(0.0f, down1->get({ sz.width - 100, sz.height })),
+				mktp(2.2f, down2->get({ sz.width / 2, sz.height + 50 })),
+				mktp(0.5f, down2->get({ sz.width / 2, sz.height + 50 }, up100.get(135))),
+				mktp(0.0f, down2->get({ sz.width / 2, sz.height + 50 }, up100.get(-135))),
+				mktp(7.0f, down3l->get({ 100, sz.height })),
+				mktp(0.0f, down3l->get({ sz.width - 100, sz.height })),
+				mktp(0.1f, down3l->get({ 200, sz.height })),
+				mktp(0.0f, down3l->get({ sz.width - 200, sz.height })),
+				mktp(1.5f, down1->get({ 200, sz.height + 50 })),
+				mktp(0, down1->get({ sz.width - 200, sz.height + 50 })),
+				mktp(2.0f, lat1->get({ 0, sz.height - 50 })),
+				mktp(3.0f, lat2->get({ sz.width , sz.height - 50 })),
+				mktp(0.0f, lat1->get({ 25 , sz.height - 50 })),
+				mktp(2.0f, lat2->get({ sz.width - 25 , sz.height - 50 })),
+				mktp(0.0f, lat1->get({ 25 , sz.height - 50 })),
+				mktp(1.0f, lat2->get({ sz.width - 25 , sz.height - 50 })),
+				mktp(0.0f, lat1->get({ 25 , sz.height - 50 })), // 19.8
+				mktp(2.0f, down1->get({ 100, sz.height + 50 })),// 21.8
+				mktp(0, down1->get({ sz.width - 100, sz.height + 50 })),
+				mktp(0, down1->get({ sz.width / 2, sz.height + 50 })),
+				mktp(1.0f, down3l->get({ 100, sz.height })), // 22.8
+				mktp(0.0f, down3l->get({ sz.width - 100, sz.height })),
+				mktp(0.1f, down3l->get({ 200, sz.height })),
+				mktp(0.0f, down3l->get({ sz.width - 200, sz.height })),
+				mktp(4.0f, lat3->get({ 0, sz.height - 50 })), // 26.8
+				mktp(1.8f, lat4->get({ sz.width, sz.height - 50 })), // 28.8
+				mktp(2.4f, lat3->get({ 0, sz.height - 50 })), // 30.8
+				mktp(2.8f, spray1->get({ sz.width / 2, sz.height + 25 })), // 33.5
+				mktp(1.0f, spray1->get({ sz.width / 2 + 100, sz.height + 25 })),
+				mktp(0.0f, spray1->get({ sz.width / 2 - 100, sz.height + 25 })),
+				mktp(2.5f, triple1->get({ 100, sz.height })), // 37
+				mktp(0.0f, triple1->get({ sz.width - 100, sz.height })),
+				mktp(2.0f, down3l->get({ 100, sz.height })),
+				mktp(0.0f, down3l->get({ sz.width - 100, sz.height })),
+				mktp(0.1f, down3l->get({ 200, sz.height })),
+				mktp(0.0f, down3l->get({ sz.width - 200, sz.height })), // 39
+				mktp(1.0f, lat1->get({ 0, sz.height - 50 })),
+				mktp(0.0f, lat2->get({ sz.width , sz.height - 50 })), // 40
+				mktp(4.5f, lat4->get({ sz.width, sz.height - 50 })), // 44.5
+				mktp(3.0f, lat3->get({ 0, sz.height - 50 })), // 47.5
+				mktp(1.0f, down3l->get({ 100, sz.height })),
+				mktp(0.0f, down3l->get({ sz.width - 100, sz.height })),
+				mktp(0.0f, down3l->get({ 200, sz.height })),
+				mktp(0.0f, down3l->get({ sz.width - 200, sz.height })), // 48.5
+				mktp(2.5f, down1->get({ 100, sz.height })),
+				mktp(0.0f, down1->get({ sz.width - 100, sz.height })), // 51
+				mktp(3.5f, down3l->get({ 100, sz.height + 50 })), // 54.5
+				mktp(0.0f, down3l->get({ sz.width - 100, sz.height + 50 })),
+				mktp(1.0f, down3l->get({ 200, sz.height + 50 })), // 55.5
+				mktp(0.0f, down3l->get({ sz.width - 200, sz.height + 50 })),
+				mktp(2.5f, lat4->get({ sz.width, sz.height - 50 })), // 56.5
+				mktp(3.0f, lat3->get({ 0, sz.height - 50 })), // 59.5
+				mktp(3.0f, lat4->get({ sz.width, sz.height - 50 })), // 60.5
+				mktp(2.5f, lat3->get({ 0, sz.height - 50 })), // 62
+				mktp(2.0f, spray1->get({ sz.width / 2, sz.height + 25 })), // 64
+				mktp(3.0f, spray1->get({ sz.width / 2 + 100, sz.height + 25 })), // 68
+				mktp(0.0f, spray1->get({ sz.width / 2 - 100, sz.height + 25 })),
 				mktp(0.5f, boss->get({ sz.width / 2, sz.height}))
 			);
 			levels.at(name).setSong("Mantis.mp3");
