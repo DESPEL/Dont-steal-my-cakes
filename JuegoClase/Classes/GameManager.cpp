@@ -40,3 +40,20 @@ void GameManager::saveMaxScore(int score) {
 int GameManager::getMaxScore() {
 	return UserDefault::getInstance()->getIntegerForKey(MAXSCORE, 0);
 }
+
+void GameManager::saveMiniGameScore(int score) {
+	if (score > this->GameManager::getMiniGameScore())
+		UserDefault::getInstance()->setIntegerForKey(MINIGAMEMAXSCORE, score);
+
+};
+
+int GameManager::getMiniGameScore() {
+	return UserDefault::getInstance()->getIntegerForKey(MINIGAMEMAXSCORE, 0);
+};
+
+void GameManager::resetScore() {
+
+	UserDefault::getInstance()->setIntegerForKey(MAXSCORE, 0);
+	UserDefault::getInstance()->setIntegerForKey(MINIGAMEMAXSCORE, 0);
+
+};

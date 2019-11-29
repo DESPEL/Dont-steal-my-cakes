@@ -106,7 +106,6 @@ void DebugScene::update(float delta) {
 	if (_player->isVisible() || two && (_player2->isVisible() )) {// (wrapper->coop) ? (_player2->isVisible()) : ())
 		_bg->update(delta);
 	}
-
 	_player->update(delta);
 
 

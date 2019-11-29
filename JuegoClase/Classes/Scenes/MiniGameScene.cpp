@@ -1,15 +1,19 @@
 #include "MiniGameScene.h"
-#include "SimpleAudioEngine.h"
+//#include "SimpleAudioEngine.h"
+#include "AudioEngine.h"
 #include "ui/CocosGUI.h"
 #include "GameWrapper.h"
+#include "GameManager.h"
 #include "menus/MainMenu.h"
 
-using namespace CocosDenshion;
+//using namespace CocosDenshion;
 
 USING_NS_CC;
 
 MiniGameScene::MiniGameScene(bool jug) {
 	this->two = jug;
+	//this->highscore = GameManager::getInstance()->getMiniGameScore();
+	
 	MiniGameScene::init();
 }
 
@@ -28,6 +32,8 @@ bool MiniGameScene::init() {
 
 	auto _visibleSize = Director::getInstance()->getWinSize();
 
+	
+	mensajeHS = this->mensajeHS + std::to_string(GameManager::getInstance()->getMiniGameScore());
 	//Crea el background
 	_bg = Background::create();
 	button = ui::Button::create("menus/Pausa.png", "menus/Pausa.png", "menus/Pausa.png");
@@ -77,6 +83,11 @@ bool MiniGameScene::init() {
 	tiempo->setPosition(0, 290);
 	addChild(tiempo, 5);
 
+	auto high_score = Label::createWithTTF(mensajeHS, "fonts/arial.ttf", 24);
+	high_score->setAnchorPoint(Point(0, 0));
+	high_score->setPosition(0, 230);
+	addChild(high_score, 5);
+
 	//Crea al jugador
 	_player = Player::create();
 	if (!this->two)
@@ -122,8 +133,9 @@ bool MiniGameScene::init() {
 
 
 	// Musica
-	SimpleAudioEngine::getInstance()->playBackgroundMusic("Music\\Mantis.mp3", true);
-	SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.02);
+	//SimpleAudioEngine::getInstance()->playBackgroundMusic("Music\\Mantis.mp3", true);
+	cocos2d::experimental::AudioEngine::play2d("Music/Mantis.mp3", true, GameManager::getInstance()->getBgVolume() / 100);
+
 
 	return true;
 }
@@ -158,6 +170,7 @@ void MiniGameScene::update(float delta) {
 	_player->update(delta);
 
 	if (Tiempo < 0) {
+		GameManager::getInstance()->saveMiniGameScore(_puntos);
 		this->wrapper->death();
 	}
 	for (auto e : _enemyPool) {
@@ -224,7 +237,7 @@ void MiniGameScene::pauseButtonAction()
 	button3->setVisible(true);
 	button4->setVisible(true);
 	pause();
-	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+	//SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 
 	cocos2d::Director::getInstance()->stopAnimation();
 
@@ -247,7 +260,7 @@ void MiniGameScene::playButtonAction()
 	button3->setVisible(false);
 	button4->setVisible(false);
 	resume();
-	SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+	//SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 
 	cocos2d::Director::getInstance()->startAnimation();
 

@@ -5,6 +5,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 #include "GameWrapper.h"
+#include "GameManager.h"
 #include "BasicPoint.h"
 
 class MiniGameScene : public cocos2d::Layer {
@@ -12,6 +13,7 @@ private:
 
 	bool two = 0;
 	int _puntos = 0;
+	int highscore;
 	float Tiempo = 60;
 	int seg = Tiempo;
 	float variar;
@@ -20,6 +22,7 @@ private:
 	cocos2d::Label* tiempo;
 	std::string mensaje = "Puntos: " + std::to_string(_puntos);
 	std::string mensajet = "Tiempo: " + std::to_string(seg);
+	std::string mensajeHS = "High Score: ";
 	
 	//Enemys
 	int _numEnemies = 10;

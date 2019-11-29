@@ -7,6 +7,7 @@
 #define BGVOLUME "bgvolume"
 #define SFXVOLUME "effectvolume"
 #define MAXSCORE "maxscore"
+#define MINIGAMEMAXSCORE "mgms"
 
 
 class GameWrapper;
@@ -20,8 +21,8 @@ private:
 
 public:
 
-	CC_SYNTHESIZE(int, _bgVolume, BgVolume);
-	CC_SYNTHESIZE(int, _effectsVolume, EffectsVolume);
+	CC_SYNTHESIZE(float, _bgVolume, BgVolume);
+	CC_SYNTHESIZE(float , _effectsVolume, EffectsVolume);
 	CC_SYNTHESIZE(int, _playerScore, PlayerScore);
 	void saveSetting();
 	void saveMaxScore(int score);
@@ -30,6 +31,11 @@ public:
 	void saveGame(int tag);
 	int getNextLevel();
 
+
+	void saveMiniGameScore(int score);
+	int getMiniGameScore();
+
+	void resetScore();
 
 	inline static GameWrapper* wrapper = GameWrapper::getInstance();
 	

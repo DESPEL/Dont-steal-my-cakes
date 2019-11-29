@@ -26,6 +26,8 @@ bool MainMenu::init() {
 		return false;
 	}
 	
+	//GameManager::getInstance()->resetScore();
+
 	std::vector<std::function <void(cocos2d::Ref*)>> functions;
 	//inicializamos un vector de funciones. Cada funcion lanza un nivel
 	initFunctions(functions);
