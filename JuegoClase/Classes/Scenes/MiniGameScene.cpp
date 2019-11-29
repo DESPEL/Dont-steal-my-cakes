@@ -218,7 +218,7 @@ void MiniGameScene::update(float delta) {
 	Timer(delta);
 	_player->update(delta);
 
-	if (Tiempo <55) {
+	if (Tiempo < 0) {
 		GameManager::getInstance()->saveMiniGameScore(_puntos);
 		GameManager::getInstance()->updateMiniScores(_puntos);
 		
@@ -311,7 +311,7 @@ void MiniGameScene::pauseButtonAction()
 void ::MiniGameScene::Timer(float delta) {
 	Tiempo -= delta;
 	seg = Tiempo;
-	if (seg <= 0)
+	if (seg==55)
 	{
 		label3->setVisible(false);
 	}
