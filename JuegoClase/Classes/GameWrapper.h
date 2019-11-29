@@ -25,7 +25,7 @@ public:
 	// Información para iniciar escenas
 	int p1TipoNave = 2;
 	int p2TipoNave = 1;
-	bool coop = false;
+	bool coop = 0;
 
 	void next();
 

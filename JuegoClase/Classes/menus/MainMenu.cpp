@@ -107,15 +107,15 @@ bool MainMenu::init() {
 
 
 void MainMenu::selectMenuButton() {
-	Director::getInstance()->pushScene(TransitionFadeBL::create(1, LevelSelectMenu::createScene()));
+	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, LevelSelectMenu::createScene()));
 }
 
 void MainMenu::optionsButton() {
-	Director::getInstance()->pushScene(TransitionFlipX::create(1, DebugScene::createScene(Player::Tipos::NORMAL, true, Player2::Tipos::RAPIDIN)));
+	Director::getInstance()->replaceScene(TransitionFlipX::create(1, DebugScene::createScene(Player::Tipos::NORMAL, true, Player2::Tipos::RAPIDIN)));
 }
 
 void MainMenu::selectPlayer() {
-	Director::getInstance()->pushScene(TransitionFlipX::create(1, SelectPlayersMenu::createScene()));
+	Director::getInstance()->replaceScene(TransitionFlipX::create(1, SelectPlayersMenu::createScene()));
 }
 
 

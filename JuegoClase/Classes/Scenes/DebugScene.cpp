@@ -19,7 +19,7 @@ DebugScene::DebugScene(int tipoP1, bool two, int tipoP2, int level) {
 	this->naveP2 = tipoP2;
 	this->level = level;
 	wrapper->p1TipoNave = tipoP1;
-	wrapper->p2TipoNave = tipoP2;
+	wrapper->p2TipoNave = naveP2;
 	wrapper->coop = two;
 	wrapper->actualLevel = level;
 	DebugScene::init();
@@ -88,15 +88,15 @@ bool DebugScene::init() {
 		_player->setPosition(_visibleSize.width / 2, _visibleSize.height / 2 - 100);
 	else
 		_player->setPosition(_visibleSize.width / 2 + 100, _visibleSize.height / 2 - 100);
-	GameWrapper::getInstance()->setPlayer(_player);
 	addChild(_player);
 
 	if (this->two) {
 		_player2 = Player2::create(naveP2);
 		_player2->setPosition(_visibleSize.width / 2 - 100, _visibleSize.height / 2 - 100);
-		GameWrapper::getInstance()->setPlayer2(_player2);
 		addChild(_player2);
 	}
+	GameWrapper::getInstance()->setPlayer(_player);
+	GameWrapper::getInstance()->setPlayer2(_player2);
 	GameWrapper::getInstance()->coop = this->two;
 
 	//Agrega el update al updater mas grande
@@ -122,9 +122,6 @@ void DebugScene::update(float delta) {
 	}
 
 	_player->update(delta);
-	if (this->two) {
-		_player2->update(delta);
-	}
 
 
 	if ((_player->get_currentAnimation() == Player::EXPLOSION && !two) || (_player->get_currentAnimation() == Player::EXPLOSION && two && (_player2->get_currentAnimation() == Player2::EXPLOSION))) {
