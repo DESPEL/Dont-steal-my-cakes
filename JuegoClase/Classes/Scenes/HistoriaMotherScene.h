@@ -18,7 +18,7 @@ private:
 	bool two = 0;
 	int naveP1;
 	int naveP2;
-	int estado=1;
+	int estado=0;
 	//Enemys
 	int _numEnemies = 10;
 	int _enemyIndex = 0;

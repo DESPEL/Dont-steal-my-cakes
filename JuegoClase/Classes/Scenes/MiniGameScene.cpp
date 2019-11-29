@@ -75,6 +75,12 @@ bool MiniGameScene::init() {
 	label->setPosition(0, 260);
 	addChild(label, 5);
 
+	 label3 = Label::createWithTTF("Hola", "fonts/arial.ttf", 24);
+	
+	label3->setPosition(_visibleSize.width / 2, _visibleSize.height / 2);
+	addChild(label3, 5);
+
+
 
 	tiempo = Label::createWithTTF(mensajet, "fonts/arial.ttf", 24);
 	tiempo->setAnchorPoint(Point(0, 0));
@@ -160,8 +166,8 @@ void MiniGameScene::update(float delta) {
 	_player->update(delta);
 
 	if (Tiempo < 0) {
-		cocos2d::experimental::AudioEngine::stop(musictag);
 		GameManager::getInstance()->saveMiniGameScore(_puntos);
+		cocos2d::experimental::AudioEngine::stop(musictag);
 		this->wrapper->death();
 	}
 	for (auto e : _enemyPool) {
@@ -236,6 +242,10 @@ void MiniGameScene::pauseButtonAction()
 void ::MiniGameScene::Timer(float delta) {
 	Tiempo -= delta;
 	seg = Tiempo;
+	if (seg==55)
+	{
+		label3->setVisible(false);
+	}
 	tiempo->setString("Tiempo: " + std::to_string(seg	));
 }
 

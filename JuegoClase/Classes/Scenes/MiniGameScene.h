@@ -34,6 +34,7 @@ private:
 	cocos2d::ui::Button* button2;
 	cocos2d::ui::Button* button3;
 	cocos2d::ui::Button* button4;
+	cocos2d::Label* label3;
 
 	Background* _bg;
 
