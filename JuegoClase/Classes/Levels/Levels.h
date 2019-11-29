@@ -9,6 +9,8 @@
 #include "MovementPatterns/MovementPatterns.h"
 #include "AttackPatterns/AttackPatterns.h"
 
+#define mktp std::make_tuple
+
 USING_NS_CC;
 
 class Levels {
@@ -72,6 +74,7 @@ public:
 		//	return levels.at(name);*/
 		//}
 
+		// Cancion: Mantis
 		if (name == "level-1") {
 			auto up100 = MovementPatterns::create("up-100");
 			auto stmov = MovementPatterns::create("static");
@@ -88,14 +91,14 @@ public:
 				{
 					// angulo, velocidad, borrado al final
 					up100.get(-180, 1, false),
-					stmov.get(0, 1/5.0f, false),
+					stmov.get(0, 1 / 5.0f, false),
 					up100.get()
 				}, {
 					{ 1.7f, circular.get()},
 					{ 2.7f, circular.get()}
 				});
 
-			Enemy *down2 = EnemyPlus::create(
+			Enemy* down2 = EnemyPlus::create(
 				"enemigo4.png",
 				{
 					up100.get(-180, 2, false),
@@ -103,7 +106,7 @@ public:
 					up100.get()
 				}, {
 					{ 0.5f, circular.get()}
-			});
+				});
 
 			Enemy* down3l = EnemyPlus::create(
 				"enemigo4.png",
@@ -117,7 +120,7 @@ public:
 					{ 0.5f, linear.get()},
 					{ 0.5f, linear.get()}
 				}
-			);
+				);
 
 			Enemy* lat1 = EnemyPlus::create(
 				"enemigo4.png",
@@ -134,7 +137,7 @@ public:
 					{ 0.2f, linear.get()},
 					{ 0.2f, linear.get()}
 				}
-			);
+				);
 
 			Enemy* lat2 = EnemyPlus::create(
 				"enemigo4.png",
@@ -151,7 +154,7 @@ public:
 					{ 0.2f, linear.get()},
 					{ 0.2f, linear.get()}
 				}
-			);
+				);
 
 			Enemy* lat3 = EnemyPlus::create(
 				"enemigo4.png",
@@ -169,7 +172,7 @@ public:
 					{ 0.3f, linear.get()},
 					{ 0.3f, linear.get()}
 				}
-			);
+				);
 
 			Enemy* lat4 = EnemyPlus::create(
 				"enemigo4.png",
@@ -193,12 +196,12 @@ public:
 				"enemigo4.png",
 				{
 					up100.get(-180, 1, false),
-					up100.get() 
+					up100.get()
 				},
 				{
 					{ 0.0f, spray.get()}
 				}
-			);
+				);
 
 			Enemy* triple1 = EnemyPlus::create(
 				"enemigo4.png",
@@ -210,7 +213,7 @@ public:
 					{ 1.0f, triple.get()},
 					{ 0.5f, triple.get()}
 				}
-			);
+				);
 
 			levels[name] = Level(
 				std::make_tuple(0.5f, down1->get({ 100, sz.height })),
@@ -224,16 +227,16 @@ public:
 				std::make_tuple(0.0f, down3l->get({ sz.width - 200, sz.height })),
 				std::make_tuple(1.5f, down1->get({ 200, sz.height + 50 })),
 				std::make_tuple(0, down1->get({ sz.width - 200, sz.height + 50 })),
-				std::make_tuple(2.0f, lat1->get({0, sz.height - 50 })), 
+				std::make_tuple(2.0f, lat1->get({ 0, sz.height - 50 })),
 				std::make_tuple(3.0f, lat2->get({ sz.width , sz.height - 50 })),
 				std::make_tuple(0.0f, lat1->get({ 25 , sz.height - 50 })),
 				std::make_tuple(2.0f, lat2->get({ sz.width - 25 , sz.height - 50 })),
-				std::make_tuple(0.0f, lat1->get({ 25 , sz.height - 50 })), 
+				std::make_tuple(0.0f, lat1->get({ 25 , sz.height - 50 })),
 				std::make_tuple(1.0f, lat2->get({ sz.width - 25 , sz.height - 50 })),
 				std::make_tuple(0.0f, lat1->get({ 25 , sz.height - 50 })), // 19.8
 				std::make_tuple(2.0f, down1->get({ 100, sz.height + 50 })),// 21.8
 				std::make_tuple(0, down1->get({ sz.width - 100, sz.height + 50 })),
-				std::make_tuple(0, down1->get({ sz.width  / 2, sz.height + 50 })),
+				std::make_tuple(0, down1->get({ sz.width / 2, sz.height + 50 })),
 				std::make_tuple(1.0f, down3l->get({ 100, sz.height })), // 22.8
 				std::make_tuple(0.0f, down3l->get({ sz.width - 100, sz.height })),
 				std::make_tuple(0.1f, down3l->get({ 200, sz.height })),
@@ -242,16 +245,139 @@ public:
 				std::make_tuple(1.8f, lat4->get({ sz.width, sz.height - 50 })), // 28.8
 				std::make_tuple(2.4f, lat3->get({ 0, sz.height - 50 })), // 30.8
 				std::make_tuple(2.8f, spray1->get({ sz.width / 2, sz.height + 25 })), // 33.5
-				std::make_tuple(3.5f, triple1->get({ 100, sz.height })), // 37
-				std::make_tuple(0.0f, triple1->get({ sz.width - 100, sz.height }))
+				std::make_tuple(1.0f, spray1->get({ sz.width / 2 + 100, sz.height + 25 })),
+				std::make_tuple(0.0f, spray1->get({ sz.width / 2 - 100, sz.height + 25 })),
+				std::make_tuple(2.5f, triple1->get({ 100, sz.height })), // 37
+				std::make_tuple(0.0f, triple1->get({ sz.width - 100, sz.height })),
+				std::make_tuple(2.0f, down3l->get({ 100, sz.height })),
+				std::make_tuple(0.0f, down3l->get({ sz.width - 100, sz.height })),
+				std::make_tuple(0.1f, down3l->get({ 200, sz.height })),
+				std::make_tuple(0.0f, down3l->get({ sz.width - 200, sz.height })), // 39
+				std::make_tuple(1.0f, lat1->get({ 0, sz.height - 50 })),
+				std::make_tuple(0.0f, lat2->get({ sz.width , sz.height - 50 })), // 40
+				std::make_tuple(4.5f, lat4->get({ sz.width, sz.height - 50 })), // 44.5
+				std::make_tuple(3.0f, lat3->get({ 0, sz.height - 50 })), // 47.5
+				std::make_tuple(1.0f, down3l->get({ 100, sz.height })),
+				std::make_tuple(0.0f, down3l->get({ sz.width - 100, sz.height })),
+				std::make_tuple(0.0f, down3l->get({ 200, sz.height })),
+				std::make_tuple(0.0f, down3l->get({ sz.width - 200, sz.height })), // 48.5
+				std::make_tuple(2.5f, down1->get({ 100, sz.height })),
+				std::make_tuple(0.0f, down1->get({ sz.width - 100, sz.height })), // 51
+				std::make_tuple(3.5f, down3l->get({ 100, sz.height + 50 })), // 54.5
+				std::make_tuple(0.0f, down3l->get({ sz.width - 100, sz.height + 50 })),
+				std::make_tuple(1.0f, down3l->get({ 200, sz.height + 50 })), // 55.5
+				std::make_tuple(0.0f, down3l->get({ sz.width - 200, sz.height + 50 })),
+				std::make_tuple(2.5f, lat4->get({ sz.width, sz.height - 50 })), // 56.5
+				std::make_tuple(3.0f, lat3->get({ 0, sz.height - 50 })), // 59.5
+				std::make_tuple(1.0f, lat4->get({ sz.width, sz.height - 50 })), // 60.5
+				std::make_tuple(1.5f, lat3->get({ 0, sz.height - 50 })), // 62
+				std::make_tuple(2.0f, spray1->get({ sz.width / 2, sz.height + 25 })), // 64
+				std::make_tuple(3.0f, spray1->get({ sz.width / 2 + 100, sz.height + 25 })), // 68
+				std::make_tuple(0.0f, spray1->get({ sz.width / 2 - 100, sz.height + 25 }))
+				// AQUI APARECE EL BOSS
 			);
 
 			return levels.at(name);
 		}
 
-		if (name == "boss") {
-			auto circular = AttackPatterns::create("circular");
+
+		// Cancion : Tower of heaven
+		if (name == "level-2") {
+			auto up100 = MovementPatterns::create("up-100");
 			auto stmov = MovementPatterns::create("static");
+			// 0.5f
+
+			auto circular = AttackPatterns::create("circular");
+			auto triple = AttackPatterns::create("triple");
+			auto linear = AttackPatterns::create("linear");
+			auto spray = AttackPatterns::create("test");
+
+			Enemy* slowdcir = EnemyPlus::create(
+				"enemigo2.png",
+				{
+					up100.get(180, 1 / 2.0f, false),
+					up100.get(0, 1 / 2.0f)
+				},
+				{
+					{2.0f, circular.get()},
+					{0.1f, circular.get()}
+				}
+				);
+
+			Enemy* downslow = EnemyPlus::create(
+				"enemigo2.png",
+				{
+					up100.get(180, 1 / 2.0f, false),
+					stmov.get(0, 2.0f, false),
+					up100.get(0, 1 / 1.5f)
+				},
+				{ // 0.5, 0.5, 0.5, 0.5, 0.5
+					{0.5f, linear.get()},
+					{0.5f, linear.get()},
+					{0.5f, linear.get()},
+					{0.5f, linear.get()},
+					{0.5f, linear.get()}
+				}
+				);
+
+			Enemy* downfast = EnemyPlus::create(
+				"enemigo2.png",
+				{
+					up100.get(180, 1 / 2.0f, false),
+					up100.get(0, 1 / 2.0f)
+				},
+				{ // 0.5, 0.5, 0.5, 0.5, 0.5
+					{0.3f, linear.get()},
+					{0.3f, linear.get()},
+					{0.3f, linear.get()},
+					{0.3f, linear.get()},
+					{0.3f, linear.get()},
+					{0.3f, linear.get()}
+				}
+				);
+
+			Enemy* downfastcirc = EnemyPlus::create(
+				"enemigo2.png",
+				{
+					up100.get(180, 1 / 2.0f, false),
+					up100.get(0, 1 / 2.0f)
+				},
+				{ // 0.5, 0.5, 0.5, 0.5, 0.5
+					{0.5f, circular.get()},
+					{0.5f, circular.get()},
+					{0.5f, circular.get()},
+					{0.5f, circular.get()},
+					{0.5f, circular.get()},
+					{0.5f, circular.get()}
+				}
+				);
+
+			Enemy* downfasttrip = EnemyPlus::create(
+				"enemigo2.png",
+				{
+					up100.get(180, 1 / 2.0f, false),
+					up100.get(0, 1 / 2.0f)
+				},
+				{ // 0.5, 0.5, 0.5, 0.5, 0.5
+					{0.4f, triple.get()},
+					{0.4f, triple.get()},
+					{0.4f, triple.get()},
+					{0.4f, triple.get()},
+					{0.4f, triple.get()},
+					{0.4f, triple.get()}
+				}
+				);
+
+			Enemy* spray1 = EnemyPlus::create(
+				"enemigo4.png",
+				{
+					up100.get(-180, 1, false),
+					up100.get()
+				},
+				{
+					{ 0.0f, spray.get()}
+				}
+				);
 
 			Enemy* boss = EnemyPlus::createBoss(
 				"boss1.png",
@@ -261,10 +387,53 @@ public:
 				{
 					{3.0f, circular.get()}
 				}
-			);
+				);
 
-			levels[name] = Level(
-				std::make_tuple(0.5f, boss->get({ sz.width / 2, sz.height - 100 }))
+			levels[name] = Level( // Delta: 1s
+				mktp(9.2f, slowdcir->get({ sz.width / 2, sz.height })), // s: 8.2, e: 10.2
+				mktp(2.0f, downslow->get({ sz.width / 2 - 100, sz.height })), // s: 10.2 e: 12.7
+				mktp(0.0f, downslow->get({ 100 / 2, sz.height })),
+				mktp(0.0f, downslow->get({ sz.width - 100 / 2, sz.height })),
+				mktp(0.0f, downslow->get({ sz.width / 2 + 100, sz.height })),
+				mktp(2.5f, downfast->get({ 1 * sz.width / 4, sz.height })),// s: 12.7 e: 14.8
+				mktp(0.0f, downfast->get({ 2 * sz.width / 4, sz.height })),
+				mktp(0.0f, downfast->get({ 3 * sz.width / 4, sz.height })),
+				mktp(2.1f, downfastcirc->get({ 1 * sz.width / 6, sz.height + 25 })), // s: 14.8 e: 17.8
+				//mktp(0.0f, downfastcirc->get({ 3 * sz.width / 6, sz.height + 25 })),
+				mktp(0.0f, downfastcirc->get({ 5 * sz.width / 6, sz.height + 25 })),
+				mktp(3.0f, downslow->get({ 1 * sz.width / 4, sz.height })),// s: 17.8 e: 20.3
+				mktp(0.0f, downslow->get({ 2 * sz.width / 4, sz.height })),
+				mktp(0.0f, downslow->get({ 3 * sz.width / 4, sz.height })),
+				mktp(4.5f, downfasttrip->get({ 1 * sz.width / 6, sz.height + 25 })), // s: 22.3 e: 24.7
+				mktp(0.0f, downfasttrip->get({ 3 * sz.width / 6, sz.height + 25 })),
+				mktp(0.0f, downfasttrip->get({ 5 * sz.width / 6, sz.height + 25 })),
+				mktp(2.0f, downfasttrip->get({ sz.width / 2, sz.height + 25 })), // s: 26.7
+				mktp(2.0f, downfast->get({ 1 * sz.width / 4, sz.height + 25 })), // s: 28.7
+				mktp(2.0f, downfast->get({ 3 * sz.width / 4, sz.height + 25 })), // s: 30.7 e: 32.5
+				mktp(3.0f, spray1->get({ 1 * sz.width / 6, sz.height })), // s: 33.7 f: 40.0
+				mktp(0.0f, spray1->get({ 5 * sz.width / 6, sz.height })),
+				mktp(3.0f, downfast->get({ 1 * sz.width / 6, sz.height + 25 })),
+				mktp(0.0f, downfast->get({ 3 * sz.width / 6, sz.height + 25 })),
+				mktp(0.0f, downfast->get({ 5 * sz.width / 6, sz.height + 25 })),
+				mktp(3.3f, downfast->get({ 1 * sz.width / 4, sz.height })), // s: 40.0 e: 42.1
+				mktp(0.0f, downfast->get({ 2 * sz.width / 4, sz.height })),
+				mktp(0.0f, downfast->get({ 3 * sz.width / 4, sz.height })),
+				mktp(4.6f, downfastcirc->get({ 3 * sz.width / 6, sz.height + 25 })), // s: 44.6 e: 46.8
+				mktp(0.0f, downfast->get({ 1 * sz.width / 6, sz.height + 25 })),
+				mktp(0.0f, downfast->get({ 5 * sz.width / 6, sz.height + 25 })),
+				mktp(2.6f, downfastcirc->get({ 3 * sz.width / 6, sz.height })), // s: 47.2 e: 49.2
+				mktp(3.0f, spray1->get({ 1 * sz.width / 6, sz.height })), // s: 51 e: 53
+				mktp(0.0f, spray1->get({ 5 * sz.width / 6, sz.height })),
+				mktp(2.0f, downfast->get({ 1 * sz.width / 4, sz.height })),
+				mktp(0.1f, downfast->get({ 2 * sz.width / 4, sz.height })),
+				mktp(0.2f, downfast->get({ 3 * sz.width / 4, sz.height })),
+				mktp(0.1f, downfast->get({ 3 * sz.width / 8, sz.height })),
+				mktp(0.3f, downfast->get({ 5 * sz.width / 8, sz.height })),
+				mktp(0.0f, downfast->get({ 4 * sz.width / 8, sz.height })),
+				mktp(0.1f, downfast->get({ 7 * sz.width / 8, sz.height })),
+				mktp(0.3f, downfast->get({ 1 * sz.width / 8, sz.height })),
+				mktp(0.1f, downfast->get({ 3 * sz.width / 8, sz.height })), // s: 52 e: final
+				mktp(0.5f, boss->get({ sz.width / 2, sz.height - 100 }))
 			);
 
 			return levels[name];
