@@ -133,8 +133,8 @@ void MainMenu::initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> fu
 void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MenuIns::createScene())); }
 void MainMenu::actionButton2() { Director::getInstance()->end(); }
 void MainMenu::actionButton3() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MiniGameScene::createScene())); }
-void MainMenu::actionButton4() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, TopMenu::createScene())); }
-void MainMenu::actionButton5() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, LogMenu::createScene())); }
+void MainMenu::actionButton4() { Director::getInstance()->pushScene(TransitionFadeBL::create(1, TopMenu::createScene())); }
+void MainMenu::actionButton5() { Director::getInstance()->pushScene(TransitionFadeBL::create(1, LogMenu::createScene())); }
 void MainMenu::actionButton6() {  /*TODO*/ }
 void MainMenu::actionButton7() {  /*TODO*/ }
 void MainMenu::actionButton8() {  /*TODO*/ }
