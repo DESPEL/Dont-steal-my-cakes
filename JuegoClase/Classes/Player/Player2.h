@@ -65,6 +65,7 @@ public:
 	cocos2d::Vector<Bullet*> Balas;
 
 	int kills = 0;
+	int hp = 2;
 };
 
 

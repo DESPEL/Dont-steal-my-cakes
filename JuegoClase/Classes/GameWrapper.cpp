@@ -25,12 +25,16 @@ void GameWrapper::setPlayer(Player* pl) noexcept {
 	_player = pl;
 }
 
-/*void GameWrapper::setPlayer2(Player2* p2) {
+void GameWrapper::setPlayer2(Player2* p2) noexcept {
 	_player2 = p2;
-}*/
+}
 
 Player* GameWrapper::getPlayer() {
 	return _player;
+}
+
+Player2* GameWrapper::getPlayer2() {
+	return _player2;
 }
 
 void GameWrapper::death() {
