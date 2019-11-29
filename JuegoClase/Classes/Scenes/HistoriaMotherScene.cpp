@@ -55,6 +55,9 @@ bool HistoriaMotherScene::init() {
 	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
 		ingles = true;
 	}
+	else {
+		ingles = false;
+	}
 
 	if (ingles) {
 		std::string m1 = "You are an amazing baker \nand you love all the cakes\n you have made but\n one day someone \nsteals your favorite cake,\n you will not let it happen";
