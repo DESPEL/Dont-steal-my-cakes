@@ -510,7 +510,7 @@ public:
 				mktp(0.0f, downraro->get({ 4 * sz.width / 6, sz.height })),
 				mktp(2.0f, downraro->get({ 1 * sz.width / 6, sz.height })),
 				mktp(0.0f, downraro->get({ 5 * sz.width / 6, sz.height })),
-				mktp(5.0f, downraro->get({ sz.width / 2, sz.height + 30 }))
+				mktp(5.0f, boss->get({ sz.width / 2, sz.height + 30 }))
 			);
 			levels.at(name).setSong("NoMoney.mp3");
 			return levels[name];
