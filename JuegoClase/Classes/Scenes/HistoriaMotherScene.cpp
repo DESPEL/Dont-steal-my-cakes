@@ -51,6 +51,10 @@ bool HistoriaMotherScene::init() {
 	Actual->setPosition(Point(_visibleSize.width/2, _visibleSize.height/2));
 	addChild(Actual, 5);
 	this->retain();
+
+	if (! (TranslationEngine::getInstance()->getLanguage() == "ES_MX"))
+		ingles = true;
+
 	if (ingles==true) {
 		std::string m1 = "You are an amazing baker \nand you love all the cakes\n you have made but\n one day someone \nsteals your favorite cake,\n you will not let it happen";
 		std::string m2 = "So you take your spaceship \nand chase\n the thief, fighting \nagainst any enemy\n along the way\n. Eventually he will \nlose the competition,\nbut he will try to \nmake his recipe";
