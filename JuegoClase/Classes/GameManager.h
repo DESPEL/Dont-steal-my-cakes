@@ -4,6 +4,8 @@
 #include "GameWrapper.h"
 //#include "TranslationEngine.h"
 
+#include <vector>
+
 #define LEVEL "level"
 #define BGVOLUME "bgvolume"
 #define SFXVOLUME "effectvolume"
@@ -12,7 +14,18 @@
 #define DIFFICULTY "diflevel"
 #define DIFMODE "dificultycategory"
 #define LANGUAGE "lang"
-
+#define SCORESALMACENADOS "SCORES"
+#define SCORE1 "S1"
+#define SCORE2 "S2"
+#define SCORE3 "S3"
+#define SCORE4 "S4"
+#define SCORE5 "S5"
+#define MINISC "Si"
+#define MINISCORE1 "MS1"
+#define MINISCORE2 "MS2"
+#define MINISCORE3 "MS3"
+#define MINISCORE4 "MS4"
+#define MINISCORE5 "MS5"
 
 class GameWrapper;
 
@@ -27,7 +40,10 @@ private:
 
 public:
 
-
+	std::vector<int> fiveScores;
+	std::vector<int> fiveMiniScores;
+	int scoresAlmacenados;
+	int miniScoresAlmacenados;
 
 
 	CC_SYNTHESIZE(float, _bgVolume, BgVolume);
@@ -45,6 +61,9 @@ public:
 	static GameManager* getInstance();
 	void saveGame(int tag);
 	int getNextLevel();
+
+	void updateScores(int score);
+	void updateMiniScores(int score);
 
 
 	void saveMiniGameScore(int score);
