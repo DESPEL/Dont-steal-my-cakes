@@ -164,6 +164,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\menus\SelectPlayersMenu.cpp" />
     <ClCompile Include="..\Classes\Player\Player2.cpp" />
     <ClCompile Include="..\Classes\menus\MenuInstrucciones.cpp" />
+    <ClCompile Include="..\Classes\Scenes\HistoriaMotherScene.cpp" />
     <ClCompile Include="..\Classes\Scenes\MiniGameScene.cpp" />
     <ClCompile Include="..\Classes\Scenes\MotherScene.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
@@ -195,6 +196,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\menus\NextLvl.h" />
     <ClInclude Include="..\Classes\menus\SelectPlayersMenu.h" />
     <ClInclude Include="..\Classes\MovementPatterns\MovementPatterns.h" />
+    <ClInclude Include="..\Classes\Scenes\HistoriaMotherScene.h" />
     <ClInclude Include="..\Classes\Scenes\MiniGameScene.h" />
     <ClInclude Include="..\Classes\Scenes\MotherScene.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
