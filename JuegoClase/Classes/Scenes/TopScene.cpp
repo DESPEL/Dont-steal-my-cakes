@@ -47,7 +47,7 @@ bool TopMenu::init() {
 
 void TopMenu::initButtons() {
 
-	auto High = Label::createWithTTF("TOP", "fonts/arial.ttf", 36);
+	auto High = Label::createWithTTF("TOP", "fonts/SPACEBAR.ttf", 36);
 	
 	High->setPosition(_visibleSize.width/2, 290);
 	addChild(High, 5);
