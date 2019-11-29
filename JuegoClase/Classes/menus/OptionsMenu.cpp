@@ -78,8 +78,14 @@ bool OptionsMenu::init() {
 	dificulty_Label = Label::createWithTTF("dificultad", "fonts/arial.ttf", 16);
 	dificulty_Label->setAnchorPoint(Point(0, 1));
 	dificulty_Label->setTextColor(Color4B::WHITE);
-	_ostr << GameManager::getInstance()->getDifficulty();
+	auto modo = GameManager::getInstance()->getDifiMode();
 
+	if (modo <= 1)
+		_ostr << TranslationEngine::getInstance()->get("DIFF_0");
+	else if (modo <= 2)
+		_ostr << TranslationEngine::getInstance()->get("DIFF_1");
+	else
+		_ostr << TranslationEngine::getInstance()->get("DIFF_2");
 	dificulty_Label->setString(TranslationEngine::getInstance()->get("DIFF") + ": " + _ostr.str());
 
 	_ostr.str("");
@@ -181,6 +187,26 @@ void OptionsMenu::langmex() {
 	TranslationEngine::getInstance()->setLanguage("ES_MX");
 	GameManager::getInstance()->setLanguage("ES_MX");
 
+	_ostr << _backGroundVolume->getPercent();
+	_backGroundVolumeLabel->setString(TranslationEngine::getInstance()->get("BG_VOL") + ": " + _ostr.str());
+	_ostr.str("");
+
+	_ostr << _effectsVolume->getPercent();
+	_effectsVolumeLabel->setString(TranslationEngine::getInstance()->get("SFX_VOL") + ": " + _ostr.str());
+	_ostr.str("");
+
+	auto modo = GameManager::getInstance()->getDifiMode();
+
+	if (modo <= 1)
+		_ostr << TranslationEngine::getInstance()->get("DIFF_0");
+	else if (modo <= 2)
+		_ostr << TranslationEngine::getInstance()->get("DIFF_1");
+	else
+		_ostr << TranslationEngine::getInstance()->get("DIFF_2");
+	dificulty_Label->setString(TranslationEngine::getInstance()->get("DIFF") + ": " + _ostr.str());
+
+	_ostr.str("");
+
 };
 
 
@@ -190,6 +216,27 @@ void OptionsMenu::langus() {
 
 	TranslationEngine::getInstance()->setLanguage("EN_US");
 	GameManager::getInstance()->setLanguage("EN_US");
+
+	_ostr << _backGroundVolume->getPercent();
+	_backGroundVolumeLabel->setString(TranslationEngine::getInstance()->get("BG_VOL") + ": " + _ostr.str());
+	_ostr.str("");
+
+	_ostr << _effectsVolume->getPercent();
+	_effectsVolumeLabel->setString(TranslationEngine::getInstance()->get("SFX_VOL") + ": " + _ostr.str());
+	_ostr.str("");
+
+	auto modo = GameManager::getInstance()->getDifiMode();
+
+	if (modo <= 1)
+		_ostr << TranslationEngine::getInstance()->get("DIFF_0");
+	else if (modo <= 2)
+		_ostr << TranslationEngine::getInstance()->get("DIFF_1");
+	else
+		_ostr << TranslationEngine::getInstance()->get("DIFF_2");
+	dificulty_Label->setString(TranslationEngine::getInstance()->get("DIFF") + ": " + _ostr.str());
+
+	_ostr.str("");
+
 
 };
 
