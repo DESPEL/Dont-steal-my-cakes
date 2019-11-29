@@ -311,7 +311,7 @@ void MiniGameScene::pauseButtonAction()
 void ::MiniGameScene::Timer(float delta) {
 	Tiempo -= delta;
 	seg = Tiempo;
-	if (seg==55)
+	if (seg <= 0)
 	{
 		label3->setVisible(false);
 	}
