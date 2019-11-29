@@ -104,6 +104,10 @@ bool DebugScene::init() {
 }
 
 void DebugScene::update(float delta) {
+	std::stringstream s;
+	s << "PUNTOS DEL JUEGO: " << this->wrapper->getInstance()->getPlayer()->points;
+	cocos2d::log(s.str().c_str());
+
 	if (_player->isVisible() || two && (_player2->isVisible() )) {// (wrapper->coop) ? (_player2->isVisible()) : ())
 		_bg->update(delta);
 	}

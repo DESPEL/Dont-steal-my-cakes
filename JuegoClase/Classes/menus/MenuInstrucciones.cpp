@@ -1,6 +1,7 @@
 #include "Menuinstrucciones.h"
 #include "GameManager.h"
 #include "Scenes/DebugScene.h"
+#include "AudioEngine.h"
 
 
 USING_NS_CC;
@@ -157,5 +158,6 @@ void MenuIns::initButtons() {
 }
 
 void MenuIns::actionButtonBack() {
+	experimental::AudioEngine::stopAll();
 	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, DebugScene::createScene()));
 }

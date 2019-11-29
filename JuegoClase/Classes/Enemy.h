@@ -127,6 +127,10 @@ public:
 
 	void explode() {
 		if (!boss || (boss && hp <= 0)) {
+			if (boss)
+				GameWrapper::getInstance()->getPlayer()->points += POINTS_PER_BOSS;
+			else
+				GameWrapper::getInstance()->getPlayer()->points += POINTS_PER_KILL;
 			exploded = true;
 			this->SetAnimation(BasicEnemy::EXPLOSION);
 			auto removeSelf = cocos2d::RemoveSelf::create();
@@ -137,6 +141,7 @@ public:
 			unscheduleUpdate();
 		}
 		else {
+			GameWrapper::getInstance()->getPlayer()->points += POINTS_PER_HIT;
 			hp--;
 		}
 	}
