@@ -103,7 +103,7 @@ bool MiniGameScene::init() {
 	high_score->setAnchorPoint(Point(0, 0));
 	high_score->setPosition(0, 230);
 	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
-		high_score->setString("High Score");
+		high_score->setString("High Score: ");
 	}
 	else
 	{
@@ -218,13 +218,26 @@ void MiniGameScene::update(float delta) {
 	Timer(delta);
 	_player->update(delta);
 
-	if (Tiempo < 0) {
+	if (Tiempo <55) {
 		GameManager::getInstance()->saveMiniGameScore(_puntos);
 		GameManager::getInstance()->updateMiniScores(_puntos);
-		cocos2d::experimental::AudioEngine::stop(musictag);
+		
+		if (guardado == false) {
+			using namespace std;
+			int num = _puntos;
+			ofstream archivo;
+			archivo.open("puntajes.txt", ios::app);
 
-		// aqui, antes de llegar al death, se desbloquea la nave
-		this->wrapper->death();
+			archivo << endl << num;
+			archivo.close();
+			guardado = true;
+		}
+
+			cocos2d::experimental::AudioEngine::stop(musictag);
+
+			// aqui, antes de llegar al death, se desbloquea la nave
+			this->wrapper->death();
+		
 	}
 	for (auto e : _enemyPool) {
 
