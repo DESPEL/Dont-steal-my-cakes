@@ -20,6 +20,7 @@ public:
 	GAME_TYPE playing = GAME_TYPE::NONE;
 	int actualLevel = 1;
 	int val = 0;
+	int freemode = 1;
 	static GameWrapper* getInstance();
 
 	void death();

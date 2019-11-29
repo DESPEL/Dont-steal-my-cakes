@@ -194,6 +194,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Level.h" />
     <ClInclude Include="..\Classes\Levels\Levels.h" />
     <ClInclude Include="..\Classes\Macros.h" />
+    <ClInclude Include="..\Classes\menus\LevelSelectMenu.h" />
     <ClInclude Include="..\Classes\menus\OptionsMenu.h" />
     <ClInclude Include="..\Classes\menus\DeathMenu.h" />
     <ClInclude Include="..\Classes\menus\LogorsMenu.h" />
