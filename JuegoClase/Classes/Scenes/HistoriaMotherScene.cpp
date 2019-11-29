@@ -127,7 +127,7 @@ bool HistoriaMotherScene::init() {
 
 	//Crea al jugador
 	
-
+	return true;
 
 }
 

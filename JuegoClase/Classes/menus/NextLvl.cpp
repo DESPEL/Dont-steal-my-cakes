@@ -44,6 +44,14 @@ bool NextMenu::init() {
 
 	//lanza el menu de seleccion de nivel
 	if (wrapper->actualLevel < TOTAL_LEVELS) {
+		int num;
+		std::ofstream archivo;
+		archivo.open("LevelSave.txt");
+		num = wrapper->getlvl();
+		archivo << 1;
+		archivo.close();
+
+
 		auto nextHeight = startButton->getPositionY() - startButton->getBoundingBox().size.height - (30 * getScaleY());
 		auto selectButton = Button::create("menus/Botones/NXT0.png", "menus/Botones/NXT1.png", "menus/Botones/NXT0.png", Widget::TextureResType::LOCAL);
 		selectButton->setAnchorPoint(Point(0.5, 1));
