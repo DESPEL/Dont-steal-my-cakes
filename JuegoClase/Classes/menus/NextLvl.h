@@ -1,6 +1,8 @@
 #pragma once
 
 #include "MotherMenu.h"
+#include "GameWrapper.h"
+#include "Macros.h"
 #include <vector>
 
 class NextMenu : public MotherMenu {

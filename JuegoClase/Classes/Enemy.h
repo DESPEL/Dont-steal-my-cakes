@@ -127,8 +127,10 @@ public:
 
 	void explode() {
 		if (!boss || (boss && hp <= 0)) {
-			if (boss)
+			if (boss) {
 				GameWrapper::getInstance()->getPlayer()->points += POINTS_PER_BOSS;
+				GameWrapper::getInstance()->next();
+			}
 			else
 				GameWrapper::getInstance()->getPlayer()->points += POINTS_PER_KILL;
 			exploded = true;

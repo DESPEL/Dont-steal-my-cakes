@@ -5,6 +5,7 @@
 //#include "OptionsLayer.h"
 #include "ui/CocosGUI.h"
 #include "GameManager.h"
+#include "GameWrapper.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -59,7 +60,7 @@ bool DeathMenu::init() {
 
 
 void DeathMenu::selectMenuButton() {
-	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->coop)));
+	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel)));
 }
 
 void DeathMenu::optionsButton() {
@@ -81,7 +82,13 @@ void DeathMenu::initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> f
 }
 
 void DeathMenu::actionButton1() { Director::getInstance()->pushScene(TransitionFadeBL::create(1, MainMenu::createScene())); }
-void DeathMenu::actionButton2() { Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene())); }
+void DeathMenu::actionButton2() { 
+	auto wrapper = GameWrapper::getInstance();
+	std::stringstream s;
+	s << "finished level is" << wrapper->actualLevel;
+	cocos2d::log(s.str().c_str());
+	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel))); 
+}
 void DeathMenu::actionButton3() {  /*TODO*/ }
 void DeathMenu::actionButton4() {  /*TODO*/ }
 void DeathMenu::actionButton5() {  /*TODO*/ }

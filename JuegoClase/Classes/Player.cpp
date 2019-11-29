@@ -7,10 +7,10 @@ USING_NS_CC;
 Player::Player(int tipo) {
 	switch (tipo) {
 	case 0:
-		_speed = 5;
-		personaje_path = "nave0.png";
-		animacion_path = "animacion_nave.png";
-		break;
+		//_speed = 5;
+		//personaje_path = "nave0.png";
+		//animacion_path = "animacion_nave.png";
+		//break;
 	case 1:
 		_speed = 2.5;
 		personaje_path = "nave1.png";

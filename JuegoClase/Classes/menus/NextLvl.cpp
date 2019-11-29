@@ -42,14 +42,16 @@ bool NextMenu::init() {
 	addChild(startButton);
 
 	//lanza el menu de seleccion de nivel
-	auto nextHeight = startButton->getPositionY() - startButton->getBoundingBox().size.height - (30 * getScaleY());
-	auto selectButton = Button::create("menus/Botones/NXT0.png", "menus/Botones/NXT1.png", "menus/Botones/NXT0.png", Widget::TextureResType::LOCAL);
-	selectButton->setAnchorPoint(Point(0.5, 1));
-	selectButton->setScale(3, 1.5);
-	selectButton->addClickEventListener(CC_CALLBACK_0(NextMenu::selectMenuButton, this));
-	selectButton->setPosition(Point(startButton->getPositionX(), nextHeight));
-	addChild(selectButton);
-
+	if (wrapper->actualLevel < TOTAL_LEVELS) {
+		auto nextHeight = startButton->getPositionY() - startButton->getBoundingBox().size.height - (30 * getScaleY());
+		auto selectButton = Button::create("menus/Botones/NXT0.png", "menus/Botones/NXT1.png", "menus/Botones/NXT0.png", Widget::TextureResType::LOCAL);
+		selectButton->setAnchorPoint(Point(0.5, 1));
+		selectButton->setScale(3, 1.5);
+		selectButton->addClickEventListener(CC_CALLBACK_0(NextMenu::selectMenuButton, this));
+		selectButton->setPosition(Point(startButton->getPositionX(), nextHeight));
+		addChild(selectButton);
+	}
+	
 	//lanza las opciones para ajustar volumen y otras configuraciones
 
 
@@ -59,7 +61,7 @@ bool NextMenu::init() {
 
 
 void NextMenu::selectMenuButton() {
-	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->coop)));
+	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel + 1)));
 }
 
 void NextMenu::optionsButton() {
@@ -81,7 +83,10 @@ void NextMenu::initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> fu
 }
 
 void NextMenu::actionButton1() { Director::getInstance()->pushScene(TransitionFadeBL::create(1, MainMenu::createScene())); }
-void NextMenu::actionButton2() { Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene())); }
+void NextMenu::actionButton2() { 
+	auto wrapper = GameWrapper::getInstance();
+	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel + 1))); 
+}
 void NextMenu::actionButton3() {  /*TODO*/ }
 void NextMenu::actionButton4() {  /*TODO*/ }
 void NextMenu::actionButton5() {  /*TODO*/ }

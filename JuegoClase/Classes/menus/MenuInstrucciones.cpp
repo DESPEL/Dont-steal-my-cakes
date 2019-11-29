@@ -2,7 +2,7 @@
 #include "GameManager.h"
 #include "Scenes/DebugScene.h"
 #include "AudioEngine.h"
-
+#include "GameWrapper.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -171,6 +171,6 @@ void MenuIns::actionButtonBack() {
 	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, MainMenu::createScene()));
 }
 void MenuIns::actionButtonNext() {
-	
-	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, DebugScene::createScene()));
+	auto wrapper = GameWrapper::getInstance();
+	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel)));
 }

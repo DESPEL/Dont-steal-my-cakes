@@ -11,6 +11,7 @@ class Level
 	cocos2d::Node* base;
 public:
 	float elapsed = 0;
+	std::string song = "NoMoney.mp3";
 
 	template<typename... Ts>
 	Level(Ts... args) { // tuple <float, enemy>
@@ -21,16 +22,21 @@ public:
 		}
 	}
 
-	Level(cocos2d::Node* b, cocos2d::Vector<Enemy*> enems, std::vector<float> ts) {
+	Level(cocos2d::Node* b, cocos2d::Vector<Enemy*> enems, std::vector<float> ts, std::string sng) {
 		for (Enemy* enemy : enems) {
 			enemies.pushBack(Enemy::create(enemy));
 		}
 		times = ts;
 		base = b;
+		song = sng;
+	}
+
+	void setSong(std::string sng) {
+		song = sng;
 	}
 
 	Level get(cocos2d::Node* base) {
-		return Level(base, enemies, times);
+		return Level(base, enemies, times, song);
 	}
 
 	void run() {
