@@ -14,15 +14,16 @@ TranslationEngine* TranslationEngine::getInstance() {
 	return globalEngine;
 }
 
-void TranslationEngine::setLanguage(std::string language) {
+void TranslationEngine::setLanguage(std::string lang) {
 	langStrings.clear();
 	std::fstream langreader;
-	langreader.open(".\\Langs\\" + language);
+	langreader.open(".\\Langs\\" + lang);
 	if (!langreader.is_open())
 		throw "El lenguaje seleccionado no existe";
 	std::string key;
 	std::string val;
 	while (getline(langreader, key, '~') && getline(langreader, val))
 		langStrings[key] = val;
+	language = lang;
 }
 

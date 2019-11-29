@@ -5,6 +5,7 @@
 #include "GameManager.h"
 #include "menus/MainMenu.h"
 #include "Macros.h"
+#include "Translationengine.h"
 
 USING_NS_CC;
 
@@ -75,7 +76,17 @@ bool MiniGameScene::init() {
 	label->setPosition(0, 260);
 	addChild(label, 5);
 
-	 label3 = Label::createWithTTF("Hola", "fonts/arial.ttf", 24);
+
+	
+
+	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
+
+		label3 = Label::createWithTTF("Pick The Stars\n to get point", "fonts/arial.ttf", 24);
+	}
+	else {
+		label3 = Label::createWithTTF("toca las estrellas\nPara obtener puntos", "fonts/arial.ttf", 24);
+	}
+
 	
 	label3->setPosition(_visibleSize.width / 2, _visibleSize.height / 2);
 	addChild(label3, 5);
@@ -234,7 +245,7 @@ void MiniGameScene::pauseButtonAction()
 	button3->setVisible(true);
 	button4->setVisible(true);
 	pause();
-	//experimental::AudioEngine::pause(musicID);
+	experimental::AudioEngine::pause(musictag);
 
 	cocos2d::Director::getInstance()->stopAnimation();
 
@@ -246,12 +257,26 @@ void ::MiniGameScene::Timer(float delta) {
 	{
 		label3->setVisible(false);
 	}
-	tiempo->setString("Tiempo: " + std::to_string(seg	));
+	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
+
+		tiempo->setString("Time: " + std::to_string(seg));
+		label->setString("Points: " + std::to_string(_puntos));
+	}
+	else {
+		tiempo->setString("Tiempo: " + std::to_string(seg));
+	}
 }
 
 void ::MiniGameScene::Maspuntos() {
 	_puntos += 5;
-	label->setString("Puntos: "+std::to_string(_puntos));
+	
+	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
+
+		label->setString("Points: " + std::to_string(_puntos));
+	}
+	else {
+		label->setString("Puntos: " + std::to_string(_puntos));
+	}
 }
 
 void MiniGameScene::playButtonAction()
@@ -261,7 +286,7 @@ void MiniGameScene::playButtonAction()
 	button3->setVisible(false);
 	button4->setVisible(false);
 	resume();
-	//experimental::AudioEngine::resume(musicID);
+	experimental::AudioEngine::resume(musictag);
 
 	cocos2d::Director::getInstance()->startAnimation();
 

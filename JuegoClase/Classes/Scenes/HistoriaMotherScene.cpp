@@ -52,8 +52,9 @@ bool HistoriaMotherScene::init() {
 	addChild(Actual, 5);
 	this->retain();
 
-	if (! (TranslationEngine::getInstance()->getLanguage() == "ES_MX"))
+	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
 		ingles = true;
+	}
 
 	if (ingles==true) {
 		std::string m1 = "You are an amazing baker \nand you love all the cakes\n you have made but\n one day someone \nsteals your favorite cake,\n you will not let it happen";
