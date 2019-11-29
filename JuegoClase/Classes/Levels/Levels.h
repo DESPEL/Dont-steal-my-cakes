@@ -215,6 +215,17 @@ public:
 				}
 				);
 
+			Enemy* boss = EnemyPlus::createBoss(
+				"boss1.png",
+				{
+					stmov.get(0,1,false)
+				},
+				{
+					{3.0f, triple.get()},
+					{3.0f, linear.get()}
+				}
+				);
+
 			levels[name] = Level(
 				std::make_tuple(0.5f, down1->get({ 100, sz.height })),
 				std::make_tuple(0.0f, down1->get({ sz.width - 100, sz.height })),
@@ -273,8 +284,8 @@ public:
 				std::make_tuple(1.5f, lat3->get({ 0, sz.height - 50 })), // 62
 				std::make_tuple(2.0f, spray1->get({ sz.width / 2, sz.height + 25 })), // 64
 				std::make_tuple(3.0f, spray1->get({ sz.width / 2 + 100, sz.height + 25 })), // 68
-				std::make_tuple(0.0f, spray1->get({ sz.width / 2 - 100, sz.height + 25 }))
-				// AQUI APARECE EL BOSS
+				std::make_tuple(0.0f, spray1->get({ sz.width / 2 - 100, sz.height + 25 })),
+				mktp(0.5f, boss->get({ sz.width / 2, sz.height - 100 }))
 			);
 
 			return levels.at(name);

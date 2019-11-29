@@ -163,8 +163,8 @@ void Player::update(float delta) {
 
 	auto director = Director::getInstance();
 	auto visiblesize = director->getVisibleSize();
-	float deltay = visiblesize.height / visiblesize.width;
-	float deltax = visiblesize.width / visiblesize.height;
+	float deltay = visiblesize.height / visiblesize.width * delta * 50;
+	float deltax = visiblesize.width / visiblesize.height * delta * 50;
 
 	for (auto K : KeyBoard::keys) {
 		Vec2 loc = this->getPosition();
