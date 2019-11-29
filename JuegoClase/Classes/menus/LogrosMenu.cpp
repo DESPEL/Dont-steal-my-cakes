@@ -1,6 +1,7 @@
 #include "menus/LogorsMenu.h"
 #include "GameManager.h"
 #include "ui/CocosGUI.h"
+#include "TranslationEngine.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -46,8 +47,12 @@ bool LogMenu::init() {
 }
 
 void LogMenu::initButtons() {
-
-	auto High = Label::createWithTTF("Logros", "fonts/SPACEBAR.ttf", 36);
+	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
+	 High = Label::createWithTTF("Achivements", "fonts/SPACEBAR.ttf", 36);
+	}
+	else {
+		High = Label::createWithTTF("Logros", "fonts/SPACEBAR.ttf", 36);
+	}
 
 	High->setPosition(_visibleSize.width / 2, 290);
 	addChild(High, 5);
