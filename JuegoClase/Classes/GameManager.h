@@ -26,6 +26,8 @@
 #define MINISCORE3 "MS3"
 #define MINISCORE4 "MS4"
 #define MINISCORE5 "MS5"
+#define RAPIDIN "n1"
+#define MCDONALDS "n2"
 
 class GameWrapper;
 
@@ -53,6 +55,8 @@ public:
 	CC_SYNTHESIZE(int, _playerScore, PlayerScore);
 	CC_SYNTHESIZE(int, _currentMusicTag, CurrentMusicTag);
 	CC_SYNTHESIZE(std::string, _lang, Language);
+	CC_SYNTHESIZE(bool, _nave1, UnlockRapidin);
+	CC_SYNTHESIZE(bool, _nave4, UnlockMcDonalds);
 
 
 	void saveSetting();
@@ -68,6 +72,13 @@ public:
 
 	void saveMiniGameScore(int score);
 	int getMiniGameScore();
+
+
+	void unlockRapidin();
+	void unlockMcDonalds();
+
+	void lockRapidin();
+	void lockMcDonalds();
 
 	void resetScore();
 

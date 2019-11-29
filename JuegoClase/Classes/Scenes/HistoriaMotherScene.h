@@ -51,7 +51,7 @@ public:
 	virtual void NextButtonAction();
 	bool pausado = 0;
 	
-	static cocos2d::Scene* createScene(int tipoP1 = 1, bool two = 0, int tipoP2 = 0, int est = 1);
+	static cocos2d::Scene* createScene(int tipoP1 = 2, bool two = 0, int tipoP2 = 3, int est = 1);
 	HistoriaMotherScene(int tipoP1, bool two, int tipoP2, int est);
 	HistoriaMotherScene() {};
 	~HistoriaMotherScene() {};

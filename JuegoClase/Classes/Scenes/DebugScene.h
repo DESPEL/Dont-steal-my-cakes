@@ -45,7 +45,7 @@ public:
 	virtual void playButtonAction();
 	bool pausado = 0;
 	
-	static cocos2d::Scene* createScene(int tipoP1 = 1, bool two = 0, int tipoP2 = 0, int level = 1);
+	static cocos2d::Scene* createScene(int tipoP1 = 2, bool two = 0, int tipoP2 = 3, int level = 1);
 	DebugScene(int tipoP1, bool two, int tipoP2, int level);
 	DebugScene() {};
 	~DebugScene() {};
