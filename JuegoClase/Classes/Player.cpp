@@ -151,8 +151,10 @@ void Player::setCurrentAnimation(Animations anim) {
 void Player::update(float delta) {
 
 	if (_currentAnimation == EXPLOSION) {
-		if (_explosionAnimation->isDone())
-			setVisible(0);
+		if (_explosionAnimation->isDone()) {
+			setVisible(false);
+			setPosition({ -1000, -1000 });
+		}
 		//SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 		//_control->keys.clear();
 		

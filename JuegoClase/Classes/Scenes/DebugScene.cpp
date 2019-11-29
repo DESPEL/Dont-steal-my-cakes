@@ -9,7 +9,7 @@
 #include "ui/CocosGUI.h"
 #include "GameWrapper.h"
 #include "menus/MainMenu.h"
-using namespace CocosDenshion;
+//using namespace CocosDenshion;
 
 USING_NS_CC;
 
@@ -106,6 +106,7 @@ bool DebugScene::init() {
 	cocos2d::log(s.str().c_str());
 	Level actual = Levels::create("level-" + std::to_string(level)).get(this);
 	// Musica
+	cocos2d::experimental::AudioEngine::stopAll();
 	this->soundID = cocos2d::experimental::AudioEngine::play2d("Music\\" + actual.song, true);
 	actual.run();
 	return true;

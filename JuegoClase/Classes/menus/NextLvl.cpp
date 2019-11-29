@@ -61,6 +61,7 @@ bool NextMenu::init() {
 
 
 void NextMenu::selectMenuButton() {
+	experimental::AudioEngine::stopAll();
 	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel + 1)));
 }
 

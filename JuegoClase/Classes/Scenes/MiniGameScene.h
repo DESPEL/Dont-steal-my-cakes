@@ -9,7 +9,7 @@
 
 class MiniGameScene : public cocos2d::Layer {
 private:
-
+	int musicID;
 	bool two = 0;
 	int _puntos = 0;
 	float Tiempo = 60;

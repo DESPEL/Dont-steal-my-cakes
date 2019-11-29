@@ -3,6 +3,7 @@
 #include "MotherMenu.h"
 #include "GameWrapper.h"
 #include "Macros.h"
+#include "AudioEngine.h"
 #include <vector>
 
 class NextMenu : public MotherMenu {

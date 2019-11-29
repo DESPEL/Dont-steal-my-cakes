@@ -1,10 +1,8 @@
 #include "MiniGameScene.h"
-#include "SimpleAudioEngine.h"
+#include "AudioEngine.h"
 #include "ui/CocosGUI.h"
 #include "GameWrapper.h"
 #include "menus/MainMenu.h"
-
-using namespace CocosDenshion;
 
 USING_NS_CC;
 
@@ -113,8 +111,8 @@ bool MiniGameScene::init() {
 
 
 	// Musica
-	SimpleAudioEngine::getInstance()->playBackgroundMusic("Music\\Mantis.mp3", true);
-	SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.02);
+	experimental::AudioEngine::stopAll();
+	musicID = experimental::AudioEngine::play2d("Music\\Mantis.mp3", true, 0.05);
 
 	return true;
 }
@@ -215,7 +213,7 @@ void MiniGameScene::pauseButtonAction()
 	button3->setVisible(true);
 	button4->setVisible(true);
 	pause();
-	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+	experimental::AudioEngine::pause(musicID);
 
 	cocos2d::Director::getInstance()->stopAnimation();
 
@@ -238,7 +236,7 @@ void MiniGameScene::playButtonAction()
 	button3->setVisible(false);
 	button4->setVisible(false);
 	resume();
-	SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+	experimental::AudioEngine::resume(musicID);
 
 	cocos2d::Director::getInstance()->startAnimation();
 
@@ -249,7 +247,7 @@ void MiniGameScene::saveButtonAction() {
 }
 
 void MiniGameScene::salirButtonAction() {
-
+	experimental::AudioEngine::stopAll();
 	cocos2d::Director::getInstance()->startAnimation();
 	Director::getInstance()->pushScene(TransitionFadeBL::create(1, MainMenu::createScene()));
 }
