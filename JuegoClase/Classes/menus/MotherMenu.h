@@ -2,7 +2,6 @@
 
 #include "cocos2d.h"
 #include "BackGroundMenu.h"
-#include "SimpleAudioEngine.h"
 
 class GameWrapper;
 

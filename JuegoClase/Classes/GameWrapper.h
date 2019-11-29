@@ -4,6 +4,7 @@
 
 #include "Player.h"
 #include "Bullet.h"
+#include "Macros.h"
 
 class Player;
 class Player2;
@@ -12,10 +13,11 @@ class DeathMenu;
 class GameWrapper {
 	static GameWrapper *instance;
 	Player* _player;
-	//Player2* _player2;
+	Player2* _player2;
 	GameWrapper(){}
 
 public:
+	GAME_TYPE playing = GAME_TYPE::NONE;
 	int actualLevel = 1;
 	int val = 0;
 	static GameWrapper* getInstance();
@@ -30,9 +32,9 @@ public:
 	void next();
 
 	void setPlayer(Player* pl) noexcept;
-	//void setPlayer2(Player2* p2);
+	void setPlayer2(Player2* p2) noexcept;
 	Player* getPlayer();
-	
+	Player2* getPlayer2();
 
 };
 

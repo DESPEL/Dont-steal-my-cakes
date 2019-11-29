@@ -4,4 +4,11 @@
 #define POINTS_PER_KILL 10
 #define POINTS_PER_BOSS 100
 #define POINTS_PER_HIT 1
-#define TOTAL_LEVELS 2
+#define TOTAL_LEVELS 3
+
+enum GAME_TYPE {
+	NONE = 0,
+	HISTORIA = 1,
+	MINIJUEGO = 2,
+	LIBRE = 3
+};

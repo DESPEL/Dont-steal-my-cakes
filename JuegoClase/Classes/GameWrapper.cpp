@@ -25,16 +25,26 @@ void GameWrapper::setPlayer(Player* pl) noexcept {
 	_player = pl;
 }
 
-/*void GameWrapper::setPlayer2(Player2* p2) {
+void GameWrapper::setPlayer2(Player2* p2) noexcept {
 	_player2 = p2;
-}*/
+}
 
 Player* GameWrapper::getPlayer() {
 	return _player;
 }
 
+Player2* GameWrapper::getPlayer2() {
+	return _player2;
+}
+
 void GameWrapper::death() {
-	cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionCrossFade::create(0.1f, DeathMenu::createScene())); 
+	if (playing == GAME_TYPE::HISTORIA || playing == GAME_TYPE::LIBRE) {
+		cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionCrossFade::create(0.3f, DeathMenu::createScene(playing)));
+	}
+	if (playing == GAME_TYPE::MINIJUEGO) {
+		cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionCrossFade::create(0.3f, DeathMenu::createScene(playing)));
+	}
+	playing = GAME_TYPE::NONE;
 }
 
 void GameWrapper::next() {

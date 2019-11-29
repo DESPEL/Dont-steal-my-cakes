@@ -94,8 +94,8 @@ bool DebugScene::init() {
 		_player2->setPosition(_visibleSize.width / 2 - 100, _visibleSize.height / 2 - 100);
 		addChild(_player2);
 	}
-
 	GameWrapper::getInstance()->setPlayer(_player);
+	GameWrapper::getInstance()->setPlayer2(_player2);
 	GameWrapper::getInstance()->coop = this->two;
 
 	//Agrega el update al updater mas grande
@@ -104,15 +104,16 @@ bool DebugScene::init() {
 	s << "actual level is" << level;
 	cocos2d::log(s.str().c_str());
 	Level actual = Levels::create("level-" + std::to_string(level)).get(this);
-	
-	
-	
+
+	if (GameWrapper::getInstance()->playing == GAME_TYPE::NONE)
+		GameWrapper::getInstance()->playing = GAME_TYPE::LIBRE;
+
 	// Musica
 	experimental::AudioEngine::stop(GameManager::getInstance()->getCurrentMusicTag());
 	this->soundID = cocos2d::experimental::AudioEngine::play2d("Music\\" + actual.song, true, GameManager::getInstance()->getBgVolume()/100);
 	experimental::AudioEngine::setLoop(soundID, true);
 	GameManager::getInstance()->setCurrentMusicTag(soundID);
-	
+
 	actual.run();
 	return true;
 }
@@ -129,7 +130,8 @@ void DebugScene::update(float delta) {
 
 
 	if ((_player->get_currentAnimation() == Player::EXPLOSION && !two) || (_player->get_currentAnimation() == Player::EXPLOSION && two && (_player2->get_currentAnimation() == Player2::EXPLOSION))) {
-		if (_player->getActionByTag(Player::Animations::EXPLOSION) == nullptr && (!two || (_player2->getActionByTag(Player::Animations::EXPLOSION) == nullptr))) {
+		if (!ended && (_player->getActionByTag(Player::Animations::EXPLOSION) == nullptr && (!two || (_player2->getActionByTag(Player::Animations::EXPLOSION) == nullptr)))) {
+			ended = true;
 			experimental::AudioEngine::stop(soundID);
 			this->wrapper->death();
 		}

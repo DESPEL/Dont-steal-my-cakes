@@ -11,6 +11,7 @@
 #include "menus/LogorsMenu.h"
 #include "menus/NextLvl.h"
 #include "AudioEngine.h"
+#include "Scenes/HistoriaMotherScene.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -112,15 +113,15 @@ bool MainMenu::init() {
 
 
 void MainMenu::selectMenuButton() {
-	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, LevelSelectMenu::createScene()));
+	Director::getInstance()->pushScene(TransitionFadeBL::create(1, LevelSelectMenu::createScene()));
 }
 
 void MainMenu::optionsButton() {
-	Director::getInstance()->replaceScene(TransitionFlipX::create(1, OptionsMenu::createScene()));
+	Director::getInstance()->pushScene(TransitionFlipX::create(1, OptionsMenu::createScene()));
 }
 
 void MainMenu::selectPlayer() {
-	Director::getInstance()->replaceScene(TransitionFlipX::create(1, SelectPlayersMenu::createScene()));
+	Director::getInstance()->pushScene(TransitionFlipX::create(1, SelectPlayersMenu::createScene()));
 }
 
 
@@ -137,7 +138,7 @@ void MainMenu::initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> fu
 	functions.push_back(CC_CALLBACK_0(MainMenu::actionButton9, this));
 }
 
-void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MenuIns::createScene())); }
+void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, HistoriaMotherScene::createScene())); }
 void MainMenu::actionButton2() { Director::getInstance()->end(); }
 
 void MainMenu::actionButton3() { 

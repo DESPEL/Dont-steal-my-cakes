@@ -1,12 +1,10 @@
 #include "MiniGameScene.h"
-//#include "SimpleAudioEngine.h"
 #include "AudioEngine.h"
 #include "ui/CocosGUI.h"
 #include "GameWrapper.h"
 #include "GameManager.h"
 #include "menus/MainMenu.h"
-
-//using namespace CocosDenshion;
+#include "Macros.h"
 
 USING_NS_CC;
 
@@ -122,7 +120,8 @@ bool MiniGameScene::init() {
 	}
 
 
-
+	// Guardar juego en wrapper
+	GameWrapper::getInstance()->playing = GAME_TYPE::MINIJUEGO;
 	// Musica
 	//SimpleAudioEngine::getInstance()->playBackgroundMusic("Music\\Mantis.mp3", true);
 	this->musictag = cocos2d::experimental::AudioEngine::play2d("Music/Mantis.mp3", true, GameManager::getInstance()->getBgVolume() / 100);
@@ -228,7 +227,7 @@ void MiniGameScene::pauseButtonAction()
 	button3->setVisible(true);
 	button4->setVisible(true);
 	pause();
-	//SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+	//experimental::AudioEngine::pause(musicID);
 
 	cocos2d::Director::getInstance()->stopAnimation();
 
@@ -251,7 +250,7 @@ void MiniGameScene::playButtonAction()
 	button3->setVisible(false);
 	button4->setVisible(false);
 	resume();
-	//SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+	//experimental::AudioEngine::resume(musicID);
 
 	cocos2d::Director::getInstance()->startAnimation();
 

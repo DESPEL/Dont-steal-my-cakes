@@ -57,5 +57,5 @@ void TopMenu::initButtons() {
 }
 
 void TopMenu::actionButtonBack() {
-	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, MainMenu::createScene()));
+	Director::getInstance()->pushScene(TransitionFadeBL::create(1, MainMenu::createScene()));
 }

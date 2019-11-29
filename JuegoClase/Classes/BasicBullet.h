@@ -5,6 +5,7 @@
 #include "cocos2d.h"
 
 #include "Player.h"
+#include "Player/Player2.h"
 #include "BasicEnemy.h"
 #include "GameWrapper.h"
 

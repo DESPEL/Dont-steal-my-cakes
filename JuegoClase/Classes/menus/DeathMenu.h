@@ -2,6 +2,7 @@
 
 #include "MotherMenu.h"
 #include <vector>
+#include "Macros.h"
 
 class DeathMenu : public MotherMenu {
 private:
@@ -22,8 +23,8 @@ protected:
 
 public:
 	virtual bool init();
-	static cocos2d::Scene* createScene();
-
+	static cocos2d::Scene* createScene(GAME_TYPE from = GAME_TYPE::HISTORIA);
+	GAME_TYPE caller;
 	CREATE_FUNC(DeathMenu);
 
 };

@@ -73,6 +73,8 @@
     </ClCompile>
     <ClCompile Include="..\Classes\BasicEnemy.cpp">
       <Filter>Levels</Filter>
+    <ClCompile Include="..\Classes\Scenes\HistoriaMotherScene.cpp">
+      <Filter>Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +169,10 @@
     <ClInclude Include="..\Classes\menus\NextLvl.h">
       <Filter>Menus</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Scenes\HistoriaMotherScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Player\Player2.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Levels">
