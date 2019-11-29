@@ -75,7 +75,7 @@ bool MiniGameScene::init() {
 	label->setPosition(0, 260);
 	addChild(label, 5);
 
-	auto label3 = Label::createWithTTF("Hola", "fonts/arial.ttf", 24);
+	 label3 = Label::createWithTTF("Hola", "fonts/arial.ttf", 24);
 	
 	label3->setPosition(_visibleSize.width / 2, _visibleSize.height / 2);
 	addChild(label3, 5);
@@ -242,6 +242,10 @@ void MiniGameScene::pauseButtonAction()
 void ::MiniGameScene::Timer(float delta) {
 	Tiempo -= delta;
 	seg = Tiempo;
+	if (seg==55)
+	{
+		label3->setVisible(false);
+	}
 	tiempo->setString("Tiempo: " + std::to_string(seg	));
 }
 
