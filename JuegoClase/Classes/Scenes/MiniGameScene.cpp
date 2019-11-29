@@ -215,6 +215,8 @@ void MiniGameScene::update(float delta) {
 		GameManager::getInstance()->saveMiniGameScore(_puntos);
 		GameManager::getInstance()->updateMiniScores(_puntos);
 		cocos2d::experimental::AudioEngine::stop(musictag);
+
+		// aqui, antes de llegar al death, se desbloquea la nave
 		this->wrapper->death();
 	}
 	for (auto e : _enemyPool) {
