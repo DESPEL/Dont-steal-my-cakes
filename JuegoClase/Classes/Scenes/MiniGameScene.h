@@ -24,8 +24,8 @@ private:
 	cocos2d::Label* tiempo;
 	std::string mensaje = "Puntos: " + std::to_string(_puntos);
 	std::string mensajet = "Tiempo: " + std::to_string(seg);
-	std::string mensajeHS = "High Score: ";
-	
+	std::string mensajeHS = "High Score: " ;
+	bool guardado = false;
 	//Enemys
 	int _numEnemies = 10;
 	int _enemyIndex = 0;
