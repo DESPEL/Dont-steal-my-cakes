@@ -166,7 +166,6 @@ void MiniGameScene::update(float delta) {
 	_player->update(delta);
 
 	if (Tiempo < 0) {
-		cocos2d::experimental::AudioEngine::stop(musictag);
 		GameManager::getInstance()->saveMiniGameScore(_puntos);
 		cocos2d::experimental::AudioEngine::stop(musictag);
 		this->wrapper->death();
