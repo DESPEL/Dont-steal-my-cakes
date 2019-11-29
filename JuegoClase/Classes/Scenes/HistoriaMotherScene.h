@@ -9,6 +9,7 @@
 #include "ui/CocosGUI.h"
 #include "GameWrapper.h"
 #include "Macros.h"
+#include "TranslationEngine.h"
 
 
 class HistoriaMotherScene : public cocos2d::Layer {
@@ -26,7 +27,7 @@ private:
 	cocos2d::ui::Button* button2;
 	cocos2d::ui::Button* button3;
 	cocos2d::ui::Button* button4;
-	bool ingles = true;
+	bool ingles;
 	int historia = 1;
 
 	Background* _bg;

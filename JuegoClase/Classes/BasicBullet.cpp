@@ -34,7 +34,7 @@ void BasicBullet::update(float delta) {
 	if (GameWrapper::getInstance()->coop) {
 		if (GameWrapper::getInstance()->getPlayer2()->getBoundingBox().intersectsRect(getBoundingBox())) {
 			GameWrapper::getInstance()->getPlayer2()->hp--;
-			if (GameWrapper::getInstance()->getPlayer2()->hp == 0) {
+			if (GameWrapper::getInstance()->getPlayer2()->hp <= 0) {
 				GameWrapper::getInstance()->getPlayer2()->setCurrentAnimation(Player2::EXPLOSION);
 			}
 			this->stopActionByTag(BULLET_MOVEMENT);

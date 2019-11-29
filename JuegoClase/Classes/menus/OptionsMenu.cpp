@@ -74,7 +74,7 @@ bool OptionsMenu::init() {
 	dificulty_Label = Label::createWithTTF("dificultad", "fonts/arial.ttf", 16);
 	dificulty_Label->setAnchorPoint(Point(0, 1));
 	dificulty_Label->setTextColor(Color4B::BLACK);
-	_ostr << GameManager::getInstance()->getBgVolume();
+	_ostr << GameManager::getInstance()->getDifficulty();
 	dificulty_Label->setString("La dificultad es: " + _ostr.str());
 	_ostr.str("");
 	dificulty_Label->setPosition(Point(_visibleSize.width / 2, _visibleSize.height / 2 + 50));
