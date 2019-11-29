@@ -102,6 +102,40 @@ bool MiniGameScene::init() {
 	high_score->setAnchorPoint(Point(0, 0));
 	high_score->setPosition(0, 230);
 	addChild(high_score, 5);
+	/*
+	auto manager = GameManager::getInstance();
+
+//	if (manager->miniScoresAlmacenados >= 1) {
+		auto high_score1 = Label::createWithTTF(std::to_string(manager->fiveMiniScores.at(0)), "fonts/arial.ttf", 24);
+		high_score1->setAnchorPoint(Point(0, 0));
+		high_score1->setPosition(400, 20);
+		addChild(high_score1, 5);
+	//}
+	//if (manager->miniScoresAlmacenados >= 2) {
+		auto high_score2 = Label::createWithTTF(std::to_string(manager->fiveMiniScores.at(1)), "fonts/arial.ttf", 24);
+		high_score2->setAnchorPoint(Point(0, 0));
+		high_score2->setPosition(400, 40);
+		addChild(high_score2, 5);
+	//}
+	//if (manager->miniScoresAlmacenados >= 3) {
+		auto high_score3 = Label::createWithTTF(std::to_string(manager->fiveMiniScores.at(2)), "fonts/arial.ttf", 24);
+		high_score3->setAnchorPoint(Point(0, 0));
+		high_score3->setPosition(400, 60);
+		addChild(high_score3, 5);
+	//}
+	//if (manager->miniScoresAlmacenados >= 4) {
+		auto high_score4 = Label::createWithTTF(std::to_string(manager->fiveMiniScores.at(3)), "fonts/arial.ttf", 24);
+		high_score4->setAnchorPoint(Point(0, 0));
+		high_score4->setPosition(400, 80);
+		addChild(high_score4, 5);
+	//}
+	//if (manager->miniScoresAlmacenados >= 5) {
+		auto high_score5 = Label::createWithTTF(std::to_string(manager->fiveMiniScores.at(4)), "fonts/arial.ttf", 24);
+		high_score5->setAnchorPoint(Point(0, 0));
+		high_score5->setPosition(400, 100);
+		addChild(high_score5, 5);
+	//}*/
+
 
 	//Crea al jugador
 	_player = Player::create(random(1,4));
@@ -178,6 +212,7 @@ void MiniGameScene::update(float delta) {
 
 	if (Tiempo < 0) {
 		GameManager::getInstance()->saveMiniGameScore(_puntos);
+		GameManager::getInstance()->updateMiniScores(_puntos);
 		cocos2d::experimental::AudioEngine::stop(musictag);
 		this->wrapper->death();
 	}
