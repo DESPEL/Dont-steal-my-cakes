@@ -197,12 +197,6 @@ void Player2::update(float delta) {
 		case EventKeyboard::KeyCode::KEY_F:
 			if (this->delay <= 0) {
 				this->shoot(Vec2(0, 2));
-				this->shoot(Vec2(1, 1));
-				this->shoot(Vec2(-1, 1));
-				this->shoot(Vec2(0.5, 1.5));
-				this->shoot(Vec2(-0.5, 1.5));
-				this->shoot(Vec2(0.3, 1.8));
-				this->shoot(Vec2(-0.3, 1.8));
 				this->delay = this->delayvalue;
 			}
 			break;

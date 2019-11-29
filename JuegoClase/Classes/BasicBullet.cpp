@@ -1,5 +1,7 @@
 #include "BasicBullet.h"
 
+#include "Player/Player2.h"
+
 #define BULLET_MOVEMENT 90
 
 bool BasicBullet::init() noexcept {
@@ -30,6 +32,17 @@ void BasicBullet::update(float delta) {
 		this->stopActionByTag(BULLET_MOVEMENT);
 		this->runAction(cocos2d::RemoveSelf::create());
 		//this->removeFromParentAndCleanup(true);
+	}
+	if (GameWrapper::getInstance()->coop) {
+		if (GameWrapper::getInstance()->getPlayer2()->getBoundingBox().intersectsRect(getBoundingBox())) {
+			GameWrapper::getInstance()->getPlayer2()->hp--;
+			if (GameWrapper::getInstance()->getPlayer2()->hp == 0) {
+				GameWrapper::getInstance()->getPlayer2()->setCurrentAnimation(Player2::EXPLOSION);
+			}
+			this->stopActionByTag(BULLET_MOVEMENT);
+			this->runAction(cocos2d::RemoveSelf::create());
+			//this->removeFromParentAndCleanup(true);
+		}
 	}
 }
 

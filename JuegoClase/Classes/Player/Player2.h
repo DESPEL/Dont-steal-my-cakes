@@ -35,6 +35,7 @@ protected:
 	void createExplosionAnimation();
 
 public:
+	int hp = 2;
 	enum Animations {
 		IDLE = 0, EXPLOSION = 1
 	};
