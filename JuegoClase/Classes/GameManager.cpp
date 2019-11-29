@@ -9,6 +9,7 @@ GameManager::GameManager() :_playerScore(0) {
 	_effectsVolume = UserDefault::getInstance()->getIntegerForKey(SFXVOLUME, 40);
 	_difCategory = UserDefault::getInstance()->getIntegerForKey(DIFFICULTY, 50);
 	_difMode = UserDefault::getInstance()->getIntegerForKey(DIFMODE, 2);
+	_lang = UserDefault::getInstance()->getStringForKey(LANGUAGE, "ES_MX");
 }
 
 GameManager::~GameManager() {}
@@ -16,6 +17,7 @@ GameManager::~GameManager() {}
 void GameManager::saveSetting() {
 	UserDefault::getInstance()->setIntegerForKey(BGVOLUME, _bgVolume);
 	UserDefault::getInstance()->setIntegerForKey(SFXVOLUME, _effectsVolume);
+	UserDefault::getInstance()->setStringForKey(LANGUAGE, _lang);
 	UserDefault::getInstance()->setIntegerForKey(DIFFICULTY, _difCategory);
 
 	int temp_dif_mode;

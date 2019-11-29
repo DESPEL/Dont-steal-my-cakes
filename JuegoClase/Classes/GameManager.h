@@ -11,6 +11,7 @@
 #define MINIGAMEMAXSCORE "mgms"
 #define DIFFICULTY "diflevel"
 #define DIFMODE "dificultycategory"
+#define LANGUAGE "lang"
 
 
 class GameWrapper;
@@ -35,6 +36,8 @@ public:
 	CC_SYNTHESIZE(int, _difMode, DifiMode);
 	CC_SYNTHESIZE(int, _playerScore, PlayerScore);
 	CC_SYNTHESIZE(int, _currentMusicTag, CurrentMusicTag);
+	CC_SYNTHESIZE(std::string, _lang, Language);
+
 
 	void saveSetting();
 	void saveMaxScore(int score);

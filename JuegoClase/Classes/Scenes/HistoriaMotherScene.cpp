@@ -52,10 +52,11 @@ bool HistoriaMotherScene::init() {
 	addChild(Actual, 5);
 	this->retain();
 
-	if (! (TranslationEngine::getInstance()->getLanguage() == "ES_MX"))
-		ingles = true;
+	if (TranslationEngine::getInstance()->getLanguage() != "ES_MX") {
+		this->ingles = true;
+	}
 
-	if (ingles==true) {
+	if (ingles) {
 		std::string m1 = "You are an amazing baker \nand you love all the cakes\n you have made but\n one day someone \nsteals your favorite cake,\n you will not let it happen";
 		std::string m2 = "So you take your spaceship \nand chase\n the thief, fighting \nagainst any enemy\n along the way\n. Eventually he will \nlose the competition,\nbut he will try to \nmake his recipe";
 		std::string m3 = " You are looking to defeat\n the evildoer who stole your\n favorite cake.You fight against\n his subordinates but\n every time you\n defeat a boss, they tell you\n that the person you are\n looking for is in another\n galaxy, or in another dimension";

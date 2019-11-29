@@ -170,6 +170,7 @@ void OptionsMenu::langmex() {
 	this->us->setBright(false);
 
 	TranslationEngine::getInstance()->setLanguage("ES_MX");
+	GameManager::getInstance()->setLanguage("ES_MX");
 
 };
 
@@ -179,6 +180,8 @@ void OptionsMenu::langus() {
 	this->us->setBright(true);
 
 	TranslationEngine::getInstance()->setLanguage("EN_US");
+	GameManager::getInstance()->setLanguage("EN_US");
+
 };
 
 void OptionsMenu::update(float delta) {
