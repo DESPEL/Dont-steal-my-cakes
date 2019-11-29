@@ -47,7 +47,7 @@ bool LogMenu::init() {
 
 void LogMenu::initButtons() {
 
-	auto High = Label::createWithTTF("Logros", "fonts/arial.ttf", 36);
+	auto High = Label::createWithTTF("Logros", "fonts/SPACEBAR.ttf", 36);
 
 	High->setPosition(_visibleSize.width / 2, 290);
 	addChild(High, 5);
