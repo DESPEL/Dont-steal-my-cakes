@@ -40,9 +40,18 @@ bool MenuIns::init() {
 	backBt->setAnchorPoint(Point(0, 0.5));
 	backBt->setScale(2.5);
 	backBt->setRotation(180);
-	backBt->addClickEventListener(CC_CALLBACK_0(MenuIns::actionButtonBack, this));
+	backBt->addClickEventListener(CC_CALLBACK_0(MenuIns::actionButtonNext, this));
 	backBt->setPosition(Point(430, 40));
 	addChild(backBt);
+
+	auto cbackBt = Button::create("menus/Botones/back0.png", "menus/Botones/back1.png", "menus/Botones/back1.png", Widget::TextureResType::LOCAL);
+	cbackBt->setAnchorPoint(Point(0, 0.5));
+	cbackBt->setScale(2.5);
+
+	cbackBt->addClickEventListener(CC_CALLBACK_0(MenuIns::actionButtonBack, this));
+	cbackBt->setPosition(Point(40, 40));
+	addChild(cbackBt);
+
 
 	return true;
 }
@@ -157,5 +166,8 @@ void MenuIns::initButtons() {
 }
 
 void MenuIns::actionButtonBack() {
+	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, MainMenu::createScene()));
+}
+void MenuIns::actionButtonNext() {
 	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, DebugScene::createScene()));
 }

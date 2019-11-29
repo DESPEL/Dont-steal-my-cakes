@@ -8,6 +8,7 @@ class MenuIns : public MainMenu {
 private:
 	std::ostringstream _ostr;
 	void actionButtonBack();
+	void actionButtonNext();
 	void initButtons();
 
 public:
