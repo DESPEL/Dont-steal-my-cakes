@@ -39,16 +39,16 @@ Player2* GameWrapper::getPlayer2() {
 
 void GameWrapper::death() {
 	if (playing == GAME_TYPE::HISTORIA || playing == GAME_TYPE::LIBRE) {
-		cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionCrossFade::create(0.3f, DeathMenu::createScene(playing)));
+		cocos2d::Director::getInstance()->pushScene(cocos2d::TransitionCrossFade::create(0.3f, DeathMenu::createScene(playing)));
 	}
 	if (playing == GAME_TYPE::MINIJUEGO) {
-		cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionCrossFade::create(0.3f, DeathMenu::createScene(playing)));
+		cocos2d::Director::getInstance()->pushScene(cocos2d::TransitionCrossFade::create(0.3f, DeathMenu::createScene(playing)));
 	}
 	playing = GAME_TYPE::NONE;
 }
 
 void GameWrapper::next() {
 	cocos2d::experimental::AudioEngine::stopAll();
-	cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionCrossFade::create(0.1f, NextMenu::createScene()));
+	cocos2d::Director::getInstance()->pushScene(cocos2d::TransitionCrossFade::create(0.1f, NextMenu::createScene()));
 }
 

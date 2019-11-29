@@ -71,6 +71,7 @@
     <ClInclude Include="..\Classes\TranslationEngine.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="..\Classes\ScoreManager.h" />
+    <ClInclude Include="..\Classes\menus\MenuInstrucciones.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
