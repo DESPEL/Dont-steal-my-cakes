@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include "MainMenu.h"
@@ -10,9 +9,13 @@ private:
 	void actionButtonBack();
 	void actionButtonNext();
 	void initButtons();
-
+	
 public:
 	virtual bool init();
+	static cocos2d::Scene* createScene(int Historia);
 	static cocos2d::Scene* createScene();
+	void uphist(int t);
+	int hist;
 	CREATE_FUNC(MenuIns);
+	
 };

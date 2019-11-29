@@ -9,6 +9,7 @@ class SelectPlayersMenu : public MainMenu {
 private:
 	std::ostringstream _ostr;
 	void actionButtonBack();
+	void actionButton1();
 	void initButtons();
 
 	cocos2d::ui::Button* P1;

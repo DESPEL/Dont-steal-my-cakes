@@ -3,6 +3,7 @@
 #include "GameWrapper.h"
 #include "ui/CocosGUI.h"
 #include "AudioEngine.h"
+#include "Scenes/DebugScene.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -64,13 +65,22 @@ void SelectPlayersMenu::initButtons() {
 	Seleccion de Naves Primer Jugador
 	************
 	*/
-
-	nave1 = Button::create("nave1.png", "menus/Botones/nave1.png", "menus/Botones/nave1.png", Widget::TextureResType::LOCAL);
-	nave1->setAnchorPoint(Point(0.5, 0.5));
-	nave1->setScale(2);
-	nave1->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::selecN1, this));
-	nave1->setPosition(Vec2(_visibleSize.width / 4 + 25, _visibleSize.height / 2 + 50));
-	addChild(nave1);
+	if (GameManager::getInstance()->getUnlockRapidin()) {
+		nave1 = Button::create("nave1.png", "menus/Botones/nave1.png", "menus/Botones/nave1.png", Widget::TextureResType::LOCAL);
+		nave1->setAnchorPoint(Point(0.5, 0.5));
+		nave1->setScale(2);
+		nave1->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::selecN1, this));
+		nave1->setPosition(Vec2(_visibleSize.width / 4 + 25, _visibleSize.height / 2 + 50));
+		addChild(nave1);
+	}
+	else {
+		nave1 = Button::create("menus/Botones/locked/nave1.png", "menus/Botones/locked/nave1.png", "menus/Botones/locked/nave1.png", Widget::TextureResType::LOCAL);
+		nave1->setAnchorPoint(Point(0.5, 0.5));
+		nave1->setScale(2);
+		//nave1->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::selecN1, this));
+		nave1->setPosition(Vec2(_visibleSize.width / 4 + 25, _visibleSize.height / 2 + 50));
+		addChild(nave1);
+	}
 
 	nave2 = Button::create("nave2.png", "menus/Botones/nave2.png", "menus/Botones/nave2.png", Widget::TextureResType::LOCAL);
 	nave2->setAnchorPoint(Point(0.5, 0.5));
@@ -85,27 +95,44 @@ void SelectPlayersMenu::initButtons() {
 	nave3->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::selecN3, this));
 	nave3->setPosition(Vec2(_visibleSize.width / 4 + 25, _visibleSize.height / 2 - 50));
 	addChild(nave3);
-
-	nave4 = Button::create("nave4.png", "menus/Botones/nave4.png", "menus/Botones/nave4.png", Widget::TextureResType::LOCAL);
-	nave4->setAnchorPoint(Point(0.5, 0.5));
-	nave4->setScale(2);
-	nave4->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::selecN4, this));
-	nave4->setPosition(Vec2(_visibleSize.width / 4 + 25, _visibleSize.height / 2 -100));
-	addChild(nave4);	
-
+	if (GameManager::getInstance()->getUnlockMcDonalds()) {
+		nave4 = Button::create("nave4.png", "menus/Botones/nave4.png", "menus/Botones/nave4.png", Widget::TextureResType::LOCAL);
+		nave4->setAnchorPoint(Point(0.5, 0.5));
+		nave4->setScale(2);
+		nave4->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::selecN4, this));
+		nave4->setPosition(Vec2(_visibleSize.width / 4 + 25, _visibleSize.height / 2 -100));
+		addChild(nave4);	
+	}
+	else {
+		nave4 = Button::create("menus/Botones/locked/nave4.png", "menus/Botones/locked/nave4.png", "menus/Botones/locked/nave4.png", Widget::TextureResType::LOCAL);
+		nave4->setAnchorPoint(Point(0.5, 0.5));
+		nave4->setScale(2);
+		//nave4->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::selecN4, this));
+		nave4->setPosition(Vec2(_visibleSize.width / 4 + 25, _visibleSize.height / 2 - 100));
+		addChild(nave4);
+	}
 	/*
 	************
 	Seleccion de Naves Segundo Jugador
 	************
 	*/
 	
-
-	P2nave1 = Button::create("nave1.png", "menus/Botones/nave1.png", "menus/Botones/nave1.png", Widget::TextureResType::LOCAL);
-	P2nave1->setAnchorPoint(Point(0.5, 0.5));
-	P2nave1->setScale(2);
-	P2nave1->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::P2selecN1, this));
-	P2nave1->setPosition(Vec2(3 * _visibleSize.width / 4 - 25, _visibleSize.height / 2 + 50));
-	addChild(P2nave1);
+	if (GameManager::getInstance()->getUnlockRapidin()) {
+		P2nave1 = Button::create("nave1.png", "menus/Botones/nave1.png", "menus/Botones/nave1.png", Widget::TextureResType::LOCAL);
+		P2nave1->setAnchorPoint(Point(0.5, 0.5));
+		P2nave1->setScale(2);
+		P2nave1->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::P2selecN1, this));
+		P2nave1->setPosition(Vec2(3 * _visibleSize.width / 4 - 25, _visibleSize.height / 2 + 50));
+		addChild(P2nave1);
+	}
+	else {
+		P2nave1 = Button::create("menus/Botones/locked/nave1.png", "menus/Botones/locked/nave1.png", "menus/Botones/locked/nave1.png", Widget::TextureResType::LOCAL);
+		P2nave1->setAnchorPoint(Point(0.5, 0.5));
+		P2nave1->setScale(2);
+		//P2nave1->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::P2selecN1, this));
+		P2nave1->setPosition(Vec2(3 * _visibleSize.width / 4 - 25, _visibleSize.height / 2 + 50));
+		addChild(P2nave1);
+	}
 
 	P2nave2 = Button::create("nave2.png", "menus/Botones/nave2.png", "menus/Botones/nave2.png", Widget::TextureResType::LOCAL);
 	P2nave2->setAnchorPoint(Point(0.5, 0.5));
@@ -121,17 +148,31 @@ void SelectPlayersMenu::initButtons() {
 	P2nave3->setPosition(Vec2(3 * _visibleSize.width / 4 - 25, _visibleSize.height / 2 -50));
 	addChild(P2nave3);
 
-	P2nave4 = Button::create("nave4.png", "menus/Botones/nave4.png", "menus/Botones/nave4.png", Widget::TextureResType::LOCAL);
-	P2nave4->setAnchorPoint(Point(0.5, 0.5));
-	P2nave4->setScale(2);
-	P2nave4->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::P2selecN4, this));
-	P2nave4->setPosition(Vec2(3 * _visibleSize.width / 4 - 25, _visibleSize.height / 2 -100));
-	addChild(P2nave4);
+	if (GameManager::getInstance()->getUnlockMcDonalds()) {
+		P2nave4 = Button::create("nave4.png", "menus/Botones/nave4.png", "menus/Botones/nave4.png", Widget::TextureResType::LOCAL);
+		P2nave4->setAnchorPoint(Point(0.5, 0.5));
+		P2nave4->setScale(2);
+		P2nave4->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::P2selecN4, this));
+		P2nave4->setPosition(Vec2(3 * _visibleSize.width / 4 - 25, _visibleSize.height / 2 - 100));
+		addChild(P2nave4);
+	}
+	else {
+		P2nave4 = Button::create("menus/Botones/locked/nave4.png", "menus/Botones/locked/nave4.png", "menus/Botones/locked/nave4.png", Widget::TextureResType::LOCAL);
+		P2nave4->setAnchorPoint(Point(0.5, 0.5));
+		P2nave4->setScale(2);
+		P2nave4->addClickEventListener(CC_CALLBACK_0(SelectPlayersMenu::P2selecN4, this));
+		P2nave4->setPosition(Vec2(3 * _visibleSize.width / 4 - 25, _visibleSize.height / 2 - 100));
+		addChild(P2nave4);
+	}
 
 }
 
 void SelectPlayersMenu::actionButtonBack() {
 	Director::getInstance()->pushScene(TransitionFadeBL::create(1, MainMenu::createScene()));
+}
+
+void SelectPlayersMenu::actionButton1() {
+	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(GameWrapper::getInstance()->p1TipoNave, GameWrapper::getInstance()->coop, GameWrapper::getInstance()->p2TipoNave)));
 }
 
 void SelectPlayersMenu::selecP1() { 

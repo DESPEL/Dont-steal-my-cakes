@@ -31,6 +31,10 @@ bool MainMenu::init() {
 	}
 	
 	//GameManager::getInstance()->resetScore();
+	//GameManager::getInstance()->unlockRapidin();
+	//GameManager::getInstance()->unlockMcDonalds();
+	//GameManager::getInstance()->lockRapidin();
+	//GameManager::getInstance()->lockMcDonalds();
 
 	std::vector<std::function <void(cocos2d::Ref*)>> functions;
 	//inicializamos un vector de funciones. Cada funcion lanza un nivel
@@ -138,7 +142,7 @@ void MainMenu::initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> fu
 	functions.push_back(CC_CALLBACK_0(MainMenu::actionButton9, this));
 }
 
-void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, HistoriaMotherScene::createScene())); }
+void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MenuIns::createScene())); }
 void MainMenu::actionButton2() { Director::getInstance()->end(); }
 
 void MainMenu::actionButton3() { 

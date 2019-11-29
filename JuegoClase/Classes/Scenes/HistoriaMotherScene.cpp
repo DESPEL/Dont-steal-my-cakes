@@ -143,13 +143,13 @@ void HistoriaMotherScene::update(float delta) {
 	}
 	else if (estado>=3) {
 		if (historia == 1) {
-			Director::getInstance()->replaceScene(DebugScene::createScene(1, false, 0, 1));
+			Director::getInstance()->replaceScene(DebugScene::createScene(2, false, 3, 1));
 		}
 		else if (historia == 2) {
-			Director::getInstance()->replaceScene(DebugScene::createScene(1, false, 0, 2));
+			Director::getInstance()->replaceScene(DebugScene::createScene(2, false, 3, 2));
 		}
 		else if (historia == 3) {
-			Director::getInstance()->replaceScene (DebugScene::createScene(1, false, 0, 3));
+			Director::getInstance()->replaceScene (DebugScene::createScene(2, false, 3, 3));
 		}
 	}
 	else {

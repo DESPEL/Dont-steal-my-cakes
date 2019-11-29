@@ -3,9 +3,12 @@
 #include "Scenes/DebugScene.h"
 #include "AudioEngine.h"
 #include "GameWrapper.h"
+#include "Scenes/HistoriaMotherScene.h"
 
 USING_NS_CC;
 using namespace ui;
+
+
 
 Scene* MenuIns::createScene() {
 	auto scene = Scene::create();
@@ -13,30 +16,30 @@ Scene* MenuIns::createScene() {
 	scene->addChild(layer);
 	return scene;
 }
+Scene* MenuIns::createScene(int Historia) {
+	
+	auto scene = Scene::create();
+	auto layer = MenuIns::create();
+	scene->addChild(layer);
+		
+	return scene;
+}
 
+
+
+void::MenuIns::uphist(int t) {
+	hist = t;
+}
 
 bool MenuIns::init() {
 	if (!MotherMenu::init()) {
 		return false;
 	}
 
-	//std::vector<std::function<void>*> functions;
-	//cocos2d::Vector buttons;
-
-	//initFunctions(functions);
-	//insertamos los botones a la escena
+	
 	initButtons();
 
-	//habilitamos todos los niveles que el jugador puede realizar actualmente
-	/*for (int i = 0; i < GameManager::NUM_LEVELS; i++) {
-		if (i > GameManager::getInstance()->getNextLevel()) break;
-		//habilitamos el boton
-		buttons.at(i)->setEnabled(true);
-		//cambiamos la imagen a habilitado
-		buttons.at(i)->setBright(true);
-	}*/
-
-	//boton de ir hacia atras
+	
 	auto backBt = Button::create("menus/Botones/back0.png", "menus/Botones/back1.png", "menus/Botones/back1.png", Widget::TextureResType::LOCAL);
 	backBt->setAnchorPoint(Point(0, 0.5));
 	backBt->setScale(2.5);
@@ -85,85 +88,82 @@ void MenuIns::initButtons() {
 	level4->setPosition(Vec2(100, 80));
 	addChild(level4);
 
+	if ((TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
+		auto label = Label::createWithTTF("Movimiento", "fonts/SpaceBoy.ttf", 18);
+		label->setPosition(300, 120);
+		label->setScaleX(1.3);
+		label->setVisible(true);
+		addChild(label, 3);
 
-	auto label = Sprite::create("Movimiento.png");
-	label->setPosition(300, 120);
-	label->setScaleX(1.3);
-	label->setVisible(true);
-	addChild(label, 3);
+		auto label2 = Label::createWithTTF("Movimiento", "fonts/SpaceBoy.ttf", 18);
+		label2->setPosition(300, 250);
+		label2->setScaleX(1.3);
+		label2->setVisible(true);
+		addChild(label2, 3);
 
-	auto label2 = Sprite::create("Movimiento.png");
-	label2->setPosition(300, 250);
-	label2->setScaleX(1.3);
-	label2->setVisible(true);
-	addChild(label2, 3);
+		auto label4 = Label::createWithTTF("Disparar", "fonts/SpaceBoy.ttf", 18);
+		label4->setPosition(300, 195);
+		label4->setScaleX(1.3);
+		label4->setVisible(true);
+		addChild(label4, 3);
 
-	auto label4 = Sprite::create("Disparar.png");
-	label4->setPosition(300, 195);
-	label4->setScaleX(1.3);
-	label4->setVisible(true);
-	addChild(label4, 3);
+		auto label5 = Label::createWithTTF("Disparar", "fonts/SpaceBoy.ttf", 18);
+		label5->setPosition(300, 70);
+		label5->setScaleX(1.3);
+		label5->setVisible(true);
+		addChild(label5, 3);
 
-	auto label5 = Sprite::create("Disparar.png");
-	label5->setPosition(300, 70);
-	label5->setScaleX(1.3);
-	label5->setVisible(true);
-	addChild(label5, 3);
+		auto label6 = Label::createWithTTF("J1", "fonts/SpaceBoy.ttf", 18);
+		label6->setPosition(300, 290);
+		label6->setScaleX(1.2);
+		label6->setVisible(true);
+		addChild(label6, 3);
 
-	auto label6 = Sprite::create("J1.png");
-	label6->setPosition(300, 290);
-	label6->setScaleX(1.2);
-	label6->setVisible(true);
-	addChild(label6, 3);
+		auto label7 = Label::createWithTTF("J2", "fonts/SpaceBoy.ttf", 18);
+		label7->setPosition(300, 150);
+		label7->setScaleX(1.2);
+		label7->setVisible(true);
+		addChild(label7, 3);
+	}
+	else {
+		auto label = Label::createWithTTF("Move", "fonts/SpaceBoy.ttf", 18);
+		label->setPosition(300, 120);
+		label->setScaleX(1.3);
+		label->setVisible(true);
+		addChild(label, 3);
 
-	auto label7 = Sprite::create("J2.png");
-	label7->setPosition(300, 150);
-	label7->setScaleX(1.2);
-	label7->setVisible(true);
-	addChild(label7, 3);
+		auto label2 = Label::createWithTTF("Move", "fonts/SpaceBoy.ttf", 18);
+		label2->setPosition(300, 250);
+		label2->setScaleX(1.3);
+		label2->setVisible(true);
+		addChild(label2, 3);
 
-	//auto texto = Sprite::create("transparente.png");
-	//texto->setPosition(0, 0);
-	//addChild(texto, 5);
+		auto label4 = Label::createWithTTF("Shoot", "fonts/SpaceBoy.ttf", 18);
+		label4->setPosition(300, 195);
+		label4->setScaleX(1.3);
+		label4->setVisible(true);
+		addChild(label4, 3);
 
+		auto label5 = Label::createWithTTF("Shoot", "fonts/SpaceBoy.ttf", 18);
+		label5->setPosition(300, 70);
+		label5->setScaleX(1.3);
+		label5->setVisible(true);
+		addChild(label5, 3);
 
+		auto label6 = Label::createWithTTF("P1", "fonts/SpaceBoy.ttf", 18);
+		label6->setPosition(300, 290);
+		label6->setScaleX(1.2);
+		label6->setVisible(true);
+		addChild(label6, 3);
 
-
-	//level1->addClickEventListener(CC_CALLBACK_0(MainMenu::actionButton1, this));
-
-
-
-
-	/*int tag = 1;
-	int sizeY = 0;
-	int sizeX = 0;
-	int marginX = 42.5 * getScaleX();
-	int marginY = _visibleSize.height - 100 * getScaleY();
-	//queremos un aspecto de matriz, usamos para ello dos bucles
-	for (int i = 0; i < NUM_LEVELS / 3; i++) {
-		for (int j = 0; j < NUM_LEVELS / 3; j++) {
-			auto bt = Button::create("level_unlock0", "level_unlock1", "level_lock", Widget::TextureResType::PLIST);
-			//inicialmente los niveles estan bloqueados por lo que los botones estaran deshabilitados
-			bt->setEnabled(false);
-			bt->setBright(false);
-			//ponemos funcionalidad y nombre a cada boton
-			bt->addClickEventListener(functions.at(tag - 1));
-			bt->setTag(tag); _ostr << tag; tag++;
-			bt->setTitleText(_ostr.str()); _ostr.str("");
-			//indicamos como de grande sera la fuente
-			bt->setTitleFontSize(18);
-			bt->setAnchorPoint(Point(0, 0.5));
-			bt->setPosition(Point(marginX, marginY));
-			//calculamos la posicion para el siguiente boton
-			sizeX = bt->getBoundingBox().size.width;
-			sizeY = bt->getBoundingBox().size.height;
-			marginX += 42.5 * getScaleX() + sizeX;
-			buttons.pushBack(bt);
-			addChild(bt);
-		}
-		marginX = 42.5 * getScaleX();
-		marginY -= (42.5 * getScaleY() + sizeY);
-	}*/
+		auto label7 = Label::createWithTTF("P2", "fonts/SpaceBoy.ttf", 18);
+		label7->setPosition(300, 150);
+		label7->setScaleX(1.2);
+		label7->setVisible(true);
+		addChild(label7, 3);
+	}
+	
+	
 }
 
 void MenuIns::actionButtonBack() {
