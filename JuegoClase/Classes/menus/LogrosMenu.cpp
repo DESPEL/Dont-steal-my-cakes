@@ -63,12 +63,22 @@ void LogMenu::initButtons() {
 
 	cocos2d::Vector<cocos2d::Label*> logros;
 
-	logros.pushBack(Label::createWithTTF("Muere 10 veces", "fonts/arial.ttf", 18));
-	logros.pushBack(Label::createWithTTF("Muere 100 veces", "fonts/arial.ttf", 18));
-	logros.pushBack(Label::createWithTTF("Dispara 1,000 veces", "fonts/arial.ttf", 18));
-	logros.pushBack(Label::createWithTTF("Dispara 10,000 veces", "fonts/arial.ttf", 18));
-	logros.pushBack(Label::createWithTTF("Consigue un total de 5000 puntos", "fonts/arial.ttf", 18));
-	
+	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
+		logros.pushBack(Label::createWithTTF("Die 10 times", "fonts/arial.ttf", 18));
+		logros.pushBack(Label::createWithTTF("Die 100 times", "fonts/arial.ttf", 18));
+		logros.pushBack(Label::createWithTTF("Shoot 1,000 times", "fonts/arial.ttf", 18));
+		logros.pushBack(Label::createWithTTF("Shoot 10,000 times", "fonts/arial.ttf", 18));
+		logros.pushBack(Label::createWithTTF("Get a total of 5000 points", "fonts/arial.ttf", 18));
+	}
+	else {
+		logros.pushBack(Label::createWithTTF("Muere 10 veces", "fonts/arial.ttf", 18));
+		logros.pushBack(Label::createWithTTF("Muere 100 veces", "fonts/arial.ttf", 18));
+		logros.pushBack(Label::createWithTTF("Dispara 1,000 veces", "fonts/arial.ttf", 18));
+		logros.pushBack(Label::createWithTTF("Dispara 10,000 veces", "fonts/arial.ttf", 18));
+		logros.pushBack(Label::createWithTTF("Consigue un total de 5000 puntos", "fonts/arial.ttf", 18));
+	}
+
+
 	auto red = cocos2d::Color3B(255, 0, 0);
 	auto gold = cocos2d::Color3B(0,255,0);
 

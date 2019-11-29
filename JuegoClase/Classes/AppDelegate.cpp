@@ -94,7 +94,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	glview->setFrameSize(480, 650);
 
     // turn on display FPS
-    director->setDisplayStats(true);
+    director->setDisplayStats(false);
 
 	director->setProjection(Director::Projection::_2D);
 
