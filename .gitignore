@@ -70,8 +70,6 @@ StyleCopReport.xml
 *_h.h
 *.ilk
 *.meta
-*.obj
-*.iobj
 *.pch
 *.pdb
 *.ipdb
@@ -353,8 +351,6 @@ MigrationBackup/
 .ionide/
 
 JuegoClase/proj.win32/Debug.win32/
-**/Debug.win32/
-**/Release.win32/
 **/.vs/
 *.vcxproj
 *.filters
