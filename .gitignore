@@ -358,3 +358,8 @@ JuegoClase/proj.win32/Debug.win32/
 **/.vs/
 *.vcxproj
 *.filters
+*.tlog
+*.tlog
+*.tlog
+*.tlog
+JuegoClase/cocos2d/cocos/2d/Release.win32/libcocos2d.tlog/CL.command.1.tlog
