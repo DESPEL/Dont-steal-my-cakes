@@ -52,7 +52,7 @@ bool HistoriaMotherScene::init() {
 	addChild(Actual, 5);
 	this->retain();
 	historia = wrapper->getlvl();
-	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
+	if ((TranslationEngine::getInstance()->getLanguage() == "EN_US")) {
 		ingles = true;
 	}
 
