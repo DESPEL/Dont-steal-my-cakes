@@ -26,4 +26,3 @@ void TranslationEngine::setLanguage(std::string lang) {
 		langStrings[key] = val;
 	language = lang;
 }
-
