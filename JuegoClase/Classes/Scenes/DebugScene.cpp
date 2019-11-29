@@ -66,7 +66,7 @@ bool DebugScene::init() {
 	button3 = ui::Button::create("menus/save.png", "menus/save.png", "menus/save.png");
 	button3->setAnchorPoint(Point(.5, .5));
 	button3->setPosition(Point(_visibleSize.width/2, _visibleSize.height/2));
-	button3->addClickEventListener(CC_CALLBACK_0(DebugScene::playButtonAction, this));
+	button3->addClickEventListener(CC_CALLBACK_0(DebugScene::saveButtonAction, this));
 	button3->setScale(.4);
 	button3->setVisible(false);
 	addChild(button3, 3);
@@ -173,6 +173,7 @@ void DebugScene::saveButtonAction() {
 	num = wrapper->getlvl();
 	archivo << num;
 	archivo.close();
+	playButtonAction();
 	
 }
 
