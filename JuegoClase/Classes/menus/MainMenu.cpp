@@ -9,11 +9,10 @@
 #include "Scenes/MiniGameScene.h"
 #include "Scenes/TopScene.h"
 #include "menus/LogorsMenu.h"
+#include "AudioEngine.h"
 
 USING_NS_CC;
 using namespace ui;
-using namespace CocosDenshion;
-
 Scene* MainMenu::createScene() {
 	auto scene = Scene::create();
 	auto layer = MainMenu::create();
@@ -97,10 +96,9 @@ bool MainMenu::init() {
 	TP->setPosition(Point(0,0));
 	addChild(TP);
 
-	if (!SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()) {
-		SimpleAudioEngine::getInstance()->playBackgroundMusic("music/Hollow.mp3", true);
+	if (!experimental::AudioEngine::getPlayingAudioCount() >= 1) {
+		experimental::AudioEngine::play2d("music/Hollow.mp3", true);
 	}
-
 	return true;
 }
 
