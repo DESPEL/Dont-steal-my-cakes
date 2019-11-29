@@ -95,8 +95,8 @@ bool DebugScene::init() {
 		_player2->setPosition(_visibleSize.width / 2 - 100, _visibleSize.height / 2 - 100);
 		addChild(_player2);
 	}
-
 	GameWrapper::getInstance()->setPlayer(_player);
+	GameWrapper::getInstance()->setPlayer2(_player2);
 	GameWrapper::getInstance()->coop = this->two;
 
 	//Agrega el update al updater mas grande
@@ -125,7 +125,8 @@ void DebugScene::update(float delta) {
 
 
 	if ((_player->get_currentAnimation() == Player::EXPLOSION && !two) || (_player->get_currentAnimation() == Player::EXPLOSION && two && (_player2->get_currentAnimation() == Player2::EXPLOSION))) {
-		if (_player->getActionByTag(Player::Animations::EXPLOSION) == nullptr && (!two || (_player2->getActionByTag(Player::Animations::EXPLOSION) == nullptr))) {
+		if (!ended && (_player->getActionByTag(Player::Animations::EXPLOSION) == nullptr && (!two || (_player2->getActionByTag(Player::Animations::EXPLOSION) == nullptr)))) {
+			ended = true;
 			experimental::AudioEngine::stop(soundID);
 			this->wrapper->death();
 		}

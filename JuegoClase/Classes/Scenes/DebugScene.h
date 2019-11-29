@@ -13,6 +13,7 @@
 
 class DebugScene : public cocos2d::Layer {
 private:
+	bool ended = false;
 	int level = 1;
 	bool two = 0;
 	int naveP1 = 1;

@@ -170,9 +170,23 @@ public:
 				explode();
 			}
 		}
+		if (GameWrapper::getInstance()->coop) {
+			for (Bullet* bullet : GameWrapper::getInstance()->getPlayer2()->Balas) {
+				if (bullet->getBoundingBox().intersectsRect(getBoundingBox())) {
+					bullet->colision();
+					explode();
+				}
+			}
+		}
 		if (GameWrapper::getInstance()->getPlayer()->getBoundingBox().intersectsRect(getBoundingBox())) {
 			GameWrapper::getInstance()->getPlayer()->setCurrentAnimation(Player::EXPLOSION);
 			explode();
+		}
+		if (GameWrapper::getInstance()->coop) {
+			if (GameWrapper::getInstance()->getPlayer2()->getBoundingBox().intersectsRect(getBoundingBox())) {
+				GameWrapper::getInstance()->getPlayer2()->setCurrentAnimation(Player2::EXPLOSION);
+				explode();
+			}
 		}
 	}
 

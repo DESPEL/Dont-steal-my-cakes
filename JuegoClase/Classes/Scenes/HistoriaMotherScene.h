@@ -16,7 +16,7 @@ private:
 	bool two = 0;
 	int naveP1;
 	int naveP2;
-	int estado=0;
+	int estado=1;
 	//Enemys
 	int _numEnemies = 10;
 	int _enemyIndex = 0;
@@ -49,8 +49,8 @@ public:
 	virtual void NextButtonAction();
 	bool pausado = 0;
 	
-	static cocos2d::Scene* createScene(int tipoP1 = 1, bool two = 0, int tipoP2 = 0);
-	HistoriaMotherScene(int tipoP1, bool two, int tipoP2);
+	static cocos2d::Scene* createScene(int tipoP1 = 1, bool two = 0, int tipoP2 = 0, int est = 1);
+	HistoriaMotherScene(int tipoP1, bool two, int tipoP2, int est);
 	HistoriaMotherScene() {};
 	~HistoriaMotherScene() {};
 
