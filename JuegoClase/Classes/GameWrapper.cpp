@@ -9,6 +9,11 @@
 #include "menus/MainMenu.h"
 #include "menus/DeathMenu.h"
 #include "menus/NextLvl.h"
+#include <iostream>
+#include <fstream>
+#include <stdlib.h>
+#include <string>
+#include <vector>
 
 USING_NS_CC;
 
@@ -19,6 +24,22 @@ GameWrapper* GameWrapper::getInstance() {
 	if (instance == nullptr)
 		instance = new GameWrapper();
 	return instance;
+}
+void GameWrapper::SetLevel() {
+	using namespace std;
+	string LOL;
+	string txt = "";
+	int num;
+	ifstream estado("LevelSave.txt");
+	getline(estado, LOL);
+	std::istringstream iss(LOL);
+	iss >> num;
+	actualLevel = num;
+
+
+}
+int GameWrapper::getlvl() {
+	return actualLevel;
 }
 
 void GameWrapper::setPlayer(Player* pl) noexcept {

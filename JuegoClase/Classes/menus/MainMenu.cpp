@@ -39,7 +39,7 @@ bool MainMenu::init() {
 	std::vector<std::function <void(cocos2d::Ref*)>> functions;
 	//inicializamos un vector de funciones. Cada funcion lanza un nivel
 	initFunctions(functions);
-
+	 wrapper->SetLevel();
 	//lanza automaticamente el siguiente nivel a jugar
 	auto startButton = Button::create("menus/Botones/start0.png", "menus/Botones/start1.png", "menus/Botones/start0.png", Widget::TextureResType::LOCAL);
 	startButton->setAnchorPoint(Point(0.5, 1));
@@ -60,7 +60,7 @@ bool MainMenu::init() {
 	auto selectButton = Button::create("menus/Botones/level0.png", "menus/Botones/level1.png", "menus/Botones/level0.png", Widget::TextureResType::LOCAL);
 	selectButton->setAnchorPoint(Point(0.5, 1));
 	selectButton->setScale(3, 1.5);
-	selectButton->addClickEventListener(CC_CALLBACK_0(MainMenu::selectPlayer, this));
+	selectButton->addClickEventListener(CC_CALLBACK_0(MainMenu::selectMenuButton, this));
 	selectButton->setPosition(Point(startButton->getPositionX(), nextHeight));
 	addChild(selectButton);
 

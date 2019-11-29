@@ -23,6 +23,10 @@ bool SelectPlayersMenu::init() {
 
 	initButtons();
 
+	GameWrapper::getInstance()->coop = false;
+	GameWrapper::getInstance()->p2TipoNave = 3;
+	GameWrapper::getInstance()->p1TipoNave = 2;
+
 
 	//boton de ir hacia atras
 	auto backBt = Button::create("menus/Botones/back0.png", "menus/Botones/back1.png", "menus/Botones/back1.png", Widget::TextureResType::LOCAL);
@@ -172,12 +176,13 @@ void SelectPlayersMenu::actionButtonBack() {
 }
 
 void SelectPlayersMenu::actionButton1() {
-	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(GameWrapper::getInstance()->p1TipoNave, GameWrapper::getInstance()->coop, GameWrapper::getInstance()->p2TipoNave)));
+	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(GameWrapper::getInstance()->p1TipoNave, GameWrapper::getInstance()->coop, GameWrapper::getInstance()->p2TipoNave, GameWrapper::getInstance()->freemode)));
 }
 
 void SelectPlayersMenu::selecP1() { 
 	
 	GameWrapper::getInstance()->coop = false; 
+	GameWrapper::getInstance()->p2TipoNave = 0;
 	this->P1->setBright(true); 
 	this->P2->setBright(false); 
 

@@ -20,15 +20,16 @@ public:
 	GAME_TYPE playing = GAME_TYPE::NONE;
 	int actualLevel = 1;
 	int val = 0;
+	int freemode = 1;
 	static GameWrapper* getInstance();
 
 	void death();
-	
+	void SetLevel();
 	// Información para iniciar escenas
 	int p1TipoNave = 2;
 	int p2TipoNave = 3;
 	bool coop = 0;
-
+	int getlvl();
 	void next();
 
 	void setPlayer(Player* pl) noexcept;

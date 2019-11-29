@@ -172,5 +172,5 @@ void MenuIns::actionButtonBack() {
 }
 void MenuIns::actionButtonNext() {
 	auto wrapper = GameWrapper::getInstance();
-	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel)));
+	Director::getInstance()->pushScene(TransitionFadeBL::create(1, HistoriaMotherScene::createScene()));
 }

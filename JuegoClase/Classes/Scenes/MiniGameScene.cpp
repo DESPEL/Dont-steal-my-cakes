@@ -86,7 +86,7 @@ bool MiniGameScene::init() {
 	else {
 		label3 = Label::createWithTTF("toca las estrellas\nPara obtener puntos", "fonts/arial.ttf", 24);
 	}
-	label3->runAction(Sequence::create(DelayTime::create(3.0f), RemoveSelf::create(), NULL));
+	
 
 	
 	label3->setPosition(_visibleSize.width / 2, _visibleSize.height / 2);
@@ -102,6 +102,13 @@ bool MiniGameScene::init() {
 	auto high_score = Label::createWithTTF(mensajeHS, "fonts/arial.ttf", 24);
 	high_score->setAnchorPoint(Point(0, 0));
 	high_score->setPosition(0, 230);
+	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
+		high_score->setString("High Score");
+	}
+	else
+	{
+		high_score->setString("Record: ");
+	}
 	addChild(high_score, 5);
 	/*
 	auto manager = GameManager::getInstance();
