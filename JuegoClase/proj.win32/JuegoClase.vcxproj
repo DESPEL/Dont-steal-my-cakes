@@ -158,6 +158,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\BasicPoint.cpp" />
     <ClCompile Include="..\Classes\menus\LevelSelectMenu.cpp" />
     <ClCompile Include="..\Classes\menus\LogrosMenu.cpp" />
+    <ClCompile Include="..\Classes\menus\NextLvl.cpp" />
     <ClCompile Include="..\Classes\menus\OptionsMenu.cpp" />
     <ClCompile Include="..\Classes\menus\DeathMenu.cpp" />
     <ClCompile Include="..\Classes\menus\SelectPlayersMenu.cpp" />
@@ -191,6 +192,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Levels\Levels.h" />
     <ClInclude Include="..\Classes\Macros.h" />
     <ClInclude Include="..\Classes\menus\LogorsMenu.h" />
+    <ClInclude Include="..\Classes\menus\NextLvl.h" />
     <ClInclude Include="..\Classes\menus\SelectPlayersMenu.h" />
     <ClInclude Include="..\Classes\MovementPatterns\MovementPatterns.h" />
     <ClInclude Include="..\Classes\Scenes\MiniGameScene.h" />
