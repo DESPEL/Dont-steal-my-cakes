@@ -114,15 +114,15 @@ bool DebugScene::init() {
 	this->soundID = cocos2d::experimental::AudioEngine::play2d("Music\\" + actual.song, true, GameManager::getInstance()->getBgVolume()/100);
 	experimental::AudioEngine::setLoop(soundID, true);
 	GameManager::getInstance()->setCurrentMusicTag(soundID);
-
+	
 	actual.run();
 	return true;
 }
 
 void DebugScene::update(float delta) {
-	std::stringstream s;
-	s << "PUNTOS DEL JUEGO: " << this->wrapper->getInstance()->getPlayer()->points;
-	cocos2d::log(s.str().c_str());
+	//std::stringstream s;
+	//s << "PUNTOS DEL JUEGO: " << this->wrapper->getInstance()->getPlayer()->points;
+	//cocos2d::log(s.str().c_str());
 
 	if (_player->isVisible() || two && (_player2->isVisible() )) {// (wrapper->coop) ? (_player2->isVisible()) : ())
 		_bg->update(delta);

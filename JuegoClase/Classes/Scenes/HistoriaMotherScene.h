@@ -29,7 +29,7 @@ private:
 	cocos2d::ui::Button* button3;
 	cocos2d::ui::Button* button4;
 	bool ingles;
-	int historia = 1;
+	int historia = 0;
 
 	Background* _bg;
 

@@ -142,7 +142,9 @@ void MainMenu::initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> fu
 	functions.push_back(CC_CALLBACK_0(MainMenu::actionButton9, this));
 }
 
-void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MenuIns::createScene())); }
+void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MenuIns::createScene())); 
+	//Director::getInstance()->pushScene(TransitionFadeBL::create(1, HistoriaMotherScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, )));
+}
 void MainMenu::actionButton2() { Director::getInstance()->end(); }
 
 void MainMenu::actionButton3() { 

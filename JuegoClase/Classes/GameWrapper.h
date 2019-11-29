@@ -32,6 +32,7 @@ public:
 	bool coop = 0;
 	int getlvl();
 	void next();
+	void actual1();
 
 	void setPlayer(Player* pl) noexcept;
 	void setPlayer2(Player2* p2) noexcept;

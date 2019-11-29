@@ -45,13 +45,13 @@ bool HistoriaMotherScene::init() {
 	addChild(capa, 1);
 	addChild(_bg, -1);
 	_bg->scheduleUpdate();
-
+	//historia = wrapper->actualLevel;
 	Actual = Label::createWithTTF("", "fonts/SPACEBAR.ttf", 17);
 	
 	Actual->setPosition(Point(_visibleSize.width/2, _visibleSize.height/2));
 	addChild(Actual, 5);
 	this->retain();
-	historia = wrapper->getlvl();
+	
 	if ((TranslationEngine::getInstance()->getLanguage() == "EN_US")) {
 		ingles = true;
 	}
