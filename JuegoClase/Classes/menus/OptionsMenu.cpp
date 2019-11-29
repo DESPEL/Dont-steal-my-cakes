@@ -28,7 +28,13 @@ bool OptionsMenu::init() {
 	_backGroundVolumeLabel->setAnchorPoint(Point(0, 1));
 	_backGroundVolumeLabel->setTextColor(Color4B::BLACK);
 	_ostr << GameManager::getInstance()->getBgVolume();
-	_backGroundVolumeLabel->setString("Background volume: " + _ostr.str());
+	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
+		_backGroundVolumeLabel->setString("Background volume: " + _ostr.str());
+	}
+	else
+	{
+		_backGroundVolumeLabel->setString("Volumen de Fondo: " + _ostr.str());
+	}
 	_ostr.str("");
 	_backGroundVolumeLabel->setPosition(Point(_visibleSize.width/2, _visibleSize.height/2));
 	addChild(_backGroundVolumeLabel);
@@ -48,7 +54,12 @@ bool OptionsMenu::init() {
 	//Label para ajustar volumen de efectos
 	_effectsVolumeLabel = Label::createWithTTF("0", "fonts/arial.ttf", 16);
 	_ostr << GameManager::getInstance()->getEffectsVolume();
-	_effectsVolumeLabel->setString("Effects volume: " + _ostr.str());
+	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
+		_effectsVolumeLabel->setString("Effects volume: " + _ostr.str());
+	}
+	else {
+		_effectsVolumeLabel->setString("Volumen de Efectos : " + _ostr.str());
+	}
 	_ostr.str("");
 	_effectsVolumeLabel->setTextColor(Color4B::BLACK);
 	_effectsVolumeLabel->setAnchorPoint(Point(0, 1));
@@ -75,7 +86,12 @@ bool OptionsMenu::init() {
 	dificulty_Label->setAnchorPoint(Point(0, 1));
 	dificulty_Label->setTextColor(Color4B::BLACK);
 	_ostr << GameManager::getInstance()->getDifficulty();
-	dificulty_Label->setString("La dificultad es: " + _ostr.str());
+	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
+		dificulty_Label->setString("Difficulty: " + _ostr.str());
+	}
+	else {
+		dificulty_Label->setString("La Dificultad es: " + _ostr.str());
+	}
 	_ostr.str("");
 	dificulty_Label->setPosition(Point(_visibleSize.width / 2, _visibleSize.height / 2 + 50));
 	addChild(dificulty_Label);
@@ -152,14 +168,25 @@ void OptionsMenu::actionButtonBack() {
 void OptionsMenu::dificultySlider() {	
 	auto modo = GameManager::getInstance()->getDifiMode();
 	
-	if (modo == 1)
-		_ostr << "Fácil";
-	else if (modo == 2)
-		_ostr << "Moderado";
-	else
-		_ostr << "Maestro";
+	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
+		if (modo == 1)
+			_ostr << "Easy";
+		else if (modo == 2)
+			_ostr << "Medium";
+		else
+			_ostr << "Hard";
+		dificulty_Label->setString("Difficulty: " + _ostr.str());
+	}
+	else {
+		if (modo == 1)
+			_ostr << "Fácil";
+		else if (modo == 2)
+			_ostr << "Moderado";
+		else
+			_ostr << "Maestro";
+		dificulty_Label->setString("Dificultad: " + _ostr.str());
+	}
 
-	dificulty_Label->setString("Difficulty: " + _ostr.str());
 	_ostr.str("");
 	GameManager::getInstance()->setDifficulty(dificulty->getPercent());
 

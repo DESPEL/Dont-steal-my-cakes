@@ -10,6 +10,7 @@ private:
 	void initButtons();
 
 public:
+	cocos2d::Label* High;
 	virtual bool init();
 	static cocos2d::Scene* createScene();
 	CREATE_FUNC(LogMenu);
