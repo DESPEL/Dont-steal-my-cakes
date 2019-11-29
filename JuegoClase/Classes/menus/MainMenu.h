@@ -6,6 +6,7 @@
 class MainMenu : public MotherMenu {
 protected:
 	void initFunctions(std::vector<std::function <void (cocos2d::Ref *)>> functions);
+	int musictag;
 
 public:
 	virtual bool init();

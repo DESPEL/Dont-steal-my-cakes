@@ -24,7 +24,7 @@ void BasicBullet::run(float) {
 void BasicBullet::update(float delta) {
 	if (GameWrapper::getInstance()->getPlayer()->getBoundingBox().intersectsRect(getBoundingBox())) {
 		GameWrapper::getInstance()->getPlayer()->hp--;
-		if (GameWrapper::getInstance()->getPlayer()->hp == 0) {
+		if (GameWrapper::getInstance()->getPlayer()->hp <= 0) {
 			GameWrapper::getInstance()->getPlayer()->setCurrentAnimation(Player::EXPLOSION);
 		}
 		this->stopActionByTag(BULLET_MOVEMENT);

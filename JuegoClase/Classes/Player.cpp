@@ -8,32 +8,37 @@ USING_NS_CC;
 Player::Player(int tipo) {
 	switch (tipo) {
 	case 0:
-		//_speed = 5;
-		//personaje_path = "nave0.png";
-		//animacion_path = "animacion_nave.png";
-		//break;
+		_speed = 5;
+		personaje_path = "nave0.png";
+		animacion_path = "animacion_nave.png";
+		break;
 	case 1:
 		_speed = 2.5;
 		personaje_path = "nave1.png";
 		animacion_path = "animacion_nave1.png";
+		hp = hp + 1;
 		break;
 	case 2:
 		_speed = 2.1;
 		personaje_path = "nave2.png";
 		animacion_path = "animacion_nave2.png";
+		hp = hp + 2;
 		break;
 	case 3:
 		_speed = 1.6;
 		personaje_path = "nave3.png";
 		animacion_path = "animacion_nave3.png";
+		hp = hp + 3;
 		break;
 	case 4:
 		_speed = 1.2;
 		personaje_path = "nave4.png";
 		animacion_path = "animacion_nave4.png";
+		hp = hp + 4;
 		break;
 	}
 	
+	hp = hp - GameManager::getInstance()->getDifiMode();
 
 	Player::init();
 };
@@ -216,4 +221,6 @@ void Player::update(float delta) {
 
 	if(delay > 0)
 		delay -= delta;
+
+
 }

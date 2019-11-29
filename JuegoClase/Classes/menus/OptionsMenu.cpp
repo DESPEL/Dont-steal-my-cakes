@@ -1,6 +1,8 @@
 #include "OptionsMenu.h"
 #include "GameManager.h"
+#include "TranslationEngine.h"
 #include "MainMenu.h"
+#include "AudioEngine.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -86,15 +88,15 @@ bool OptionsMenu::init() {
 	dificulty->setAnchorPoint(Point(0, 1));
 	//marginY -= 5 * getScaleY() + _backGroundVolumeLabel->getBoundingBox().size.height;
 	dificulty->setPosition(Point(_visibleSize.width / 2, _visibleSize.height / 2 + 30));
-	//dificulty->setPercent(GameManager::getInstance()->getBgVolume());
-	//dificulty->addEventListener(CC_CALLBACK_0(OptionsMenu::actionBackGroundVolumeSlider, this));
+	dificulty->setPercent(GameManager::getInstance()->getDifficulty());
+	dificulty->addEventListener(CC_CALLBACK_0(OptionsMenu::dificultySlider, this));
 	addChild(dificulty);
 
 	// Lenguaje
 
 	mex = Button::create("menus/mextrue.png", "menus/mexfalse.png", "menus/mexfalse.png", Widget::TextureResType::LOCAL);
 	mex->setAnchorPoint(Point(0.5, 0.5));
-	mex->setScale(0.2);
+	mex->setScale(0.24);
 	mex->addClickEventListener(CC_CALLBACK_0(OptionsMenu::langmex, this));
 	mex->setPosition(Vec2(_visibleSize.width / 4 + 25, _visibleSize.height / 2 + 100 * getScaleY()));
 	addChild(mex);
@@ -115,6 +117,13 @@ bool OptionsMenu::init() {
 	backBt->addClickEventListener(CC_CALLBACK_0(OptionsMenu::actionButtonBack, this));
 	backBt->setPosition(Point(42.5 * getScaleX(), 50 * getScaleY()));
 	addChild(backBt);
+
+
+
+
+	this->schedule(schedule_selector(OptionsMenu::update));
+
+
 	return true;
 
 }
@@ -140,10 +149,27 @@ void OptionsMenu::actionButtonBack() {
 	Director::getInstance()->replaceScene(TransitionFlipX::create(1, MainMenu::createScene()));
 }
 
+void OptionsMenu::dificultySlider() {	
+	auto modo = GameManager::getInstance()->getDifiMode();
+	
+	if (modo == 1)
+		_ostr << "Fácil";
+	else if (modo == 2)
+		_ostr << "Moderado";
+	else
+		_ostr << "Maestro";
+
+	dificulty_Label->setString("Difficulty: " + _ostr.str());
+	_ostr.str("");
+	GameManager::getInstance()->setDifficulty(dificulty->getPercent());
+
+};
 
 void OptionsMenu::langmex() {
 	this->mex->setBright(true);
 	this->us->setBright(false);
+
+	TranslationEngine::getInstance()->setLanguage("ES_MX");
 
 };
 
@@ -151,4 +177,13 @@ void OptionsMenu::langmex() {
 void OptionsMenu::langus() {
 	this->mex->setBright(false);
 	this->us->setBright(true);
+
+	TranslationEngine::getInstance()->setLanguage("EN_US");
+};
+
+void OptionsMenu::update(float delta) {
+
+	GameManager::getInstance()->saveSetting();
+	cocos2d::experimental::AudioEngine::setVolume(GameManager::getInstance()->getCurrentMusicTag(), GameManager::getInstance()->getBgVolume()/100);
+
 };

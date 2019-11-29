@@ -38,7 +38,7 @@ protected:
 
 public:
 
-	int hp = 2;
+	float hp = 3;
 	enum Animations {
 		IDLE = 0, EXPLOSION = 1
 	};

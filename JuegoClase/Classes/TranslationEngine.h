@@ -17,6 +17,10 @@ private:
 
 	std::map<std::string, std::string> langStrings;
 public:
+	enum Language {
+		ES_MX = 0, EN_US = 1
+	};
+
 
 	static TranslationEngine* getInstance();
 

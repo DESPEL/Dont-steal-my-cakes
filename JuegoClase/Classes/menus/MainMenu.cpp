@@ -102,7 +102,9 @@ bool MainMenu::init() {
 	addChild(TP);
 
 	if (!experimental::AudioEngine::getPlayingAudioCount() >= 1) {
-		experimental::AudioEngine::play2d("music/Hollow.mp3", true, GameManager::getInstance()->getBgVolume()/100);
+		this->musictag = experimental::AudioEngine::play2d("music/Hollow.mp3", true, GameManager::getInstance()->getBgVolume()/100);
+		experimental::AudioEngine::setLoop(musictag, true);
+		GameManager::getInstance()->setCurrentMusicTag(musictag);
 	}
 	return true;
 }
@@ -137,7 +139,12 @@ void MainMenu::initFunctions(std::vector<std::function <void(cocos2d::Ref*)>> fu
 
 void MainMenu::actionButton1() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MenuIns::createScene())); }
 void MainMenu::actionButton2() { Director::getInstance()->end(); }
-void MainMenu::actionButton3() { Director::getInstance()->pushScene(TransitionCrossFade::create(1, MiniGameScene::createScene())); }
+
+void MainMenu::actionButton3() { 
+	Director::getInstance()->pushScene(TransitionCrossFade::create(1, MiniGameScene::createScene()));
+	cocos2d::experimental::AudioEngine::stop(musictag);
+}
+
 void MainMenu::actionButton4() { Director::getInstance()->pushScene(TransitionFadeBL::create(1, TopMenu::createScene()));  }
 void MainMenu::actionButton5() { Director::getInstance()->pushScene(TransitionFadeBL::create(1, LogMenu::createScene())); }
 void MainMenu::actionButton6() {  /*TODO*/ }

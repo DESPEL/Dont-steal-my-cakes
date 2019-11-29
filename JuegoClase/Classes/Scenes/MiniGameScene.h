@@ -11,6 +11,8 @@
 class MiniGameScene : public cocos2d::Layer {
 private:
 
+	int musictag;
+
 	bool two = 0;
 	int _puntos = 0;
 	int highscore;

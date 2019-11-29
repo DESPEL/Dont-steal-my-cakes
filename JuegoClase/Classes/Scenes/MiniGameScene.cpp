@@ -94,7 +94,7 @@ bool MiniGameScene::init() {
 		_player->setPosition(_visibleSize.width / 2, _visibleSize.height / 2 - 100);
 	else
 		_player->setPosition(_visibleSize.width / 2 + 100, _visibleSize.height / 2 - 100);
-
+	_player->setSpeed(4);
 	_player->setScale(2);
 	addChild(_player);
 
@@ -125,8 +125,8 @@ bool MiniGameScene::init() {
 
 	// Musica
 	//SimpleAudioEngine::getInstance()->playBackgroundMusic("Music\\Mantis.mp3", true);
-	cocos2d::experimental::AudioEngine::play2d("Music/Mantis.mp3", true, GameManager::getInstance()->getBgVolume() / 100);
-
+	this->musictag = cocos2d::experimental::AudioEngine::play2d("Music/Mantis.mp3", true, GameManager::getInstance()->getBgVolume() / 100);
+	GameManager::getInstance()->setCurrentMusicTag(musictag);
 
 	return true;
 }
@@ -262,7 +262,7 @@ void MiniGameScene::saveButtonAction() {
 }
 
 void MiniGameScene::salirButtonAction() {
-
+	cocos2d::experimental::AudioEngine::stop(musictag);
 	cocos2d::Director::getInstance()->startAnimation();
 	Director::getInstance()->pushScene(TransitionFadeBL::create(1, MainMenu::createScene()));
 }

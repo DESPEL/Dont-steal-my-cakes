@@ -19,6 +19,7 @@ private:
 	void actionButtonBack();
 	void actionBackGroundVolumeSlider();
 	void actionEffectsVolumeSlider();
+	void dificultySlider();
 
 	void langmex();
 	void langus();
@@ -28,5 +29,8 @@ public:
 	static cocos2d::Scene* createScene();
 	CREATE_FUNC(OptionsMenu);
 	
+	void update(float);
+
+
 };
 

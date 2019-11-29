@@ -7,6 +7,8 @@ GameManager* GameManager::_instance = nullptr;
 GameManager::GameManager() :_playerScore(0) {
 	_bgVolume = UserDefault::getInstance()->getIntegerForKey(BGVOLUME, 30);
 	_effectsVolume = UserDefault::getInstance()->getIntegerForKey(SFXVOLUME, 40);
+	_effectsVolume = UserDefault::getInstance()->getIntegerForKey(DIFFICULTY, 50);
+	_effectsVolume = UserDefault::getInstance()->getIntegerForKey(DIFMODE, 2);
 }
 
 GameManager::~GameManager() {}
@@ -14,6 +16,22 @@ GameManager::~GameManager() {}
 void GameManager::saveSetting() {
 	UserDefault::getInstance()->setIntegerForKey(BGVOLUME, _bgVolume);
 	UserDefault::getInstance()->setIntegerForKey(SFXVOLUME, _effectsVolume);
+	UserDefault::getInstance()->setIntegerForKey(DIFFICULTY, _difCategory);
+
+	int temp_dif_mode;
+	if (this->getDifficulty() >= 0 && this->getDifficulty() <= 33) {
+		temp_dif_mode = 1;
+	}
+	else if (this->getDifficulty() >= 34 && this->getDifficulty() <= 66) {
+		temp_dif_mode = 2;
+	}
+	else {
+		temp_dif_mode = 3;
+	}
+	
+	this->setDifiMode(temp_dif_mode);
+
+	UserDefault::getInstance()->setIntegerForKey(DIFMODE, _difMode);
 }
 
 GameManager* GameManager::getInstance() {
