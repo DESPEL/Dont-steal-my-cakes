@@ -17,8 +17,8 @@ bool OptionsMenu::init() {
 		return false;
 	}
 
-	int marginX = 50 * getScaleX();
-	int marginY = _visibleSize.height - 100 * getScaleY();
+	//int marginX = 50 * getScaleX();
+	//int marginY = _visibleSize.height - 100 * getScaleY();
 
 
 	//Label para ajustar sonidos de fondo
@@ -28,7 +28,7 @@ bool OptionsMenu::init() {
 	_ostr << GameManager::getInstance()->getBgVolume();
 	_backGroundVolumeLabel->setString("Background volume: " + _ostr.str());
 	_ostr.str("");
-	_backGroundVolumeLabel->setPosition(Point(marginX, marginY));
+	_backGroundVolumeLabel->setPosition(Point(_visibleSize.width/2, _visibleSize.height/2));
 	addChild(_backGroundVolumeLabel);
 
 	//slider para ajustar volumen de fondo
@@ -37,8 +37,8 @@ bool OptionsMenu::init() {
 	_backGroundVolume->loadSlidBallTextures("menus/Botones/sliders/peg0.png", "menus/Botones/sliders/peg1.png", "menus/Botones/sliders/peg2.png", Widget::TextureResType::LOCAL);
 	_backGroundVolume->loadProgressBarTexture("menus/Botones/sliders/bar_fill.png", Widget::TextureResType::LOCAL);
 	_backGroundVolume->setAnchorPoint(Point(0, 1));
-	marginY -= 5 * getScaleY() + _backGroundVolumeLabel->getBoundingBox().size.height;
-	_backGroundVolume->setPosition(Point(marginX, marginY));
+	//marginY -= 5 * getScaleY() + _backGroundVolumeLabel->getBoundingBox().size.height;
+	_backGroundVolume->setPosition(Point(_visibleSize.width/2, _visibleSize.height/2 - 20));
 	_backGroundVolume->setPercent(GameManager::getInstance()->getBgVolume());
 	_backGroundVolume->addEventListener(CC_CALLBACK_0(OptionsMenu::actionBackGroundVolumeSlider, this));
 	addChild(_backGroundVolume);
@@ -50,8 +50,8 @@ bool OptionsMenu::init() {
 	_ostr.str("");
 	_effectsVolumeLabel->setTextColor(Color4B::BLACK);
 	_effectsVolumeLabel->setAnchorPoint(Point(0, 1));
-	marginY -= 50 * getScaleY() + _backGroundVolume->getBoundingBox().size.height;
-	_effectsVolumeLabel->setPosition(Point(marginX, marginY));
+	//marginY -= 50 * getScaleY() + _backGroundVolume->getBoundingBox().size.height;
+	_effectsVolumeLabel->setPosition(Point(_visibleSize.width/2, _visibleSize.height/2 - 50));
 	addChild(_effectsVolumeLabel);
 
 	//Slider para ajustar volumen de efectos
@@ -60,12 +60,52 @@ bool OptionsMenu::init() {
 	_effectsVolume->loadSlidBallTextures("menus/Botones/sliders/peg0.png", "menus/Botones/sliders/peg1.png", "menus/Botones/sliders/peg2.png", Widget::TextureResType::LOCAL);
 	_effectsVolume->loadProgressBarTexture("menus/Botones/sliders/bar_fill.png", Widget::TextureResType::LOCAL);
 	_effectsVolume->setAnchorPoint(Point(0, 1));
-	marginY -= 5 * getScaleY() + _effectsVolumeLabel->getBoundingBox().size.height;
-	_effectsVolume->setPosition(Point(marginX, marginY));
+	//marginY -= 5 * getScaleY() + _effectsVolumeLabel->getBoundingBox().size.height;
+	_effectsVolume->setPosition(Point(_visibleSize.width/2, _visibleSize.height/2 - 70));
 	_effectsVolume->setPercent(GameManager::getInstance()->getEffectsVolume());
 	_effectsVolume->addEventListener(CC_CALLBACK_0(OptionsMenu::actionEffectsVolumeSlider, this));
 	addChild(_effectsVolume);
 
+
+	
+	//Label para dificultad
+	dificulty_Label = Label::createWithTTF("dificultad", "fonts/arial.ttf", 16);
+	dificulty_Label->setAnchorPoint(Point(0, 1));
+	dificulty_Label->setTextColor(Color4B::BLACK);
+	_ostr << GameManager::getInstance()->getBgVolume();
+	dificulty_Label->setString("La dificultad es: " + _ostr.str());
+	_ostr.str("");
+	dificulty_Label->setPosition(Point(_visibleSize.width / 2, _visibleSize.height / 2 + 50));
+	addChild(dificulty_Label);
+	   	  	
+	//slider para ajustar dificultad
+	dificulty = Slider::create();
+	dificulty->loadBarTexture("menus/Botones/sliders/dificulty_barthing.png", Widget::TextureResType::LOCAL);
+	dificulty->loadSlidBallTextures("menus/Botones/sliders/peg0.png", "menus/Botones/sliders/peg1.png", "menus/Botones/sliders/peg2.png", Widget::TextureResType::LOCAL);
+	dificulty->loadProgressBarTexture("menus/Botones/sliders/dificultybarfill.png", Widget::TextureResType::LOCAL);
+	dificulty->setAnchorPoint(Point(0, 1));
+	//marginY -= 5 * getScaleY() + _backGroundVolumeLabel->getBoundingBox().size.height;
+	dificulty->setPosition(Point(_visibleSize.width / 2, _visibleSize.height / 2 + 30));
+	//dificulty->setPercent(GameManager::getInstance()->getBgVolume());
+	//dificulty->addEventListener(CC_CALLBACK_0(OptionsMenu::actionBackGroundVolumeSlider, this));
+	addChild(dificulty);
+
+	// Lenguaje
+
+	mex = Button::create("menus/mextrue.png", "menus/mexfalse.png", "menus/mexfalse.png", Widget::TextureResType::LOCAL);
+	mex->setAnchorPoint(Point(0.5, 0.5));
+	mex->setScale(0.2);
+	mex->addClickEventListener(CC_CALLBACK_0(OptionsMenu::langmex, this));
+	mex->setPosition(Vec2(_visibleSize.width / 4 + 25, _visibleSize.height / 2 + 100 * getScaleY()));
+	addChild(mex);
+
+	us = Button::create("menus/ustrue.png", "menus/usfalse.png", "menus/usFalse.png", Widget::TextureResType::LOCAL);
+	us->setAnchorPoint(Point(0.5, 0.5));
+	us->setScale(0.2);
+	us->setBright(false);
+	us->addClickEventListener(CC_CALLBACK_0(OptionsMenu::langus, this));
+	us->setPosition(Vec2(3 * _visibleSize.width / 4 - 25, _visibleSize.height / 2 + 100 * getScaleY()));
+	addChild(us);
 
 
 
@@ -100,3 +140,15 @@ void OptionsMenu::actionButtonBack() {
 	Director::getInstance()->replaceScene(TransitionFlipX::create(1, MainMenu::createScene()));
 }
 
+
+void OptionsMenu::langmex() {
+	this->mex->setBright(true);
+	this->us->setBright(false);
+
+};
+
+
+void OptionsMenu::langus() {
+	this->mex->setBright(false);
+	this->us->setBright(true);
+};
