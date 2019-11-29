@@ -67,6 +67,7 @@ void DeathMenu::selectMenuButton() {
 		Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel)));
 	}
 	if (caller == GAME_TYPE::MINIJUEGO) {
+		/// aqui hacer esa cosa si eso se queir ehacer
 		Director::getInstance()->pushScene(TransitionCrossFade::create(1, MiniGameScene::createScene()));
 	}
 }

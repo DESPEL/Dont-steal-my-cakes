@@ -51,7 +51,7 @@ bool HistoriaMotherScene::init() {
 	Actual->setPosition(Point(_visibleSize.width/2, _visibleSize.height/2));
 	addChild(Actual, 5);
 	this->retain();
-
+	historia = wrapper->getlvl();
 	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
 		ingles = true;
 	}

@@ -24,12 +24,12 @@ public:
 	static GameWrapper* getInstance();
 
 	void death();
-	
+	void SetLevel();
 	// Información para iniciar escenas
 	int p1TipoNave = 2;
 	int p2TipoNave = 3;
 	bool coop = 0;
-
+	int getlvl();
 	void next();
 
 	void setPlayer(Player* pl) noexcept;

@@ -10,6 +10,7 @@
 #include "GameWrapper.h"
 #include "menus/MainMenu.h"
 
+
 USING_NS_CC;
 
 DebugScene::DebugScene(int tipoP1, bool two, int tipoP2, int level) {
@@ -65,7 +66,7 @@ bool DebugScene::init() {
 	button3 = ui::Button::create("menus/save.png", "menus/save.png", "menus/save.png");
 	button3->setAnchorPoint(Point(.5, .5));
 	button3->setPosition(Point(_visibleSize.width/2, _visibleSize.height/2));
-	button3->addClickEventListener(CC_CALLBACK_0(DebugScene::playButtonAction, this));
+	button3->addClickEventListener(CC_CALLBACK_0(DebugScene::saveButtonAction, this));
 	button3->setScale(.4);
 	button3->setVisible(false);
 	addChild(button3, 3);
@@ -164,7 +165,16 @@ void DebugScene::playButtonAction()
 }
 
 void DebugScene::saveButtonAction() {
-
+	
+	using namespace std;
+	int num;
+	ofstream archivo;
+	archivo.open("LevelSave.txt");
+	num = wrapper->getlvl();
+	archivo << num;
+	archivo.close();
+	playButtonAction();
+	
 }
 
 void DebugScene::salirButtonAction() {
