@@ -28,6 +28,8 @@ public:
 	}
 
 	std::string at(std::string key) {
+		if (data[key] == "")
+			data[key] = "0";
 		return data[key];
 	}
 	
