@@ -52,8 +52,8 @@ bool HistoriaMotherScene::init() {
 	addChild(Actual, 5);
 	this->retain();
 
-	if (TranslationEngine::getInstance()->getLanguage() != "ES_MX") {
-		this->ingles = true;
+	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
+		ingles = true;
 	}
 
 	if (ingles) {

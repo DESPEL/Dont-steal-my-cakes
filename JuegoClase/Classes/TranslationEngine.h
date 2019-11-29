@@ -24,7 +24,7 @@ public:
 
 	static TranslationEngine* getInstance();
 
-	void setLanguage(std::string language);
+	void setLanguage(std::string lang);
 
 	std::string getLanguage() {
 		return language;
