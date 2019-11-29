@@ -128,8 +128,7 @@ void DebugScene::update(float delta) {
 
 
 	if ((_player->get_currentAnimation() == Player::EXPLOSION && !two) || (_player->get_currentAnimation() == Player::EXPLOSION && two && (_player2->get_currentAnimation() == Player2::EXPLOSION))) {
-		if (!ended && (_player->getActionByTag(Player::Animations::EXPLOSION) == nullptr && (!two || (_player2->getActionByTag(Player::Animations::EXPLOSION) == nullptr)))) {
-			ended = true;
+		if (_player->getActionByTag(Player::Animations::EXPLOSION) == nullptr && (!two || (_player2->getActionByTag(Player::Animations::EXPLOSION) == nullptr))) {
 			experimental::AudioEngine::stop(soundID);
 			this->wrapper->death();
 		}
