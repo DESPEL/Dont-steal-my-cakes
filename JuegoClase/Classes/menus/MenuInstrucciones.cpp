@@ -168,9 +168,9 @@ void MenuIns::initButtons() {
 
 void MenuIns::actionButtonBack() {
 	experimental::AudioEngine::stopAll();
-	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, MainMenu::createScene()));
+	Director::getInstance()->pushScene(TransitionFadeBL::create(1, MainMenu::createScene()));
 }
 void MenuIns::actionButtonNext() {
 	auto wrapper = GameWrapper::getInstance();
-	Director::getInstance()->replaceScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel)));
+	Director::getInstance()->pushScene(TransitionFadeBL::create(1, DebugScene::createScene(wrapper->p1TipoNave, wrapper->coop, wrapper->p2TipoNave, wrapper->actualLevel)));
 }
