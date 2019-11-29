@@ -86,6 +86,7 @@ bool MiniGameScene::init() {
 	else {
 		label3 = Label::createWithTTF("toca las estrellas\nPara obtener puntos", "fonts/arial.ttf", 24);
 	}
+	label3->runAction(Sequence::create(DelayTime::create(3.0f), RemoveSelf::create(), NULL));
 
 	
 	label3->setPosition(_visibleSize.width / 2, _visibleSize.height / 2);
@@ -214,6 +215,8 @@ void MiniGameScene::update(float delta) {
 		GameManager::getInstance()->saveMiniGameScore(_puntos);
 		GameManager::getInstance()->updateMiniScores(_puntos);
 		cocos2d::experimental::AudioEngine::stop(musictag);
+
+		// aqui, antes de llegar al death, se desbloquea la nave
 		this->wrapper->death();
 	}
 	for (auto e : _enemyPool) {

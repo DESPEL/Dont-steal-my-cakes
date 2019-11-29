@@ -103,6 +103,7 @@ public:
 		ret->sequence = seq;
 		ret->attack = attack;
 		ret->boss = boss;
+		ret->hp = hp;
 		if (ret->boss) {
 			cocos2d::log("enemy created is boss:");
 		}
@@ -223,7 +224,7 @@ public:
 		return ret;
 	}
 
-	static Enemy* createBoss(std::string name, cocos2d::Vector<cocos2d::Sequence*> seqs, std::vector<std::tuple<float, AttackPattern>> atts, cocos2d::Vec2 pos = { 0, 0 }) {
+	static Enemy* createBoss(std::string name, cocos2d::Vector<cocos2d::Sequence*> seqs, std::vector<std::tuple<float, AttackPattern>> atts, cocos2d::Vec2 pos = { 0, 0 }, int hp = 100) {
 		Enemy* ret = EnemyPlus::create(name, seqs, atts, { 0,0 }, true);
 		if (ret->boss) {
 			cocos2d::log("enemy created is boss:");
@@ -232,6 +233,7 @@ public:
 
 			cocos2d::log("enemy created is not boss:");
 		}
+		ret->hp = hp;
 		return ret;
 	}
 

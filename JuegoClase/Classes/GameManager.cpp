@@ -11,6 +11,8 @@ GameManager::GameManager() :_playerScore(0) {
 	_difMode = UserDefault::getInstance()->getIntegerForKey(DIFMODE, 2);
 	_lang = UserDefault::getInstance()->getStringForKey(LANGUAGE, "ES_MX");
 	miniScoresAlmacenados = UserDefault::getInstance()->getIntegerForKey(MINISC, 0);
+	_nave1 = UserDefault::getInstance()->getBoolForKey(RAPIDIN, false);
+	_nave4 = UserDefault::getInstance()->getBoolForKey(MCDONALDS, false);
 
 	//int actualSize = UserDefault::getInstance()->getIntegerForKey(MINISC, 0);
 
@@ -221,4 +223,26 @@ void GameManager::updateScores(int score) {
 		UserDefault::getInstance()->setIntegerForKey(SCORE5, fiveScores.at(4));
 	}
 
+};
+
+void GameManager::unlockRapidin() {
+	_nave1 = true;
+	UserDefault::getInstance()->setBoolForKey(RAPIDIN, true);
+	
+}
+
+void GameManager::unlockMcDonalds() {
+	_nave4 = true;
+	UserDefault::getInstance()->setBoolForKey(MCDONALDS, true);
+}
+
+void GameManager::lockRapidin() {
+	_nave1 = false;
+	UserDefault::getInstance()->setBoolForKey(RAPIDIN, false);
+
+};
+
+void GameManager::lockMcDonalds() {
+	_nave4 = false;
+	UserDefault::getInstance()->setBoolForKey(MCDONALDS, false);
 };

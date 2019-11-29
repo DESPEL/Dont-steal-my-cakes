@@ -16,7 +16,7 @@ private:
 	bool two = 0;
 	int _puntos = 0;
 	int highscore;
-	float Tiempo = 10;
+	float Tiempo = 60;
 	int seg = Tiempo;
 	float variar;
 	int num;

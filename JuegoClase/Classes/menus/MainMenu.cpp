@@ -31,6 +31,10 @@ bool MainMenu::init() {
 	}
 	
 	//GameManager::getInstance()->resetScore();
+	//GameManager::getInstance()->unlockRapidin();
+	//GameManager::getInstance()->unlockMcDonalds();
+	//GameManager::getInstance()->lockRapidin();
+	//GameManager::getInstance()->lockMcDonalds();
 
 	std::vector<std::function <void(cocos2d::Ref*)>> functions;
 	//inicializamos un vector de funciones. Cada funcion lanza un nivel

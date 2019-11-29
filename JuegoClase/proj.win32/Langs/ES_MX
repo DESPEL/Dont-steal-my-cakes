@@ -1,2 +1,8 @@
 test~lang string working
 test2~langstring multiple lines working
+BG_VOL~Volumen de fondo
+SFX_VOL~Volumen de efectos
+DIFF~Dificultad
+DIFF_0~Facil
+DIFF_1~Medio
+DIFF_2~Maestro

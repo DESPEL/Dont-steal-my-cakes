@@ -52,9 +52,9 @@ bool NextMenu::init() {
 		selectButton->setPosition(Point(startButton->getPositionX(), nextHeight));
 		addChild(selectButton);
 	}
-	
-	//lanza las opciones para ajustar volumen y otras configuraciones
-
+	else {
+		/// aqui significa que termino el modo historia, por lo tanto hay que desbloquear la nave esa
+	}
 
 	return true;
 }

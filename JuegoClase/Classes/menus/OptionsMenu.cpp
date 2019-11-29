@@ -26,15 +26,11 @@ bool OptionsMenu::init() {
 	//Label para ajustar sonidos de fondo
 	_backGroundVolumeLabel = Label::createWithTTF("0", "fonts/arial.ttf", 16);
 	_backGroundVolumeLabel->setAnchorPoint(Point(0, 1));
-	_backGroundVolumeLabel->setTextColor(Color4B::BLACK);
+	_backGroundVolumeLabel->setTextColor(Color4B::WHITE);
 	_ostr << GameManager::getInstance()->getBgVolume();
-	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
-		_backGroundVolumeLabel->setString("Background volume: " + _ostr.str());
-	}
-	else
-	{
-		_backGroundVolumeLabel->setString("Volumen de Fondo: " + _ostr.str());
-	}
+
+	_backGroundVolumeLabel->setString(TranslationEngine::getInstance()->get("BG_VOL") + ": " + _ostr.str());
+
 	_ostr.str("");
 	_backGroundVolumeLabel->setPosition(Point(_visibleSize.width/2, _visibleSize.height/2));
 	addChild(_backGroundVolumeLabel);
@@ -54,14 +50,11 @@ bool OptionsMenu::init() {
 	//Label para ajustar volumen de efectos
 	_effectsVolumeLabel = Label::createWithTTF("0", "fonts/arial.ttf", 16);
 	_ostr << GameManager::getInstance()->getEffectsVolume();
-	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
-		_effectsVolumeLabel->setString("Effects volume: " + _ostr.str());
-	}
-	else {
-		_effectsVolumeLabel->setString("Volumen de Efectos : " + _ostr.str());
-	}
+
+	_effectsVolumeLabel->setString(TranslationEngine::getInstance()->get("SFX_VOL") + ": " + _ostr.str());
+
 	_ostr.str("");
-	_effectsVolumeLabel->setTextColor(Color4B::BLACK);
+	_effectsVolumeLabel->setTextColor(Color4B::WHITE);
 	_effectsVolumeLabel->setAnchorPoint(Point(0, 1));
 	//marginY -= 50 * getScaleY() + _backGroundVolume->getBoundingBox().size.height;
 	_effectsVolumeLabel->setPosition(Point(_visibleSize.width/2, _visibleSize.height/2 - 50));
@@ -84,14 +77,17 @@ bool OptionsMenu::init() {
 	//Label para dificultad
 	dificulty_Label = Label::createWithTTF("dificultad", "fonts/arial.ttf", 16);
 	dificulty_Label->setAnchorPoint(Point(0, 1));
-	dificulty_Label->setTextColor(Color4B::BLACK);
-	_ostr << GameManager::getInstance()->getDifficulty();
-	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
-		dificulty_Label->setString("Difficulty: " + _ostr.str());
-	}
-	else {
-		dificulty_Label->setString("La Dificultad es: " + _ostr.str());
-	}
+	dificulty_Label->setTextColor(Color4B::WHITE);
+	auto modo = GameManager::getInstance()->getDifiMode();
+
+	if (modo <= 1)
+		_ostr << TranslationEngine::getInstance()->get("DIFF_0");
+	else if (modo <= 2)
+		_ostr << TranslationEngine::getInstance()->get("DIFF_1");
+	else
+		_ostr << TranslationEngine::getInstance()->get("DIFF_2");
+	dificulty_Label->setString(TranslationEngine::getInstance()->get("DIFF") + ": " + _ostr.str());
+
 	_ostr.str("");
 	dificulty_Label->setPosition(Point(_visibleSize.width / 2, _visibleSize.height / 2 + 50));
 	addChild(dificulty_Label);
@@ -116,15 +112,18 @@ bool OptionsMenu::init() {
 	mex->addClickEventListener(CC_CALLBACK_0(OptionsMenu::langmex, this));
 	mex->setPosition(Vec2(_visibleSize.width / 4 + 25, _visibleSize.height / 2 + 100 * getScaleY()));
 	addChild(mex);
+	
 
 	us = Button::create("menus/ustrue.png", "menus/usfalse.png", "menus/usFalse.png", Widget::TextureResType::LOCAL);
 	us->setAnchorPoint(Point(0.5, 0.5));
 	us->setScale(0.2);
-	us->setBright(false);
 	us->addClickEventListener(CC_CALLBACK_0(OptionsMenu::langus, this));
 	us->setPosition(Vec2(3 * _visibleSize.width / 4 - 25, _visibleSize.height / 2 + 100 * getScaleY()));
 	addChild(us);
 
+
+	this->mex->setBright(TranslationEngine::getInstance()->getLanguage() == "ES_MX");
+	this->us->setBright(TranslationEngine::getInstance()->getLanguage() == "EN_US");
 
 
 	//boton de ir hacia atras
@@ -146,14 +145,14 @@ bool OptionsMenu::init() {
 
 void OptionsMenu::actionBackGroundVolumeSlider() {
 	_ostr << _backGroundVolume->getPercent();
-	_backGroundVolumeLabel->setString("Background volume: " + _ostr.str());
+	_backGroundVolumeLabel->setString(TranslationEngine::getInstance()->get("BG_VOL") + ": " + _ostr.str());
 	_ostr.str("");
 	GameManager::getInstance()->setBgVolume(_backGroundVolume->getPercent());
 }
 
 void OptionsMenu::actionEffectsVolumeSlider() {
 	_ostr << _effectsVolume->getPercent();
-	_effectsVolumeLabel->setString("Effects volume: " + _ostr.str());
+	_effectsVolumeLabel->setString(TranslationEngine::getInstance()->get("SFX_VOL") + ": " + _ostr.str());
 	_ostr.str("");
 	GameManager::getInstance()->setEffectsVolume(_effectsVolume->getPercent());
 
@@ -168,24 +167,13 @@ void OptionsMenu::actionButtonBack() {
 void OptionsMenu::dificultySlider() {	
 	auto modo = GameManager::getInstance()->getDifiMode();
 	
-	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
-		if (modo == 1)
-			_ostr << "Easy";
-		else if (modo == 2)
-			_ostr << "Medium";
-		else
-			_ostr << "Hard";
-		dificulty_Label->setString("Difficulty: " + _ostr.str());
-	}
-	else {
-		if (modo == 1)
-			_ostr << "Fácil";
-		else if (modo == 2)
-			_ostr << "Moderado";
-		else
-			_ostr << "Maestro";
-		dificulty_Label->setString("Dificultad: " + _ostr.str());
-	}
+	if (modo <= 1)
+		_ostr << TranslationEngine::getInstance()->get("DIFF_0");
+	else if (modo <= 2)
+		_ostr << TranslationEngine::getInstance()->get("DIFF_1");
+	else
+		_ostr << TranslationEngine::getInstance()->get("DIFF_2");
+	dificulty_Label->setString(TranslationEngine::getInstance()->get("DIFF") + ": " + _ostr.str());
 
 	_ostr.str("");
 	GameManager::getInstance()->setDifficulty(dificulty->getPercent());
@@ -199,6 +187,26 @@ void OptionsMenu::langmex() {
 	TranslationEngine::getInstance()->setLanguage("ES_MX");
 	GameManager::getInstance()->setLanguage("ES_MX");
 
+	_ostr << _backGroundVolume->getPercent();
+	_backGroundVolumeLabel->setString(TranslationEngine::getInstance()->get("BG_VOL") + ": " + _ostr.str());
+	_ostr.str("");
+
+	_ostr << _effectsVolume->getPercent();
+	_effectsVolumeLabel->setString(TranslationEngine::getInstance()->get("SFX_VOL") + ": " + _ostr.str());
+	_ostr.str("");
+
+	auto modo = GameManager::getInstance()->getDifiMode();
+
+	if (modo <= 1)
+		_ostr << TranslationEngine::getInstance()->get("DIFF_0");
+	else if (modo <= 2)
+		_ostr << TranslationEngine::getInstance()->get("DIFF_1");
+	else
+		_ostr << TranslationEngine::getInstance()->get("DIFF_2");
+	dificulty_Label->setString(TranslationEngine::getInstance()->get("DIFF") + ": " + _ostr.str());
+
+	_ostr.str("");
+
 };
 
 
@@ -208,6 +216,27 @@ void OptionsMenu::langus() {
 
 	TranslationEngine::getInstance()->setLanguage("EN_US");
 	GameManager::getInstance()->setLanguage("EN_US");
+
+	_ostr << _backGroundVolume->getPercent();
+	_backGroundVolumeLabel->setString(TranslationEngine::getInstance()->get("BG_VOL") + ": " + _ostr.str());
+	_ostr.str("");
+
+	_ostr << _effectsVolume->getPercent();
+	_effectsVolumeLabel->setString(TranslationEngine::getInstance()->get("SFX_VOL") + ": " + _ostr.str());
+	_ostr.str("");
+
+	auto modo = GameManager::getInstance()->getDifiMode();
+
+	if (modo <= 1)
+		_ostr << TranslationEngine::getInstance()->get("DIFF_0");
+	else if (modo <= 2)
+		_ostr << TranslationEngine::getInstance()->get("DIFF_1");
+	else
+		_ostr << TranslationEngine::getInstance()->get("DIFF_2");
+	dificulty_Label->setString(TranslationEngine::getInstance()->get("DIFF") + ": " + _ostr.str());
+
+	_ostr.str("");
+
 
 };
 

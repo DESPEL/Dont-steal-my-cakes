@@ -516,6 +516,56 @@ public:
 			return levels[name];
 		}
 
+		if (name == "level-4") {
+			auto up100 = MovementPatterns::create("up-100");
+			auto stmov = MovementPatterns::create("static");
+
+			auto circular = AttackPatterns::create("circular");
+			auto triple = AttackPatterns::create("triple");
+			auto linear = AttackPatterns::create("linear");
+			auto spray = AttackPatterns::create("test");
+
+			Enemy* downcirc = EnemyPlus::create(
+				"enemigo3.png",
+				{
+					up100.get(180, 2.0f, false),
+					stmov.get(0, 1 / 5.0f, false),
+					up100.get(0, 1)
+				},
+				{
+					{0.5f, circular.get()},
+					{1.0f, circular.get()},
+					{1.0f, circular.get()},
+					{1.0f, circular.get()},
+					{1.0f, circular.get()}
+				}
+				);
+
+			Enemy* boss = EnemyPlus::createBoss(
+				"boss5.png",
+				{
+					up100.get(-180, 1, false),
+					stmov.get(0,1,false)
+				},
+				{
+					{2.0f, triple.get()},
+					{3.0f, spray.get()},
+					{3.0f, circular.get()}
+				},
+				{ 0, 0 },
+				200
+				);
+
+			levels[name] = Level(
+				mktp(1.0f, downcirc->get({ sz.width / 4, sz.height })),
+				mktp(1.0f, downcirc->get({ 2 * sz.width / 4, sz.height + 75 })),
+				mktp(1.0f, downcirc->get({ 3 * sz.width / 4, sz.height })),
+				mktp(5.0f, boss->get({ sz.width / 2, sz.height + 30 }))
+			);
+			levels.at(name).setSong("Hornet.mp3");
+			return levels[name];
+		}
+
 		throw "level not found";
 	}
 };

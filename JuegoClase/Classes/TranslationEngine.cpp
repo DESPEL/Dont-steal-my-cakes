@@ -4,12 +4,20 @@ TranslationEngine* TranslationEngine::globalEngine = nullptr;
 
 TranslationEngine::TranslationEngine() {
 	CreateDirectory(L"Langs", NULL);
+
 }
 
 TranslationEngine* TranslationEngine::getInstance() {
 	if (globalEngine == nullptr) {
 		globalEngine = new TranslationEngine();
-		globalEngine->setLanguage(defaultLanguage);
+		std::ifstream llang("Langs\\lastlang");
+		std::string lastl;
+		llang >> lastl;
+		llang.close();
+		if (lastl != "")
+			globalEngine->setLanguage(lastl);
+		else
+			globalEngine->setLanguage(defaultLanguage);
 	}
 	return globalEngine;
 }
@@ -25,5 +33,7 @@ void TranslationEngine::setLanguage(std::string lang) {
 	while (getline(langreader, key, '~') && getline(langreader, val))
 		langStrings[key] = val;
 	language = lang;
+	std::ofstream llang("Langs\\lastlang");
+	llang << lang;
+	llang.close();
 }
-
