@@ -156,6 +156,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\BasicPoint.cpp" />
+    <ClCompile Include="..\Classes\DataEngine.cpp" />
     <ClCompile Include="..\Classes\menus\LevelSelectMenu.cpp" />
     <ClCompile Include="..\Classes\menus\LogrosMenu.cpp" />
     <ClCompile Include="..\Classes\menus\NextLvl.cpp" />
@@ -188,6 +189,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
   <ItemGroup>
     <ClInclude Include="..\Classes\AttackPatterns\AttackPatterns.h" />
     <ClInclude Include="..\Classes\BasicPoint.h" />
+    <ClInclude Include="..\Classes\DataEngine.h" />
     <ClInclude Include="..\Classes\Enemy.h" />
     <ClInclude Include="..\Classes\Level.h" />
     <ClInclude Include="..\Classes\Levels\Levels.h" />

@@ -116,6 +116,7 @@ void Player::createExplosionAnimation() {
 }
 
 void Player::shoot(Vec2 dir) {
+	DataEngine::getInstance()->add("shoots", 1);
 	auto bullet = Balas.at(bulletsact);
 	bullet->activa = true;
 	bullet->direccion = dir;

@@ -39,6 +39,7 @@ Player2* GameWrapper::getPlayer2() {
 
 void GameWrapper::death() {
 	if (playing == GAME_TYPE::HISTORIA || playing == GAME_TYPE::LIBRE) {
+		DataEngine::getInstance()->add("deaths", 1);
 		cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionCrossFade::create(0.3f, DeathMenu::createScene(playing)));
 	}
 	if (playing == GAME_TYPE::MINIJUEGO) {

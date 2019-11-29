@@ -50,7 +50,7 @@
       <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\TranslationEngine.cpp">
-      <Filter>Translation</Filter>
+      <Filter>Engines</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\menus\LevelSelectMenu.cpp" />
     <ClCompile Include="..\Classes\menus\OptionsMenu.cpp" />
@@ -74,6 +74,7 @@
     <ClCompile Include="..\Classes\Scenes\HistoriaMotherScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\DataEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\MovementPatterns\MovementPatterns.h">
@@ -149,7 +150,7 @@
       <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\TranslationEngine.h">
-      <Filter>Translation</Filter>
+      <Filter>Engines</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Macros.h" />
     <ClInclude Include="..\Classes\menus\SelectPlayersMenu.h" />
@@ -170,6 +171,8 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Player\Player2.h" />
+    <ClInclude Include="..\Classes\menus\DeathMenu.h" />
+    <ClInclude Include="..\Classes\DataEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Levels">
@@ -196,7 +199,7 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{4bce5206-a788-4246-a887-969524b6db0a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Translation">
+    <Filter Include="Engines">
       <UniqueIdentifier>{52fdd819-fbd1-45cf-a0c0-d31457b03c37}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

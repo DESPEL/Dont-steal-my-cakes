@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "Macros.h"
+#include "DataEngine.h"
 
 class Player;
 class Player2;
