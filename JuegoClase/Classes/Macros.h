@@ -4,7 +4,7 @@
 #define POINTS_PER_KILL 10
 #define POINTS_PER_BOSS 100
 #define POINTS_PER_HIT 1
-#define TOTAL_LEVELS 3
+#define TOTAL_LEVELS 4
 
 enum GAME_TYPE {
 	NONE = 0,
