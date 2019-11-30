@@ -40,7 +40,14 @@ bool MainMenu::init() {
 	//inicializamos un vector de funciones. Cada funcion lanza un nivel
 	initFunctions(functions);
 	 wrapper->SetLevel();
-	//lanza automaticamente el siguiente nivel a jugar
+	
+	 
+	 auto title = Sprite::create("menus/Botones/logo.png");
+	 title->setAnchorPoint(Point(0.5, 1));
+	 title->setPosition(_visibleSize.width / 2  - 150, _visibleSize.height - 10);
+	 addChild(title);
+	 
+	 //lanza automaticamente el siguiente nivel a jugar
 	auto startButton = Button::create("menus/Botones/start0.png", "menus/Botones/start1.png", "menus/Botones/start0.png", Widget::TextureResType::LOCAL);
 	startButton->setAnchorPoint(Point(0.5, 1));
 	startButton->setScale(3, 1.5);

@@ -103,11 +103,11 @@ bool MiniGameScene::init() {
 	high_score->setAnchorPoint(Point(0, 0));
 	high_score->setPosition(0, 230);
 	if (!(TranslationEngine::getInstance()->getLanguage() == "ES_MX")) {
-		high_score->setString("High Score: ");
+		high_score->setString("High Score: " + std::to_string(GameManager::getInstance()->getMiniGameScore()));
 	}
 	else
 	{
-		high_score->setString("Record: ");
+		high_score->setString("Record: " + std::to_string(GameManager::getInstance()->getMiniGameScore()));
 	}
 	addChild(high_score, 5);
 	/*
@@ -183,7 +183,7 @@ bool MiniGameScene::init() {
 	GameWrapper::getInstance()->playing = GAME_TYPE::MINIJUEGO;
 	// Musica
 	//SimpleAudioEngine::getInstance()->playBackgroundMusic("Music\\Mantis.mp3", true);
-	this->musictag = cocos2d::experimental::AudioEngine::play2d("Music/Mantis.mp3", true, GameManager::getInstance()->getBgVolume() / 100);
+	this->musictag = cocos2d::experimental::AudioEngine::play2d("Music/get_lucky.mp3", true, GameManager::getInstance()->getBgVolume() / 100);
 	GameManager::getInstance()->setCurrentMusicTag(musictag);
 
 	return true;

@@ -4,7 +4,7 @@ USING_NS_CC;
 
 #include "GameWrapper.h"
 
-Background::Background() :_speed(150) {
+Background::Background() :_speed(120) {
 	_screen = Director::getInstance()->getOpenGLView()->getFrameSize();
 	int lvl = GameWrapper::getInstance()->actualLevel;
 	
