@@ -18,6 +18,7 @@ public:
 	bool exploded = false;
 	bool boss = false;
 	int hp = 100;
+	cocos2d::Vec2 childPosition;
 
 protected:
 
@@ -33,6 +34,7 @@ protected:
 			auto frame = cocos2d::SpriteFrame::create("animacion_enemigo.png", cocos2d::Rect(cocos2d::Vec2(0, 0), size));
 			animFrames.pushBack(frame);
 		//}
+		
 
 		this->setSpriteFrame(animFrames.at(0));
 
@@ -72,6 +74,7 @@ protected:
 			runAction(explosionAnimation);
 		}
 	}
+
 
 	~BasicEnemy() {
 		explosionAnimation->release();

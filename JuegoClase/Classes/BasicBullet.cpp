@@ -12,7 +12,13 @@ void BasicBullet::run(float) {
 		this->removeFromParentAndCleanup(true);
 		return;
 	}
-	//cocos2d::log("running bullet");
+	if (parent == nullptr) {
+		this->removeFromParentAndCleanup(true);
+		return;
+	}
+	cocos2d::log("running bullet");
+	//this->setPosition(cocos2d::Vec2(200, 300));
+	//cocos2d::log();
 	setPosition(parent->getPosition());
 	setVisible(true);
 	auto seqf = seq->clone();
@@ -29,7 +35,7 @@ void BasicBullet::update(float delta) {
 		}
 		this->stopActionByTag(BULLET_MOVEMENT);
 		this->runAction(cocos2d::RemoveSelf::create());
-		//this->removeFromParentAndCleanup(true);
+		this->removeFromParentAndCleanup(true);
 	}
 	if (GameWrapper::getInstance()->coop) {
 		if (GameWrapper::getInstance()->coop && GameWrapper::getInstance()->getPlayer2()->getBoundingBox().intersectsRect(getBoundingBox())) {

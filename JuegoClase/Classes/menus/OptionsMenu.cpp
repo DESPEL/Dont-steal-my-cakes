@@ -161,7 +161,7 @@ void OptionsMenu::actionEffectsVolumeSlider() {
 //guarda la configuracion y va al menu principal 
 void OptionsMenu::actionButtonBack() {
 	GameManager::getInstance()->saveSetting();
-	Director::getInstance()->replaceScene(TransitionFlipX::create(1, MainMenu::createScene()));
+	Director::getInstance()->pushScene(TransitionFlipX::create(1, MainMenu::createScene()));
 }
 
 void OptionsMenu::dificultySlider() {	
