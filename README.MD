@@ -1,4 +1,4 @@
-# DON'T STEAL MY CAKE
+# DON'T STEAL MY CAKES
 ***
 This is a simple game created with Cocos2d-x, that serves a double purpose, is a project for our class and to participate en GameOff2019. We are very excited to present the game!
 
@@ -22,7 +22,9 @@ Level 1 music is also from Hollow Knight, more specifically from the Grimm Troup
 
 Level 2 music is called Tower of Heaven, more info here: https://osu.ppy.sh/beatmapsets/128931#osu/845391
 
-Level 3 and Final Boss Music is pending
+Level 3 is called "No money", from here: https://www.youtube.com/watch?v=PoMgx9INDwc&feature=youtu.be
+
+The Final Boss Music is also from Hollow Knight, it's called "Hornet"
 
 The extra music is a remix from Get Lucky (check out the channel, we found very cool stuff there): https://www.youtube.com/watch?v=Ip9RFtqGxsQ
 
@@ -59,7 +61,9 @@ La música del nivel 1 es también de Hollow Knight, más específicamente de Th
 
 La música del nivel 2 se llama "Tower of Heaven", mas información aquí: https://osu.ppy.sh/beatmapsets/128931#osu/845391
 
-La fuente del nivel 3 y el jefe está pendiente.
+La música del nivel 3 se llama "No money", de aquí: https://www.youtube.com/watch?v=PoMgx9INDwc&feature=youtu.be
+
+La canción del jefe final también es de Hollow Knight, se llama "Hornet"
 
 La música del minijuego extra es un remix de Get Lucky (Dense una vuelta por el canal, encontramos cosas muy padres allí): https://www.youtube.com/watch?v=Ip9RFtqGxsQ
 
