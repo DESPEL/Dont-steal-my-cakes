@@ -28,7 +28,8 @@ public:
 			moves.pushBack(cocos2d::MoveBy::create(s, deltaxy));
 		}
 		if (rem) 
-			moves.pushBack(cocos2d::RemoveSelf::create());
+			moves.pushBack(cocos2d::MoveTo::create(0, cocos2d::Vec2(0, 1000)));
+			//moves.pushBack(cocos2d::RemoveSelf::create());
 		memory.insert(key, cocos2d::Sequence::create(moves));
 		memory.at(key)->retain();
 		return memory.at(key);

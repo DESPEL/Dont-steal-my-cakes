@@ -33,6 +33,11 @@ public:
 	AttackPattern attack;
 	cocos2d::Node* p;
 
+
+	float delay = 0;
+	bool delaybool = false;
+
+
 	bool init() {
 		currentAnimation = IDLE;
 		//createIdleAnimation();
@@ -131,15 +136,31 @@ public:
 		attack.get().run(this);
 	}
 
-	void update(float) {
+	void update(float delta) {
 		std::stringstream s;
 		s << "updating enemy running actions: " << getNumberOfRunningActions();
 		cocos2d::log(s.str().c_str());
 
+		if (delaybool) {
+			this->delay -= delta;
+			if (this->delay <= 0) {
+				runAction(cocos2d::RemoveSelf::create());
+				return;
+			}
+			return;
+		}
+
 		if ((!isVisible() || getNumberOfRunningActions() == 0) && !boss) {
 			cocos2d::log("no boss");
 			this->stopActionByTag(ENEMY_MOVEMENT);
-			runAction(cocos2d::RemoveSelf::create());
+			auto delay = cocos2d::DelayTime::create(5.0f);
+			//auto release = cocos2d::DelayTime::create(0.5f);//cocos2d::RemoveSelf::create();
+			//auto sequence = cocos2d::Sequence::create(delay, release);
+			if (delaybool == false) {
+				this->delay = 3;
+				delaybool = true;
+			}
+			//runAction(delay);
 			return;
 		}
 		

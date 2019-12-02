@@ -77,6 +77,8 @@ protected:
 
 
 	~BasicEnemy() {
+
+		cocos2d::log("Removing enemy");
 		explosionAnimation->release();
 	}
 
